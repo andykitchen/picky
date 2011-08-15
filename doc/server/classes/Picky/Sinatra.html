@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Picky::Sinatra</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            Picky::Sinatra 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/picky/sinatra_rb.html">lib/picky/sinatra.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+This Module is used to install delegator methods into the class for use
+with <a href="Sinatra.html">Sinatra</a>.
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>E</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000266">extended</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>I</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000267">indexing</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>S</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000268">searching</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000266">
+                    
+                    <a name="M000266"></a><b>extended</b>(into)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Privatizes app file methods.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000266_source')" id="l_M000266_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/59b7aa2bdfb43d4ae69782c0168ddd948e3fcb00/server/lib/picky/sinatra.rb#L10" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000266_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/sinatra.rb, line 10</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">extended</span> <span class="ruby-identifier">into</span>
+      <span class="ruby-identifier">private</span> <span class="ruby-identifier">:indexing</span>, <span class="ruby-identifier">:searching</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000267">
+                    
+                    <a name="M000267"></a><b>indexing</b>(options)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Delegates to <a href="Application.html">Application</a>.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000267_source')" id="l_M000267_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/59b7aa2bdfb43d4ae69782c0168ddd948e3fcb00/server/lib/picky/sinatra.rb#L16" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000267_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/sinatra.rb, line 16</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">indexing</span> <span class="ruby-identifier">options</span>
+      <span class="ruby-constant">Application</span>.<span class="ruby-identifier">indexing</span> <span class="ruby-identifier">options</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000268">
+                    
+                    <a name="M000268"></a><b>searching</b>(options)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Delegates to <a href="Application.html">Application</a>.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000268_source')" id="l_M000268_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/59b7aa2bdfb43d4ae69782c0168ddd948e3fcb00/server/lib/picky/sinatra.rb#L22" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000268_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/sinatra.rb, line 22</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">searching</span> <span class="ruby-identifier">options</span>
+      <span class="ruby-constant">Application</span>.<span class="ruby-identifier">searching</span> <span class="ruby-identifier">options</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

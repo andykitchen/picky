@@ -19,7 +19,7 @@
         </h1>
         <ul class="files">
             <li>lib/tasks/todo.rake</li>
-            <li>Last modified: Wed Apr 20 20:32:48 +1000 2011</li>
+            <li>Last modified: 2011-07-06 23:48:06 +1000</li>
         </ul>
     </div>
 
@@ -32,10 +32,10 @@ desc &#8220;Finds where Picky still needs input from you.&#8221; task
 :&#8220;to#{}do&#8221; do
 </p>
 <pre>
-  if system &quot;grep -e 'TODO.*' -n --color=always -R *&quot;
+  if system &quot;grep -e 'TO#{}DO.*' -n --color=always -R *&quot;
     puts &quot;Picky needs a bit of input from you there. Thanks.&quot;
   else
-    puts &quot;Picky seems to be fine (no TODOs found).&quot;
+    puts &quot;Picky seems to be fine (no TO#{}DOs found).&quot;
   end
 </pre>
 <p>

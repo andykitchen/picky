@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Picky::Sources::Mongo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Picky::Sources::Mongo 
+            
+                <span class="parent">&lt; 
+                    
+                    Base
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/lib/picky/sources/mongo_rb.html">lib/picky/sources/mongo.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+Important note: We&#8217;re not sure if this works already.
+</p>
+<p>
+A <a href="Mongo.html">Mongo</a> database source.
+</p>
+<p>
+Options:
+</p>
+<ul>
+<li>url, db
+
+</li>
+</ul>
+<p>
+Example:
+</p>
+<pre>
+  Sources::Mongo.new(:collection1, :collection2, :url =&gt; 'localhost:28017', :db =&gt; 'testdatabase')
+</pre>
+<p>
+Be sure to escape the URL properly, e.g. # => %23 in the databasename if
+needed
+</p>
+<p>
+and all the options of a <tt>RestClient::Resource</tt>. See <a
+href="http://github.com/archiloque/rest-client">github.com/archiloque/rest-client</a>.
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>H</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000303">harvest</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000301">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000305">to_s</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Classes and Modules</div>
+    <ul>
+        
+        <li><span class="type">CLASS</span> <a href="Mongo/NoDBGiven.html">Picky::Sources::Mongo::NoDBGiven</a></li>
+        
+    </ul>
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000301">
+                    
+                    <a name="M000301"></a><b>new</b>(*category_names, options)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000301_source')" id="l_M000301_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/c0a06e6c8176429a7b3c3caa81ce74f37cc0ca1e/server/lib/picky/sources/mongo.rb#L31" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000301_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/sources/mongo.rb, line 31</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-operator">*</span><span class="ruby-identifier">category_names</span>, <span class="ruby-identifier">options</span>
+        <span class="ruby-identifier">check_gem</span>
+
+                        <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:url</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:db</span>]
+                                <span class="ruby-identifier">raise_no_db_given</span>(<span class="ruby-identifier">category_names</span>)
+                        <span class="ruby-keyword kw">end</span>
+
+                  <span class="ruby-ivar">@db</span>         = <span class="ruby-constant">RestClient</span><span class="ruby-operator">::</span><span class="ruby-constant">Resource</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:url</span>), <span class="ruby-identifier">options</span>
+                        <span class="ruby-ivar">@database</span>   = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:db</span>)
+                  <span class="ruby-ivar">@key_format</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:key_format</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:key_format</span>].<span class="ruby-identifier">to_sym</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">:to_sym</span>
+                <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000303">
+                    
+                    <a name="M000303"></a><b>harvest</b>(category)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Fetches the data, @limit=0 will return all records
+</p>
+<p>
+Limit is set to 0 by default - all collection entries will be send If want
+to limit the results, set to to any other number, e.g. limit=15 to return
+only 15 entries
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000303_source')" id="l_M000303_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/c0a06e6c8176429a7b3c3caa81ce74f37cc0ca1e/server/lib/picky/sources/mongo.rb#L58" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000303_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/sources/mongo.rb, line 58</span>
+                <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">harvest</span> <span class="ruby-identifier">category</span>
+                        <span class="ruby-identifier">collection</span> = (<span class="ruby-identifier">category</span>.<span class="ruby-identifier">from</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">category</span>.<span class="ruby-identifier">index_name</span>).<span class="ruby-identifier">to_s</span>
+                        <span class="ruby-identifier">resp</span> = <span class="ruby-ivar">@db</span>[<span class="ruby-node">&quot;/#{@database}/#{category.index_name}/?@limit=0&quot;</span>].<span class="ruby-identifier">get</span>
+                        <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">resp</span>)[<span class="ruby-value str">'rows'</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">row</span><span class="ruby-operator">|</span>
+                          <span class="ruby-identifier">text</span> = <span class="ruby-identifier">row</span>[<span class="ruby-identifier">collection</span>].<span class="ruby-identifier">to_s</span>
+                          <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">text</span>
+                                <span class="ruby-identifier">index_key</span> = <span class="ruby-identifier">row</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-ivar">@@id_key</span>) <span class="ruby-comment cmt"># TODO Still works, I removed .values</span>
+                                <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">index_key</span>, <span class="ruby-identifier">text</span>
+                        <span class="ruby-keyword kw">end</span>
+                <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000305">
+                    
+                    <a name="M000305"></a><b>to_s</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000305_source')" id="l_M000305_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/c0a06e6c8176429a7b3c3caa81ce74f37cc0ca1e/server/lib/picky/sources/mongo.rb#L73" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000305_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/sources/mongo.rb, line 73</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
+        <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">name</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

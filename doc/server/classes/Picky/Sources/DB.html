@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Picky::Sources::DB</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Picky::Sources::DB 
+            
+                <span class="parent">&lt; 
+                    
+                    Base
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/lib/picky/sources/db_rb.html">lib/picky/sources/db.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+Describes a database source. Needs a SELECT statement (with id in it), and
+a file option or the options from an AR config file.
+</p>
+<p>
+The select statement can be as complicated as you want, as long as it has
+an id in it and as long as it can be used in a CREATE TABLE AS statement.
+(working on that last one)
+</p>
+<p>
+Examples:
+</p>
+<pre>
+ Sources::DB.new('SELECT id, title, author, year FROM books') # Uses the config from app/db.yml by default.
+ Sources::DB.new('SELECT id, title, author, year FROM books', file: 'app/some_db.yml')
+ Sources::DB.new('SELECT b.id, b.title, b.author, b.publishing_year as year FROM books b INNER JOIN ON ...', file: 'app/some_db.yml')
+ Sources::DB.new('SELECT id, title, author, year FROM books', adapter: 'mysql', host:'localhost', ...)
+</pre>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000300">chunksize</a>,</li>
+                
+                <li><a href="#M000287">connect_backend</a>,</li>
+                
+                <li><a href="#M000294">count</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>H</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000296">harvest</a>,</li>
+                
+                <li><a href="#M000299">harvest_statement</a>,</li>
+                
+                <li><a href="#M000298">harvest_statement_with_offset</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000283">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>S</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000295">snapshot_table_name</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000288">take_snapshot</a>,</li>
+                
+                <li><a href="#M000284">to_s</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Attributes</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>select_statement</td>
+            <td class='attr-desc'><p>
+The select statement that was passed in.
+</p></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>database</td>
+            <td class='attr-desc'><p>
+The database adapter.
+</p></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>connection_options</td>
+            <td class='attr-desc'><p>
+The database connection options that were either passed in or loaded from
+the given file.
+</p></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>options</td>
+            <td class='attr-desc'><p>
+The database connection options that were either passed in or loaded from
+the given file.
+</p></td>
+        </tr>
+        
+    </table>
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000283">
+                    
+                    <a name="M000283"></a><b>new</b>(select_statement, options = { file: 'app/db.yml' })
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000283_source')" id="l_M000283_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/sources/db.rb#L35" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000283_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/sources/db.rb, line 35</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">select_statement</span>, <span class="ruby-identifier">options</span> = { <span class="ruby-identifier">file</span><span class="ruby-operator">:</span> <span class="ruby-value str">'app/db.yml'</span> }
+        <span class="ruby-ivar">@select_statement</span> = <span class="ruby-identifier">select_statement</span>
+        <span class="ruby-ivar">@database</span>         = <span class="ruby-identifier">create_database_adapter</span>
+        <span class="ruby-ivar">@options</span>          = <span class="ruby-identifier">options</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000300">
+                    
+                    <a name="M000300"></a><b>chunksize</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+The amount of records that are loaded each chunk.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000300_source')" id="l_M000300_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/sources/db.rb#L169" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000300_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/sources/db.rb, line 169</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">chunksize</span>
+        <span class="ruby-value">25_000</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000287">
+                    
+                    <a name="M000287"></a><b>connect_backend</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Connect the backend.
+</p>
+<p>
+Will raise unless connection options have been given.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000287_source')" id="l_M000287_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/sources/db.rb#L77" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000287_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/sources/db.rb, line 77</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">connect_backend</span>
+        <span class="ruby-identifier">configure</span> <span class="ruby-ivar">@options</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Database backend not configured&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">connection_options</span>
+        <span class="ruby-identifier">database</span>.<span class="ruby-identifier">establish_connection</span> <span class="ruby-identifier">connection_options</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000294">
+                    
+                    <a name="M000294"></a><b>count</b>(index_name)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Counts all the entries that are used for the index.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000294_source')" id="l_M000294_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/sources/db.rb#L112" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000294_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/sources/db.rb, line 112</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">count</span> <span class="ruby-identifier">index_name</span>
+        <span class="ruby-identifier">database</span>.<span class="ruby-identifier">connection</span>.<span class="ruby-identifier">select_value</span>(<span class="ruby-node">&quot;SELECT COUNT(#{@@traversal_id}) FROM #{snapshot_table_name(index_name)}&quot;</span>).<span class="ruby-identifier">to_i</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000296">
+                    
+                    <a name="M000296"></a><b>harvest</b>(category, &amp;block)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Harvests the data to index in chunks.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000296_source')" id="l_M000296_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/sources/db.rb#L124" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000296_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/sources/db.rb, line 124</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">harvest</span> <span class="ruby-identifier">category</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>
+        (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">count</span>(<span class="ruby-identifier">category</span>.<span class="ruby-identifier">index_name</span>)).<span class="ruby-identifier">step</span>(<span class="ruby-identifier">chunksize</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">offset</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">get_data</span> <span class="ruby-identifier">category</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000299">
+                    
+                    <a name="M000299"></a><b>harvest_statement</b>(category)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+The harvest statement used to pull data from the snapshot table.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000299_source')" id="l_M000299_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/sources/db.rb#L163" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000299_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/sources/db.rb, line 163</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">harvest_statement</span> <span class="ruby-identifier">category</span>
+        <span class="ruby-node">&quot;SELECT id, #{category.from} FROM #{snapshot_table_name(category.index_name)} st&quot;</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000298">
+                    
+                    <a name="M000298"></a><b>harvest_statement_with_offset</b>(category, offset)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Builds a harvest statement for getting data to index.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000298_source')" id="l_M000298_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/sources/db.rb#L153" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000298_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/sources/db.rb, line 153</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">harvest_statement_with_offset</span> <span class="ruby-identifier">category</span>, <span class="ruby-identifier">offset</span>
+        <span class="ruby-identifier">statement</span> = <span class="ruby-identifier">harvest_statement</span> <span class="ruby-identifier">category</span>
+
+        <span class="ruby-identifier">statement</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">statement</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-value str">'WHERE'</span>) <span class="ruby-operator">?</span> <span class="ruby-value str">' AND'</span> <span class="ruby-operator">:</span> <span class="ruby-value str">' WHERE'</span>
+
+        <span class="ruby-node">&quot;#{statement} st.#{@@traversal_id} &gt; #{offset} LIMIT #{chunksize}&quot;</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000295">
+                    
+                    <a name="M000295"></a><b>snapshot_table_name</b>(index_name)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+The name of the snapshot table created by Picky.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000295_source')" id="l_M000295_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/sources/db.rb#L118" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000295_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/sources/db.rb, line 118</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">snapshot_table_name</span> <span class="ruby-identifier">index_name</span>
+        <span class="ruby-node">&quot;picky_#{index_name}_index&quot;</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000288">
+                    
+                    <a name="M000288"></a><b>take_snapshot</b>(index)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Take a snapshot of the data.
+</p>
+<p>
+Uses CREATE TABLE AS with the given SELECT statement to create a snapshot
+of the data.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000288_source')" id="l_M000288_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/sources/db.rb#L87" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000288_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/sources/db.rb, line 87</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">take_snapshot</span> <span class="ruby-identifier">index</span>
+        <span class="ruby-identifier">timed_exclaim</span> <span class="ruby-node">%Q{&quot;#{index.identifier}&quot;: Taking snapshot of database data.}</span>
+
+        <span class="ruby-identifier">origin</span> = <span class="ruby-identifier">snapshot_table_name</span> <span class="ruby-identifier">index</span>.<span class="ruby-identifier">name</span>
+        <span class="ruby-identifier">on_database</span> = <span class="ruby-identifier">database</span>.<span class="ruby-identifier">connection</span>
+
+        <span class="ruby-comment cmt"># Drop the table if it exists.</span>
+        <span class="ruby-comment cmt">#</span>
+        <span class="ruby-identifier">on_database</span>.<span class="ruby-identifier">drop_table</span> <span class="ruby-identifier">origin</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">on_database</span>.<span class="ruby-identifier">table_exists?</span>(<span class="ruby-identifier">origin</span>)
+
+        <span class="ruby-comment cmt"># The adapters currently do not support this.</span>
+        <span class="ruby-comment cmt">#</span>
+        <span class="ruby-identifier">on_database</span>.<span class="ruby-identifier">execute</span> <span class="ruby-node">&quot;CREATE TABLE #{origin} AS #{select_statement}&quot;</span>
+
+        <span class="ruby-comment cmt"># Add a column that Picky uses to traverse the table's entries.</span>
+        <span class="ruby-comment cmt">#</span>
+        <span class="ruby-identifier">on_database</span>.<span class="ruby-identifier">add_column</span> <span class="ruby-identifier">origin</span>, <span class="ruby-ivar">@@traversal_id</span>, <span class="ruby-identifier">:primary_key</span>, <span class="ruby-identifier">:null</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:false</span>
+
+        <span class="ruby-comment cmt"># Execute any special queries this index needs executed.</span>
+        <span class="ruby-comment cmt">#</span>
+        <span class="ruby-identifier">on_database</span>.<span class="ruby-identifier">execute</span> <span class="ruby-identifier">index</span>.<span class="ruby-identifier">after_indexing</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">index</span>.<span class="ruby-identifier">after_indexing</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000284">
+                    
+                    <a name="M000284"></a><b>to_s</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000284_source')" id="l_M000284_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/sources/db.rb#L41" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000284_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/sources/db.rb, line 41</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
+        <span class="ruby-identifier">parameters</span> = [<span class="ruby-identifier">select_statement</span>.<span class="ruby-identifier">inspect</span>]
+        <span class="ruby-identifier">parameters</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">options</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">empty?</span>
+        <span class="ruby-node">%Q{#{self.class.name}(#{parameters.join(', ')})}</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

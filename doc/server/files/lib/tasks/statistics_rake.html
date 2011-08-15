@@ -19,7 +19,7 @@
         </h1>
         <ul class="files">
             <li>lib/tasks/statistics.rake</li>
-            <li>Last modified: Wed Apr 20 20:32:48 +1000 2011</li>
+            <li>Last modified: 2011-07-06 20:44:20 +1000</li>
         </ul>
     </div>
 
@@ -28,25 +28,47 @@
     
     <div class="description">
         <p>
-# Statistics tasks. # namespace :stats do
+# Statistics tasks. # desc &#8220;Analyzes indexes (index, category
+optional).&#8221; task :analyze, [:index, :category] =>
+:&#8217;stats:prepare&#8217; do |_, options|
+</p>
+<pre>
+  index, category = options.index, options.category
+
+  specific = Indexes
+  specific = specific[index]    if index
+  specific = specific[category] if category
+
+  statistics = Statistics.new
+
+  begin
+    statistics.analyze specific
+  rescue StandardError
+    puts &quot;\n\033[31mNote: rake analyze needs prepared indexes. Run rake index first.\033[m\n\n&quot;
+    raise
+  end
+
+  puts statistics
+</pre>
+<p>
+end
+</p>
+<p>
+task :stats => :&#8217;stats:prepare&#8217; do
+</p>
+<pre>
+  stats = Statistics.new
+  puts stats.application
+</pre>
+<p>
+end
+</p>
+<p>
+namespace :stats do
 </p>
 <pre>
   task :prepare =&gt; :application do
     require File.expand_path('../../picky/statistics', __FILE__)
-    statistics = Statistics.instance
-  end
-  task :app =&gt; :prepare do
-    Statistics.instance.application
-    puts Statistics.instance
-  end
-  task :analyze =&gt; :prepare do
-    begin
-      Statistics.instance.analyze
-    rescue StandardError
-      puts &quot;\n\033[31mNote: rake analyze needs prepared indexes. Run rake index first.\033[m\n\n&quot;
-      raise
-    end
-    puts Statistics.instance
   end
 </pre>
 <p>

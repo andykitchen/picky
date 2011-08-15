@@ -19,7 +19,7 @@
         </h1>
         <ul class="files">
             <li>lib/tasks/checks.rake</li>
-            <li>Last modified: Wed Apr 20 20:32:48 +1000 2011</li>
+            <li>Last modified: 2011-07-06 20:22:56 +1000</li>
         </ul>
     </div>
 
@@ -28,14 +28,19 @@
     
     <div class="description">
         <p>
-# Checks to help the user. # namespace :check do
+# Checks to help the user. # desc &#8216;Checks if index files are
+small/missing (index, category optional).&#8217; task :check, [:index,
+:category] => :application do |_, options|
 </p>
 <pre>
-  desc 'Checks the index files for files that are suspiciously small or missing.'
-  task :index =&gt; :application do
-    Indexes.check_caches
-    puts &quot;All indexes look ok.&quot;
-  end
+  index, category = options.index, options.category
+
+  specific = Indexes
+  specific = specific[index]    if index
+  specific = specific[category] if category
+  specific.check
+
+  puts &quot;All checked indexes look ok.&quot;
 </pre>
 <p>
 end

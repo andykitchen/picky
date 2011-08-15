@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Picky::Indexers::Parallel</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Picky::Indexers::Parallel 
+            
+                <span class="parent">&lt; 
+                    
+                    Base
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/lib/picky/indexers/parallel_rb.html">lib/picky/indexers/parallel.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+Uses a number of categories, a source, and a tokenizer to index data.
+</p>
+<p>
+The tokenizer is taken from each category if specified, from the index, if
+not.
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>P</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000153">process</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000153">
+                    
+                    <a name="M000153"></a><b>process</b>(categories)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Process does the actual indexing.
+</p>
+<p>
+Parameters:
+</p>
+<pre>
+ * categories: An Enumerable of Category-s.
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000153_source')" id="l_M000153_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/indexers/parallel.rb#L18" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000153_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/indexers/parallel.rb, line 18</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">process</span> <span class="ruby-identifier">categories</span>
+        <span class="ruby-identifier">comma</span>   = <span class="ruby-value">?,</span>
+        <span class="ruby-identifier">newline</span> = <span class="ruby-value">?\n</span>
+
+        <span class="ruby-comment cmt"># Prepare a combined object - array.</span>
+        <span class="ruby-comment cmt">#</span>
+        <span class="ruby-identifier">combined</span> = <span class="ruby-identifier">categories</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">category</span><span class="ruby-operator">|</span>
+          [<span class="ruby-identifier">category</span>, [], <span class="ruby-identifier">category</span>.<span class="ruby-identifier">prepared_index_file</span>, (<span class="ruby-identifier">category</span>.<span class="ruby-identifier">tokenizer</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">tokenizer</span>)]
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-comment cmt"># Index.</span>
+        <span class="ruby-comment cmt">#</span>
+        <span class="ruby-comment cmt"># TODO Extract into flush_every(100_000) do</span>
+        <span class="ruby-comment cmt">#</span>
+        <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
+
+        <span class="ruby-comment cmt"># Explicitly reset the source to avoid caching trouble.</span>
+        <span class="ruby-comment cmt">#</span>
+        <span class="ruby-identifier">source</span>.<span class="ruby-identifier">reset</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">source</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:reset</span>)
+
+        <span class="ruby-comment cmt"># Go through each object in the source.</span>
+        <span class="ruby-comment cmt">#</span>
+        <span class="ruby-identifier">source</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">object</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">id</span> = <span class="ruby-identifier">object</span>.<span class="ruby-identifier">id</span>
+
+          <span class="ruby-comment cmt"># This needs to be rewritten.</span>
+          <span class="ruby-comment cmt">#</span>
+          <span class="ruby-comment cmt"># Is it a good idea that not the tokenizer has control over when he gets the next text?</span>
+          <span class="ruby-comment cmt">#</span>
+          <span class="ruby-identifier">combined</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">category</span>, <span class="ruby-identifier">cache</span>, <span class="ruby-identifier">_</span>, <span class="ruby-identifier">tokenizer</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">tokenizer</span>.<span class="ruby-identifier">tokenize</span>(<span class="ruby-identifier">object</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">category</span>.<span class="ruby-identifier">from</span>).<span class="ruby-identifier">to_s</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">token_text</span><span class="ruby-operator">|</span>
+              <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">token_text</span>
+              <span class="ruby-identifier">cache</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">id</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">comma</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">token_text</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">newline</span>
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">100_000</span>
+            <span class="ruby-identifier">flush</span> <span class="ruby-identifier">combined</span>
+            <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-identifier">i</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">flush</span> <span class="ruby-identifier">combined</span>
+        <span class="ruby-identifier">combined</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">_</span>, <span class="ruby-identifier">_</span>, <span class="ruby-identifier">file</span>, <span class="ruby-identifier">_</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">timed_exclaim</span> <span class="ruby-node">%Q{&quot;#{@index_or_category.identifier}&quot;:   =&gt; #{file.path}.}</span>
+          <span class="ruby-identifier">file</span>.<span class="ruby-identifier">close</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

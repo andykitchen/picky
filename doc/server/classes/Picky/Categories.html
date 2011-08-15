@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Picky::Categories</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Picky::Categories 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/picky/categories_rb.html">lib/picky/categories.rb</a></li>
+            
+            <li><a href="../../files/lib/picky/categories_indexed_rb.html">lib/picky/categories_indexed.rb</a></li>
+            
+            <li><a href="../../files/lib/picky/categories_indexing_rb.html">lib/picky/categories_indexing.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>#</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000099"><<</a>,</li>
+                
+                <li><a href="#M000100">[]</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000098">clear_categories</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>I</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000106">inject_possible_for</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000097">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>P</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000108">possible_categories</a>,</li>
+                
+                <li><a href="#M000103">possible_combinations</a>,</li>
+                
+                <li><a href="#M000107">possible_for</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>R</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000101">raise_not_found</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>S</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000104">similar_possible_for</a>,</li>
+                
+                <li><a href="#M000105">similar_tokens_for</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000102">to_s</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Attributes</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>categories</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>category_hash</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>ignore_unassigned_tokens</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+    </table>
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000097">
+                    
+                    <a name="M000097"></a><b>new</b>(options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+A list of indexed categories.
+</p>
+<p>
+Options:
+</p>
+<pre>
+ * ignore_unassigned_tokens: Ignore the given token if it cannot be matched to a category.
+                             The default behaviour is that if a token does not match to
+                             any category, the query will not return anything (since a
+                             single token cannot be matched). If you set this option to
+                             true, any token that cannot be matched to a category will be
+                             simply ignored.
+                             Use this if only a few matched words are important, like for
+                             example of the query &quot;Jonathan Myers 86455 Las Cucarachas&quot;
+                             you only want to match the zipcode, to have the search engine
+                             display advertisements on the side for the zipcode.
+                             Nifty! :)
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000097_source')" id="l_M000097_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/categories.rb#L31" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000097_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/categories.rb, line 31</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">options</span> = {}
+      <span class="ruby-identifier">clear_categories</span>
+
+      <span class="ruby-ivar">@ignore_unassigned_tokens</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:ignore_unassigned_tokens</span>] <span class="ruby-operator">||</span> <span class="ruby-keyword kw">false</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000099">
+                    
+                    <a name="M000099"></a><b>&lt;&lt;</b>(category)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Add the given category to the list of categories.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000099_source')" id="l_M000099_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/categories.rb#L46" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000099_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/categories.rb, line 46</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">category</span>
+      <span class="ruby-identifier">categories</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">category</span>
+      <span class="ruby-identifier">category_hash</span>[<span class="ruby-identifier">category</span>.<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">category</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000100">
+                    
+                    <a name="M000100"></a><b>[]</b>(category_name)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Find a given category in the categories.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000100_source')" id="l_M000100_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/categories.rb#L53" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000100_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/categories.rb, line 53</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span> <span class="ruby-identifier">category_name</span>
+      <span class="ruby-identifier">category_name</span> = <span class="ruby-identifier">category_name</span>.<span class="ruby-identifier">to_sym</span>
+      <span class="ruby-identifier">category_hash</span>[<span class="ruby-identifier">category_name</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">raise_not_found</span>(<span class="ruby-identifier">category_name</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000098">
+                    
+                    <a name="M000098"></a><b>clear_categories</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Clears both the array of categories and the hash of categories.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000098_source')" id="l_M000098_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/categories.rb#L39" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000098_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/categories.rb, line 39</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear_categories</span>
+      <span class="ruby-ivar">@categories</span>    = []
+      <span class="ruby-ivar">@category_hash</span> = {}
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000106">
+                    
+                    <a name="M000106"></a><b>inject_possible_for</b>(tokens)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000106_source')" id="l_M000106_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/categories_indexed.rb#L49" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000106_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/categories_indexed.rb, line 49</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inject_possible_for</span> <span class="ruby-identifier">tokens</span>
+      <span class="ruby-identifier">tokens</span>.<span class="ruby-identifier">inject</span>([]) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">result</span>, <span class="ruby-identifier">token</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">possible</span> = <span class="ruby-identifier">possible_categories</span> <span class="ruby-identifier">token</span>
+        <span class="ruby-identifier">result</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">possible_for</span>(<span class="ruby-identifier">token</span>, <span class="ruby-identifier">possible</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000108">
+                    
+                    <a name="M000108"></a><b>possible_categories</b>(token)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+This returns the possible categories for this token. If the user has
+already preselected a category for this token, like
+&#8220;artist:moby&#8221;, if not just return all for the given token,
+since all are possible.
+</p>
+<p>
+Note: Once I thought this was called too often. But it is not (18.01.2011).
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000108_source')" id="l_M000108_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/categories_indexed.rb#L83" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000108_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/categories_indexed.rb, line 83</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">possible_categories</span> <span class="ruby-identifier">token</span>
+      <span class="ruby-identifier">token</span>.<span class="ruby-identifier">user_defined_categories</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">categories</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000103">
+                    
+                    <a name="M000103"></a><b>possible_combinations</b>(token)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Return all possible combinations for the given token.
+</p>
+<p>
+This checks if it needs to also search through similar tokens, if for
+example, the token is one with ~. If yes, it puts together all solutions.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000103_source')" id="l_M000103_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/categories_indexed.rb#L17" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000103_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/categories_indexed.rb, line 17</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">possible_combinations</span> <span class="ruby-identifier">token</span>
+      <span class="ruby-identifier">token</span>.<span class="ruby-identifier">similar?</span> <span class="ruby-value">? </span><span class="ruby-identifier">similar_possible_for</span>(<span class="ruby-identifier">token</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">possible_for</span>(<span class="ruby-identifier">token</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000107">
+                    
+                    <a name="M000107"></a><b>possible_for</b>(token, preselected_categories = nil)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns possible Combinations for the token.
+</p>
+<p>
+Note: The preselected_categories param is an optimization.
+</p>
+<p>
+Note: Returns [] if no categories matched (will produce no result).
+</p>
+<pre>
+      Returns nil if this token needs to be removed from the query.
+      (Also none of the categories matched, but the ignore unassigned
+      tokens option is true)
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000107_source')" id="l_M000107_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/categories_indexed.rb#L65" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000107_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/categories_indexed.rb, line 65</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">possible_for</span> <span class="ruby-identifier">token</span>, <span class="ruby-identifier">preselected_categories</span> = <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-identifier">possible</span> = (<span class="ruby-identifier">preselected_categories</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">possible_categories</span>(<span class="ruby-identifier">token</span>)).<span class="ruby-identifier">inject</span>([]) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">combinations</span>, <span class="ruby-identifier">category</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">combination</span> = <span class="ruby-identifier">category</span>.<span class="ruby-identifier">combination_for</span> <span class="ruby-identifier">token</span>
+        <span class="ruby-identifier">combination</span> <span class="ruby-value">? </span><span class="ruby-identifier">combinations</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">combination</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">combinations</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-comment cmt"># This is an optimization to mark tokens that are ignored.</span>
+      <span class="ruby-comment cmt">#</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ignore_unassigned_tokens</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">possible</span>.<span class="ruby-identifier">empty?</span>
+      <span class="ruby-identifier">possible</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000101">
+                    
+                    <a name="M000101"></a><b>raise_not_found</b>(category_name)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000101_source')" id="l_M000101_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/categories.rb#L57" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000101_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/categories.rb, line 57</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">raise_not_found</span> <span class="ruby-identifier">category_name</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-node">%Q{Index category &quot;#{category_name}&quot; not found. Possible categories: &quot;#{categories.map(&amp;:name).join('&quot;, &quot;')}&quot;.}</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000104">
+                    
+                    <a name="M000104"></a><b>similar_possible_for</b>(token)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Gets all similar tokens and puts together the possible combinations for
+each found similar token.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000104_source')" id="l_M000104_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/categories_indexed.rb#L24" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000104_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/categories_indexed.rb, line 24</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">similar_possible_for</span> <span class="ruby-identifier">token</span>
+      <span class="ruby-identifier">tokens</span> = <span class="ruby-identifier">similar_tokens_for</span> <span class="ruby-identifier">token</span>
+      <span class="ruby-identifier">inject_possible_for</span> <span class="ruby-identifier">tokens</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000105">
+                    
+                    <a name="M000105"></a><b>similar_tokens_for</b>(token)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns all possible similar tokens for the given token.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000105_source')" id="l_M000105_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/categories_indexed.rb#L31" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000105_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/categories_indexed.rb, line 31</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">similar_tokens_for</span> <span class="ruby-identifier">token</span>
+      <span class="ruby-identifier">text</span> = <span class="ruby-identifier">token</span>.<span class="ruby-identifier">text</span>
+      <span class="ruby-identifier">categories</span>.<span class="ruby-identifier">inject</span>([]) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">result</span>, <span class="ruby-identifier">category</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">next_token</span> = <span class="ruby-identifier">token</span>
+        <span class="ruby-comment cmt"># Note: We could also break off here if not all the available</span>
+        <span class="ruby-comment cmt">#       similars are needed.</span>
+        <span class="ruby-comment cmt">#       Wait for a concrete case that needs this before taking</span>
+        <span class="ruby-comment cmt">#       action.</span>
+        <span class="ruby-comment cmt">#</span>
+        <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">next_token</span> = <span class="ruby-identifier">next_token</span>.<span class="ruby-identifier">next_similar_token</span>(<span class="ruby-identifier">category</span>)
+          <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">next_token</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">next_token</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">next_token</span>.<span class="ruby-identifier">text</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">text</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">result</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000102">
+                    
+                    <a name="M000102"></a><b>to_s</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000102_source')" id="l_M000102_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/categories.rb#L61" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000102_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/categories.rb, line 61</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
+      <span class="ruby-identifier">categories</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">', '</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

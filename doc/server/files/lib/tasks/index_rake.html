@@ -19,7 +19,7 @@
         </h1>
         <ul class="files">
             <li>lib/tasks/index.rake</li>
-            <li>Last modified: Wed Apr 20 20:32:48 +1000 2011</li>
+            <li>Last modified: 2011-08-02 22:18:52 +1000</li>
         </ul>
     </div>
 
@@ -28,32 +28,34 @@
     
     <div class="description">
         <p>
-# Indexing tasks. # namespace :index do
+# Indexing tasks. # desc &#8220;Generate the index (index, category
+optional).&#8221; task :index, [:index, :category] => :application do |_,
+options|
 </p>
 <pre>
-  desc &quot;Takes a snapshot, indexes, and caches in random order.&quot;
+  index, category = options.index, options.category
+
+  specific = Picky::Indexes
+  specific = specific[index]    if index
+  specific = specific[category] if category
+  specific.index
+</pre>
+<p>
+end
+</p>
+<p>
+namespace :index do
+</p>
+<pre>
+  # Advanced usage.
+  #
+  # desc &quot;Takes a snapshot, indexes, and caches in random order.&quot;
   task :randomly =&gt; :application do
-    Indexes.index true
+    Picky::Indexes.index true
   end
-  desc &quot;Takes a snapshot, indexes, and caches in order given.&quot;
+  # desc &quot;Takes a snapshot, indexes, and caches in order given.&quot;
   task :ordered =&gt; :application do
-    Indexes.index false
-  end
-
-  # desc &quot;Generates the index snapshots.&quot;
-  #
-  # Note: Hidden since it is only needed by pro users.
-  #
-  # desc &quot;Generate the data snapshots (intermediate table on a DB source)&quot;
-  task :generate_snapshots =&gt; :application do
-    Indexes.take_snapshot
-  end
-
-  desc &quot;Generates a specific index from index snapshots (category optional).&quot;
-  task :specific, [:index, :category] =&gt; :application do |_, options|
-    index, category = options.index, options.category
-    Indexes.generate_index_only index.to_sym, category &amp;&amp; category.to_sym
-    Indexes.generate_cache_only index.to_sym, category &amp;&amp; category.to_sym
+    Picky::Indexes.index false
   end
 </pre>
 <p>

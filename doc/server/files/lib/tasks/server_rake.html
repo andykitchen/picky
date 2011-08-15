@@ -19,7 +19,7 @@
         </h1>
         <ul class="files">
             <li>lib/tasks/server.rake</li>
-            <li>Last modified: Wed Apr 20 20:32:48 +1000 2011</li>
+            <li>Last modified: 2011-08-02 22:22:42 +1000</li>
         </ul>
     </div>
 
@@ -28,7 +28,23 @@
     
     <div class="description">
         <p>
-# Server tasks, like starting/stopping/restarting. # namespace :server do
+# Server tasks, like starting/stopping/restarting. # desc &#8220;Start the
+server.&#8221; task :start do
+</p>
+<pre>
+  Rake::Task[:'server:start'].invoke
+</pre>
+<p>
+end desc &#8220;Stop the server.&#8221; task :stop do
+</p>
+<pre>
+  Rake::Task[:'server:stop'].invoke
+</pre>
+<p>
+end
+</p>
+<p>
+namespace :server do
 </p>
 <pre>
   # desc &quot;Start the unicorns. (Wehee!)&quot;
@@ -36,7 +52,7 @@
   task :start =&gt; :framework do
     chdir_to_root
     daemonize = PICKY_ENVIRONMENT == 'production' ? '-D' : ''
-    command = &quot;export PICKY_ENV=#{PICKY_ENVIRONMENT}; unicorn -c unicorn.ru #{daemonize}&quot;.strip
+    command = &quot;export PICKY_ENV=#{PICKY_ENVIRONMENT}; unicorn -c unicorn.rb #{daemonize}&quot;.strip
     puts &quot;Running \`#{command}\`.&quot;
     exec command
   end
@@ -59,8 +75,15 @@
   end
 
   def current_pid
-    pid = `cat #{File.join(PICKY_ROOT, 'tmp/pids/unicorn.pid')}`
-    pid.blank? ? nil : pid.chomp
+    pidfile = 'tmp/pids/unicorn.pid'
+    pid = `cat #{File.join(PICKY_ROOT, pidfile)}`
+    if pid.blank?
+      puts
+      puts &quot;No server running (no #{pidfile} found).&quot;
+      puts
+    else
+      pid.chomp
+    end
   end
 </pre>
 <p>

@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Picky::Bundle</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Picky::Bundle 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/picky/bundle_rb.html">lib/picky/bundle.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+A <a href="Bundle.html">Bundle</a> is a number of indexes per [index,
+category] combination.
+</p>
+<p>
+At most, there are three indexes:
+</p>
+<ul>
+<li><b>core</b> index (always used)
+
+</li>
+<li><b>weights</b> index (always used)
+
+</li>
+<li><b>similarity</b> index (used with similarity)
+
+</li>
+</ul>
+<p>
+In Picky, indexing is separated from the index handling itself through a
+parallel structure.
+</p>
+<p>
+Both use methods provided by this base class, but have very different
+goals:
+</p>
+<ul>
+<li><b>Indexing</b>::<b>Bundle</b>::<b>Base</b> is just concerned with creating
+index files / redis entries and providing helper functions to e.g. check
+the indexes.
+
+</li>
+<li><b>Index</b>::<b>Bundle</b>::<b>Base</b> is concerned with loading these
+index files into memory / redis and looking up search data as fast as
+possible.
+
+</li>
+</ul>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>I</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000092">identifier</a>,</li>
+                
+                <li><a href="#M000095">index_path</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>K</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000094">key_format</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000091">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>S</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000093">similar</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000096">to_s</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Attributes</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>name</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>category</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [RW]
+            </td>
+            <td class='attr-name'>inverted</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [RW]
+            </td>
+            <td class='attr-name'>weights</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [RW]
+            </td>
+            <td class='attr-name'>similarity</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [RW]
+            </td>
+            <td class='attr-name'>configuration</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [RW]
+            </td>
+            <td class='attr-name'>similarity_strategy</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+    </table>
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000091">
+                    
+                    <a name="M000091"></a><b>new</b>(name, category, similarity_strategy, options = {})
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000091_source')" id="l_M000091_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/bundle.rb#L38" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000091_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 38</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">category</span>, <span class="ruby-identifier">similarity_strategy</span>, <span class="ruby-identifier">options</span> = {}
+      <span class="ruby-ivar">@name</span>          = <span class="ruby-identifier">name</span>
+      <span class="ruby-ivar">@category</span>      = <span class="ruby-identifier">category</span>
+
+      <span class="ruby-ivar">@inverted</span>      = {}
+      <span class="ruby-ivar">@weights</span>       = {}
+      <span class="ruby-ivar">@similarity</span>    = {}
+      <span class="ruby-ivar">@configuration</span> = {} <span class="ruby-comment cmt"># A hash with config options.</span>
+
+      <span class="ruby-ivar">@similarity_strategy</span> = <span class="ruby-identifier">similarity_strategy</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000092">
+                    
+                    <a name="M000092"></a><b>identifier</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000092_source')" id="l_M000092_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/bundle.rb#L49" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000092_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 49</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">identifier</span>
+      <span class="ruby-node">&quot;#{category.identifier}:#{name}&quot;</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000095">
+                    
+                    <a name="M000095"></a><b>index_path</b>(type)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Path and partial filename of a specific subindex.
+</p>
+<p>
+Subindexes are:
+</p>
+<pre>
+ * inverted index
+ * weights index
+ * partial index
+ * similarity index
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000095_source')" id="l_M000095_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/bundle.rb#L78" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000095_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 78</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index_path</span> <span class="ruby-identifier">type</span>
+      <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span> <span class="ruby-identifier">index_directory</span>, <span class="ruby-node">&quot;#{category.name}_#{name}_#{type}&quot;</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000094">
+                    
+                    <a name="M000094"></a><b>key_format</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+If a key format is set, use it, else delegate to the category.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000094_source')" id="l_M000094_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/bundle.rb#L66" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000094_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 66</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">key_format</span>
+      <span class="ruby-ivar">@key_format</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@category</span>.<span class="ruby-identifier">key_format</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000093">
+                    
+                    <a name="M000093"></a><b>similar</b>(text)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Get a list of similar texts.
+</p>
+<p>
+Note: Does not return itself.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000093_source')" id="l_M000093_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/bundle.rb#L57" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000093_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 57</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">similar</span> <span class="ruby-identifier">text</span>
+      <span class="ruby-identifier">code</span> = <span class="ruby-identifier">similarity_strategy</span>.<span class="ruby-identifier">encoded</span> <span class="ruby-identifier">text</span>
+      <span class="ruby-identifier">similar_codes</span> = <span class="ruby-identifier">code</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@similarity</span>[<span class="ruby-identifier">code</span>]
+      <span class="ruby-identifier">similar_codes</span>.<span class="ruby-identifier">delete</span> <span class="ruby-identifier">text</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">similar_codes</span>
+      <span class="ruby-identifier">similar_codes</span> <span class="ruby-operator">||</span> []
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000096">
+                    
+                    <a name="M000096"></a><b>to_s</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000096_source')" id="l_M000096_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/bundle.rb#L82" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000096_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 82</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
+      <span class="ruby-node">&quot;#{self.class}(#{identifier})&quot;</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

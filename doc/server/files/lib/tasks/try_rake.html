@@ -19,7 +19,7 @@
         </h1>
         <ul class="files">
             <li>lib/tasks/try.rake</li>
-            <li>Last modified: Wed Apr 20 20:40:35 +1000 2011</li>
+            <li>Last modified: 2011-07-06 20:35:49 +1000</li>
         </ul>
     </div>
 
@@ -28,37 +28,25 @@
     
     <div class="description">
         <p>
-# Tasks for manually testing your engine configuration. # namespace :try do
+# Tasks for manually testing your engine configuration. # desc &#8220;Try
+the given text in the indexer/query (index and category optional).&#8221;
+task :try, [:text, :index, :category] => :application do |_, options|
 </p>
 <pre>
-  # desc &quot;Try how a given word would be tokenized when indexing (type:category optional).&quot;
-  task :index, [:text, :index, :category] =&gt; :application do |_, options|
-    text, index, category = options.text, options.index, options.category
+  text, index, category = options.text, options.index, options.category
 
-    tokenizer = category ? Indexes.find(index, category).tokenizer : Internals::Tokenizers::Index.default
+  puts
+  fail &quot;\x1b[31mrake try needs a text to try indexing and query preparation\x1b[m, e.g. rake 'try[yourtext]'.&quot; unless text
 
-    puts &quot;\&quot;#{text}\&quot; is saved in the index as              #{tokenizer.tokenize(text.dup).to_a}&quot;
-  end
+  specific = Indexes
+  specific = specific[index]    if index
+  specific = specific[category] if category
 
-  # desc &quot;Try how a given word would be tokenized when querying.&quot;
-  task :query, [:text] =&gt; :application do |_, options|
-    text = options.text
+  puts &quot;\&quot;#{text}\&quot; is saved in the #{specific.identifier} index as #{specific.tokenizer.tokenize(text.dup).to_a}&quot;
 
-    puts &quot;\&quot;#{text}\&quot; as a search will be preprocessed into #{Internals::Tokenizers::Query.default.tokenize(text.dup).to_a.map(&amp;:to_s).map(&amp;:to_sym)}&quot;
-    puts
-    puts &quot;(category qualifiers, e.g. title: are removed if they do not exist as a qualifier, so 'toitle:bla' -&gt; 'bla')&quot;
-  end
-
-  # desc &quot;Try the given text with both the index and the query (type:category optional).&quot;
-  task :both, [:text, :index, :category] =&gt; :application do |_, options|
-    text, index, category = options.text, options.index, options.category
-
-    puts
-    fail &quot;\x1b[31mrake try needs a text to try indexing and query preparation\x1b[m, e.g. rake 'try[yourtext]'.&quot; unless text
-
-    Rake::Task[:&quot;try:index&quot;].invoke text, index, category
-    Rake::Task[:&quot;try:query&quot;].invoke text
-  end
+  puts &quot;\&quot;#{text}\&quot; as a search will be tokenized into #{Tokenizers::Query.default.tokenize(text.dup).to_a.map(&amp;:to_s).map(&amp;:to_sym)}&quot;
+  puts
+  puts &quot;(category qualifiers, e.g. title: are removed if they do not exist as a qualifier, so 'toitle:bla' -&gt; 'bla')&quot;
 </pre>
 <p>
 end
