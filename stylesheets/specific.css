@@ -1,4 +1,5 @@
 .container_2 { overflow: hidden; }
+.container_2 ol.index { width: 20em; float: right; padding: 3em; border: 2px solid #E0E0D0; background-color: white; }
 
 .grid_2.plain { background-color: #F5F5EA; }
 .grid_2.white { background-color: #F5F5EA; }
