@@ -14,24 +14,23 @@ h3. API Docs
 For documentation on how to configure Picky, see
 
 "Server API docs":doc/server/index.html
-
+and
 "Client API docs":doc/client/index.html
 
 and for a bit more info
 
 "the Wiki":http://github.com/floere/picky/wiki
 
-in the repository.
+in the "repository":http://github.com/floere/picky.
 
 </div>
 <div class="grid_1">
 
 h3. Help?
 
-If neither the docs, nor the Wiki has helped, feel free to contact me "through Github":http://github.com/inbox/new/floere
-or go through "the mailing list":http://groups.google.com/group/picky-ruby of Picky (preferred).
+If neither the docs, nor the Wiki, nor the single page help has helped, feel free to contact us "through the methods described on the about page":index.html.
 
-All the best!
+Best of success!
 
 </div>
 </div>
@@ -44,6 +43,7 @@ h2. Single Page Help
 
 <div class="index">
 # "All Ruby":#allruby
+# "Transparency":#transparency
 # "Generators":#generators
 ## "Servers":#generators-servers
 ### "Sinatra":#generators-servers-sinatra
@@ -64,12 +64,14 @@ h2. Single Page Help
 ### "In-Memory / File-based":#indexes-types-memory
 ### "Redis":#indexes-types-redis
 ## "Accessing":#indexes-acessing
-## "Data Sources":#indexes-data-sources TODO
-### "Responding to #each":#indexes-sources-each TODO
-### "Classic Style":#indexes-sources-classic TODO
-## "Categories":#indexes-categories TODO
-## "Key Format (Format of the indexed Ids)":#indexes-keyformat TODO
-## "Identifying in Results":#indexes-results TODO
+## "Configuration":#indexes-configuration
+## "Data Sources":#indexes-sources
+### "Responding to #each":#indexes-sources-each
+### "Delayed":#indexes-sources-delayed
+### "Classic Style":#indexes-sources-classic
+## "Categories":#indexes-categories
+## "Key Format (Format of the indexed Ids)":#indexes-keyformat
+## "Identifying in Results":#indexes-results
 ## "Indexing":#indexes-indexing
 ## "Reloading":#indexes-reloading
 ### "Using signals":#indexes-reloading-signals
@@ -77,6 +79,8 @@ h2. Single Page Help
 # "Indexing / Tokenizing":#indexing
 # "Searching / Tokenizing":#searching
 # "Results":#results
+## "Logging":#results-logging
+## "Sorting":#results-sorting
 </div>
 
 h2(#allruby). All Ruby
@@ -86,6 +90,15 @@ Never forget this: *Picky is all Ruby, all the time*!
 Even though we only describe for example classic and Sinatra style servers, Picky can be included directly in Rails, as a client or server. Or in DRb. Or in your simple script without HTTP.
 
 Also, the server returns JSON, or whatever you want and need. A Picky client is quickly written. How about writing one for Java?
+
+h2(#transparency). Transparency
+
+Picky tries its best to be *transparent* so you can go have a look if something goes wrong. It wants you to *never feel powerless*.
+
+So all the indexes can be viewed in the @/index@ directory of the project. They are saved as JSON and as text for the preprocessing step.
+So if anything does not work, you can go see how it is indexed and change your indexing parameters accordingly.
+
+Also, since all is Ruby, you can log as much data as you want to help you improve your search application until it's working perfectly.
 
 h2(#generators). Generators
 
@@ -105,31 +118,80 @@ The "All In One" Client/Server is interested for Heroku projects, as it is a bit
 
 h3(#generators-servers). Servers
 
-Currently, Picky offers two generated servers.
+Currently, Picky offers three generated example servers that you can adapt to your project: *Sinatra* (the default), *Classic* and *All In One*.
 
 h4(#generators-servers-sinatra). Sinatra
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+This server is generated with
+
+bc. picky generate sinatra_server target_directory
+
+and generates a full sinatra server that you can try immediately. Just follow the instructions.
 
 h4(#generators-servers-classic). Classic
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+This server is generated with
+
+bc. picky generate classic_server target_directory
+
+and generates a full classic Picky server that you can try immediately. Just follow the instructions.
 
 h4(#generators-servers-allinone). All In One
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+All In One is actually a single Sinatra server containing the Server AND the client. This server is generated with
+
+bc. picky generate all_in_one target_directory
+
+and generates a full Sinatra Picky server and client that you can try immediately. Just follow the instructions.
 
 h3(#generators-clients). Clients
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Picky currently offers an example @Sinatra@ client that you can adapt for your project (or look at it how to use in Rails).
 
 h4(#generators-clients-sinatra). Sinatra
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+This client is generated with
+
+bc. picky generate sinatra_client target_directory
+
+and generates a full Sinatra client (including Javascript etc.) that you can try immediately. Just follow the instructions.
 
 h2(#servers). Servers / Applications
 
+Picky, from version 3.0 onwards, is designed to run *anywhere*, *in anything*.
 
+This means you can have a Picky server running in a DRb instance if you want to. Or in irb, for example.
+
+We do run and test the Picky server in two styles, "Classic and Sinatra":#servers-classicvssinatra.
+
+But don't let that stop you from just using it in a class or just a script. This is a perfectly ok way to use Picky:
+
+<pre><code>
+require 'picky'
+
+include Picky # So we don't have to type Picky:: everywhere.
+
+books_index = Indexes::Memory.new(:books) do
+  source Sources::CSV.new(:title, :author, file: 'library.csv')
+  category :title
+  category :author
+end
+
+books_index.index
+books_index.reload
+
+books = Search.new books_index do
+  boost [:title, :author] => +2
+end
+
+results = books.search "test"
+results = books.search "alan turing"
+
+require 'pp'
+pp results.to_hash
+</code></pre>
+
+More *Ruby*, more *power* to you!
 
 h3(#servers-classicvssinatra). Classic vs. Sinatra Style
 
@@ -142,7 +204,7 @@ Picky currently offers two tested server styles, "Classic" and "Sinatra". They d
 
 Classic is also a bit more pedal-to-the-metal style, thus a bit faster.
 
-However, we recommend to use the Sinatra style. It is "very well documented":http://www.sinatrarb.com/intro very customizable and Picky and Sinatra share the same core value, namely that it is all relatively simple Ruby, and can thus be changed and adapted to your needs.
+However, we recommend to use the Sinatra style. It is "very well documented":http://www.sinatrarb.com/intro very customizable and Picky and Sinatra share the same core value, namely that it is all relatively simple Ruby, and can thus be changed and adapted to your needs, while still remaining easily readable.
 
 h3(#servers-sinatra). Sinatra Style
 
@@ -154,6 +216,7 @@ We recommend to use the "modular Sinatra style":http://www.sinatrarb.com/intro#S
 
 <pre><code>
 require 'sinatra/base'
+require 'picky'
 
 class BookSearch < Sinatra::Application
 
@@ -177,7 +240,7 @@ class BookSearch < Sinatra::Application
 end
 </code></pre>
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+This is already a complete Sinatra server.
 
 h4(#servers-sinatra-routing). Routing
 
@@ -201,27 +264,105 @@ h3(#servers-classic). Classic Style
 
 Classic Style is the pre 3.0 way of doing things, but still perfectly fine.
 
+A Classic server is usually just a single file. It is a file named
+
 bc. app/application.rb
 
+It is very similar to the Sinatra way of doing things:
+
 <pre><code>
+require 'picky'
+
 class BookSearch < Picky::Application
+
+  # So we don't have to write Picky::
+  # in front of everything.
+  #
+  include Picky
+
+  books_index = Indexes::Memory.new :books do
+    source   Sources::CSV.new(:title, :author, file: "data/#{PICKY_ENVIRONMENT}/library.csv")
+    indexing splits_text_on: /[\s,]/
+    category :title
+    category :author
+  end
+
+  books = Search.new books_index do
+    searching splits_text_on: /[\s,]/
+    boost [:title, :author] => +2
+  end
+
+  route %r{\A/books\Z} => books
 
 end
 </code></pre>
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+The main difference is the routing for which the gem @rack-mount@ is used (the same Rails uses).
 
 h4(#servers-classic-routing). Routing
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Routing is done using the @#route@ method.
+
+Some examples:
+
+<pre><code>
+  route %r{/books} => book_search,
+        %r{/dvds}  => dvd_search
+
+  route %r{/mp3s}  => mp3_search
+</code></pre>
 
 h3(#servers-allinone). All In One (Client + Server)
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+The All In One server is a Sinatra server and a Sinatra client rolled in one.
+
+It's best to just generate one and look at it:
+
+bc. picky generate all_in_one all_in_one_test
+
+and then follow the instructions.
+
+When would you use an All In One server? One place might be "Heroku":http://heroku.com, since it is a bit more complicated to set up two servers that interact with each other.
+
+It's nice for small convenient searches. For productive setups we recommend to use a separate server to make everything separately cacheable etc.
 
 h2(#indexes). Indexes
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+h3(#indexes-types). Types
+
+Picky offers a choice of two index types, "In-Memory" and "Redis". The former saves its indexes on disk and reloads them into memory and the latter saves its indexes in Redis.
+
+This is how they look in code:
+
+<pre><code>
+books_memory_index = Indexes::Memory.new(:books) do
+  # Configuration goes here.
+end
+
+books_redis_index = Indexes::Redis.new(:books) do
+  # Configuration goes here.
+end
+</code></pre>
+
+Both save the preprocessed data from the data source in the @/index@ directory so you can go look if the data is preprocessed correctly.
+
+h4(#indexes-types-memory). In-Memory / File-based
+
+The in-memory index saves its indexes as files transparently in the form of JSON files that reside in the @/index@ directory.
+
+When the server is started, they are loaded into memory. As soon as the server is stopped, the indexes are not in memory again. In the Sinatra server, you have to load them your
+
+Indexing regenerates the JSON index files and can be reloaded into memory, even in the running server (see below).
+
+h4(#indexes-types-redis). Redis
+
+The Redis index saves its indexes in the Redis server on the default port, using database 15.
+
+When the server is
+
+Indexing regenerates the indexes in the Redis server.
 
 h3(#indexes-acessing). Accessing
 
@@ -239,7 +380,9 @@ and for example you'd like to access the index from a rake task, you can use
 
 bc. Picky::Indexes
 
-to get *all indexes*. To get a *single index* use
+to get *all indexes*.
+
+To get a *single index* use
 
 bc. Picky::Indexes[:index_name]
 
@@ -248,6 +391,285 @@ and to get a *single category*, use
 bc. Picky::Indexes[:index_name][:category_name]
 
 That's it.
+
+h3(#indexes-configuration). Configuration
+
+This is all you can do to configure an index:
+
+<pre><code>
+books_index = Indexes::Memory.new :books do
+  source   { Book.order("isbn ASC") }
+
+  indexing removes_characters:                 /[^a-zA-Z0-9\s\:\"\&\.\|]/i,                   # Default: nil
+           stopwords:                          /\b(and|the|or|on|of|in)\b/i,                  # Default: nil
+           splits_text_on:                     /[\s\/\-\_\:\"\&\/]/,                          # Default: /\s/
+           removes_characters_after_splitting: /[\.]/,                                        # Default: nil
+           normalizes_words:                   [[/\$(\w+)/i, '\1 dollars']],                  # Default: nil
+           rejects_token_if:                   lambda { |token| token == :blurf },            # Default: nil
+           case_sensitive:                     true,                                          # Default: false
+           substitutes_characters_with:        Picky::CharacterSubstituters::WestEuropean.new # Default: nil
+
+  category :id
+  category :title,
+           partial:    Partial::Substring.new(:from => 1),
+           similarity: Similarity::DoubleMetaphone.new(2),
+           qualifiers: [:t, :title, :titre]
+  category :author,
+           partial: Partial::Substring.new(:from => -2)
+  category :year,
+           partial: Partial::None.new
+           qualifiers: [:y, :year, :annee]
+
+  result_identifier 'boooookies'
+end
+</code></pre>
+
+Usually you don't need to configure all that.
+
+But if your boss comes in the door and asks why X is not found… you know. And you can improve the search engine relatively *quickly and painless*.
+
+More power to you.
+
+h3(#indexes-sources). Data Sources
+
+Data sources define where the data for an index comes from.
+
+You define them on an *index*:
+
+<pre><code>
+Indexes::Memory.new :books do
+  source some_data_source
+end
+</code></pre>
+
+Or even a *single category*:
+
+<pre><code>
+Indexes::Memory.new :books do
+  source some_data_source
+  category :title,
+           source: some_data_source
+end
+</code></pre>
+
+At the moment there are two possibilities: "Objects responding to #each":#indexes-sources-each and "Picky classic style sources":#indexes-sources-classic.
+
+See more about them "in the Wiki":http://github.com/floere/picky/wiki/Sources-Configuration.
+
+h4(#indexes-sources-each). Responding to #each
+
+Picky supports any data source as long as it supports @#each@.
+
+See "under Flexible Sources":http://florianhanke.com/blog/2011/04/14/picky-two-point-two-point-oh.html how you can use this.
+
+In short. Model:
+
+<pre><code>
+class Monkey
+  attr_reader :id, :name, :color
+  def initialize id, name, color
+    @id, @name, @color = id, name, color
+  end
+end
+</code></pre>
+
+The data:
+
+<pre><code>
+monkeys = [
+  Monkey.new(1, 'pete', 'red'),
+  Monkey.new(2, 'joey', 'green'),
+  Monkey.new(3, 'hans', 'blue')
+]
+</code></pre>
+
+Setting the array it as a source
+
+<pre><code>
+Index::Memory.new :monkeys do
+  source   monkeys
+  category :name
+  category :couleur, :from => :color # The couleur category will take its data from the #color method.
+end
+</code></pre>
+
+h4(#indexes-sources-delayed). Delayed
+
+If you define the source directly in the index block, it will be evaluated instantly:
+
+<pre><code>
+Index::Memory.new :books do
+  source Book.order('title ASC')
+end
+</code></pre>
+
+This works with ActiveRecord and other similar ORMs since @Book.order@ returns a proxy object that will only be evaluated when the server is indexing.
+
+For example, this would instantly get the records, since @#all@ is a kicker method:
+
+<pre><code>
+Index::Memory.new :books do
+  source Book.all # Not the best idea.
+end
+</code></pre>
+
+In this case, you can give the @source@ method a block:
+
+<pre><code>
+Index::Memory.new :books do
+  source { Book.all }
+end
+</code></pre>
+
+This block will be executed as soon as the indexing is running, but not earlier.
+
+h4(#indexes-sources-classic). Classic Style
+
+The classic style uses Picky @Sources@ to load the data into the index.
+
+<pre><code>
+Indexes::Memory.new :books do
+  source Sources::CSV.new(:title, :author, file: 'app/library.csv')
+end
+</code></pre>
+
+Use this one if you want to use a simple CSV file.
+
+However, you could also use the built-in Ruby @CSV@ class and use it as an @#each@ source (see above).
+
+<pre><code>
+Indexes::Memory.new :books do
+  source Sources::DB.new('SELECT id, title, author, isbn13 as isbn FROM books', file: 'app/db.yml')
+end
+</code></pre>
+
+Use this one if you want to use a database source with very custom SQL statements. If not, we suggest you use an ORM as an @#each@ source (see above).
+
+h3(#indexes-categories). Categories
+
+Categories – usually what other search engines call fields – define *categorized data*. For example, book data might have a @title@, an @author@ and an @isbn@.
+
+So you define that:
+
+<pre><code>
+Indexes::Memory.new :books do
+  source { Book.order('author DESC') }
+
+  category :title
+  category :author
+  category :isbn
+end
+</code></pre>
+
+(The example assumes that a @Book@ has readers for @title@, @author@, and @isbn@)
+
+This already works and a search will return categorized results. For example, a search for "Alan Tur" might categorize both words as @author@, but it might also at the same time categorize both as @title@. Or one as @title@ and the other as @author@.
+
+That's a great starting point. So how can I customize the categories?
+
+h4(#indexes-categories-partial). Option partial
+
+The partial option defines if a word is also found when it is only *partially entered*. So, "Picky" might be already found when typing "Pic".
+
+You define this by this:
+
+<pre><code>
+category :some, partial: Partial::Substring.new(from: -3)
+</code></pre>
+
+(This is also the default)
+The option @from: 1@ will make a word completely partially findable.
+
+If you don't want any partial finds to occur, use:
+
+<pre><code>
+category :some, partial: Partial::None.new
+</code></pre>
+
+You can also pass in your own partial generators. See "this article":http://florianhanke.com/blog/2011/08/15/picky-30-its-all-ruby-part-1.html to learn more.
+
+h4(#indexes-categories-similarity). Option weights
+
+You almost never need this. You can also @boost@ combination weights in searches, which might be more fitting.
+
+The weights option defines how strongly a word is weighed. By default, Picky rates a word according to the logarithm of its occurrence. This means that a word that occurs more often will be slightly higher weighed.
+
+You define this by this:
+
+<pre><code>
+category :some, weights: MyWeights.new
+</code></pre>
+
+The default is @Weights::Logarithmic.new@.
+
+You can also pass in your own weights generators. See "this article":http://florianhanke.com/blog/2011/08/15/picky-30-its-all-ruby-part-1.html to learn more.
+
+h4(#indexes-categories-similarity). Option similarity
+
+The partial option defines if a word is also found when it is only *partially entered*. So, "Picky" might be already found when typing "Pic".
+
+You define this by this:
+
+<pre><code>
+category :some, partial: Partial::Substring.new(from: -3)
+</code></pre>
+
+(This is also the default)
+The option @from: 1@ will make a word completely partially findable.
+
+If you don't want any partial finds to occur, use:
+
+<pre><code>
+category :some, partial: Partial::None.new
+</code></pre>
+
+You can also pass in your own partial generators. See "this article":http://florianhanke.com/blog/2011/08/15/picky-30-its-all-ruby-part-1.html to learn more.
+
+h4(#indexes-categories-qualifiers). Option qualifiers (categorizing)
+
+h4(#indexes-categories-from). Option from
+
+h4(#indexes-categories-keyformat). Option key_format
+
+h4(#indexes-categories-partial). Option source
+
+h4(#indexes-categories-searching). Searching
+
+
+h3(#indexes-keyformat). Key Format (Format of the indexed Ids)
+
+By default, the indexed data points to keys that are integers, or differently said, are formatted using @to_i@.
+
+If you are indexing keys that are strings, use @to_sym@ – a good example are MongoDB BSON keys, or UUID keys.
+
+The @key_format@ method lets you define the format:
+
+<pre><code>
+Indexes::Memory.new :books do
+  key_format :to_sym
+end
+</code></pre>
+
+h3(#indexes-results). Identifying in Results
+
+By default, an index is identified by its *name* in the results:
+
+<pre><code>
+Indexes::Memory.new :books do
+  # ...
+end
+</code></pre>
+
+This index is identified by @:books@.
+
+<pre><code>
+Indexes::Memory.new :books do
+  # ...
+  result_identifier :media
+end
+</code></pre>
+
+This index is identified by @:media@ but you still refer to it as @:books@ in e.g. Rake tasks, @Picky::Indexes[:books].reload@.
 
 h3(#indexes-indexing). Indexing
 
@@ -347,9 +769,72 @@ or
 
 bc. category_instance.reindex
 
-Thanks to whoever made the
-%a{ href: 'http://www.sinatrarb.com/intro' } Sinatra README page
-for the inspiration.
+h2(#results). Results
+
+Results are returned by the @Search@ instance.
+
+<pre><code>
+books = Search.new books_index do
+  searching splits_text_on: /[\s,]/
+  boost [:title, :author] => +2
+end
+
+results = books.search "test"
+
+p results         # Returns results in log form.
+p results.to_hash # Returns results as a hash.
+p results.to_json # Returns results as JSON.
+</code></pre>
+
+h3(#results-logging). Logging
+
+Picky results can be logged wherever you want.
+
+A Picky Sinatra server logs whatever to wherever you want:
+
+<pre><code>
+MyLogger = Logger.new "log/search.log"
+
+# ...
+
+get '/books' do
+  results = books.search "test"
+  MyLogger.info results
+  results.to_json
+end
+</code></pre>
+
+or set it up in separate files for different environments:
+
+<pre><code>
+require "logging/#{PICKY_ENVIRONMENT}"
+</code></pre>
+
+A Picky classic server logs to the logger defined with the @Picky.logger=@ writer.
+
+Set it up in a separate @logging.rb@ file (or directly in the @app/application.rb@ file).
+
+<pre><code>
+  Picky.logger = Logger.new("log/search.log")
+</code></pre>
+
+and the Picky classic server will log the results into it, if it is defined.
+
+Why in a separate file? So that you can have different logging for different environments.
+
+More power to you.
+
+h3(#results-sorting). Sorting
+
+Picky results are always *sorted in the order of the data provided* by the data source.
+
+So if you need different sort orders you have to define two indexes.
+
+Why? This was a conscious design decision on my part. Usually, we do not need multiple sortings in a search application (I reckon around 95% of the cases). However, if you need it, you can.
+
+h3. Thanks!
+
+Thanks to whoever made the "Sinatra README page":http://www.sinatrarb.com/intro for the inspiration.
 </div>
 
 </div>
