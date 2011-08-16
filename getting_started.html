@@ -97,7 +97,7 @@
         </p>
         <h3>The server</h3>
         <p>The server generates a library example, which you can run right away.</p>
-        <code><pre># Generates a directory "app_name"&#x000A;# with a new Picky server project based on Unicorn.&#x000A;&#x000A;picky generate unicorn_server app_name</pre>
+        <code><pre># Generates a directory "app_name"&#x000A;# with a new Picky default server project.&#x000A;# Type "picky generate" to see other options.&#x000A;&#x000A;picky generate server app_name</pre>
         <pre>cd app_name&#x000A;bundle install</pre></code>
         <h4>1. Index the data</h4>
         <code><pre>rake index</pre></code>
@@ -116,7 +116,7 @@
         <h3>The client</h3>
         <p>The client generates an example app for the "library" example backend, using Sinatra.</p>
         <code></code>
-        <pre># Generates a directory "app_name"&#x000A;# with a new Picky client Sinatra project.&#x000A;&#x000A;picky generate sinatra_client app_name</pre>
+        <pre># Generates a directory "app_name"&#x000A;# with a new Picky client Sinatra project.&#x000A;&#x000A;picky generate client app_name</pre>
         <pre>cd app_name&#x000A;bundle install</pre>
         <h4>1. Start the app server</h4>
         <code><pre>unicorn -p 3000</pre></code>

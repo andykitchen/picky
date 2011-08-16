@@ -1,0 +1,355 @@
+---
+title: Documentation
+layout: default
+---
+
+<div class="container_2">
+
+h2. {{page.title}}
+
+<div class="grid_1">
+
+h3. API Docs
+
+For documentation on how to configure Picky, see
+
+"Server API docs":doc/server/index.html
+
+"Client API docs":doc/client/index.html
+
+and for a bit more info
+
+"the Wiki":http://github.com/floere/picky/wiki
+
+in the repository.
+
+</div>
+<div class="grid_1">
+
+h3. Help?
+
+If neither the docs, nor the Wiki has helped, feel free to contact me "through Github":http://github.com/inbox/new/floere
+or go through "the mailing list":http://groups.google.com/group/picky-ruby of Picky (preferred).
+
+All the best!
+
+</div>
+</div>
+
+<div class="container_2">
+
+h2. Single Page Help
+
+<div class="grid_2 white">
+
+<div class="index">
+# "All Ruby":#allruby
+# "Generators":#generators
+## "Servers":#generators-servers
+### "Sinatra":#generators-servers-sinatra
+### "Classic":#generators-servers-classic
+### "All In One":#generators-servers-allinone
+## "Clients":#generators-clients
+### "Sinatra":#generators-clients-sinatra
+# "Servers / Applications":#servers
+## "Classic vs. Sinatra Style":#servers-classicvssinatra
+## "Sinatra Style":#servers-sinatra
+### "Routing":#servers-sinatra-routing
+### "Logging":#servers-sinatra-logging
+## "Classic Style":#servers-classic
+### "Routing":#servers-classic-routing
+## "All In One (Client + Server)":#servers-allinone
+# "Indexes":#indexes
+## "Types":#indexes-types
+### "In-Memory / File-based":#indexes-types-memory
+### "Redis":#indexes-types-redis
+## "Accessing":#indexes-acessing
+## "Data Sources":#indexes-data-sources TODO
+### "Responding to #each":#indexes-sources-each TODO
+### "Classic Style":#indexes-sources-classic TODO
+## "Categories":#indexes-categories TODO
+## "Key Format (Format of the indexed Ids)":#indexes-keyformat TODO
+## "Identifying in Results":#indexes-results TODO
+## "Indexing":#indexes-indexing
+## "Reloading":#indexes-reloading
+### "Using signals":#indexes-reloading-signals
+## "Reindex":#indexes-reindexing
+# "Indexing / Tokenizing":#indexing
+# "Searching / Tokenizing":#searching
+# "Results":#results
+</div>
+
+h2(#allruby). All Ruby
+
+Never forget this: *Picky is all Ruby, all the time*!
+
+Even though we only describe for example classic and Sinatra style servers, Picky can be included directly in Rails, as a client or server. Or in DRb. Or in your simple script without HTTP.
+
+Also, the server returns JSON, or whatever you want and need. A Picky client is quickly written. How about writing one for Java?
+
+h2(#generators). Generators
+
+Picky offers a few generators to have a running server and client up in 5 minutes. Please follow the "Getting Started":getting_started.html.
+
+Or, run gem install
+
+bc. gem install picky-generators
+
+and simply enter
+
+bc. picky generate
+
+This will raise an @Picky::Generators::NotFoundException@ and show you the possibilities.
+
+The "All In One" Client/Server is interested for Heroku projects, as it is a bit complicated to set up two servers that interact with each other.
+
+h3(#generators-servers). Servers
+
+Currently, Picky offers two generated servers.
+
+h4(#generators-servers-sinatra). Sinatra
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+h4(#generators-servers-classic). Classic
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+h4(#generators-servers-allinone). All In One
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+h3(#generators-clients). Clients
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+h4(#generators-clients-sinatra). Sinatra
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+h2(#servers). Servers / Applications
+
+
+
+h3(#servers-classicvssinatra). Classic vs. Sinatra Style
+
+Picky currently offers two tested server styles, "Classic" and "Sinatra". They differ as follows:
+
+|                  | Classic                                        | Sinatra           |
+| application file | @app/application.rb@                           | @app.rb@          |
+| routing          | Use @route@ method (uses the @rack-mount@ gem) | Use @get@ method |
+| rake tasks       | All working                                    | routes missing |
+
+Classic is also a bit more pedal-to-the-metal style, thus a bit faster.
+
+However, we recommend to use the Sinatra style. It is "very well documented":http://www.sinatrarb.com/intro very customizable and Picky and Sinatra share the same core value, namely that it is all relatively simple Ruby, and can thus be changed and adapted to your needs.
+
+h3(#servers-sinatra). Sinatra Style
+
+A "Sinatra":http://sinatrarb.com server is usually just a single file. In Picky, it is a top-level file named
+
+bc. app.rb
+
+We recommend to use the "modular Sinatra style":http://www.sinatrarb.com/intro#Serving%20a%20Modular%20Application as opposed to the "classic style":http://www.sinatrarb.com/intro#Using%20a%20Classic%20Style%20Application%20with%20a%20config.ru. It's possible to write a Picky server in the classic style, but using the modular style offers more options.
+
+<pre><code>
+require 'sinatra/base'
+
+class BookSearch < Sinatra::Application
+
+  books_index = Indexes::Memory.new(:books) do
+    source { Book.order("isbn ASC") }
+    category :title
+    category :author
+  end
+
+  books = Search.new books_index do
+    boost [:title, :author] => +2
+  end
+
+  get '/books' do
+    results = books.search params[:query],
+                           params[:ids]    || 20,
+                           params[:offset] ||  0
+    results.to_json
+  end
+
+end
+</code></pre>
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+h4(#servers-sinatra-routing). Routing
+
+The Sinatra Picky server uses the same routing as Sinatra (of course). "More information on Sinara routing":http://www.sinatrarb.com/intro#Routes.
+
+If you use the server with the picky client software (provided with the picky-client gem), you should return JSON from the Sinatra @get@.
+Just call @to_json@ on the returned results to get the results in JSON format.
+
+<pre><code>
+get '/books' do
+  results = books.search params[:query], params[:ids] || 20, params[:offset] ||  0
+  results.to_json
+end
+</code></pre>
+
+The above example search can be called using for example @curl@:
+
+bc. curl 'localhost:8080/books?query=test'
+
+h3(#servers-classic). Classic Style
+
+Classic Style is the pre 3.0 way of doing things, but still perfectly fine.
+
+bc. app/application.rb
+
+<pre><code>
+class BookSearch < Picky::Application
+
+end
+</code></pre>
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+h4(#servers-classic-routing). Routing
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+h3(#servers-allinone). All In One (Client + Server)
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+h2(#indexes). Indexes
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+h3(#indexes-acessing). Accessing
+
+If you don't have access to your indexes directly, like so
+
+<pre><code>
+books_index = Indexes::Memory.new(:books) do
+  # ...
+end
+
+books_index.do_something_with_the_index
+</code></pre>
+
+and for example you'd like to access the index from a rake task, you can use
+
+bc. Picky::Indexes
+
+to get *all indexes*. To get a *single index* use
+
+bc. Picky::Indexes[:index_name]
+
+and to get a *single category*, use
+
+bc. Picky::Indexes[:index_name][:category_name]
+
+That's it.
+
+h3(#indexes-indexing). Indexing
+
+Indexing can be done programmatically. Even when the server is running.
+
+Indexing *all indexes* is done with
+
+bc. Picky::Indexes.index
+
+Indexing a *single index* can be done either with
+
+bc. Picky::Indexes[:index_name].index
+
+or
+
+bc. index_instance.index
+
+Indexing a *single category* of an index can be done either with
+
+bc. Picky::Indexes[:index_name][:category_name].index
+
+or
+
+bc. category_instance.index
+
+h3(#indexes-reloading). Reloading
+
+Reloading your indexes in a running application is possible.
+
+Reloading *all indexes* is done with
+
+bc. Picky::Indexes.reload
+
+Reloading a *single index* can be done either with
+
+bc. Picky::Indexes[:index_name].reload
+
+or
+
+bc. index_instance.reload
+
+Reloading a *single category* of an index can be done either with
+
+bc. Picky::Indexes[:index_name][:category_name].reload
+
+or
+
+bc. category_instance.reload
+
+h4(#indexes-reloading-signals). Using signals
+
+To communicate with your server using signals:
+
+<pre><code>
+books_index = Indexes::Memory.new(:books) do
+  # ...
+end
+
+Signal.trap("USR1") do
+  books_index.reindex
+end
+</code></pre>
+
+This reindexes the books_index when you call
+
+bc. kill -USR1 <server_process_id>
+
+You can refer to the index like so if want to define the trap somewhere else:
+
+<pre><code>
+Signal.trap("USR1") do
+  Picky::Indexes[:books].reindex
+end
+</code></pre>
+
+h3(#indexes-reindexing). Reindexing
+
+Reindexing your indexes is just indexing followed by reloading (see above).
+
+Reindexing *all indexes* is done with
+
+bc. Picky::Indexes.reindex
+
+Reindexing a *single index* can be done either with
+
+bc. Picky::Indexes[:index_name].reindex
+
+or
+
+bc. index_instance.reindex
+
+Reindexing a *single category* of an index can be done either with
+
+bc. Picky::Indexes[:index_name][:category_name].reindex
+
+or
+
+bc. category_instance.reindex
+
+Thanks to whoever made the
+%a{ href: 'http://www.sinatrarb.com/intro' } Sinatra README page
+for the inspiration.
+</div>
+
+</div>

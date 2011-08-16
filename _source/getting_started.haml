@@ -45,9 +45,10 @@ layout: default
       %pre
         :preserve
           # Generates a directory "app_name"
-          # with a new Picky server project based on Unicorn.
+          # with a new Picky default server project.
+          # Type "picky generate" to see other options.
 
-          picky generate unicorn_server app_name
+          picky generate server app_name
       %pre
         :preserve
           cd app_name
@@ -78,7 +79,7 @@ layout: default
         # Generates a directory "app_name"
         # with a new Picky client Sinatra project.
 
-        picky generate sinatra_client app_name
+        picky generate client app_name
     %pre
       :preserve
         cd app_name

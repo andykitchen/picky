@@ -1,6 +1,6 @@
 .container_2 { overflow: hidden; }
-.container_2 ol.index { width: 20em; float: right; padding: 3em; margin: 1em; border: 2px solid #E0E0D0; background-color: white; }
-.container_2 h2, .container_2 h3, .container_2 h4 { overflow: auto; }
+.container_2 div.index { width: 20em; float: right; padding: 3em; margin: 1em; border: 2px solid #E0E0D0; background-color: white; }
+.container_2 h2, .container_2 h3, .container_2 h4, .container_2 p, .container_2 pre { overflow: auto; }
 
 .grid_2.plain { background-color: #F5F5EA; }
 .grid_2.white { background-color: #F5F5EA; }

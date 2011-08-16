@@ -52,157 +52,266 @@
       </div>
     </div>
     <div class="container_2">
-      <h2>Documentation</h2>
-      <div class="grid_1">
-        <h3>API Docs</h3>
-        <p>
-          For documentation on how to configure Picky, see
-        </p>
-        <p>
-          <a href="doc/server/index.html">Server API docs</a>
-        </p>
-        <p>
-          <a href="doc/client/index.html">Client API docs</a>
-        </p>
-        <p>
-          and for a bit more info
-        </p>
-        <p>
-          <a href="http://github.com/floere/picky/wiki">the Wiki</a>
-        </p>
-        <p>
-          in the repository.
-        </p>
-      </div>
-      <div class="grid_1">
-        <h3>Help?</h3>
-        <p>
-          If neither the docs, nor the Wiki has helped, feel free to contact me
-          <a href="http://github.com/inbox/new/floere">through Github</a>
-          or go through
-          <a href="http://groups.google.com/group/picky-ruby">the mailing list</a>
-          of Picky (preferred).
-        </p>
-        <p>
-          All the best!
-        </p>
-      </div>
+    <h2>Documentation</h2>
+    <div class="grid_1">
+    <h3><span class="caps">API</span> Docs</h3>
+    <p>For documentation on how to configure Picky, see</p>
+    <p><a href="doc/server/index.html">Server <span class="caps">API</span> docs</a></p>
+    <p><a href="doc/client/index.html">Client <span class="caps">API</span> docs</a></p>
+    <p>and for a bit more info</p>
+    <p><a href="http://github.com/floere/picky/wiki">the Wiki</a></p>
+    <p>in the repository.</p>
+    </div>
+    <div class="grid_1">
+    <h3>Help?</h3>
+    <p>If neither the docs, nor the Wiki has helped, feel free to contact me <a href="http://github.com/inbox/new/floere">through Github</a>
+    or go through <a href="http://groups.google.com/group/picky-ruby">the mailing list</a> of Picky (preferred).</p>
+    <p>All the best!</p>
+    </div>
     </div>
     <div class="container_2">
-      <h2>Single Page Help</h2>
-      <div class="grid_2 white">
-        <ol class="index">
-          <li>
-            <a href="#servers">Servers / Applications</a>
-          </li>
-          <ol>
-            <li>
-              <a href="#servers-sinatra">Sinatra Style</a>
-            </li>
-            <ol>
-              <li>
-                <a href="#servers-sinatra-routing">Routing</a>
-              </li>
-            </ol>
-            <li>
-              <a href="#servers-classic">Classic Style</a>
-            </li>
-            <ol>
-              <li>
-                <a href="#servers-classic-routing">Routing</a>
-              </li>
-            </ol>
-            <li>
-              <a href="#servers-allinone">All In One (Client + Server)</a>
-            </li>
-          </ol>
-          <li>
-            <a href="#indexes">Indexes</a>
-            <ol>
-              <li>
-                <a href="#indexes-types">Types</a>
-              </li>
-              <ol>
-                <li>
-                  <a href="#indexes-types-memory">In-Memory / File-based</a>
-                </li>
-                <li>
-                  <a href="#indexes-types-redis">Redis</a>
-                </li>
-              </ol>
-              <li>
-                <a href="#indexes-sources">Data Sources</a>
-                <ol>
-                  <li>
-                    <a href="#indexes-sources-each">Sources responding to #each</a>
-                  </li>
-                  <li>
-                    <a href="#indexes-sources-classic">Classic style sources</a>
-                  </li>
-                </ol>
-              </li>
-              <li>
-                <a href="#indexes-categories">Categories</a>
-              </li>
-              <li>
-                <a href="#indexes-indexing">Indexing</a>
-              </li>
-              <li>
-                <a href="#indexes-keyformat">Format of the keys / Key Format</a>
-              </li>
-              <li>
-                <a href="#indexes-results">Identifying in Results</a>
-              </li>
-            </ol>
-          </li>
-          <li>
-            <a href="#indexing">Indexing / Tokenizing</a>
-          </li>
-          <li>
-            <a href="#searching">Searching / Tokenizing</a>
-          </li>
-          <li>
-            <a href="#results">Results</a>
-          </li>
-        </ol>
-        <h2 id="servers">Servers / Applications</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <h3 id="servers-sinatra">Sinatra Style</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <h4 id="servers-sinatra-routing">Routing</h4>
-        <p></p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        <h3 id="servers-classic">Classic Style</h3>
-        <p>
-          In file
-          <code><pre>app/application.rb</pre>
-          <pre>class BookSearch < Picky::Application&#x000A;&#x000A;end</pre></code>
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <h4 id="servers-classic-routing">Routing</h4>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <h3 id="servers-allinone">All In One (Client + Server)</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <h2 id="indexes">Indexes</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <p>
-          Thanks to whoever made the
-          <a href="http://www.sinatrarb.com/intro">Sinatra README page</a>
-          for the inspiration.
-        </p>
-      </div>
+    <h2>Single Page Help</h2>
+    <div class="grid_2 white">
+    <div class="index">
+    <ol>
+    	<li><a href="#allruby">All Ruby</a></li>
+    	<li><a href="#generators">Generators</a>
+    	<ol>
+    		<li><a href="#generators-servers">Servers</a>
+    		<ol>
+    			<li><a href="#generators-servers-sinatra">Sinatra</a></li>
+    			<li><a href="#generators-servers-classic">Classic</a></li>
+    			<li><a href="#generators-servers-allinone">All In One</a></li>
+    		</ol></li>
+    		<li><a href="#generators-clients">Clients</a>
+    		<ol>
+    			<li><a href="#generators-clients-sinatra">Sinatra</a></li>
+    		</ol></li>
+    	</ol></li>
+    	<li><a href="#servers">Servers / Applications</a>
+    	<ol>
+    		<li><a href="#servers-classicvssinatra">Classic vs. Sinatra Style</a></li>
+    		<li><a href="#servers-sinatra">Sinatra Style</a>
+    		<ol>
+    			<li><a href="#servers-sinatra-routing">Routing</a></li>
+    			<li><a href="#servers-sinatra-logging">Logging</a></li>
+    		</ol></li>
+    		<li><a href="#servers-classic">Classic Style</a>
+    		<ol>
+    			<li><a href="#servers-classic-routing">Routing</a></li>
+    		</ol></li>
+    		<li><a href="#servers-allinone" title="Client + Server">All In One</a></li>
+    	</ol></li>
+    	<li><a href="#indexes">Indexes</a>
+    	<ol>
+    		<li><a href="#indexes-types">Types</a>
+    		<ol>
+    			<li><a href="#indexes-types-memory">In-Memory / File-based</a></li>
+    			<li><a href="#indexes-types-redis">Redis</a></li>
+    		</ol></li>
+    		<li><a href="#indexes-acessing">Accessing</a></li>
+    		<li><a href="#indexes-data-sources">Data Sources</a> <span class="caps">TODO</span>
+    		<ol>
+    			<li><a href="#indexes-sources-each">Responding to #each</a> <span class="caps">TODO</span></li>
+    			<li><a href="#indexes-sources-classic">Classic Style</a> <span class="caps">TODO</span></li>
+    		</ol></li>
+    		<li><a href="#indexes-categories">Categories</a> <span class="caps">TODO</span></li>
+    		<li><a href="#indexes-keyformat" title="Format of the indexed Ids">Key Format</a> <span class="caps">TODO</span></li>
+    		<li><a href="#indexes-results">Identifying in Results</a> <span class="caps">TODO</span></li>
+    		<li><a href="#indexes-indexing">Indexing</a></li>
+    		<li><a href="#indexes-reloading">Reloading</a>
+    		<ol>
+    			<li><a href="#indexes-reloading-signals">Using signals</a></li>
+    		</ol></li>
+    		<li><a href="#indexes-reindexing">Reindex</a></li>
+    	</ol></li>
+    	<li><a href="#indexing">Indexing / Tokenizing</a></li>
+    	<li><a href="#searching">Searching / Tokenizing</a></li>
+    	<li><a href="#results">Results</a>
+    </div></li>
+    </ol>
+    <h2 id="allruby">All Ruby</h2>
+    <p>Never forget this: <strong>Picky is all Ruby, all the time</strong>!</p>
+    <p>Even though we only describe for example classic and Sinatra style servers, Picky can be included directly in Rails, as a client or server. Or in DRb. Or in your simple script without <span class="caps">HTTP</span>.</p>
+    <p>Also, the server returns <span class="caps">JSON</span>, or whatever you want and need. A Picky client is quickly written. How about writing one for Java?</p>
+    <h2 id="generators">Generators</h2>
+    <p>Picky offers a few generators to have a running server and client up in 5 minutes. Please follow the <a href="getting_started.html">Getting Started</a>.</p>
+    <p>Or, run gem install</p>
+    <pre><code>gem install picky-generators</code></pre>
+    <p>and simply enter</p>
+    <pre><code>picky generate</code></pre>
+    <p>This will raise an <code>Picky::Generators::NotFoundException</code> and show you the possibilities.</p>
+    <p>The &#8220;All In One&#8221; Client/Server is interested for Heroku projects, as it is a bit complicated to set up two servers that interact with each other.</p>
+    <h3 id="generators-servers">Servers</h3>
+    <p>Currently, Picky offers two generated servers.</p>
+    <h4 id="generators-servers-sinatra">Sinatra</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <h4 id="generators-servers-classic">Classic</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <h4 id="generators-servers-allinone">All In One</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <h3 id="generators-clients">Clients</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <h4 id="generators-clients-sinatra">Sinatra</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <h2 id="servers">Servers / Applications</h2>
+    <h3 id="servers-classicvssinatra">Classic vs. Sinatra Style</h3>
+    <p>Picky currently offers two tested server styles, &#8220;Classic&#8221; and &#8220;Sinatra&#8221;. They differ as follows:</p>
+    <table>
+    	<tr>
+    		<td>                  </td>
+    		<td> Classic                                        </td>
+    		<td> Sinatra           </td>
+    	</tr>
+    	<tr>
+    		<td> application file </td>
+    		<td> <code>app/application.rb</code>                           </td>
+    		<td> <code>app.rb</code>          </td>
+    	</tr>
+    	<tr>
+    		<td> routing          </td>
+    		<td> Use <code>route</code> method (uses the <code>rack-mount</code> gem) </td>
+    		<td> Use <code>get</code> method </td>
+    	</tr>
+    	<tr>
+    		<td> rake tasks       </td>
+    		<td> All working                                    </td>
+    		<td> routes missing </td>
+    	</tr>
+    </table>
+    <p>Classic is also a bit more pedal-to-the-metal style, thus a bit faster.</p>
+    <p>However, we recommend to use the Sinatra style. It is <a href="http://www.sinatrarb.com/intro">very well documented</a> very customizable and Picky and Sinatra share the same core value, namely that it is all relatively simple Ruby, and can thus be changed and adapted to your needs.</p>
+    <h3 id="servers-sinatra">Sinatra Style</h3>
+    <p>A <a href="http://sinatrarb.com">Sinatra</a> server is usually just a single file. In Picky, it is a top-level file named</p>
+    <pre><code>app.rb</code></pre>
+    <p>We recommend to use the <a href="http://www.sinatrarb.com/intro#Serving%20a%20Modular%20Application">modular Sinatra style</a> as opposed to the <a href="http://www.sinatrarb.com/intro#Using%20a%20Classic%20Style%20Application%20with%20a%20config.ru">classic style</a>. It&#8217;s possible to write a Picky server in the classic style, but using the modular style offers more options.</p>
+    <pre><code>
+    require 'sinatra/base'
+    
+    class BookSearch &lt; Sinatra::Application
+    
+      books_index = Indexes::Memory.new(:books) do
+        source { Book.order("isbn ASC") }
+        category :title
+        category :author
+      end
+    
+      books = Search.new books_index do
+        boost [:title, :author] =&gt; +2
+      end
+    
+      get '/books' do
+        results = books.search params[:query],
+                               params[:ids]    || 20,
+                               params[:offset] ||  0
+        results.to_json
+      end
+    
+    end
+    </code></pre>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <h4 id="servers-sinatra-routing">Routing</h4>
+    <p>The Sinatra Picky server uses the same routing as Sinatra (of course). <a href="http://www.sinatrarb.com/intro#Routes">More information on Sinara routing</a>.</p>
+    <p>If you use the server with the picky client software (provided with the picky-client gem), you should return <span class="caps">JSON</span> from the Sinatra <code>get</code>.
+    Just call <code>to_json</code> on the returned results to get the results in <span class="caps">JSON</span> format.</p>
+    <pre><code>
+    get '/books' do
+      results = books.search params[:query], params[:ids] || 20, params[:offset] ||  0
+      results.to_json
+    end
+    </code></pre>
+    <p>The above example search can be called using for example <code>curl</code>:</p>
+    <pre><code>curl 'localhost:8080/books?query=test'</code></pre>
+    <h3 id="servers-classic">Classic Style</h3>
+    <p>Classic Style is the pre 3.0 way of doing things, but still perfectly fine.</p>
+    <pre><code>app/application.rb</code></pre>
+    <pre><code>
+    class BookSearch &lt; Picky::Application
+    
+    end
+    </code></pre>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <h4 id="servers-classic-routing">Routing</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <h3 id="servers-allinone">All In One (Client + Server)</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <h2 id="indexes">Indexes</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <h3 id="indexes-acessing">Accessing</h3>
+    <p>If you don&#8217;t have access to your indexes directly, like so</p>
+    <pre><code>
+    books_index = Indexes::Memory.new(:books) do
+      # ...
+    end
+    
+    books_index.do_something_with_the_index
+    </code></pre>
+    <p>and for example you&#8217;d like to access the index from a rake task, you can use</p>
+    <pre><code>Picky::Indexes</code></pre>
+    <p>to get <strong>all indexes</strong>. To get a <strong>single index</strong> use</p>
+    <pre><code>Picky::Indexes[:index_name]</code></pre>
+    <p>and to get a <strong>single category</strong>, use</p>
+    <pre><code>Picky::Indexes[:index_name][:category_name]</code></pre>
+    <p>That&#8217;s it.</p>
+    <h3 id="indexes-indexing">Indexing</h3>
+    <p>Indexing can be done programmatically. Even when the server is running.</p>
+    <p>Indexing <strong>all indexes</strong> is done with</p>
+    <pre><code>Picky::Indexes.index</code></pre>
+    <p>Indexing a <strong>single index</strong> can be done either with</p>
+    <pre><code>Picky::Indexes[:index_name].index</code></pre>
+    <p>or</p>
+    <pre><code>index_instance.index</code></pre>
+    <p>Indexing a <strong>single category</strong> of an index can be done either with</p>
+    <pre><code>Picky::Indexes[:index_name][:category_name].index</code></pre>
+    <p>or</p>
+    <pre><code>category_instance.index</code></pre>
+    <h3 id="indexes-reloading">Reloading</h3>
+    <p>Reloading your indexes in a running application is possible.</p>
+    <p>Reloading <strong>all indexes</strong> is done with</p>
+    <pre><code>Picky::Indexes.reload</code></pre>
+    <p>Reloading a <strong>single index</strong> can be done either with</p>
+    <pre><code>Picky::Indexes[:index_name].reload</code></pre>
+    <p>or</p>
+    <pre><code>index_instance.reload</code></pre>
+    <p>Reloading a <strong>single category</strong> of an index can be done either with</p>
+    <pre><code>Picky::Indexes[:index_name][:category_name].reload</code></pre>
+    <p>or</p>
+    <pre><code>category_instance.reload</code></pre>
+    <h4 id="indexes-reloading-signals">Using signals</h4>
+    <p>To communicate with your server using signals:</p>
+    <pre><code>
+    books_index = Indexes::Memory.new(:books) do
+      # ...
+    end
+    
+    Signal.trap("USR1") do
+      books_index.reindex
+    end
+    </code></pre>
+    <p>This reindexes the books_index when you call</p>
+    <pre><code>kill -USR1 &lt;server_process_id&gt;</code></pre>
+    <p>You can refer to the index like so if want to define the trap somewhere else:</p>
+    <pre><code>
+    Signal.trap("USR1") do
+      Picky::Indexes[:books].reindex
+    end
+    </code></pre>
+    <h3 id="indexes-reindexing">Reindexing</h3>
+    <p>Reindexing your indexes is just indexing followed by reloading (see above).</p>
+    <p>Reindexing <strong>all indexes</strong> is done with</p>
+    <pre><code>Picky::Indexes.reindex</code></pre>
+    <p>Reindexing a <strong>single index</strong> can be done either with</p>
+    <pre><code>Picky::Indexes[:index_name].reindex</code></pre>
+    <p>or</p>
+    <pre><code>index_instance.reindex</code></pre>
+    <p>Reindexing a <strong>single category</strong> of an index can be done either with</p>
+    <pre><code>Picky::Indexes[:index_name][:category_name].reindex</code></pre>
+    <p>or</p>
+    <pre><code>category_instance.reindex</code></pre>
+    <p>Thanks to whoever made the
+    %a{ href: &#8216;http://www.sinatrarb.com/intro&#8217; } Sinatra <span class="caps">README</span> page
+    for the inspiration.</p>
+    </div>
     </div>
     <div class="license">
       Logos and all images are
