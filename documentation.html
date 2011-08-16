@@ -100,6 +100,7 @@
     		<li><a href="#servers-classic">Classic Style</a>
     		<ol>
     			<li><a href="#servers-classic-routing">Routing</a></li>
+    			<li><a href="#servers-classic-logging">Logging</a></li>
     		</ol></li>
     		<li><a href="#servers-allinone" title="Client + Server">All In One</a></li>
     	</ol></li>
@@ -118,7 +119,17 @@
     			<li><a href="#indexes-sources-delayed">Delayed</a></li>
     			<li><a href="#indexes-sources-classic">Classic Style</a></li>
     		</ol></li>
-    		<li><a href="#indexes-categories">Categories</a></li>
+    		<li><a href="#indexes-categories">Categories</a>
+    		<ol>
+    			<li><a href="#indexes-categories-partial">Option partial</a></li>
+    			<li><a href="#indexes-categories-weights">Option weights</a></li>
+    			<li><a href="#indexes-categories-similarity">Option similarity</a></li>
+    			<li><a href="#indexes-categories-qualifiers" title="categorizing">Option qualifier / qualifiers</a></li>
+    			<li><a href="#indexes-categories-from">Option from</a></li>
+    			<li><a href="#indexes-categories-keyformat">Option key_format</a></li>
+    			<li><a href="#indexes-categories-source">Option source</a></li>
+    			<li><a href="#indexes-categories-searching">Searching</a></li>
+    		</ol></li>
     		<li><a href="#indexes-keyformat" title="Format of the indexed Ids">Key Format</a></li>
     		<li><a href="#indexes-results">Identifying in Results</a></li>
     		<li><a href="#indexes-indexing">Indexing</a></li>
@@ -272,6 +283,24 @@
     </code></pre>
     <p>The above example search can be called using for example <code>curl</code>:</p>
     <pre><code>curl 'localhost:8080/books?query=test'</code></pre>
+    <h4 id="servers-sinatra-logging">Logging</h4>
+    <p>This is one way to do it:</p>
+    <pre><code>
+    MyLogger = Logger.new "log/search.log"
+    
+    # ...
+    
+    get '/books' do
+      results = books.search "test"
+      MyLogger.info results
+      results.to_json
+    end
+    </code></pre>
+    <p>or set it up in separate files for different environments:</p>
+    <pre><code>
+    require "logging/#{PICKY_ENVIRONMENT}"
+    </code></pre>
+    <p>Note that this is not Rack logging, but Picky search engine logging. The resulting file can be used with the picky-statistics gem.</p>
     <h3 id="servers-classic">Classic Style</h3>
     <p>Classic Style is the pre 3.0 way of doing things, but still perfectly fine.</p>
     <p>A Classic server is usually just a single file. It is a file named</p>
@@ -313,6 +342,15 @@
     
       route %r{/mp3s}  =&gt; mp3_search
     </code></pre>
+    <h4 id="servers-classic-logging">Logging</h4>
+    <p>A Picky classic server logs to the logger defined with the <code>Picky.logger=</code> writer.</p>
+    <p>Set it up in a separate <code>logging.rb</code> file (or directly in the <code>app/application.rb</code> file).</p>
+    <pre><code>
+      Picky.logger = Logger.new("log/search.log")
+    </code></pre>
+    <p>and the Picky classic server will log the results into it, if it is defined.</p>
+    <p>Why in a separate file? So that you can have different logging for different environments.</p>
+    <p>More power to you.</p>
     <h3 id="servers-allinone">All In One (Client + Server)</h3>
     <p>The All In One server is a Sinatra server and a Sinatra client rolled in one.</p>
     <p>It&#8217;s best to just generate one and look at it:</p>
@@ -502,7 +540,7 @@
     category :some, partial: Partial::None.new
     </code></pre>
     <p>You can also pass in your own partial generators. See <a href="http://florianhanke.com/blog/2011/08/15/picky-30-its-all-ruby-part-1.html">this article</a> to learn more.</p>
-    <h4 id="indexes-categories-similarity">Option weights</h4>
+    <h4 id="indexes-categories-weights">Option weights</h4>
     <p>You almost never need this. You can also <code>boost</code> combination weights in searches, which might be more fitting.</p>
     <p>The weights option defines how strongly a word is weighed. By default, Picky rates a word according to the logarithm of its occurrence. This means that a word that occurs more often will be slightly higher weighed.</p>
     <p>You define this by this:</p>
@@ -512,23 +550,86 @@
     <p>The default is <code>Weights::Logarithmic.new</code>.</p>
     <p>You can also pass in your own weights generators. See <a href="http://florianhanke.com/blog/2011/08/15/picky-30-its-all-ruby-part-1.html">this article</a> to learn more.</p>
     <h4 id="indexes-categories-similarity">Option similarity</h4>
-    <p>The partial option defines if a word is also found when it is only <strong>partially entered</strong>. So, &#8220;Picky&#8221; might be already found when typing &#8220;Pic&#8221;.</p>
+    <p>The similarity option defines if a word is also found when it is typed wrong, or <em>close</em> to another word. So, &#8220;Picky&#8221; might be already found when typing &#8220;Pocky~&#8221;. (Picky will search for similar word when you use the tilde, ~)</p>
     <p>You define this by this:</p>
     <pre><code>
-    category :some, partial: Partial::Substring.new(from: -3)
+    category :some, similarity: Similarity::None.new
     </code></pre>
-    <p>(This is also the default)
-    The option <code>from: 1</code> will make a word completely partially findable.</p>
-    <p>If you don&#8217;t want any partial finds to occur, use:</p>
+    <p>(This is also the default)</p>
+    <p>There are several built-in similarity options, like</p>
     <pre><code>
-    category :some, partial: Partial::None.new
+    category :some, similarity: Similarity::Soundex.new
+    category :this, similarity: Similarity::Metaphone.new
+    category :that, similarity: Similarity::DoubleMetaphone.new
     </code></pre>
-    <p>You can also pass in your own partial generators. See <a href="http://florianhanke.com/blog/2011/08/15/picky-30-its-all-ruby-part-1.html">this article</a> to learn more.</p>
-    <h4 id="indexes-categories-qualifiers">Option qualifiers (categorizing)</h4>
+    <p>You can also pass in your own similarity generators. See <a href="http://florianhanke.com/blog/2011/08/15/picky-30-its-all-ruby-part-1.html">this article</a> to learn more.</p>
+    <h4 id="indexes-categories-qualifiers">Option qualifier/qualifiers (categorizing)</h4>
+    <p>Usually, when you search for <code>"title:wizard"</code> you will only find books with &#8220;wizard&#8221; in their title.</p>
+    <p>Maybe your client would like to be able to only enter &#8220;t:wizard&#8221;. In that case you would use this option:</p>
+    <pre><code>
+    category :some,
+             :qualifier =&gt; :t
+    </code></pre>
+    <p>Or if you&#8217;d like more to match:</p>
+    <pre><code>
+    category :some,
+             qualifiers: [:t, :title, :titulo]
+    </code></pre>
+    <p>(This matches &#8220;t&#8221;, &#8220;title&#8221;, and also the italian &#8220;titulo&#8221;)</p>
+    <p>Picky will warn you if on one index the qualifiers are ambiguous (Picky will assume that the last &#8220;t&#8221; for example is the one you want to use).</p>
+    <p>This means that:</p>
+    <pre><code>
+    category :some,  :qualifier =&gt; :t
+    category :other, :qualifier =&gt; :t
+    </code></pre>
+    <p>Picky will assume that if you enter &#8220;t:bla&#8221;, you want to search in the :other category.</p>
+    <p>Searching in multiple categories can also be done. If you have:</p>
+    <pre><code>
+    category :some,  :qualifier =&gt; :s
+    category :other, :qualifier =&gt; :o
+    </code></pre>
+    <p>Then searching with &#8220;s,o:bla&#8221; will search for bla in both <code>:some</code> and <code>:other</code>. Neat, eh?</p>
     <h4 id="indexes-categories-from">Option from</h4>
+    <p>Usually, the categories will take their data from the reader or field that is the same as their name.</p>
+    <p>Sometimes though, the model has not the right names. Say, you have an italian book model, <code>Libro</code>. But you still want to use english category names.</p>
+    <pre><code>
+    Indexes::Memory.new :books do
+      source { Libro.order('autore DESC') }
+    
+      category :title,  :from =&gt; :titulo
+      category :author, :from =&gt; :autore
+      category :isbn
+    end
+    </code></pre>
     <h4 id="indexes-categories-keyformat">Option key_format</h4>
-    <h4 id="indexes-categories-partial">Option source</h4>
+    <p>You almost never use this, as the key format will usually be the same for all categories, which is when you would define it on the index, <a href="#indexes-keyformat">like so</a>.</p>
+    <p>But if you need to, use as with the index.</p>
+    <pre><code>
+    Indexes::Memory.new :books do
+      category :title,
+               :key_format =&gt; :to_sym
+    end
+    </code></pre>
+    <h4 id="indexes-categories-source">Option source</h4>
+    <p>You almost never use this, as the source will usually be the same for all categories, which is when you would define it on the index, <a href="#indexes-sources">like so</a>.</p>
+    <p>But if you need to, use as with the index.</p>
+    <pre><code>
+    Indexes::Memory.new :books do
+      category :title,
+               source: some_source
+    end
+    </code></pre>
     <h4 id="indexes-categories-searching">Searching</h4>
+    <p>Searching offers a few options. They are:</p>
+    <ul>
+    	<li>Partial: <code>something*</code> (By default, the last word is implicitly partial)</li>
+    	<li>Non-Partial: <code>"something"</code> (The quotes make the query on this word explicitly non-partial)</li>
+    	<li>Similarity: <code>something~</code> (The tilde makes this word eligible for similarity search)</li>
+    	<li>Categorized: <code>title:something</code> (Picky will only search in the category designated as title, in each index of the search)</li>
+    	<li>Multi-categorized: <code>title,author:something</code> (Picky will search in title and author categories, in each index of the search)</li>
+    </ul>
+    <p>These options can be combined (e.g. <code>title,author:"funky~"</code>). Non-partial will win over partial, though.</p>
+    <p>Also note that these options need to make it through the tokenizing (<a href="#searching">searching</a>).</p>
     <h3 id="indexes-keyformat">Key Format (Format of the indexed Ids)</h3>
     <p>By default, the indexed data points to keys that are integers, or differently said, are formatted using <code>to_i</code>.</p>
     <p>If you are indexing keys that are strings, use <code>to_sym</code> – a good example are MongoDB <span class="caps">BSON</span> keys, or <span class="caps">UUID</span> keys.</p>
@@ -608,6 +709,102 @@
     <pre><code>Picky::Indexes[:index_name][:category_name].reindex</code></pre>
     <p>or</p>
     <pre><code>category_instance.reindex</code></pre>
+    <h2 id="indexing">Indexing / Tokenizing</h2>
+    <p>Indexing describes how <strong>text data from the data source</strong> is handled.</p>
+    <p>Picky by default goes through the following list, in order:</p>
+    <ol>
+    	<li><strong>removes_characters</strong>: Regexp of characters to remove.</li>
+    	<li><strong>stopwords</strong>: Regexp of stopwords to remove.</li>
+    	<li><strong>splits_text_on</strong>: Regexp on where to split the data text.</li>
+    	<li><strong>removes_characters_after_splitting</strong>: Regexp on which characters to remove after the splitting.</li>
+    	<li><strong>normalizes_words</strong>: [[/matching_regexp/, &#8216;replace match \1&#8217;]]</li>
+    	<li><strong>rejects_token_if</strong>: lambda { |gets_token| gets_token == :hello }</li>
+    	<li><strong>case_sensitive</strong>: true or false, false is default.</li>
+    	<li><strong>substitutes_characters_with</strong>: A character substituter that responds to <code>#substitute(text) #=&gt; substituted text</code></li>
+    </ol>
+    <p>You pass the above options into</p>
+    <pre><code>
+    Indexes::Memory.new :books do
+      indexing options_hash
+    end
+    </code></pre>
+    <p>Or, if you want it to be valid for <strong>all</strong> indexes, you can define it outside of the index definition:</p>
+    <pre><code>
+    indexing options_hash
+    
+    Indexes::Memory.new :books do
+      # ...
+    end
+    </code></pre>
+    <p>This only works in the sinatra server if you extend the Sinatra app with <code>Picky::Sinatra</code>, like so:</p>
+    <pre><code>
+    class MySearch &lt; Sinatra::Application
+    
+      extend Picky::Sinatra
+    
+      indexing options_hash
+    
+      # ...
+    
+    end
+    </code></pre>
+    <p>You can provide your own tokenizer:</p>
+    <pre><code>
+    Indexes::Memory.new :books do
+      indexing MyTokenizer.new
+    end
+    </code></pre>
+    <p>The tokenizer needs to respond to the method <code>#tokenize(text)</code>, returning an array of symbols, e.g. <code>[:my, :nice, :tokens]</code>. That&#8217;s it.</p>
+    <p>It should be rather performance efficient if you want your search engine to be fast.</p>
+    <p>Note that you can always take a look at the files in <code>/index</code> to see if everything is index tokenized correctly.</p>
+    <h2 id="searching">Searching / Tokenizing</h2>
+    <p>Indexing describes how <strong>queries</strong> are handled.</p>
+    <p>Picky by default goes through the following list, in order:</p>
+    <ol>
+    	<li><strong>removes_characters</strong>: Regexp of characters to remove.</li>
+    	<li><strong>stopwords</strong>: Regexp of stopwords to remove.</li>
+    	<li><strong>splits_text_on</strong>: Regexp on where to split the data text.</li>
+    	<li><strong>removes_characters_after_splitting</strong>: Regexp on which characters to remove after the splitting.</li>
+    	<li><strong>normalizes_words</strong>: [[/matching_regexp/, &#8216;replace match \1&#8217;]]</li>
+    	<li><del>-<strong>rejects_token_if</strong>: lambda { |gets_token| gets_token == :hello }</del>- (not yet)</li>
+    	<li><strong>case_sensitive</strong>: true or false, false is default.</li>
+    	<li><strong>substitutes_characters_with</strong>: A character substituter that responds to <code>#substitute(text) #=&gt; substituted text</code></li>
+    </ol>
+    <p>You pass the above options into</p>
+    <pre><code>
+    Search.new books_index do
+      searching options_hash
+    end
+    </code></pre>
+    <p>Or, if you want it to be valid for <strong>all</strong> searches, you can define it outside of the search definition:</p>
+    <pre><code>
+    searching options_hash
+    
+    Search.new books_index do
+      # ...
+    end
+    </code></pre>
+    <p>This only works in the sinatra server if you extend the Sinatra app with <code>Picky::Sinatra</code>, like so:</p>
+    <pre><code>
+    class MySearch &lt; Sinatra::Application
+    
+      extend Picky::Sinatra
+    
+      searching options_hash
+    
+      # ...
+    
+    end
+    </code></pre>
+    <p>You can provide your own tokenizer:</p>
+    <pre><code>
+    Indexes::Memory.new :books do
+      indexing MyTokenizer.new
+    end
+    </code></pre>
+    <p>The tokenizer needs to respond to the method <code>#tokenize(text)</code>, returning a <code>Picky::Query::Tokens</code> object. If you have an array of tokens, e.g. <code>[:my, :nice, :tokens]</code>,
+    you can pass it into <code>Picky::Query::Tokens.process(my_tokens)</code> to get the tokens and return these.</p>
+    <p>It should be rather performance efficient if you want your search engine to be fast.</p>
     <h2 id="results">Results</h2>
     <p>Results are returned by the <code>Search</code> instance.</p>
     <pre><code>
