@@ -90,18 +90,16 @@ h2(#allruby). All Ruby
 
 Never forget this: *Picky is all Ruby, all the time*!
 
-Even though we only describe for example classic and Sinatra style servers, Picky can be included directly in Rails, as a client or server. Or in DRb. Or in your simple script without HTTP.
-
-Also, the server returns JSON, or whatever you want and need. A Picky client is quickly written. How about writing one for Java?
+Even though we only describe examples of classic and Sinatra style servers, Picky can be included directly in Rails, as a client or server. Or in DRb. Or in your simple script without HTTP. Anywhere you like, as long as it's Ruby, really.
 
 h2(#transparency). Transparency
 
 Picky tries its best to be *transparent* so you can go have a look if something goes wrong. It wants you to *never feel powerless*.
 
-So all the indexes can be viewed in the @/index@ directory of the project. They are saved as JSON and as text for the preprocessing step.
-So if anything does not work, you can go see how it is indexed and change your indexing parameters accordingly.
+All the indexes can be viewed in the @/index@ directory of the project. They are waiting for you to inspect their JSONy goodness.
+Should anything not work with your search, you can see how it is indexed in the actual indexes and change your indexing parameters accordingly.
 
-Also, since all is Ruby, you can log as much data as you want to help you improve your search application until it's working perfectly.
+Since all is Ruby, you can log as much data as you want to help you improve your search application until it's working perfectly.
 
 h2(#generators). Generators
 
