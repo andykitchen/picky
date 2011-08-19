@@ -371,12 +371,12 @@
     <p>Both save the preprocessed data from the data source in the <code>/index</code> directory so you can go look if the data is preprocessed correctly.</p>
     <h4 id="indexes-types-memory">In-Memory / File-based</h4>
     <p>The in-memory index saves its indexes as files transparently in the form of <span class="caps">JSON</span> files that reside in the <code>/index</code> directory.</p>
-    <p>When the server is started, they are loaded into memory. As soon as the server is stopped, the indexes are not in memory again. In the Sinatra server, you have to load them your</p>
+    <p>When the server is started, they are loaded into memory. As soon as the server is stopped, the indexes are not in memory again.</p>
     <p>Indexing regenerates the <span class="caps">JSON</span> index files and can be reloaded into memory, even in the running server (see below).</p>
     <h4 id="indexes-types-redis">Redis</h4>
     <p>The Redis index saves its indexes in the Redis server on the default port, using database 15.</p>
-    <p>When the server is</p>
-    <p>Indexing regenerates the indexes in the Redis server.</p>
+    <p>When the server is started, it connects to the Redis server and uses the indexes in the key-value store.</p>
+    <p>Indexing regenerates the indexes in the Redis server – you do not have to restart the server for that.</p>
     <h3 id="indexes-acessing">Accessing</h3>
     <p>If you don&#8217;t have access to your indexes directly, like so</p>
     <pre><code>

@@ -393,7 +393,7 @@ h4(#indexes-types-memory). In-Memory / File-based
 
 The in-memory index saves its indexes as files transparently in the form of JSON files that reside in the @/index@ directory.
 
-When the server is started, they are loaded into memory. As soon as the server is stopped, the indexes are not in memory again. In the Sinatra server, you have to load them your
+When the server is started, they are loaded into memory. As soon as the server is stopped, the indexes are not in memory again.
 
 Indexing regenerates the JSON index files and can be reloaded into memory, even in the running server (see below).
 
@@ -401,9 +401,9 @@ h4(#indexes-types-redis). Redis
 
 The Redis index saves its indexes in the Redis server on the default port, using database 15.
 
-When the server is
+When the server is started, it connects to the Redis server and uses the indexes in the key-value store.
 
-Indexing regenerates the indexes in the Redis server.
+Indexing regenerates the indexes in the Redis server – you do not have to restart the server for that.
 
 h3(#indexes-acessing). Accessing
 
