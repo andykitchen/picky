@@ -776,6 +776,8 @@ Indexes::Memory.new :books do
 end
 </code></pre>
 
+The @Picky::Sources@ already set this correctly. However, if you use an @#each@ source that supplies Picky with symbol ids, you should set the @key_format@.
+
 h3(#indexes-results). Identifying in Results
 
 By default, an index is identified by its *name* in the results. This index is identified by @:books@:

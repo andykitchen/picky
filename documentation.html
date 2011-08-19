@@ -635,6 +635,7 @@
       key_format :to_sym
     end
     </code></pre>
+    <p>The <code>Picky::Sources</code> already set this correctly. However, if you use an <code>#each</code> source that supplies Picky with symbol ids, you should set the <code>key_format</code>.</p>
     <h3 id="indexes-results">Identifying in Results</h3>
     <p>By default, an index is identified by its <strong>name</strong> in the results. This index is identified by <code>:books</code>:</p>
     <pre><code>
