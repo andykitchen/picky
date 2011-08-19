@@ -136,6 +136,7 @@
     		</ol></li>
     		<li><a href="#indexes-reindexing">Reindex</a></li>
     	</ol></li>
+    	<li><a href="#search">Search</a></li>
     	<li><a href="#indexing">Indexing / Tokenizing</a></li>
     	<li><a href="#searching">Searching / Tokenizing</a></li>
     	<li><a href="#results">Results</a>
@@ -715,6 +716,31 @@
     <pre><code>Picky::Indexes[:index_name][:category_name].reindex</code></pre>
     <p>or</p>
     <pre><code>category_instance.reindex</code></pre>
+    <h2 id="search">Search</h2>
+    <p>Picky offers a <code>Search</code> interface for the indexes. You instantiate it as follows.</p>
+    <p>Just searching over one index:</p>
+    <pre><code>
+    books = Search.new books_index # searching over one index
+    </code></pre>
+    <p>Searching over multiple indexes:</p>
+    <pre><code>
+    media = Search.new books_index, dvd_index, mp3_index
+    </code></pre>
+    <p>It also takes a block to set some options:</p>
+    <pre><code>
+    media = Search.new books_index, dvd_index, mp3_index do
+      searching tokenizer_options_or_tokenizer
+      boost [:title, :author] =&gt; +2,
+            [:author, :title] =&gt; -1
+    end
+    </code></pre>
+    <p>Such an instance can then search over all its indexes and returns a <code>Picky::Results</code> object:</p>
+    <pre><code>
+    results = media.search "query", # the query text
+                                20, # number of ids
+                                 0  # offset (for pagination)
+    </code></pre>
+    <p>Please see the part about <a href="#results">Results</a> to know more about that.</p>
     <h2 id="indexing">Indexing / Tokenizing</h2>
     <p>Indexing describes how <strong>text data from the data source</strong> is handled.</p>
     <p>Picky by default goes through the following list, in order:</p>

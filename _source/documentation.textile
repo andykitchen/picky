@@ -79,6 +79,7 @@ h2. Single Page Help
 ## "Reloading":#indexes-reloading
 ### "Using signals":#indexes-reloading-signals
 ## "Reindex":#indexes-reindexing
+# "Search":#search
 # "Indexing / Tokenizing":#indexing
 # "Searching / Tokenizing":#searching
 # "Results":#results
@@ -910,6 +911,42 @@ bc. Picky::Indexes[:index_name][:category_name].reindex
 or
 
 bc. category_instance.reindex
+
+h2(#search). Search
+
+Picky offers a @Search@ interface for the indexes. You instantiate it as follows.
+
+Just searching over one index:
+
+<pre><code>
+books = Search.new books_index # searching over one index
+</code></pre>
+
+Searching over multiple indexes:
+
+<pre><code>
+media = Search.new books_index, dvd_index, mp3_index
+</code></pre>
+
+It also takes a block to set some options:
+
+<pre><code>
+media = Search.new books_index, dvd_index, mp3_index do
+  searching tokenizer_options_or_tokenizer
+  boost [:title, :author] => +2,
+        [:author, :title] => -1
+end
+</code></pre>
+
+Such an instance can then search over all its indexes and returns a @Picky::Results@ object:
+
+<pre><code>
+results = media.search "query", # the query text
+                            20, # number of ids
+                             0  # offset (for pagination)
+</code></pre>
+
+Please see the part about "Results":#results to know more about that.
 
 h2(#indexing). Indexing / Tokenizing
 
