@@ -778,7 +778,7 @@ end
 
 h3(#indexes-results). Identifying in Results
 
-By default, an index is identified by its *name* in the results:
+By default, an index is identified by its *name* in the results. This index is identified by @:books@:
 
 <pre><code>
 Indexes::Memory.new :books do
@@ -786,7 +786,7 @@ Indexes::Memory.new :books do
 end
 </code></pre>
 
-This index is identified by @:books@.
+This index is identified by @:media@ in the results:
 
 <pre><code>
 Indexes::Memory.new :books do
@@ -795,7 +795,7 @@ Indexes::Memory.new :books do
 end
 </code></pre>
 
-This index is identified by @:media@ but you still refer to it as @:books@ in e.g. Rake tasks, @Picky::Indexes[:books].reload@.
+You still refer to it as @:books@ in e.g. Rake tasks, @Picky::Indexes[:books].reload@. It's just for the results.
 
 h3(#indexes-indexing). Indexing
 

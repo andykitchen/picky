@@ -636,20 +636,20 @@
     end
     </code></pre>
     <h3 id="indexes-results">Identifying in Results</h3>
-    <p>By default, an index is identified by its <strong>name</strong> in the results:</p>
+    <p>By default, an index is identified by its <strong>name</strong> in the results. This index is identified by <code>:books</code>:</p>
     <pre><code>
     Indexes::Memory.new :books do
       # ...
     end
     </code></pre>
-    <p>This index is identified by <code>:books</code>.</p>
+    <p>This index is identified by <code>:media</code> in the results:</p>
     <pre><code>
     Indexes::Memory.new :books do
       # ...
       result_identifier :media
     end
     </code></pre>
-    <p>This index is identified by <code>:media</code> but you still refer to it as <code>:books</code> in e.g. Rake tasks, <code>Picky::Indexes[:books].reload</code>.</p>
+    <p>You still refer to it as <code>:books</code> in e.g. Rake tasks, <code>Picky::Indexes[:books].reload</code>. It&#8217;s just for the results.</p>
     <h3 id="indexes-indexing">Indexing</h3>
     <p>Indexing can be done programmatically. Even when the server is running.</p>
     <p>Indexing <strong>all indexes</strong> is done with</p>
