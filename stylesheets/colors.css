@@ -1,9 +1,8 @@
 body { background-color: beige; }
 
 .container_2 div.index { background-color: white; }
-
-.grid_2.plain { background-color: #F5F5EA; }
-.grid_2.white { background-color: #F5F5EA; }
+.container_2 .grid_1 { background-color: #F5F5EA; }
+.container_2 .grid_2 { background-color: #F5F5EA; }
 
 .header { background-color: #199399; background: -moz-radial-gradient(50% 100%, circle, beige 90px, #199399 600px); background: -webkit-gradient(radial, 50% 100%, 90, 50% 100%, 600, from(beige), to(#199399)); }
 
