@@ -709,6 +709,7 @@
     <p>Indexing describes how <strong>text data from the data source</strong> is handled.</p>
     <p>Picky by default goes through the following list, in order:</p>
     <ol>
+    	<li><strong>substitutes_characters_with</strong>: A character substituter that responds to <code>#substitute(text) #=&gt; substituted text</code></li>
     	<li><strong>removes_characters</strong>: Regexp of characters to remove.</li>
     	<li><strong>stopwords</strong>: Regexp of stopwords to remove.</li>
     	<li><strong>splits_text_on</strong>: Regexp on where to split the data text.</li>
@@ -716,7 +717,6 @@
     	<li><strong>normalizes_words</strong>: [[/matching_regexp/, &#8216;replace match \1&#8217;]]</li>
     	<li><strong>rejects_token_if</strong>: lambda { |gets_token| gets_token == :hello }</li>
     	<li><strong>case_sensitive</strong>: true or false, false is default.</li>
-    	<li><strong>substitutes_characters_with</strong>: A character substituter that responds to <code>#substitute(text) #=&gt; substituted text</code></li>
     </ol>
     <p>You pass the above options into</p>
     <pre><code>
@@ -757,6 +757,7 @@
     <p>Indexing describes how <strong>queries</strong> are handled.</p>
     <p>Picky by default goes through the following list, in order:</p>
     <ol>
+    	<li><strong>substitutes_characters_with</strong>: A character substituter that responds to <code>#substitute(text) #=&gt; substituted text</code></li>
     	<li><strong>removes_characters</strong>: Regexp of characters to remove.</li>
     	<li><strong>stopwords</strong>: Regexp of stopwords to remove.</li>
     	<li><strong>splits_text_on</strong>: Regexp on where to split the data text.</li>
@@ -764,7 +765,6 @@
     	<li><strong>normalizes_words</strong>: [[/matching_regexp/, &#8216;replace match \1&#8217;]]</li>
     	<li><del>-<strong>rejects_token_if</strong>: lambda { |gets_token| gets_token == :hello }</del>- (not yet)</li>
     	<li><strong>case_sensitive</strong>: true or false, false is default.</li>
-    	<li><strong>substitutes_characters_with</strong>: A character substituter that responds to <code>#substitute(text) #=&gt; substituted text</code></li>
     </ol>
     <p>You pass the above options into</p>
     <pre><code>

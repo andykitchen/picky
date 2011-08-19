@@ -900,6 +900,7 @@ h2(#indexing). Indexing / Tokenizing
 Indexing describes how *text data from the data source* is handled.
 
 Picky by default goes through the following list, in order:
+# *substitutes_characters_with*: A character substituter that responds to @#substitute(text) #=> substituted text@
 # *removes_characters*: Regexp of characters to remove.
 # *stopwords*: Regexp of stopwords to remove.
 # *splits_text_on*: Regexp on where to split the data text.
@@ -907,7 +908,6 @@ Picky by default goes through the following list, in order:
 # *normalizes_words*: [[/matching_regexp/, 'replace match \1']]
 # *rejects_token_if*: lambda { |gets_token| gets_token == :hello }
 # *case_sensitive*: true or false, false is default.
-# *substitutes_characters_with*: A character substituter that responds to @#substitute(text) #=> substituted text@
 
 You pass the above options into
 
@@ -960,6 +960,7 @@ h2(#searching). Searching / Tokenizing
 Indexing describes how *queries* are handled.
 
 Picky by default goes through the following list, in order:
+# *substitutes_characters_with*: A character substituter that responds to @#substitute(text) #=> substituted text@
 # *removes_characters*: Regexp of characters to remove.
 # *stopwords*: Regexp of stopwords to remove.
 # *splits_text_on*: Regexp on where to split the data text.
@@ -967,7 +968,6 @@ Picky by default goes through the following list, in order:
 # *normalizes_words*: [[/matching_regexp/, 'replace match \1']]
 # --*rejects_token_if*: lambda { |gets_token| gets_token == :hello }-- (not yet)
 # *case_sensitive*: true or false, false is default.
-# *substitutes_characters_with*: A character substituter that responds to @#substitute(text) #=> substituted text@
 
 You pass the above options into
 
