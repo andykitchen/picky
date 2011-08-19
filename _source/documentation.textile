@@ -389,6 +389,20 @@ end
 
 Both save the preprocessed data from the data source in the @/index@ directory so you can go look if the data is preprocessed correctly.
 
+Indexes then can be used with a @Search@ interface.
+
+Searching over one index:
+
+<pre><code>
+books = Search.new books_index # searching over one index
+</code></pre>
+
+Searching over multiple indexes:
+
+<pre><code>
+media = Search.new books_index, dvd_index, mp3_index
+</code></pre>
+
 h4(#indexes-types-memory). In-Memory / File-based
 
 The in-memory index saves its indexes as files transparently in the form of JSON files that reside in the @/index@ directory.
@@ -976,7 +990,7 @@ Picky by default goes through the following list, in order:
 You pass the above options into
 
 <pre><code>
-Search.new books_index do
+Search.new *indexes do
   searching options_hash
 end
 </code></pre>
@@ -986,7 +1000,7 @@ Or, if you want it to be valid for *all* searches, you can define it outside of 
 <pre><code>
 searching options_hash
 
-Search.new books_index do
+Search.new *indexes do
   # ...
 end
 </code></pre>

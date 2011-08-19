@@ -369,6 +369,15 @@
     end
     </code></pre>
     <p>Both save the preprocessed data from the data source in the <code>/index</code> directory so you can go look if the data is preprocessed correctly.</p>
+    <p>Indexes then can be used with a <code>Search</code> interface.</p>
+    <p>Searching over one index:</p>
+    <pre><code>
+    books = Search.new books_index # searching over one index
+    </code></pre>
+    <p>Searching over multiple indexes:</p>
+    <pre><code>
+    media = Search.new books_index, dvd_index, mp3_index
+    </code></pre>
     <h4 id="indexes-types-memory">In-Memory / File-based</h4>
     <p>The in-memory index saves its indexes as files transparently in the form of <span class="caps">JSON</span> files that reside in the <code>/index</code> directory.</p>
     <p>When the server is started, they are loaded into memory. As soon as the server is stopped, the indexes are not in memory again.</p>
@@ -770,7 +779,7 @@
     </ol>
     <p>You pass the above options into</p>
     <pre><code>
-    Search.new books_index do
+    Search.new *indexes do
       searching options_hash
     end
     </code></pre>
@@ -778,7 +787,7 @@
     <pre><code>
     searching options_hash
     
-    Search.new books_index do
+    Search.new *indexes do
       # ...
     end
     </code></pre>
