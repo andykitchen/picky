@@ -753,6 +753,7 @@
     <p>The tokenizer needs to respond to the method <code>#tokenize(text)</code>, returning an array of symbols, e.g. <code>[:my, :nice, :tokens]</code>. That&#8217;s it.</p>
     <p>It should be rather performance efficient if you want your search engine to be fast.</p>
     <p>Note that you can always take a look at the files in <code>/index</code> to see if everything is index tokenized correctly.</p>
+    <p>Also, <code>rake 'try[text,some_index,some_category]'</code> (<code>some_index</code>, <code>some_category</code> optional) tells you how a given text is indexed.</p>
     <h2 id="searching">Searching / Tokenizing</h2>
     <p>Indexing describes how <strong>queries</strong> are handled.</p>
     <p>Picky by default goes through the following list, in order:</p>
@@ -800,6 +801,7 @@
     </code></pre>
     <p>The tokenizer needs to respond to the method <code>#tokenize(text)</code>, returning a <code>Picky::Query::Tokens</code> object. If you have an array of tokens, e.g. <code>[:my, :nice, :tokens]</code>,
     you can pass it into <code>Picky::Query::Tokens.process(my_tokens)</code> to get the tokens and return these.</p>
+    <p><code>rake 'try[text,some_index,some_category]'</code> (<code>some_index</code>, <code>some_category</code> optional) tells you how a given text is indexed.</p>
     <p>It should be rather performance efficient if you want your search engine to be fast.</p>
     <h2 id="results">Results</h2>
     <p>Results are returned by the <code>Search</code> instance.</p>

@@ -955,6 +955,8 @@ It should be rather performance efficient if you want your search engine to be f
 
 Note that you can always take a look at the files in @/index@ to see if everything is index tokenized correctly.
 
+Also, @rake 'try[text,some_index,some_category]'@ (@some_index@, @some_category@ optional) tells you how a given text is indexed.
+
 h2(#searching). Searching / Tokenizing
 
 Indexing describes how *queries* are handled.
@@ -1011,6 +1013,8 @@ end
 
 The tokenizer needs to respond to the method @#tokenize(text)@, returning a @Picky::Query::Tokens@ object. If you have an array of tokens, e.g. @[:my, :nice, :tokens]@,
 you can pass it into @Picky::Query::Tokens.process(my_tokens)@ to get the tokens and return these.
+
+@rake 'try[text,some_index,some_category]'@ (@some_index@, @some_category@ optional) tells you how a given text is indexed.
 
 It should be rather performance efficient if you want your search engine to be fast.
 
