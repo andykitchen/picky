@@ -395,7 +395,7 @@ Indexes then can be used with a @Search@ interface.
 Searching over one index:
 
 <pre><code>
-books = Search.new books_index # searching over one index
+books = Search.new books_index
 </code></pre>
 
 Searching over multiple indexes:
