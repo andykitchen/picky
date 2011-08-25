@@ -51,3 +51,22 @@
       %a{ :href => 'http://creativecommons.org/licenses/by/1.0/' } CC Attribution
       licensed to Florian Hanke.
     .footer
+    :javascript
+      var picky = document.getElementsByClassName('picky')[0];
+      var footer = document.getElementsByClassName('footer')[0];
+
+      var position = 0;
+
+      var movePicky = function() {
+        if (position == -2780) {
+          position = 0;
+        } else {
+          position -= 20;
+          setTimeout(movePicky,5);
+        }
+        picky.style.backgroundPositionY = position + "px";
+      }
+
+      footer.onclick = function() {
+        setTimeout(movePicky,5);
+      };
