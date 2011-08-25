@@ -45,4 +45,4 @@ ol.nav li { float: left; padding-right: 0.4em; }
 
 div.clear { clear: both; }
 
-div.license { font-size: 0.5em; width: 100em; height: 2em; position: fixed; bottom: 0px; left: 10px; }
+div.license { font-size: 0.5em; width: 33em; position: fixed; bottom: 0px; left: 10px; background-color: beige; }
