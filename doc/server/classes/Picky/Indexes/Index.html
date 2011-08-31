@@ -279,7 +279,7 @@ method for the ids (default is to_i).
 Example:
 </p>
 <pre>
-  my_index = Indexes::Memory.new(:my_index) do
+  my_index = Index.new(:my_index) do
     source            Sources::CSV.new(file: 'data/index.csv')
     key_format        :to_sym
     category          :bla
@@ -973,7 +973,7 @@ href="Index.html#M000172">to_s</a>, :strip).
                     <div id="M000183_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/indexes/index_indexing.rb, line 111</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">raise_no_source</span>
-        <span class="ruby-identifier">raise</span> <span class="ruby-constant">NoSourceSpecifiedException</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;\n\nNo source given for index \#{name}. An index needs a source.\nExample:\nIndexes::Memory.new(:with_source) do\nsource   Sources::CSV.new(:title, file: 'data/books.csv')\ncategory :title\ncategory :author\nend\n\n&quot;</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">NoSourceSpecifiedException</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;\n\nNo source given for index \#{name}. An index needs a source.\nExample:\nIndex.new(:with_source) do\nsource   Sources::CSV.new(:title, file: 'data/books.csv')\ncategory :title\ncategory :author\nend\n\n&quot;</span>
   )
       <span class="ruby-keyword kw">end</span></pre>
                     </div>
@@ -1009,7 +1009,7 @@ Optionally, you give it a precision value to reduce the error margin around
 47 (Picky is a bit liberal).
 </p>
 <pre>
-  Indexes::Memory.new :range do
+  Index.new :range do
     ranged_category :values_inside_1_100, 2, precision: 5
   end
 </pre>
@@ -1026,7 +1026,7 @@ performance intensive for less and less precision gain.
 Create two ranged categories to make an area search:
 </p>
 <pre>
-  Indexes::Memory.new :area do
+  Index.new :area do
     ranged_category :x, 1
     ranged_category :y, 1
   end

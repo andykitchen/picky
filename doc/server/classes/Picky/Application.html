@@ -61,13 +61,13 @@ The generator
 will generate an example <tt>project_name/app/application.rb</tt> file for
 you with some example code inside.
 </p>
-<h2>Indexes::Memory.new(name)</h2>
+<h2>Index.new(name)</h2>
 <p>
 Next, define where your data comes from, creating an <tt>Index</tt>. You
-use the <tt>Indexes::Memory.new</tt> method for that:
+use the <tt>Index.new</tt> method for that:
 </p>
 <pre>
-  my_index = Indexes::Memory.new :some_index_name
+  my_index = Index.new :some_index_name
 </pre>
 <p>
 You give the index a name (or identifier), and a source (see <a
@@ -77,7 +77,7 @@ that:
 <pre>
   class MyGreatSearch &lt; Application
 
-    books = Indexes::Memory.new :books do
+    books = Index.new :books do
       source Sources::CSV.new(:title, :author, :isbn, file:'app/library.csv')
     end
 
@@ -107,7 +107,7 @@ Let&#8217;s go ahead and define a category:
 <pre>
   class MyGreatSearch &lt; Application
 
-    books = Indexes::Memory.new :books do
+    books = Index.new :books do
       source   Sources::CSV.new(:title, :author, :isbn, file:'app/library.csv')
       category :title
     end
@@ -156,7 +156,7 @@ In full glory:
 <pre>
   class MyGreatSearch &lt; Application
 
-    books = Indexes::Memory.new :books do
+    books = Index.new :books do
       source   Sources::CSV.new(:title, :author, :isbn, file:'app/library.csv')
       category :title
     end
@@ -249,7 +249,7 @@ Our example, fully fleshed out with indexing, querying, and weights:
               substitutes_characters_with: CharacterSubstituters::WestEuropean.new,
               maximum_tokens: 4
 
-    books = Indexes::Memory.new :books do
+    books = Index.new :books do
       source   Sources::CSV.new(:title, :author, :isbn, file:'app/library.csv')
       category :title,
                qualifiers: [:t, :title, :titre],

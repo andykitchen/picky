@@ -192,7 +192,7 @@
     
     include Picky # So we don't have to type Picky:: everywhere.
     
-    books_index = Indexes::Memory.new(:books) do
+    books_index = Index.new(:books) do
       source Sources::CSV.new(:title, :author, file: 'library.csv')
       category :title
       category :author
@@ -248,7 +248,7 @@
     
     class BookSearch &lt; Sinatra::Application
     
-      books_index = Indexes::Memory.new(:books) do
+      books_index = Index.new(:books) do
         source { Book.order("isbn ASC") }
         category :title
         category :author
@@ -313,7 +313,7 @@
       #
       include Picky
     
-      books_index = Indexes::Memory.new :books do
+      books_index = Index.new :books do
         source   Sources::CSV.new(:title, :author, file: "data/#{PICKY_ENVIRONMENT}/library.csv")
         indexing splits_text_on: /[\s,]/
         category :title
@@ -361,11 +361,12 @@
     <p>Picky offers a choice of two index types, &#8220;In-Memory&#8221; and &#8220;Redis&#8221;. The former saves its indexes on disk and reloads them into memory and the latter saves its indexes in Redis.</p>
     <p>This is how they look in code:</p>
     <pre><code>
-    books_memory_index = Indexes::Memory.new(:books) do
+    books_memory_index = Index.new(:books) do
       # Configuration goes here.
     end
     
-    books_redis_index = Indexes::Redis.new(:books) do
+    books_redis_index = Index.new(:books) do
+      backend Backends::Redis.new
       # Configuration goes here.
     end
     </code></pre>
@@ -390,7 +391,7 @@
     <h3 id="indexes-acessing">Accessing</h3>
     <p>If you don&#8217;t have access to your indexes directly, like so</p>
     <pre><code>
-    books_index = Indexes::Memory.new(:books) do
+    books_index = Index.new(:books) do
       # ...
     end
     
@@ -407,7 +408,7 @@
     <h3 id="indexes-configuration">Configuration</h3>
     <p>This is all you can do to configure an index:</p>
     <pre><code>
-    books_index = Indexes::Memory.new :books do
+    books_index = Index.new :books do
       source   { Book.order("isbn ASC") }
     
       indexing removes_characters:                 /[^a-zA-Z0-9\s\:\"\&amp;\.\|]/i,                   # Default: nil
@@ -440,13 +441,13 @@
     <p>Data sources define where the data for an index comes from.</p>
     <p>You define them on an <strong>index</strong>:</p>
     <pre><code>
-    Indexes::Memory.new :books do
+    Index.new :books do
       source some_data_source
     end
     </code></pre>
     <p>Or even a <strong>single category</strong>:</p>
     <pre><code>
-    Indexes::Memory.new :books do
+    Index.new :books do
       source some_data_source
       category :title,
                source: some_data_source
@@ -506,14 +507,14 @@
     <h4 id="indexes-sources-classic">Classic Style</h4>
     <p>The classic style uses Picky <code>Sources</code> to load the data into the index.</p>
     <pre><code>
-    Indexes::Memory.new :books do
+    Index.new :books do
       source Sources::CSV.new(:title, :author, file: 'app/library.csv')
     end
     </code></pre>
     <p>Use this one if you want to use a simple <span class="caps">CSV</span> file.</p>
     <p>However, you could also use the built-in Ruby <code>CSV</code> class and use it as an <code>#each</code> source (see above).</p>
     <pre><code>
-    Indexes::Memory.new :books do
+    Index.new :books do
       source Sources::DB.new('SELECT id, title, author, isbn13 as isbn FROM books', file: 'app/db.yml')
     end
     </code></pre>
@@ -522,7 +523,7 @@
     <p>Categories – usually what other search engines call fields – define <strong>categorized data</strong>. For example, book data might have a <code>title</code>, an <code>author</code> and an <code>isbn</code>.</p>
     <p>So you define that:</p>
     <pre><code>
-    Indexes::Memory.new :books do
+    Index.new :books do
       source { Book.order('author DESC') }
     
       category :title
@@ -599,7 +600,7 @@
     <p>Usually, the categories will take their data from the reader or field that is the same as their name.</p>
     <p>Sometimes though, the model has not the right names. Say, you have an italian book model, <code>Libro</code>. But you still want to use english category names.</p>
     <pre><code>
-    Indexes::Memory.new :books do
+    Index.new :books do
       source { Libro.order('autore DESC') }
     
       category :title,  :from =&gt; :titulo
@@ -611,7 +612,7 @@
     <p>You almost never use this, as the key format will usually be the same for all categories, which is when you would define it on the index, <a href="#indexes-keyformat">like so</a>.</p>
     <p>But if you need to, use as with the index.</p>
     <pre><code>
-    Indexes::Memory.new :books do
+    Index.new :books do
       category :title,
                :key_format =&gt; :to_sym
     end
@@ -620,7 +621,7 @@
     <p>You almost never use this, as the source will usually be the same for all categories, which is when you would define it on the index, <a href="#indexes-sources">like so</a>.</p>
     <p>But if you need to, use as with the index.</p>
     <pre><code>
-    Indexes::Memory.new :books do
+    Index.new :books do
       category :title,
                source: some_source
     end
@@ -641,7 +642,7 @@
     <p>If you are indexing keys that are strings, use <code>to_sym</code> – a good example are MongoDB <span class="caps">BSON</span> keys, or <span class="caps">UUID</span> keys.</p>
     <p>The <code>key_format</code> method lets you define the format:</p>
     <pre><code>
-    Indexes::Memory.new :books do
+    Index.new :books do
       key_format :to_sym
     end
     </code></pre>
@@ -649,13 +650,13 @@
     <h3 id="indexes-results">Identifying in Results</h3>
     <p>By default, an index is identified by its <strong>name</strong> in the results. This index is identified by <code>:books</code>:</p>
     <pre><code>
-    Indexes::Memory.new :books do
+    Index.new :books do
       # ...
     end
     </code></pre>
     <p>This index is identified by <code>:media</code> in the results:</p>
     <pre><code>
-    Indexes::Memory.new :books do
+    Index.new :books do
       # ...
       result_identifier :media
     end
@@ -688,7 +689,7 @@
     <h4 id="indexes-reloading-signals">Using signals</h4>
     <p>To communicate with your server using signals:</p>
     <pre><code>
-    books_index = Indexes::Memory.new(:books) do
+    books_index = Index.new(:books) do
       # ...
     end
     
@@ -756,7 +757,7 @@
     </ol>
     <p>You pass the above options into</p>
     <pre><code>
-    Indexes::Memory.new :books do
+    Index.new :books do
       indexing options_hash
     end
     </code></pre>
@@ -764,7 +765,7 @@
     <pre><code>
     indexing options_hash
     
-    Indexes::Memory.new :books do
+    Index.new :books do
       # ...
     end
     </code></pre>
@@ -782,7 +783,7 @@
     </code></pre>
     <p>You can provide your own tokenizer:</p>
     <pre><code>
-    Indexes::Memory.new :books do
+    Index.new :books do
       indexing MyTokenizer.new
     end
     </code></pre>
@@ -831,7 +832,7 @@
     </code></pre>
     <p>You can provide your own tokenizer:</p>
     <pre><code>
-    Indexes::Memory.new :books do
+    Index.new :books do
       indexing MyTokenizer.new
     end
     </code></pre>
