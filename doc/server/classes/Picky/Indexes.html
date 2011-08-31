@@ -27,21 +27,13 @@
         </h1>
         <ul class="files">
             
-            <li><a href="../../files/lib/picky/indexes/index_rb.html">lib/picky/indexes/index.rb</a></li>
-            
-            <li><a href="../../files/lib/picky/indexes/index_indexed_rb.html">lib/picky/indexes/index_indexed.rb</a></li>
-            
-            <li><a href="../../files/lib/picky/indexes/index_indexing_rb.html">lib/picky/indexes/index_indexing.rb</a></li>
-            
-            <li><a href="../../files/lib/picky/indexes/memory_rb.html">lib/picky/indexes/memory.rb</a></li>
-            
-            <li><a href="../../files/lib/picky/indexes/redis_rb.html">lib/picky/indexes/redis.rb</a></li>
+            <li><a href="../../files/lib/picky/indexes_rb.html">lib/picky/indexes.rb</a></li>
             
             <li><a href="../../files/lib/picky/indexes_indexed_rb.html">lib/picky/indexes_indexed.rb</a></li>
             
-            <li><a href="../../files/lib/picky/indexes_rb.html">lib/picky/indexes.rb</a></li>
-            
             <li><a href="../../files/lib/picky/indexes_indexing_rb.html">lib/picky/indexes_indexing.rb</a></li>
+            
+            <li><a href="../../files/lib/picky/migrations/from_30_to_31_rb.html">lib/picky/migrations/from_30_to_31.rb</a></li>
             
         </ul>
     </div>
@@ -70,7 +62,7 @@
         <dd>
             <ul>
                 
-                <li><a href="#M000199">[]</a></li>
+                <li><a href="#M000208">[]</a></li>
                 
             </ul>
         </dd>
@@ -79,7 +71,7 @@
         <dd>
             <ul>
                 
-                <li><a href="#M000196">clear_indexes</a></li>
+                <li><a href="#M000205">clear_indexes</a></li>
                 
             </ul>
         </dd>
@@ -88,13 +80,13 @@
         <dd>
             <ul>
                 
-                <li><a href="#M000195">identifier</a>,</li>
+                <li><a href="#M000204">identifier</a>,</li>
                 
-                <li><a href="#M000202">index</a>,</li>
+                <li><a href="#M000211">index</a>,</li>
                 
-                <li><a href="#M000203">index_for_tests</a>,</li>
+                <li><a href="#M000212">index_for_tests</a>,</li>
                 
-                <li><a href="#M000194">instance</a></li>
+                <li><a href="#M000203">instance</a></li>
                 
             </ul>
         </dd>
@@ -103,7 +95,7 @@
         <dd>
             <ul>
                 
-                <li><a href="#M000193">new</a></li>
+                <li><a href="#M000202">new</a></li>
                 
             </ul>
         </dd>
@@ -112,11 +104,11 @@
         <dd>
             <ul>
                 
-                <li><a href="#M000200">raise_not_found</a>,</li>
+                <li><a href="#M000209">raise_not_found</a>,</li>
                 
-                <li><a href="#M000197">register</a>,</li>
+                <li><a href="#M000206">register</a>,</li>
                 
-                <li><a href="#M000198">register</a></li>
+                <li><a href="#M000207">register</a></li>
                 
             </ul>
         </dd>
@@ -125,9 +117,9 @@
         <dd>
             <ul>
                 
-                <li><a href="#M000201">to_s</a>,</li>
+                <li><a href="#M000210">to_s</a>,</li>
                 
-                <li><a href="#M000204">tokenizer</a></li>
+                <li><a href="#M000213">tokenizer</a></li>
                 
             </ul>
         </dd>
@@ -143,9 +135,7 @@
     <div class="sectiontitle">Classes and Modules</div>
     <ul>
         
-        <li><span class="type">CLASS</span> <a href="Indexes/Index.html">Picky::Indexes::Index</a></li>
-        
-        <li><span class="type">CLASS</span> <a href="Indexes/Memory.html">Picky::Index</a></li>
+        <li><span class="type">CLASS</span> <a href="Indexes/Memory.html">Picky::Indexes::Memory</a></li>
         
         <li><span class="type">CLASS</span> <a href="Indexes/Redis.html">Picky::Indexes::Redis</a></li>
         
@@ -181,9 +171,9 @@
             <div class="sectiontitle">Class Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000195">
+                <div class="title" id="M000204">
                     
-                    <a name="M000195"></a><b>identifier</b>()
+                    <a name="M000204"></a><b>identifier</b>()
                     
                 </div>
                 
@@ -192,12 +182,12 @@
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000195_source')" id="l_M000195_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000204_source')" id="l_M000204_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/indexes.rb#L31" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000195_source" class="dyn-source">
+                    <div id="M000204_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/indexes.rb, line 31</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">identifier</span>
       <span class="ruby-identifier">name</span>
@@ -208,9 +198,9 @@
             </div>
             
             <div class="method">
-                <div class="title" id="M000194">
+                <div class="title" id="M000203">
                     
-                    <a name="M000194"></a><b>instance</b>()
+                    <a name="M000203"></a><b>instance</b>()
                     
                 </div>
                 
@@ -226,12 +216,12 @@ Return the <a href="Indexes.html">Indexes</a> instance.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000194_source')" id="l_M000194_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000203_source')" id="l_M000203_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/indexes.rb#L28" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000194_source" class="dyn-source">
+                    <div id="M000203_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/indexes.rb, line 28</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">instance</span>
       <span class="ruby-ivar">@instance</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">new</span>
@@ -242,9 +232,9 @@ Return the <a href="Indexes.html">Indexes</a> instance.
             </div>
             
             <div class="method">
-                <div class="title" id="M000193">
+                <div class="title" id="M000202">
                     
-                    <a name="M000193"></a><b>new</b>()
+                    <a name="M000202"></a><b>new</b>()
                     
                 </div>
                 
@@ -253,12 +243,12 @@ Return the <a href="Indexes.html">Indexes</a> instance.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000193_source')" id="l_M000193_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000202_source')" id="l_M000202_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/indexes.rb#L22" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000193_source" class="dyn-source">
+                    <div id="M000202_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/indexes.rb, line 22</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>
       <span class="ruby-identifier">clear_indexes</span>
@@ -269,9 +259,9 @@ Return the <a href="Indexes.html">Indexes</a> instance.
             </div>
             
             <div class="method">
-                <div class="title" id="M000198">
+                <div class="title" id="M000207">
                     
-                    <a name="M000198"></a><b>register</b>(index)
+                    <a name="M000207"></a><b>register</b>(index)
                     
                 </div>
                 
@@ -280,12 +270,12 @@ Return the <a href="Indexes.html">Indexes</a> instance.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000198_source')" id="l_M000198_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000207_source')" id="l_M000207_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/indexes.rb#L57" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000198_source" class="dyn-source">
+                    <div id="M000207_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/indexes.rb, line 57</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">register</span> <span class="ruby-identifier">index</span>
       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">register</span> <span class="ruby-identifier">index</span>
@@ -298,9 +288,9 @@ Return the <a href="Indexes.html">Indexes</a> instance.
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000199">
+                <div class="title" id="M000208">
                     
-                    <a name="M000199"></a><b>[]</b>(identifier)
+                    <a name="M000208"></a><b>[]</b>(identifier)
                     
                 </div>
                 
@@ -316,12 +306,12 @@ Extracts an index, given its identifier.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000199_source')" id="l_M000199_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000208_source')" id="l_M000208_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/indexes.rb#L63" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000199_source" class="dyn-source">
+                    <div id="M000208_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/indexes.rb, line 63</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span> <span class="ruby-identifier">identifier</span>
       <span class="ruby-identifier">index_name</span> = <span class="ruby-identifier">identifier</span>.<span class="ruby-identifier">to_sym</span>
@@ -333,9 +323,9 @@ Extracts an index, given its identifier.
             </div>
             
             <div class="method">
-                <div class="title" id="M000196">
+                <div class="title" id="M000205">
                     
-                    <a name="M000196"></a><b>clear_indexes</b>()
+                    <a name="M000205"></a><b>clear_indexes</b>()
                     
                 </div>
                 
@@ -351,12 +341,12 @@ Clears the indexes and the mapping.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000196_source')" id="l_M000196_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000205_source')" id="l_M000205_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/indexes.rb#L46" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000196_source" class="dyn-source">
+                    <div id="M000205_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/indexes.rb, line 46</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear_indexes</span>
       <span class="ruby-ivar">@indexes</span>       = []
@@ -368,9 +358,9 @@ Clears the indexes and the mapping.
             </div>
             
             <div class="method">
-                <div class="title" id="M000202">
+                <div class="title" id="M000211">
                     
-                    <a name="M000202"></a><b>index</b>(randomly = true)
+                    <a name="M000211"></a><b>index</b>(randomly = true)
                     
                 </div>
                 
@@ -386,12 +376,12 @@ Runs the indexers in parallel (prepare + cache).
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000202_source')" id="l_M000202_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000211_source')" id="l_M000211_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/indexes_indexing.rb#L23" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/0e1e515c8df584602217aba2919fd588c07bb7b7/server/lib/picky/indexes_indexing.rb#L23" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000202_source" class="dyn-source">
+                    <div id="M000211_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/indexes_indexing.rb, line 23</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index</span> <span class="ruby-identifier">randomly</span> = <span class="ruby-keyword kw">true</span>
       <span class="ruby-comment cmt"># Run in parallel.</span>
@@ -410,9 +400,9 @@ Runs the indexers in parallel (prepare + cache).
             </div>
             
             <div class="method">
-                <div class="title" id="M000203">
+                <div class="title" id="M000212">
                     
-                    <a name="M000203"></a><b>index_for_tests</b>()
+                    <a name="M000212"></a><b>index_for_tests</b>()
                     
                 </div>
                 
@@ -420,6 +410,10 @@ Runs the indexers in parallel (prepare + cache).
                   <p>
 For integration testing – indexes for the tests without forking and
 shouting ;)
+</p>
+<p>
+TODO Rename to index_without_forking, or just <a
+href="Indexes.html#M000211">index</a>.
 </p>
 
                 </div>
@@ -429,13 +423,13 @@ shouting ;)
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000203_source')" id="l_M000203_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000212_source')" id="l_M000212_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/indexes_indexing.rb#L38" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/0e1e515c8df584602217aba2919fd588c07bb7b7/server/lib/picky/indexes_indexing.rb#L40" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000203_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/indexes_indexing.rb, line 38</span>
+                    <div id="M000212_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/indexes_indexing.rb, line 40</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index_for_tests</span>
       <span class="ruby-identifier">indexes</span>.<span class="ruby-identifier">each</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">:index</span>)
     <span class="ruby-keyword kw">end</span></pre>
@@ -445,9 +439,9 @@ shouting ;)
             </div>
             
             <div class="method">
-                <div class="title" id="M000200">
+                <div class="title" id="M000209">
                     
-                    <a name="M000200"></a><b>raise_not_found</b>(index_name)
+                    <a name="M000209"></a><b>raise_not_found</b>(index_name)
                     
                 </div>
                 
@@ -463,12 +457,12 @@ Raises a not found for the index.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000200_source')" id="l_M000200_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000209_source')" id="l_M000209_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/indexes.rb#L70" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000200_source" class="dyn-source">
+                    <div id="M000209_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/indexes.rb, line 70</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">raise_not_found</span> <span class="ruby-identifier">index_name</span>
       <span class="ruby-identifier">raise</span> <span class="ruby-node">%Q{Index &quot;#{index_name}&quot; not found. Possible indexes: &quot;#{indexes.map(&amp;:name).join('&quot;, &quot;')}&quot;.}</span>
@@ -479,9 +473,9 @@ Raises a not found for the index.
             </div>
             
             <div class="method">
-                <div class="title" id="M000197">
+                <div class="title" id="M000206">
                     
-                    <a name="M000197"></a><b>register</b>(index)
+                    <a name="M000206"></a><b>register</b>(index)
                     
                 </div>
                 
@@ -497,12 +491,12 @@ Registers an index with the indexes.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000197_source')" id="l_M000197_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000206_source')" id="l_M000206_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/indexes.rb#L53" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000197_source" class="dyn-source">
+                    <div id="M000206_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/indexes.rb, line 53</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">register</span> <span class="ruby-identifier">index</span>
       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">indexes</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">index</span>
@@ -514,9 +508,9 @@ Registers an index with the indexes.
             </div>
             
             <div class="method">
-                <div class="title" id="M000201">
+                <div class="title" id="M000210">
                     
-                    <a name="M000201"></a><b>to_s</b>()
+                    <a name="M000210"></a><b>to_s</b>()
                     
                 </div>
                 
@@ -525,12 +519,12 @@ Registers an index with the indexes.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000201_source')" id="l_M000201_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000210_source')" id="l_M000210_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/indexes.rb#L76" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000201_source" class="dyn-source">
+                    <div id="M000210_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/indexes.rb, line 76</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
       <span class="ruby-identifier">indexes</span>.<span class="ruby-identifier">indented_to_s</span>
@@ -541,9 +535,9 @@ Registers an index with the indexes.
             </div>
             
             <div class="method">
-                <div class="title" id="M000204">
+                <div class="title" id="M000213">
                     
-                    <a name="M000204"></a><b>tokenizer</b>()
+                    <a name="M000213"></a><b>tokenizer</b>()
                     
                 </div>
                 
@@ -552,15 +546,15 @@ Registers an index with the indexes.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000204_source')" id="l_M000204_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000213_source')" id="l_M000213_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/indexes_indexing.rb#L44" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/0e1e515c8df584602217aba2919fd588c07bb7b7/server/lib/picky/indexes_indexing.rb#L46" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000204_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/indexes_indexing.rb, line 44</span>
+                    <div id="M000213_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/indexes_indexing.rb, line 46</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">tokenizer</span>
-      <span class="ruby-constant">Tokenizers</span><span class="ruby-operator">::</span><span class="ruby-constant">Index</span>.<span class="ruby-identifier">default</span>
+      <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">index_default</span>
     <span class="ruby-keyword kw">end</span></pre>
                     </div>
                 </div>

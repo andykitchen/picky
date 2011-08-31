@@ -87,13 +87,31 @@ possible.
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
     
+        <dt>B</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000098">backup</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>D</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000100">delete</a></li>
+                
+            </ul>
+        </dd>
+    
         <dt>I</dt>
         <dd>
             <ul>
                 
-                <li><a href="#M000092">identifier</a>,</li>
+                <li><a href="#M000094">identifier</a>,</li>
                 
-                <li><a href="#M000095">index_path</a></li>
+                <li><a href="#M000097">index_path</a></li>
                 
             </ul>
         </dd>
@@ -102,7 +120,7 @@ possible.
         <dd>
             <ul>
                 
-                <li><a href="#M000094">key_format</a></li>
+                <li><a href="#M000096">key_format</a></li>
                 
             </ul>
         </dd>
@@ -111,7 +129,28 @@ possible.
         <dd>
             <ul>
                 
-                <li><a href="#M000091">new</a></li>
+                <li><a href="#M000093">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>R</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000105">raise_cache_missing</a>,</li>
+                
+                <li><a href="#M000101">raise_unless_cache_exists</a>,</li>
+                
+                <li><a href="#M000102">raise_unless_index_exists</a>,</li>
+                
+                <li><a href="#M000109">raise_unless_index_ok</a>,</li>
+                
+                <li><a href="#M000103">raise_unless_similarity_exists</a>,</li>
+                
+                <li><a href="#M000107">raise_unless_similarity_ok</a>,</li>
+                
+                <li><a href="#M000099">restore</a></li>
                 
             </ul>
         </dd>
@@ -120,7 +159,7 @@ possible.
         <dd>
             <ul>
                 
-                <li><a href="#M000093">similar</a></li>
+                <li><a href="#M000095">similar</a></li>
                 
             </ul>
         </dd>
@@ -129,7 +168,20 @@ possible.
         <dd>
             <ul>
                 
-                <li><a href="#M000096">to_s</a></li>
+                <li><a href="#M000110">to_s</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>W</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000104">warn_cache_small</a>,</li>
+                
+                <li><a href="#M000108">warn_if_index_small</a>,</li>
+                
+                <li><a href="#M000106">warn_if_similarity_small</a></li>
                 
             </ul>
         </dd>
@@ -162,6 +214,14 @@ possible.
                 [R]
             </td>
             <td class='attr-name'>category</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>backend</td>
             <td class='attr-desc'></td>
         </tr>
         
@@ -201,6 +261,38 @@ possible.
             <td class='attr-rw'>
                 [RW]
             </td>
+            <td class='attr-name'>backend_inverted</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [RW]
+            </td>
+            <td class='attr-name'>backend_weights</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [RW]
+            </td>
+            <td class='attr-name'>backend_similarity</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [RW]
+            </td>
+            <td class='attr-name'>backend_configuration</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [RW]
+            </td>
             <td class='attr-name'>similarity_strategy</td>
             <td class='attr-desc'></td>
         </tr>
@@ -212,9 +304,9 @@ possible.
             <div class="sectiontitle">Class Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000091">
+                <div class="title" id="M000093">
                     
-                    <a name="M000091"></a><b>new</b>(name, category, similarity_strategy, options = {})
+                    <a name="M000093"></a><b>new</b>(name, category, backend, similarity_strategy, options = {})
                     
                 </div>
                 
@@ -223,23 +315,26 @@ possible.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000091_source')" id="l_M000091_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000093_source')" id="l_M000093_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/bundle.rb#L38" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/15f96902f4e216e209fe7f5db3999322da8082b2/server/lib/picky/bundle.rb#L44" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000091_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 38</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">category</span>, <span class="ruby-identifier">similarity_strategy</span>, <span class="ruby-identifier">options</span> = {}
-      <span class="ruby-ivar">@name</span>          = <span class="ruby-identifier">name</span>
-      <span class="ruby-ivar">@category</span>      = <span class="ruby-identifier">category</span>
-
-      <span class="ruby-ivar">@inverted</span>      = {}
-      <span class="ruby-ivar">@weights</span>       = {}
-      <span class="ruby-ivar">@similarity</span>    = {}
-      <span class="ruby-ivar">@configuration</span> = {} <span class="ruby-comment cmt"># A hash with config options.</span>
-
+                    <div id="M000093_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 44</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">category</span>, <span class="ruby-identifier">backend</span>, <span class="ruby-identifier">similarity_strategy</span>, <span class="ruby-identifier">options</span> = {}
+      <span class="ruby-ivar">@name</span>                = <span class="ruby-identifier">name</span>
+      <span class="ruby-ivar">@category</span>            = <span class="ruby-identifier">category</span>
       <span class="ruby-ivar">@similarity_strategy</span> = <span class="ruby-identifier">similarity_strategy</span>
+
+      <span class="ruby-comment cmt"># Extract specific indexes from backend.</span>
+      <span class="ruby-comment cmt">#</span>
+      <span class="ruby-comment cmt"># TODO Clean up all related.</span>
+      <span class="ruby-comment cmt">#</span>
+      <span class="ruby-ivar">@backend_inverted</span>      = <span class="ruby-identifier">backend</span>.<span class="ruby-identifier">create_inverted</span>      <span class="ruby-keyword kw">self</span>
+      <span class="ruby-ivar">@backend_weights</span>       = <span class="ruby-identifier">backend</span>.<span class="ruby-identifier">create_weights</span>       <span class="ruby-keyword kw">self</span>
+      <span class="ruby-ivar">@backend_similarity</span>    = <span class="ruby-identifier">backend</span>.<span class="ruby-identifier">create_similarity</span>    <span class="ruby-keyword kw">self</span>
+      <span class="ruby-ivar">@backend_configuration</span> = <span class="ruby-identifier">backend</span>.<span class="ruby-identifier">create_configuration</span> <span class="ruby-keyword kw">self</span>
     <span class="ruby-keyword kw">end</span></pre>
                     </div>
                 </div>
@@ -249,9 +344,83 @@ possible.
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000092">
+                <div class="title" id="M000098">
                     
-                    <a name="M000092"></a><b>identifier</b>()
+                    <a name="M000098"></a><b>backup</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Copies the indexes to the &#8220;backup&#8221; directory.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000098_source')" id="l_M000098_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/15f96902f4e216e209fe7f5db3999322da8082b2/server/lib/picky/bundle.rb#L96" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000098_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 96</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">backup</span>
+      <span class="ruby-ivar">@backend_inverted</span>.<span class="ruby-identifier">backup</span>      <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@backend_inverted</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-identifier">:backup</span>
+      <span class="ruby-ivar">@backend_weights</span>.<span class="ruby-identifier">backup</span>       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@backend_weights</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-identifier">:backup</span>
+      <span class="ruby-ivar">@backend_similarity</span>.<span class="ruby-identifier">backup</span>    <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@backend_similarity</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-identifier">:backup</span>
+      <span class="ruby-ivar">@backend_configuration</span>.<span class="ruby-identifier">backup</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@backend_configuration</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-identifier">:backup</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000100">
+                    
+                    <a name="M000100"></a><b>delete</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Delete all index files.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000100_source')" id="l_M000100_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/15f96902f4e216e209fe7f5db3999322da8082b2/server/lib/picky/bundle.rb#L114" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000100_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 114</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete</span>
+      <span class="ruby-ivar">@backend_inverted</span>.<span class="ruby-identifier">delete</span>       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@backend_inverted</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-identifier">:delete</span>
+      <span class="ruby-ivar">@backend_weights</span>.<span class="ruby-identifier">delete</span>        <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@backend_weights</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-identifier">:delete</span>
+      <span class="ruby-ivar">@backend_similarity</span>.<span class="ruby-identifier">delete</span>     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@backend_similarity</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-identifier">:delete</span>
+      <span class="ruby-ivar">@backend_configuration</span>.<span class="ruby-identifier">delete</span>  <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@backend_configuration</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-identifier">:delete</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000094">
+                    
+                    <a name="M000094"></a><b>identifier</b>()
                     
                 </div>
                 
@@ -260,13 +429,13 @@ possible.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000092_source')" id="l_M000092_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000094_source')" id="l_M000094_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/bundle.rb#L49" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/15f96902f4e216e209fe7f5db3999322da8082b2/server/lib/picky/bundle.rb#L58" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000092_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 49</span>
+                    <div id="M000094_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 58</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">identifier</span>
       <span class="ruby-node">&quot;#{category.identifier}:#{name}&quot;</span>
     <span class="ruby-keyword kw">end</span></pre>
@@ -276,9 +445,9 @@ possible.
             </div>
             
             <div class="method">
-                <div class="title" id="M000095">
+                <div class="title" id="M000097">
                     
-                    <a name="M000095"></a><b>index_path</b>(type)
+                    <a name="M000097"></a><b>index_path</b>(type = nil)
                     
                 </div>
                 
@@ -295,6 +464,9 @@ Subindexes are:
  * partial index
  * similarity index
 </pre>
+<p>
+Returns just the part without subindex type, if none given.
+</p>
 
                 </div>
                 
@@ -303,15 +475,15 @@ Subindexes are:
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000095_source')" id="l_M000095_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000097_source')" id="l_M000097_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/bundle.rb#L78" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/15f96902f4e216e209fe7f5db3999322da8082b2/server/lib/picky/bundle.rb#L90" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000095_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 78</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index_path</span> <span class="ruby-identifier">type</span>
-      <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span> <span class="ruby-identifier">index_directory</span>, <span class="ruby-node">&quot;#{category.name}_#{name}_#{type}&quot;</span>
+                    <div id="M000097_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 90</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index_path</span> <span class="ruby-identifier">type</span> = <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span> <span class="ruby-identifier">index_directory</span>, <span class="ruby-node">&quot;#{category.name}_#{name}#{ &quot;_#{type}&quot; if type }&quot;</span>
     <span class="ruby-keyword kw">end</span></pre>
                     </div>
                 </div>
@@ -319,9 +491,9 @@ Subindexes are:
             </div>
             
             <div class="method">
-                <div class="title" id="M000094">
+                <div class="title" id="M000096">
                     
-                    <a name="M000094"></a><b>key_format</b>()
+                    <a name="M000096"></a><b>key_format</b>()
                     
                 </div>
                 
@@ -337,13 +509,13 @@ If a key format is set, use it, else delegate to the category.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000094_source')" id="l_M000094_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000096_source')" id="l_M000096_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/bundle.rb#L66" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/15f96902f4e216e209fe7f5db3999322da8082b2/server/lib/picky/bundle.rb#L75" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000094_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 66</span>
+                    <div id="M000096_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 75</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">key_format</span>
       <span class="ruby-ivar">@key_format</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@category</span>.<span class="ruby-identifier">key_format</span>
     <span class="ruby-keyword kw">end</span></pre>
@@ -353,9 +525,259 @@ If a key format is set, use it, else delegate to the category.
             </div>
             
             <div class="method">
-                <div class="title" id="M000093">
+                <div class="title" id="M000105">
                     
-                    <a name="M000093"></a><b>similar</b>(text)
+                    <a name="M000105"></a><b>raise_cache_missing</b>(what)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Raises an appropriate error message for the given cache.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000105_source')" id="l_M000105_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/15f96902f4e216e209fe7f5db3999322da8082b2/server/lib/picky/bundle.rb#L153" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000105_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 153</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">raise_cache_missing</span> <span class="ruby-identifier">what</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Error: The #{what} cache for #{identifier} is missing.&quot;</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000101">
+                    
+                    <a name="M000101"></a><b>raise_unless_cache_exists</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alerts the user if an index is missing.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000101_source')" id="l_M000101_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/15f96902f4e216e209fe7f5db3999322da8082b2/server/lib/picky/bundle.rb#L123" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000101_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 123</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">raise_unless_cache_exists</span>
+      <span class="ruby-identifier">raise_unless_index_exists</span>
+      <span class="ruby-identifier">raise_unless_similarity_exists</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000102">
+                    
+                    <a name="M000102"></a><b>raise_unless_index_exists</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alerts the user if one of the necessary indexes (core, weights) is missing.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000102_source')" id="l_M000102_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/15f96902f4e216e209fe7f5db3999322da8082b2/server/lib/picky/bundle.rb#L130" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000102_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 130</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">raise_unless_index_exists</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">partial_strategy</span>.<span class="ruby-identifier">saved?</span>
+        <span class="ruby-identifier">warn_if_index_small</span>
+        <span class="ruby-identifier">raise_unless_index_ok</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000109">
+                    
+                    <a name="M000109"></a><b>raise_unless_index_ok</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alerts the user if the core or weights indexes are not there.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000109_source')" id="l_M000109_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/15f96902f4e216e209fe7f5db3999322da8082b2/server/lib/picky/bundle.rb#L176" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000109_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 176</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">raise_unless_index_ok</span>
+      <span class="ruby-identifier">raise_cache_missing</span> <span class="ruby-identifier">:inverted</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">backend_inverted</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:cache_ok?</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">backend_inverted</span>.<span class="ruby-identifier">cache_ok?</span>
+      <span class="ruby-identifier">raise_cache_missing</span> <span class="ruby-identifier">:weights</span>  <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">backend_weights</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:cache_ok?</span>)  <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">backend_weights</span>.<span class="ruby-identifier">cache_ok?</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000103">
+                    
+                    <a name="M000103"></a><b>raise_unless_similarity_exists</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alerts the user if the similarity index is missing (given that it&#8217;s
+used).
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000103_source')" id="l_M000103_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/15f96902f4e216e209fe7f5db3999322da8082b2/server/lib/picky/bundle.rb#L139" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000103_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 139</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">raise_unless_similarity_exists</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">similarity_strategy</span>.<span class="ruby-identifier">saved?</span>
+        <span class="ruby-identifier">warn_if_similarity_small</span>
+        <span class="ruby-identifier">raise_unless_similarity_ok</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000107">
+                    
+                    <a name="M000107"></a><b>raise_unless_similarity_ok</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alerts the user if the similarity index is not there.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000107_source')" id="l_M000107_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/15f96902f4e216e209fe7f5db3999322da8082b2/server/lib/picky/bundle.rb#L164" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000107_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 164</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">raise_unless_similarity_ok</span>
+      <span class="ruby-identifier">raise_cache_missing</span> <span class="ruby-identifier">:similarity</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">backend_similarity</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:cache_ok?</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">backend_similarity</span>.<span class="ruby-identifier">cache_ok?</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000099">
+                    
+                    <a name="M000099"></a><b>restore</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Restores the indexes from the &#8220;backup&#8221; directory.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000099_source')" id="l_M000099_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/15f96902f4e216e209fe7f5db3999322da8082b2/server/lib/picky/bundle.rb#L105" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000099_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 105</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">restore</span>
+      <span class="ruby-ivar">@backend_inverted</span>.<span class="ruby-identifier">restore</span>       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@backend_inverted</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-identifier">:restore</span>
+      <span class="ruby-ivar">@backend_weights</span>.<span class="ruby-identifier">restore</span>        <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@backend_weights</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-identifier">:restore</span>
+      <span class="ruby-ivar">@backend_similarity</span>.<span class="ruby-identifier">restore</span>     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@backend_similarity</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-identifier">:restore</span>
+      <span class="ruby-ivar">@backend_configuration</span>.<span class="ruby-identifier">restore</span>  <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@backend_configuration</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-identifier">:restore</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000095">
+                    
+                    <a name="M000095"></a><b>similar</b>(text)
                     
                 </div>
                 
@@ -374,13 +796,13 @@ Note: Does not return itself.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000093_source')" id="l_M000093_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000095_source')" id="l_M000095_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/bundle.rb#L57" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/15f96902f4e216e209fe7f5db3999322da8082b2/server/lib/picky/bundle.rb#L66" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000093_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 57</span>
+                    <div id="M000095_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 66</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">similar</span> <span class="ruby-identifier">text</span>
       <span class="ruby-identifier">code</span> = <span class="ruby-identifier">similarity_strategy</span>.<span class="ruby-identifier">encoded</span> <span class="ruby-identifier">text</span>
       <span class="ruby-identifier">similar_codes</span> = <span class="ruby-identifier">code</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@similarity</span>[<span class="ruby-identifier">code</span>]
@@ -393,9 +815,9 @@ Note: Does not return itself.
             </div>
             
             <div class="method">
-                <div class="title" id="M000096">
+                <div class="title" id="M000110">
                     
-                    <a name="M000096"></a><b>to_s</b>()
+                    <a name="M000110"></a><b>to_s</b>()
                     
                 </div>
                 
@@ -404,15 +826,118 @@ Note: Does not return itself.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000096_source')" id="l_M000096_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000110_source')" id="l_M000110_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/bundle.rb#L82" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/15f96902f4e216e209fe7f5db3999322da8082b2/server/lib/picky/bundle.rb#L181" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000096_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 82</span>
+                    <div id="M000110_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 181</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
       <span class="ruby-node">&quot;#{self.class}(#{identifier})&quot;</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000104">
+                    
+                    <a name="M000104"></a><b>warn_cache_small</b>(what)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Outputs a warning for the given cache.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000104_source')" id="l_M000104_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/15f96902f4e216e209fe7f5db3999322da8082b2/server/lib/picky/bundle.rb#L148" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000104_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 148</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">warn_cache_small</span> <span class="ruby-identifier">what</span>
+      <span class="ruby-identifier">warn</span> <span class="ruby-node">&quot;Warning: #{what} cache for #{identifier} smaller than 16 bytes.&quot;</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000108">
+                    
+                    <a name="M000108"></a><b>warn_if_index_small</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Warns the user if the core or weights indexes are small.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000108_source')" id="l_M000108_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/15f96902f4e216e209fe7f5db3999322da8082b2/server/lib/picky/bundle.rb#L170" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000108_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 170</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">warn_if_index_small</span>
+      <span class="ruby-identifier">warn_cache_small</span> <span class="ruby-identifier">:inverted</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">backend_inverted</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:cache_small?</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">backend_inverted</span>.<span class="ruby-identifier">cache_small?</span>
+      <span class="ruby-identifier">warn_cache_small</span> <span class="ruby-identifier">:weights</span>  <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">backend_weights</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:cache_small?</span>)  <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">backend_weights</span>.<span class="ruby-identifier">cache_small?</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000106">
+                    
+                    <a name="M000106"></a><b>warn_if_similarity_small</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Warns the user if the similarity index is small.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000106_source')" id="l_M000106_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/15f96902f4e216e209fe7f5db3999322da8082b2/server/lib/picky/bundle.rb#L159" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000106_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/bundle.rb, line 159</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">warn_if_similarity_small</span>
+      <span class="ruby-identifier">warn_cache_small</span> <span class="ruby-identifier">:similarity</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">backend_similarity</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:cache_small?</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">backend_similarity</span>.<span class="ruby-identifier">cache_small?</span>
     <span class="ruby-keyword kw">end</span></pre>
                     </div>
                 </div>

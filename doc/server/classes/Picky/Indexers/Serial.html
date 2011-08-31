@@ -59,7 +59,7 @@ Note: It is called serial since it indexes each category separately.
         <dd>
             <ul>
                 
-                <li><a href="#M000157">process</a></li>
+                <li><a href="#M000199">process</a></li>
                 
             </ul>
         </dd>
@@ -81,9 +81,9 @@ Note: It is called serial since it indexes each category separately.
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000157">
+                <div class="title" id="M000199">
                     
-                    <a name="M000157"></a><b>process</b>(categories)
+                    <a name="M000199"></a><b>process</b>(categories)
                     
                 </div>
                 
@@ -106,12 +106,12 @@ Parameters:
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000157_source')" id="l_M000157_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000199_source')" id="l_M000199_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/indexers/serial.rb#L19" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/67f3f56e96efaf2c3ad96c0233cd90e730bfeed0/server/lib/picky/indexers/serial.rb#L19" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000157_source" class="dyn-source">
+                    <div id="M000199_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/indexers/serial.rb, line 19</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">process</span> <span class="ruby-identifier">categories</span>
         <span class="ruby-identifier">comma</span>   = <span class="ruby-value">?,</span>
@@ -125,7 +125,8 @@ Parameters:
             <span class="ruby-identifier">result</span> = []
 
             <span class="ruby-identifier">source</span>.<span class="ruby-identifier">harvest</span>(<span class="ruby-identifier">category</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">indexed_id</span>, <span class="ruby-identifier">text</span><span class="ruby-operator">|</span>
-              <span class="ruby-identifier">tokenizer</span>.<span class="ruby-identifier">tokenize</span>(<span class="ruby-identifier">text</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">token_text</span><span class="ruby-operator">|</span>
+              <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">_</span> = <span class="ruby-identifier">tokenizer</span>.<span class="ruby-identifier">tokenize</span> <span class="ruby-identifier">text</span> <span class="ruby-comment cmt"># Note: Originals not needed.</span>
+              <span class="ruby-identifier">tokens</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">token_text</span><span class="ruby-operator">|</span>
                 <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">token_text</span>
                 <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">indexed_id</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">comma</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">token_text</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">newline</span>
               <span class="ruby-keyword kw">end</span>

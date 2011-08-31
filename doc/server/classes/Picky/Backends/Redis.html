@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Picky::Backends::Redis</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Picky::Backends::Redis 
+            
+                <span class="parent">&lt; 
+                    
+                    Backend
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/lib/picky/backends/redis/basic_rb.html">lib/picky/backends/redis/basic.rb</a></li>
+            
+            <li><a href="../../../files/lib/picky/backends/redis/float_rb.html">lib/picky/backends/redis/float.rb</a></li>
+            
+            <li><a href="../../../files/lib/picky/backends/redis/list_rb.html">lib/picky/backends/redis/list.rb</a></li>
+            
+            <li><a href="../../../files/lib/picky/backends/redis/string_rb.html">lib/picky/backends/redis/string.rb</a></li>
+            
+            <li><a href="../../../files/lib/picky/backends/redis_rb.html">lib/picky/backends/redis.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000087">create_configuration</a>,</li>
+                
+                <li><a href="#M000084">create_inverted</a>,</li>
+                
+                <li><a href="#M000086">create_similarity</a>,</li>
+                
+                <li><a href="#M000085">create_weights</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>E</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000089">extract_host</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>G</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000092">generate_intermediate_result_id</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>H</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000090">host</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>I</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000088">ids</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000083">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>P</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000091">pid</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Classes and Modules</div>
+    <ul>
+        
+        <li><span class="type">CLASS</span> <a href="Redis/Basic.html">Picky::Backends::Redis::Basic</a></li>
+        
+        <li><span class="type">CLASS</span> <a href="Redis/Float.html">Picky::Backends::Redis::Float</a></li>
+        
+        <li><span class="type">CLASS</span> <a href="Redis/List.html">Picky::Backends::Redis::List</a></li>
+        
+        <li><span class="type">CLASS</span> <a href="Redis/String.html">Picky::Backends::Redis::String</a></li>
+        
+    </ul>
+    
+
+    
+
+    
+    <div class="sectiontitle">Attributes</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>client</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+    </table>
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000089">
+                    
+                    <a name="M000089"></a><b>extract_host</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000089_source')" id="l_M000089_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/222c07a88747acdb4892bb1f8112266607570bed/server/lib/picky/backends/redis.rb#L77" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000089_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/redis.rb, line 77</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">extract_host</span>
+        <span class="ruby-ivar">@host</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Socket</span>.<span class="ruby-identifier">gethostname</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000083">
+                    
+                    <a name="M000083"></a><b>new</b>(options = {})
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000083_source')" id="l_M000083_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/222c07a88747acdb4892bb1f8112266607570bed/server/lib/picky/backends/redis.rb#L11" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000083_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/redis.rb, line 11</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">options</span> = {}
+        <span class="ruby-ivar">@client</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:client</span>] <span class="ruby-operator">||</span> <span class="ruby-operator">::</span><span class="ruby-constant">Redis</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:db</span> =<span class="ruby-operator">&gt;</span> (<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:db</span>] <span class="ruby-operator">||</span> <span class="ruby-value">15</span>))
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000087">
+                    
+                    <a name="M000087"></a><b>create_configuration</b>(bundle)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns an object that responds to:
+</p>
+<pre>
+  [:key] # =&gt; value (a value for this config key)
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000087_source')" id="l_M000087_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/222c07a88747acdb4892bb1f8112266607570bed/server/lib/picky/backends/redis.rb#L36" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000087_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/redis.rb, line 36</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_configuration</span> <span class="ruby-identifier">bundle</span>
+        <span class="ruby-constant">String</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">client</span>, <span class="ruby-node">&quot;#{bundle.identifier}:configuration&quot;</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000084">
+                    
+                    <a name="M000084"></a><b>create_inverted</b>(bundle)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns an object that responds to:
+</p>
+<pre>
+  [:token] # =&gt; [id, id, id, id, id] (an array of ids)
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000084_source')" id="l_M000084_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/222c07a88747acdb4892bb1f8112266607570bed/server/lib/picky/backends/redis.rb#L18" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000084_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/redis.rb, line 18</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_inverted</span> <span class="ruby-identifier">bundle</span>
+        <span class="ruby-constant">List</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">client</span>, <span class="ruby-node">&quot;#{bundle.identifier}:inverted&quot;</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000086">
+                    
+                    <a name="M000086"></a><b>create_similarity</b>(bundle)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns an object that responds to:
+</p>
+<pre>
+  [:encoded] # =&gt; [:original, :original] (an array of original symbols this similarity encoded thing maps to)
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000086_source')" id="l_M000086_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/222c07a88747acdb4892bb1f8112266607570bed/server/lib/picky/backends/redis.rb#L30" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000086_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/redis.rb, line 30</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_similarity</span> <span class="ruby-identifier">bundle</span>
+        <span class="ruby-constant">List</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">client</span>, <span class="ruby-node">&quot;#{bundle.identifier}:similarity&quot;</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000085">
+                    
+                    <a name="M000085"></a><b>create_weights</b>(bundle)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns an object that responds to:
+</p>
+<pre>
+  [:token] # =&gt; 1.23 (a weight)
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000085_source')" id="l_M000085_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/222c07a88747acdb4892bb1f8112266607570bed/server/lib/picky/backends/redis.rb#L24" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000085_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/redis.rb, line 24</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_weights</span> <span class="ruby-identifier">bundle</span>
+        <span class="ruby-constant">Float</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">client</span>, <span class="ruby-node">&quot;#{bundle.identifier}:weights&quot;</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000092">
+                    
+                    <a name="M000092"></a><b>generate_intermediate_result_id</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Use the host and pid (generated lazily in child processes) for the result.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000092_source')" id="l_M000092_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/222c07a88747acdb4892bb1f8112266607570bed/server/lib/picky/backends/redis.rb#L89" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000092_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/redis.rb, line 89</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">generate_intermediate_result_id</span>
+        <span class="ruby-identifier">:&quot;#{host}:#{pid}:picky:result&quot;</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000090">
+                    
+                    <a name="M000090"></a><b>host</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000090_source')" id="l_M000090_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/222c07a88747acdb4892bb1f8112266607570bed/server/lib/picky/backends/redis.rb#L80" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000090_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/redis.rb, line 80</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">host</span>
+        <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">extract_host</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000088">
+                    
+                    <a name="M000088"></a><b>ids</b>(combinations, amount, offset)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns the result ids for the allocation.
+</p>
+<p>
+Developers wanting to program fast intersection routines, can do so
+analogue to this in their own backend implementations.
+</p>
+<p>
+Note: We use the amount and offset hints to speed <a
+href="Redis.html">Redis</a> up.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000088_source')" id="l_M000088_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/222c07a88747acdb4892bb1f8112266607570bed/server/lib/picky/backends/redis.rb#L48" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000088_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/redis.rb, line 48</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ids</span> <span class="ruby-identifier">combinations</span>, <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>
+        <span class="ruby-identifier">identifiers</span> = <span class="ruby-identifier">combinations</span>.<span class="ruby-identifier">inject</span>([]) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">identifiers</span>, <span class="ruby-identifier">combination</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">identifiers</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{combination.identifier}&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">result_id</span> = <span class="ruby-identifier">generate_intermediate_result_id</span>
+
+        <span class="ruby-comment cmt"># Intersect and store.</span>
+        <span class="ruby-comment cmt">#</span>
+        <span class="ruby-identifier">client</span>.<span class="ruby-identifier">zinterstore</span> <span class="ruby-identifier">result_id</span>, <span class="ruby-identifier">identifiers</span>
+
+        <span class="ruby-comment cmt"># Get the stored result.</span>
+        <span class="ruby-comment cmt">#</span>
+        <span class="ruby-identifier">results</span> = <span class="ruby-identifier">client</span>.<span class="ruby-identifier">zrange</span> <span class="ruby-identifier">result_id</span>, <span class="ruby-identifier">offset</span>, (<span class="ruby-identifier">offset</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">amount</span>)
+
+        <span class="ruby-comment cmt"># Delete the stored result as it was only for temporary purposes.</span>
+        <span class="ruby-comment cmt">#</span>
+        <span class="ruby-comment cmt"># Note: I could also not delete it, but that would not be clean at all.</span>
+        <span class="ruby-comment cmt">#</span>
+        <span class="ruby-identifier">client</span>.<span class="ruby-identifier">del</span> <span class="ruby-identifier">result_id</span>
+
+        <span class="ruby-identifier">results</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000091">
+                    
+                    <a name="M000091"></a><b>pid</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000091_source')" id="l_M000091_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/222c07a88747acdb4892bb1f8112266607570bed/server/lib/picky/backends/redis.rb#L84" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000091_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/redis.rb, line 84</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">pid</span>
+        <span class="ruby-ivar">@pid</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Process</span>.<span class="ruby-identifier">pid</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

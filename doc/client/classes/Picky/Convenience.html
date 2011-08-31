@@ -50,9 +50,7 @@ Use this class to extend the hash that the client returns.
         <dd>
             <ul>
                 
-                <li><a href="#M000024">allocations</a>,</li>
-                
-                <li><a href="#M000025">allocations_size</a></li>
+                <li><a href="#M000032">allocations</a></li>
                 
             </ul>
         </dd>
@@ -61,7 +59,7 @@ Use this class to extend the hash that the client returns.
         <dd>
             <ul>
                 
-                <li><a href="#M000023">clear_ids</a></li>
+                <li><a href="#M000037">clear_ids</a></li>
                 
             </ul>
         </dd>
@@ -70,9 +68,9 @@ Use this class to extend the hash that the client returns.
         <dd>
             <ul>
                 
-                <li><a href="#M000021">empty?</a>,</li>
+                <li><a href="#M000030">empty?</a>,</li>
                 
-                <li><a href="#M000028">entries</a></li>
+                <li><a href="#M000035">entries</a></li>
                 
             </ul>
         </dd>
@@ -81,7 +79,7 @@ Use this class to extend the hash that the client returns.
         <dd>
             <ul>
                 
-                <li><a href="#M000022">ids</a></li>
+                <li><a href="#M000031">ids</a></li>
                 
             </ul>
         </dd>
@@ -90,7 +88,7 @@ Use this class to extend the hash that the client returns.
         <dd>
             <ul>
                 
-                <li><a href="#M000027">populate_with</a></li>
+                <li><a href="#M000034">populate_with</a></li>
                 
             </ul>
         </dd>
@@ -99,7 +97,7 @@ Use this class to extend the hash that the client returns.
         <dd>
             <ul>
                 
-                <li><a href="#M000026">total</a></li>
+                <li><a href="#M000033">total</a></li>
                 
             </ul>
         </dd>
@@ -121,9 +119,9 @@ Use this class to extend the hash that the client returns.
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000024">
+                <div class="title" id="M000032">
                     
-                    <a name="M000024"></a><b>allocations</b>()
+                    <a name="M000032"></a><b>allocations</b>()
                     
                 </div>
                 
@@ -139,15 +137,15 @@ Returns the allocations.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000024_source')" id="l_M000024_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000032_source')" id="l_M000032_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/9932bd2a72e309518b074314352d8771b217dd66/client/lib/picky-client/convenience.rb#L33" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/70d43a96909939b9ef8de15a5e499671d41857a3/client/lib/picky-client/convenience.rb#L27" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000024_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 33</span>
+                    <div id="M000032_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 27</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">allocations</span>
-      <span class="ruby-ivar">@allocations</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@allocations</span> = <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">:allocations</span>]
+      <span class="ruby-ivar">@allocations</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">:allocations</span>]
     <span class="ruby-keyword kw">end</span></pre>
                     </div>
                 </div>
@@ -155,43 +153,9 @@ Returns the allocations.
             </div>
             
             <div class="method">
-                <div class="title" id="M000025">
+                <div class="title" id="M000037">
                     
-                    <a name="M000025"></a><b>allocations_size</b>()
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-Returns the number of allocations.
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000025_source')" id="l_M000025_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/9932bd2a72e309518b074314352d8771b217dd66/client/lib/picky-client/convenience.rb#L38" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000025_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 38</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">allocations_size</span>
-      <span class="ruby-ivar">@allocations_size</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@allocations_size</span> = <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">size</span>
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <div class="method">
-                <div class="title" id="M000023">
-                    
-                    <a name="M000023"></a><b>clear_ids</b>()
+                    <a name="M000037"></a><b>clear_ids</b>()
                     
                 </div>
                 
@@ -207,13 +171,13 @@ Removes all ids of each allocation.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000023_source')" id="l_M000023_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000037_source')" id="l_M000037_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/9932bd2a72e309518b074314352d8771b217dd66/client/lib/picky-client/convenience.rb#L27" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/70d43a96909939b9ef8de15a5e499671d41857a3/client/lib/picky-client/convenience.rb#L108" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000023_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 27</span>
+                    <div id="M000037_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 108</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear_ids</span>
       <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">allocation</span><span class="ruby-operator">|</span> <span class="ruby-identifier">allocation</span>[<span class="ruby-value">4</span>].<span class="ruby-identifier">clear</span> }
     <span class="ruby-keyword kw">end</span></pre>
@@ -223,9 +187,9 @@ Removes all ids of each allocation.
             </div>
             
             <div class="method">
-                <div class="title" id="M000021">
+                <div class="title" id="M000030">
                     
-                    <a name="M000021"></a><b>empty?</b>()
+                    <a name="M000030"></a><b>empty?</b>()
                     
                 </div>
                 
@@ -241,12 +205,12 @@ Are there any allocations?
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000021_source')" id="l_M000021_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000030_source')" id="l_M000030_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/9932bd2a72e309518b074314352d8771b217dd66/client/lib/picky-client/convenience.rb#L9" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/70d43a96909939b9ef8de15a5e499671d41857a3/client/lib/picky-client/convenience.rb#L9" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000021_source" class="dyn-source">
+                    <div id="M000030_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 9</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">empty?</span>
       <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">empty?</span>
@@ -257,9 +221,9 @@ Are there any allocations?
             </div>
             
             <div class="method">
-                <div class="title" id="M000028">
+                <div class="title" id="M000035">
                     
-                    <a name="M000028"></a><b>entries</b>(limit = 20)
+                    <a name="M000035"></a><b>entries</b>(limit = 20)
                     
                 </div>
                 
@@ -269,7 +233,7 @@ Returns either
 </p>
 <ul>
 <li>the rendered entries, if you have used <a
-href="Convenience.html#M000027">populate_with</a> <em>with</em> a block
+href="Convenience.html#M000034">populate_with</a> <em>with</em> a block
 
 </li>
 </ul>
@@ -278,13 +242,13 @@ OR
 </p>
 <ul>
 <li>the model instances, if you have used <a
-href="Convenience.html#M000027">populate_with</a> <em>without</em> a block
+href="Convenience.html#M000034">populate_with</a> <em>without</em> a block
 
 </li>
 </ul>
 <p>
 Or, if you haven&#8217;t called <a
-href="Convenience.html#M000027">populate_with</a> yet, you will get an
+href="Convenience.html#M000034">populate_with</a> yet, you will get an
 empty array.
 </p>
 
@@ -295,13 +259,13 @@ empty array.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000028_source')" id="l_M000028_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000035_source')" id="l_M000035_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/9932bd2a72e309518b074314352d8771b217dd66/client/lib/picky-client/convenience.rb#L92" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/70d43a96909939b9ef8de15a5e499671d41857a3/client/lib/picky-client/convenience.rb#L82" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000028_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 92</span>
+                    <div id="M000035_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 82</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">entries</span> <span class="ruby-identifier">limit</span> = <span class="ruby-value">20</span>
       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
         <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
@@ -318,9 +282,9 @@ empty array.
             </div>
             
             <div class="method">
-                <div class="title" id="M000022">
+                <div class="title" id="M000031">
                     
-                    <a name="M000022"></a><b>ids</b>(limit = nil)
+                    <a name="M000031"></a><b>ids</b>(limit = nil)
                     
                 </div>
                 
@@ -343,12 +307,12 @@ results. By default only maximally 20.)
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000022_source')" id="l_M000022_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000031_source')" id="l_M000031_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/9932bd2a72e309518b074314352d8771b217dd66/client/lib/picky-client/convenience.rb#L19" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/70d43a96909939b9ef8de15a5e499671d41857a3/client/lib/picky-client/convenience.rb#L19" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000022_source" class="dyn-source">
+                    <div id="M000031_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 19</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ids</span> <span class="ruby-identifier">limit</span> = <span class="ruby-keyword kw">nil</span>
       <span class="ruby-identifier">ids</span> = []
@@ -361,9 +325,9 @@ results. By default only maximally 20.)
             </div>
             
             <div class="method">
-                <div class="title" id="M000027">
+                <div class="title" id="M000034">
                     
-                    <a name="M000027"></a><b>populate_with</b>(model_class, options = {})
+                    <a name="M000034"></a><b>populate_with</b>(model_class, options = {})
                     
                 </div>
                 
@@ -403,13 +367,13 @@ ModelClass.find(ids, options) method. Default is {}.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000027_source')" id="l_M000027_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000034_source')" id="l_M000034_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/9932bd2a72e309518b074314352d8771b217dd66/client/lib/picky-client/convenience.rb#L61" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/70d43a96909939b9ef8de15a5e499671d41857a3/client/lib/picky-client/convenience.rb#L51" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000027_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 61</span>
+                    <div id="M000034_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 51</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">populate_with</span> <span class="ruby-identifier">model_class</span>, <span class="ruby-identifier">options</span> = {}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>
       <span class="ruby-identifier">the_ids</span> = <span class="ruby-identifier">ids</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:up_to</span>)
 
@@ -439,9 +403,9 @@ ModelClass.find(ids, options) method. Default is {}.
             </div>
             
             <div class="method">
-                <div class="title" id="M000026">
+                <div class="title" id="M000033">
                     
-                    <a name="M000026"></a><b>total</b>()
+                    <a name="M000033"></a><b>total</b>()
                     
                 </div>
                 
@@ -457,13 +421,13 @@ Returns the total of results.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000026_source')" id="l_M000026_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000033_source')" id="l_M000033_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/9932bd2a72e309518b074314352d8771b217dd66/client/lib/picky-client/convenience.rb#L43" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/70d43a96909939b9ef8de15a5e499671d41857a3/client/lib/picky-client/convenience.rb#L33" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000026_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 43</span>
+                    <div id="M000033_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 33</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">total</span>
       <span class="ruby-ivar">@total</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@total</span> = <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">:total</span>]
     <span class="ruby-keyword kw">end</span></pre>

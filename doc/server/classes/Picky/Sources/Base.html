@@ -42,7 +42,7 @@
 A source has 1 mandatory and 2 optional methods:
 </p>
 <ul>
-<li><a href="Base.html#M000269">connect_backend</a> (<em>optional</em>): called
+<li><a href="Base.html#M000276">connect_backend</a> (<em>optional</em>): called
 once for each type/category pair.
 
 </li>
@@ -50,7 +50,7 @@ once for each type/category pair.
 or integer) and a string value.
 
 </li>
-<li><a href="Base.html#M000270">take_snapshot</a> (<em>optional</em>): called
+<li><a href="Base.html#M000277">take_snapshot</a> (<em>optional</em>): called
 once for each index or category (if indexing a single category).
 
 </li>
@@ -78,7 +78,7 @@ Base</tt> and override the methods in your source to do something.
         <dd>
             <ul>
                 
-                <li><a href="#M000269">connect_backend</a></li>
+                <li><a href="#M000276">connect_backend</a></li>
                 
             </ul>
         </dd>
@@ -87,7 +87,7 @@ Base</tt> and override the methods in your source to do something.
         <dd>
             <ul>
                 
-                <li><a href="#M000270">take_snapshot</a></li>
+                <li><a href="#M000277">take_snapshot</a></li>
                 
             </ul>
         </dd>
@@ -96,7 +96,7 @@ Base</tt> and override the methods in your source to do something.
         <dd>
             <ul>
                 
-                <li><a href="#M000271">with_snapshot</a></li>
+                <li><a href="#M000278">with_snapshot</a></li>
                 
             </ul>
         </dd>
@@ -131,9 +131,9 @@ Base</tt> and override the methods in your source to do something.
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000269">
+                <div class="title" id="M000276">
                     
-                    <a name="M000269"></a><b>connect_backend</b>()
+                    <a name="M000276"></a><b>connect_backend</b>()
                     
                 </div>
                 
@@ -167,12 +167,12 @@ adapter.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000269_source')" id="l_M000269_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000276_source')" id="l_M000276_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/sources/base.rb#L41" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000269_source" class="dyn-source">
+                    <div id="M000276_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/sources/base.rb, line 41</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">connect_backend</span>
 
@@ -183,9 +183,9 @@ adapter.
             </div>
             
             <div class="method">
-                <div class="title" id="M000270">
+                <div class="title" id="M000277">
                     
-                    <a name="M000270"></a><b>take_snapshot</b>(index)
+                    <a name="M000277"></a><b>take_snapshot</b>(index)
                     
                 </div>
                 
@@ -215,12 +215,12 @@ select statement is created.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000270_source')" id="l_M000270_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000277_source')" id="l_M000277_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/sources/base.rb#L68" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000270_source" class="dyn-source">
+                    <div id="M000277_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/sources/base.rb, line 68</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">take_snapshot</span> <span class="ruby-identifier">index</span>
 
@@ -231,9 +231,9 @@ select statement is created.
             </div>
             
             <div class="method">
-                <div class="title" id="M000271">
+                <div class="title" id="M000278">
                     
-                    <a name="M000271"></a><b>with_snapshot</b>(index)
+                    <a name="M000278"></a><b>with_snapshot</b>(index)
                     
                 </div>
                 
@@ -258,12 +258,12 @@ select statement is created.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000271_source')" id="l_M000271_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000278_source')" id="l_M000278_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/sources/base.rb#L77" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000271_source" class="dyn-source">
+                    <div id="M000278_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/sources/base.rb, line 77</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">with_snapshot</span> <span class="ruby-identifier">index</span>
         <span class="ruby-identifier">connect_backend</span>

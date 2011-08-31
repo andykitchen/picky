@@ -19,7 +19,7 @@
         </h1>
         <ul class="files">
             <li>lib/tasks/statistics.rake</li>
-            <li>Last modified: 2011-07-06 20:44:20 +1000</li>
+            <li>Last modified: Tue Aug 16 23:38:50 +0200 2011</li>
         </ul>
     </div>
 
@@ -35,11 +35,11 @@ optional).&#8221; task :analyze, [:index, :category] =>
 <pre>
   index, category = options.index, options.category
 
-  specific = Indexes
+  specific = Picky::Indexes
   specific = specific[index]    if index
   specific = specific[category] if category
 
-  statistics = Statistics.new
+  statistics = Picky::Statistics.new
 
   begin
     statistics.analyze specific
@@ -57,7 +57,7 @@ end
 task :stats => :&#8217;stats:prepare&#8217; do
 </p>
 <pre>
-  stats = Statistics.new
+  stats = Picky::Statistics.new
   puts stats.application
 </pre>
 <p>

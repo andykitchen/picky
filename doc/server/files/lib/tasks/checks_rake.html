@@ -19,7 +19,7 @@
         </h1>
         <ul class="files">
             <li>lib/tasks/checks.rake</li>
-            <li>Last modified: 2011-07-06 20:22:56 +1000</li>
+            <li>Last modified: Tue Aug 16 23:37:06 +0200 2011</li>
         </ul>
     </div>
 
@@ -35,7 +35,7 @@ small/missing (index, category optional).&#8217; task :check, [:index,
 <pre>
   index, category = options.index, options.category
 
-  specific = Indexes
+  specific = Picky::Indexes
   specific = specific[index]    if index
   specific = specific[category] if category
   specific.check

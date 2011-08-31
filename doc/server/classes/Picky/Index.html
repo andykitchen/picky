@@ -1,0 +1,1297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Picky::Index</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Picky::Index 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/picky/index_indexed_rb.html">lib/picky/index_indexed.rb</a></li>
+            
+            <li><a href="../../files/lib/picky/index_rb.html">lib/picky/index.rb</a></li>
+            
+            <li><a href="../../files/lib/picky/index_indexing_rb.html">lib/picky/index_indexing.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>A</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000190">after_indexing</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>B</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000167">backend</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000168">category</a>,</li>
+                
+                <li><a href="#M000176">check_source_empty</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>D</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000191">define_after_indexing</a>,</li>
+                
+                <li><a href="#M000169">define_category</a>,</li>
+                
+                <li><a href="#M000175">define_indexing</a>,</li>
+                
+                <li><a href="#M000189">define_key_format</a>,</li>
+                
+                <li><a href="#M000171">define_ranged_category</a>,</li>
+                
+                <li><a href="#M000165">define_result_identifier</a>,</li>
+                
+                <li><a href="#M000183">define_source</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>E</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000182">extract_source</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>I</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000184">identifier</a>,</li>
+                
+                <li><a href="#M000172">index</a>,</li>
+                
+                <li><a href="#M000179">index_in_parallel</a>,</li>
+                
+                <li><a href="#M000174">indexing</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>K</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000188">key_format</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000166">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>R</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000186">raise_no_source</a>,</li>
+                
+                <li><a href="#M000170">ranged_category</a>,</li>
+                
+                <li><a href="#M000164">result_identifier</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>S</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000181">source</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000185">to_s</a>,</li>
+                
+                <li><a href="#M000180">tokenizer</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>W</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000177">with_data_snapshot</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Attributes</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>combinator</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>name</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>categories</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>bundle_class</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+    </table>
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000166">
+                    
+                    <a name="M000166"></a><b>new</b>(name, options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Create a new index with a given source.
+</p>
+<h3>Parameters</h3>
+<ul>
+<li>name: A name that will be used for the index directory and in the Picky
+front end.
+
+</li>
+</ul>
+<h3>Options (all are used in the block, see examples)</h3>
+<ul>
+<li>source: Where the data comes from, e.g. <a
+href="Sources/CSV.html#M000285">Sources::CSV.new(...)</a>. Optional, can be
+defined in the block using <a href="Index.html#M000181">source</a>.
+
+</li>
+<li><a href="Index.html#M000164">result_identifier</a>: Use if you&#8217;d like
+a different identifier/name in the results than the name of the index.
+
+</li>
+<li><a href="Index.html#M000190">after_indexing</a>: As of this writing only
+used in the db source. Executes the given <a
+href="Index.html#M000190">after_indexing</a> as SQL after the indexing
+process.
+
+</li>
+<li>tokenizer: Call and pass either a tokenizer (responds to tokenize) or the
+options for a tokenizer..
+
+</li>
+<li><a href="Index.html#M000188">key_format</a>: Call and pass in a format
+method for the ids (default is to_i).
+
+</li>
+</ul>
+<p>
+Example:
+</p>
+<pre>
+  my_index = Index.new(:my_index) do
+    source            Sources::CSV.new(file: 'data/index.csv')
+    key_format        :to_sym
+    category          :bla
+    result_identifier :my_special_results
+  end
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000166_source')" id="l_M000166_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/bda840ebf5ccaca585f1b37260d37bed2677358a/server/lib/picky/index.rb#L116" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000166_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/index.rb, line 116</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">options</span> = {}
+      <span class="ruby-ivar">@name</span>              = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_sym</span>
+
+      <span class="ruby-comment cmt"># TODO Move ignore_unassigned_tokens to query, somehow. Then, remove options.</span>
+      <span class="ruby-comment cmt">#</span>
+      <span class="ruby-ivar">@categories</span> = <span class="ruby-constant">Categories</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">ignore_unassigned_tokens</span><span class="ruby-operator">:</span> (<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:ignore_unassigned_tokens</span>] <span class="ruby-operator">||</span> <span class="ruby-keyword kw">false</span>)
+
+      <span class="ruby-comment cmt"># Centralized registry.</span>
+      <span class="ruby-comment cmt">#</span>
+      <span class="ruby-constant">Indexes</span>.<span class="ruby-identifier">register</span> <span class="ruby-keyword kw">self</span>
+
+      <span class="ruby-identifier">instance_eval</span>(<span class="ruby-operator">&amp;</span><span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000190">
+                    
+                    <a name="M000190"></a><b>after_indexing</b>(after_indexing = nil)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Define what to do after indexing. (Only used in the <a
+href="Sources/DB.html">Sources::DB</a>)
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000190_source')" id="l_M000190_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/7a0185c4ea511a2cf0c3af9be6988e2b67884ff3/server/lib/picky/index_indexing.rb#L154" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000190_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/index_indexing.rb, line 154</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">after_indexing</span> <span class="ruby-identifier">after_indexing</span> = <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-identifier">after_indexing</span> <span class="ruby-value">? </span><span class="ruby-identifier">define_after_indexing</span>(<span class="ruby-identifier">after_indexing</span>) <span class="ruby-operator">:</span> <span class="ruby-ivar">@after_indexing</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000167">
+                    
+                    <a name="M000167"></a><b>backend</b>(backend = nil)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+API method.
+</p>
+<p>
+Sets/returns the backend used. Default is @Backends::Memory.new@.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000167_source')" id="l_M000167_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/bda840ebf5ccaca585f1b37260d37bed2677358a/server/lib/picky/index.rb#L135" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000167_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/index.rb, line 135</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">backend</span> <span class="ruby-identifier">backend</span> = <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">backend</span>
+        <span class="ruby-ivar">@backend</span> = <span class="ruby-identifier">backend</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-ivar">@backend</span> <span class="ruby-operator">||</span> <span class="ruby-constant">Backends</span><span class="ruby-operator">::</span><span class="ruby-constant">Memory</span>.<span class="ruby-identifier">new</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000168">
+                    
+                    <a name="M000168"></a><b>category</b>(category_name, options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Defines a searchable category on the index.
+</p>
+<h3>Parameters</h3>
+<ul>
+<li>category_name: This identifier is used in the front end, but also to
+categorize query text. For example, “title:hobbit” will narrow the
+hobbit query on categories with the identifier :title.
+
+</li>
+</ul>
+<h3>Options</h3>
+<ul>
+<li>partial: Partial::None.new or Partial::Substring.new(from: starting_char,
+to: ending_char). Default is Partial::Substring.new(from: -3, to: -1).
+
+</li>
+<li>similarity: Similarity::None.new or
+Similarity::DoubleMetaphone.new(similar_words_searched). Default is
+Similarity::None.new.
+
+</li>
+<li>qualifiers: An array of qualifiers with which you can define which category
+you’d like to search, for example “title:hobbit” will search for
+hobbit in just title categories. Example: qualifiers: [:t, :titre, :title]
+(use it for example with multiple languages). Default is the name of the
+category.
+
+</li>
+<li>qualifier: Convenience options if you just need a single qualifier, see
+above. Example: qualifiers => :title. Default is the name of the category.
+
+</li>
+<li>source: Use a different source than the index uses. If you think you need
+that, there might be a better solution to your problem. Please post to the
+mailing list first with your application.rb :)
+
+</li>
+<li>from: Take the data from the data category with this name. Example: You
+have a source <a
+href="Sources/CSV.html#M000285">Sources::CSV.new</a>(:title,
+file:&#8217;some_file.csv&#8217;) but you want the category to be called
+differently. The you use from: <a
+href="Index.html#M000169">define_category</a>(:similar_title, :from =>
+:title).
+
+</li>
+</ul>
+
+                </div>
+                
+                
+                <div class="aka">
+                    This method is also aliased as
+                    
+                    <a href="Index.html#M000169">define_category</a>
+                    
+                </div>
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000168_source')" id="l_M000168_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/bda840ebf5ccaca585f1b37260d37bed2677358a/server/lib/picky/index.rb#L156" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000168_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/index.rb, line 156</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">category</span> <span class="ruby-identifier">category_name</span>, <span class="ruby-identifier">options</span> = {}
+      <span class="ruby-identifier">new_category</span> = <span class="ruby-constant">Category</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">category_name</span>.<span class="ruby-identifier">to_sym</span>, <span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">options</span>
+      <span class="ruby-identifier">categories</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">new_category</span>
+
+      <span class="ruby-identifier">new_category</span> = <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">new_category</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+
+      <span class="ruby-identifier">new_category</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000176">
+                    
+                    <a name="M000176"></a><b>check_source_empty</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Check if the given enumerable source is empty.
+</p>
+<p>
+Note: Checking as early as possible to tell the
+</p>
+<pre>
+      user as early as possible.
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000176_source')" id="l_M000176_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/7a0185c4ea511a2cf0c3af9be6988e2b67884ff3/server/lib/picky/index_indexing.rb#L53" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000176_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/index_indexing.rb, line 53</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check_source_empty</span>
+      <span class="ruby-identifier">warn</span> <span class="ruby-node">%Q{\n\033[1mWarning\033[m, source for index &quot;#{name}&quot; is empty: #{source} (responds true to empty?).\n}</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">source</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:empty?</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">source</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000191">
+                    
+                    <a name="M000191"></a><b>define_after_indexing</b>(after_indexing)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000191_source')" id="l_M000191_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/7a0185c4ea511a2cf0c3af9be6988e2b67884ff3/server/lib/picky/index_indexing.rb#L157" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000191_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/index_indexing.rb, line 157</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">define_after_indexing</span> <span class="ruby-identifier">after_indexing</span>
+      <span class="ruby-ivar">@after_indexing</span> = <span class="ruby-identifier">after_indexing</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000169">
+                    
+                    <a name="M000169"></a><b>define_category</b>(category_name, options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="Index.html#M000168">category</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000175">
+                    
+                    <a name="M000175"></a><b>define_indexing</b>(options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="Index.html#M000174">indexing</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000189">
+                    
+                    <a name="M000189"></a><b>define_key_format</b>(key_format)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000189_source')" id="l_M000189_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/7a0185c4ea511a2cf0c3af9be6988e2b67884ff3/server/lib/picky/index_indexing.rb#L147" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000189_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/index_indexing.rb, line 147</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">define_key_format</span> <span class="ruby-identifier">key_format</span>
+      <span class="ruby-ivar">@key_format</span> = <span class="ruby-identifier">key_format</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000171">
+                    
+                    <a name="M000171"></a><b>define_ranged_category</b>(category_name, range, options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="Index.html#M000170">ranged_category</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000165">
+                    
+                    <a name="M000165"></a><b>define_result_identifier</b>(result_identifier)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000165_source')" id="l_M000165_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/7a0185c4ea511a2cf0c3af9be6988e2b67884ff3/server/lib/picky/index_indexed.rb#L25" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000165_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/index_indexed.rb, line 25</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">define_result_identifier</span> <span class="ruby-identifier">result_identifier</span>
+      <span class="ruby-ivar">@result_identifier</span> = <span class="ruby-identifier">result_identifier</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000183">
+                    
+                    <a name="M000183"></a><b>define_source</b>(source)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000183_source')" id="l_M000183_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/7a0185c4ea511a2cf0c3af9be6988e2b67884ff3/server/lib/picky/index_indexing.rb#L105" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000183_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/index_indexing.rb, line 105</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">define_source</span> <span class="ruby-identifier">source</span>
+      <span class="ruby-identifier">check_source</span> <span class="ruby-identifier">source</span>
+      <span class="ruby-ivar">@source</span> = <span class="ruby-identifier">source</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000182">
+                    
+                    <a name="M000182"></a><b>extract_source</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Extract the actual source if it is wrapped in a time capsule, i.e. a
+block/lambda.
+</p>
+<p>
+TODO Extract into module.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000182_source')" id="l_M000182_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/7a0185c4ea511a2cf0c3af9be6988e2b67884ff3/server/lib/picky/index_indexing.rb#L102" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000182_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/index_indexing.rb, line 102</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extract_source</span>
+      <span class="ruby-ivar">@source</span> = <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:call</span>) <span class="ruby-operator">?</span> <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">call</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@source</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000184">
+                    
+                    <a name="M000184"></a><b>identifier</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Identifier used for technical output.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000184_source')" id="l_M000184_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/bda840ebf5ccaca585f1b37260d37bed2677358a/server/lib/picky/index.rb#L318" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000184_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/index.rb, line 318</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">identifier</span>
+      <span class="ruby-node">&quot;#{PICKY_ENVIRONMENT}:#{name}&quot;</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000172">
+                    
+                    <a name="M000172"></a><b>index</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Calling index on an index will call index on every category.
+</p>
+<p>
+Decides whether to use a parallel indexer or whether to delegate to each
+category to index themselves.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000172_source')" id="l_M000172_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/7a0185c4ea511a2cf0c3af9be6988e2b67884ff3/server/lib/picky/index_indexing.rb#L24" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000172_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/index_indexing.rb, line 24</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">source</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:each</span>)
+        <span class="ruby-identifier">check_source_empty</span>
+        <span class="ruby-identifier">index_in_parallel</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">with_data_snapshot</span> <span class="ruby-keyword kw">do</span>
+          <span class="ruby-identifier">categories</span>.<span class="ruby-identifier">each</span> <span class="ruby-operator">&amp;</span><span class="ruby-identifier">:index</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000179">
+                    
+                    <a name="M000179"></a><b>index_in_parallel</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+<a href="Indexes.html">Indexes</a> the categories in parallel.
+</p>
+<p>
+Only use where the category does have a each source defined.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000179_source')" id="l_M000179_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/7a0185c4ea511a2cf0c3af9be6988e2b67884ff3/server/lib/picky/index_indexing.rb#L75" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000179_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/index_indexing.rb, line 75</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index_in_parallel</span>
+      <span class="ruby-identifier">indexer</span> = <span class="ruby-constant">Indexers</span><span class="ruby-operator">::</span><span class="ruby-constant">Parallel</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">self</span>
+      <span class="ruby-identifier">indexer</span>.<span class="ruby-identifier">index</span> <span class="ruby-identifier">categories</span>
+      <span class="ruby-identifier">categories</span>.<span class="ruby-identifier">each</span> <span class="ruby-operator">&amp;</span><span class="ruby-identifier">:cache</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000174">
+                    
+                    <a name="M000174"></a><b>indexing</b>(options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Define an index tokenizer on the index.
+</p>
+<p>
+Parameters are the exact same as for indexing.
+</p>
+
+                </div>
+                
+                
+                <div class="aka">
+                    This method is also aliased as
+                    
+                    <a href="Index.html#M000175">define_indexing</a>
+                    
+                </div>
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000174_source')" id="l_M000174_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/7a0185c4ea511a2cf0c3af9be6988e2b67884ff3/server/lib/picky/index_indexing.rb#L39" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000174_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/index_indexing.rb, line 39</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">indexing</span> <span class="ruby-identifier">options</span> = {}
+      <span class="ruby-ivar">@tokenizer</span> = <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:tokenize</span>)
+        <span class="ruby-identifier">options</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">options</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000188">
+                    
+                    <a name="M000188"></a><b>key_format</b>(format = nil)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Define a <a href="Index.html#M000188">key_format</a> on the index.
+</p>
+<p>
+Parameter is a method name to use on the key (e.g. :to_i, :<a
+href="Index.html#M000185">to_s</a>, :strip).
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000188_source')" id="l_M000188_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/7a0185c4ea511a2cf0c3af9be6988e2b67884ff3/server/lib/picky/index_indexing.rb#L144" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000188_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/index_indexing.rb, line 144</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">key_format</span> <span class="ruby-identifier">format</span> = <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-identifier">format</span> <span class="ruby-value">? </span><span class="ruby-identifier">define_key_format</span>(<span class="ruby-identifier">format</span>) <span class="ruby-operator">:</span> <span class="ruby-ivar">@key_format</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000186">
+                    
+                    <a name="M000186"></a><b>raise_no_source</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000186_source')" id="l_M000186_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/7a0185c4ea511a2cf0c3af9be6988e2b67884ff3/server/lib/picky/index_indexing.rb#L109" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000186_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/index_indexing.rb, line 109</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">raise_no_source</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">NoSourceSpecifiedException</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;\n\nNo source given for index \#{name}. An index needs a source.\nExample:\nIndex.new(:with_source) do\nsource   Sources::CSV.new(:title, file: 'data/books.csv')\ncategory :title\ncategory :author\nend\n\n&quot;</span>
+)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000170">
+                    
+                    <a name="M000170"></a><b>ranged_category</b>(category_name, range, options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Make this category range searchable with a fixed range. If you need other
+ranges, define another category with a different range value.
+</p>
+<p>
+Example: You have data values inside 1..100, and you want to have Picky
+return not only the results for 47 if you search for 47, but also results
+for 45, 46, or 47.2, 48.9, in a range of 2 around 47, so (45..49).
+</p>
+<p>
+Then you use:
+</p>
+<pre>
+ ranged_category :values_inside_1_100, 2
+</pre>
+<p>
+Optionally, you give it a precision value to reduce the error margin around
+47 (Picky is a bit liberal).
+</p>
+<pre>
+  Index.new :range do
+    ranged_category :values_inside_1_100, 2, precision: 5
+  end
+</pre>
+<p>
+This will force Picky to maximally be wrong 5% of the given range value (5%
+of 2 = 0.1) instead of the default 20% (20% of 2 = 0.4).
+</p>
+<p>
+We suggest not to use much more than 5 as a higher precision is more
+performance intensive for less and less precision gain.
+</p>
+<h2>Protip 1</h2>
+<p>
+Create two ranged categories to make an area search:
+</p>
+<pre>
+  Index.new :area do
+    ranged_category :x, 1
+    ranged_category :y, 1
+  end
+</pre>
+<p>
+<a href="Search.html">Search</a> for it using for example:
+</p>
+<pre>
+  x:133, y:120
+</pre>
+<p>
+This will search this square area (* = 133, 120: The &#8220;search&#8221;
+point entered):
+</p>
+<pre>
+   132       134
+    |         |
+  --|---------|-- 121
+    |         |
+    |    *    |
+    |         |
+  --|---------|-- 119
+    |         |
+</pre>
+<p>
+Note: The area does not need to be square, but can be rectangular.
+</p>
+<h2>Protip 2</h2>
+<p>
+Create three ranged categories to make a volume search.
+</p>
+<p>
+Or go crazy and use 4 ranged categories for a space/time search! ;)
+</p>
+<h3>Parameters</h3>
+<ul>
+<li>category_name: The category_name as used in <a
+href="Index.html#M000169">define_category</a>.
+
+</li>
+<li>range: The range (in the units of your data values) around the query point
+where we search for results.
+
+</li>
+</ul>
+<pre>
+ -----|&lt;- range  -&gt;*------------|-----
+</pre>
+<h3>Options</h3>
+<ul>
+<li>precision: Default is 1 (20% error margin, very fast), up to 5 (5% error
+margin, slower) makes sense.
+
+</li>
+<li>&#8230; all options of <a href="Index.html#M000169">define_category</a>.
+
+</li>
+</ul>
+
+                </div>
+                
+                
+                <div class="aka">
+                    This method is also aliased as
+                    
+                    <a href="Index.html#M000171">define_ranged_category</a>
+                    
+                </div>
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000170_source')" id="l_M000170_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/bda840ebf5ccaca585f1b37260d37bed2677358a/server/lib/picky/index.rb#L229" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000170_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/index.rb, line 229</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ranged_category</span> <span class="ruby-identifier">category_name</span>, <span class="ruby-identifier">range</span>, <span class="ruby-identifier">options</span> = {}
+      <span class="ruby-identifier">precision</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:precision</span>] <span class="ruby-operator">||</span> <span class="ruby-value">1</span> <span class="ruby-comment cmt"># THINK options.delete?</span>
+
+      <span class="ruby-comment cmt"># Note: :key_format =&gt; :to_f ?</span>
+      <span class="ruby-comment cmt">#</span>
+      <span class="ruby-identifier">options</span> = { <span class="ruby-identifier">partial</span><span class="ruby-operator">:</span> <span class="ruby-constant">Partial</span><span class="ruby-operator">::</span><span class="ruby-constant">None</span>.<span class="ruby-identifier">new</span> }.<span class="ruby-identifier">merge</span> <span class="ruby-identifier">options</span>
+
+      <span class="ruby-identifier">define_category</span> <span class="ruby-identifier">category_name</span>, <span class="ruby-identifier">options</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">category</span><span class="ruby-operator">|</span>
+        <span class="ruby-constant">Indexing</span><span class="ruby-operator">::</span><span class="ruby-constant">Wrappers</span><span class="ruby-operator">::</span><span class="ruby-constant">Category</span><span class="ruby-operator">::</span><span class="ruby-constant">Location</span>.<span class="ruby-identifier">install_on</span> <span class="ruby-identifier">category</span>, <span class="ruby-identifier">range</span>, <span class="ruby-identifier">precision</span>
+        <span class="ruby-constant">Indexed</span><span class="ruby-operator">::</span><span class="ruby-constant">Wrappers</span><span class="ruby-operator">::</span><span class="ruby-constant">Category</span><span class="ruby-operator">::</span><span class="ruby-constant">Location</span>.<span class="ruby-identifier">install_on</span> <span class="ruby-identifier">category</span>, <span class="ruby-identifier">range</span>, <span class="ruby-identifier">precision</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000164">
+                    
+                    <a name="M000164"></a><b>result_identifier</b>(result_identifier = nil)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Define how the results of this index are identified. (Shown in the client,
+for example)
+</p>
+<p>
+Default is the name of the index.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000164_source')" id="l_M000164_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/7a0185c4ea511a2cf0c3af9be6988e2b67884ff3/server/lib/picky/index_indexed.rb#L22" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000164_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/index_indexed.rb, line 22</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">result_identifier</span> <span class="ruby-identifier">result_identifier</span> = <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-identifier">result_identifier</span> <span class="ruby-value">? </span><span class="ruby-identifier">define_result_identifier</span>(<span class="ruby-identifier">result_identifier</span>) <span class="ruby-operator">:</span> (<span class="ruby-ivar">@result_identifier</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@name</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000181">
+                    
+                    <a name="M000181"></a><b>source</b>(some_source = nil, &amp;block)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Define a source on the index.
+</p>
+<p>
+Parameter is a source, either one of the standard sources or anything
+responding to each and returning objects that respond to id and the
+category names (or the category from option).
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000181_source')" id="l_M000181_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/7a0185c4ea511a2cf0c3af9be6988e2b67884ff3/server/lib/picky/index_indexing.rb#L93" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000181_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/index_indexing.rb, line 93</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">source</span> <span class="ruby-identifier">some_source</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>
+      <span class="ruby-identifier">some_source</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">block</span>
+      <span class="ruby-identifier">some_source</span> <span class="ruby-value">? </span><span class="ruby-identifier">define_source</span>(<span class="ruby-identifier">some_source</span>) <span class="ruby-operator">:</span> (<span class="ruby-ivar">@source</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">extract_source</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">raise_no_source</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000185">
+                    
+                    <a name="M000185"></a><b>to_s</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000185_source')" id="l_M000185_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/bda840ebf5ccaca585f1b37260d37bed2677358a/server/lib/picky/index.rb#L324" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000185_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/index.rb, line 324</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
+      <span class="ruby-node">&quot;#{self.class}(#{name}, result_id: #{result_identifier}, source: #{@source}, categories: #{categories})&quot;</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000180">
+                    
+                    <a name="M000180"></a><b>tokenizer</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns the installed tokenizer or the default.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000180_source')" id="l_M000180_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/7a0185c4ea511a2cf0c3af9be6988e2b67884ff3/server/lib/picky/index_indexing.rb#L83" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000180_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/index_indexing.rb, line 83</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">tokenizer</span>
+      <span class="ruby-ivar">@tokenizer</span> <span class="ruby-operator">||</span> <span class="ruby-constant">Indexes</span>.<span class="ruby-identifier">tokenizer</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000177">
+                    
+                    <a name="M000177"></a><b>with_data_snapshot</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Note: Duplicated in category_indexing.rb.
+</p>
+<p>
+Take a data snapshot if the source offers it.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000177_source')" id="l_M000177_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/7a0185c4ea511a2cf0c3af9be6988e2b67884ff3/server/lib/picky/index_indexing.rb#L61" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000177_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/index_indexing.rb, line 61</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">with_data_snapshot</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">source</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-identifier">:with_snapshot</span>
+        <span class="ruby-identifier">source</span>.<span class="ruby-identifier">with_snapshot</span>(<span class="ruby-keyword kw">self</span>) <span class="ruby-keyword kw">do</span>
+          <span class="ruby-keyword kw">yield</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-keyword kw">yield</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

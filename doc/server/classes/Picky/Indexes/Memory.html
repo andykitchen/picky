@@ -3,7 +3,7 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <title>Picky::Index</title>
+    <title>Picky::Indexes::Memory</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
@@ -16,31 +16,23 @@
     <div class="banner">
         <h1>
             <span class="type">Class</span> 
-            Picky::Index 
+            Picky::Indexes::Memory 
             
                 <span class="parent">&lt; 
                     
-                    Index
+                    <a href="../../Object.html">Object</a>
                     
                 </span>
             
         </h1>
         <ul class="files">
             
-            <li><a href="../../../files/lib/picky/indexes/memory_rb.html">lib/picky/indexes/memory.rb</a></li>
+            <li><a href="../../../files/lib/picky/migrations/from_30_to_31_rb.html">lib/picky/migrations/from_30_to_31.rb</a></li>
             
         </ul>
     </div>
     <div id="bodyContent">
         <div id="content">
-    
-    <div class="description">
-        <p>
-An index that is persisted in files, loaded at startup and kept in memory
-at runtime.
-</p>
-
-    </div>
     
 
     
@@ -53,13 +45,11 @@ at runtime.
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
     
-        <dt>I</dt>
+        <dt>N</dt>
         <dd>
             <ul>
                 
-                <li><a href="#M000190">indexed_bundle_class</a>,</li>
-                
-                <li><a href="#M000189">indexing_bundle_class</a></li>
+                <li><a href="#M000234">new</a></li>
                 
             </ul>
         </dd>
@@ -78,12 +68,12 @@ at runtime.
     
 
     
-            <div class="sectiontitle">Instance Public methods</div>
+            <div class="sectiontitle">Class Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000190">
+                <div class="title" id="M000234">
                     
-                    <a name="M000190"></a><b>indexed_bundle_class</b>()
+                    <a name="M000234"></a><b>new</b>(*)
                     
                 </div>
                 
@@ -92,42 +82,15 @@ at runtime.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000190_source')" id="l_M000190_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000234_source')" id="l_M000234_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/c0a06e6c8176429a7b3c3caa81ce74f37cc0ca1e/server/lib/picky/indexes/memory.rb#L12" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000190_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/indexes/memory.rb, line 12</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">indexed_bundle_class</span>
-        <span class="ruby-constant">Indexed</span><span class="ruby-operator">::</span><span class="ruby-constant">Bundle</span><span class="ruby-operator">::</span><span class="ruby-constant">Memory</span>
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <div class="method">
-                <div class="title" id="M000189">
-                    
-                    <a name="M000189"></a><b>indexing_bundle_class</b>()
-                    
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000189_source')" id="l_M000189_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/c0a06e6c8176429a7b3c3caa81ce74f37cc0ca1e/server/lib/picky/indexes/memory.rb#L9" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/8686066ac04d0dd48c0a9199a2b9e95a501533a8/server/lib/picky/migrations/from_30_to_31.rb#L7" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000189_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/indexes/memory.rb, line 9</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">indexing_bundle_class</span>
-        <span class="ruby-constant">Indexing</span><span class="ruby-operator">::</span><span class="ruby-constant">Bundle</span><span class="ruby-operator">::</span><span class="ruby-constant">Memory</span>
+                    <div id="M000234_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/migrations/from_30_to_31.rb, line 7</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-operator">*</span>)
+        <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;\nThe Picky::Indexes::Memory is not available anymore and has been replaced by Picky::Index.\n\nSo instead of\n\nindex = Picky::Indexes::Memory.new :name do\n# your config\nend\n\nuse\n\nindex = Picky::Index.new :name do\n# your config\nend\n\nThanks and sorry for the inconvenience!\n\n&quot;</span>
       <span class="ruby-keyword kw">end</span></pre>
                     </div>
                 </div>

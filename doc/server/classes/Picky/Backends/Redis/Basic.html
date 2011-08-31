@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Picky::Backends::Redis::Basic</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Picky::Backends::Redis::Basic 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../../../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../../files/lib/picky/backends/redis/basic_rb.html">lib/picky/backends/redis/basic.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+<a href="../Redis.html">Redis</a> <a href="../Backend.html">Backend</a>
+Accessor.
+</p>
+<p>
+Provides necessary helper methods for its subclasses. Not directly useable,
+as it does not provide dump/load methods.
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>B</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000070">backup</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000073">cache_ok?</a>,</li>
+                
+                <li><a href="#M000072">cache_small?</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>D</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000071">delete</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>L</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000068">load</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000067">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>R</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000069">retrieve</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>S</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000074">size</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000075">to_s</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Attributes</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>client</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>namespace</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+    </table>
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000067">
+                    
+                    <a name="M000067"></a><b>new</b>(client, namespace)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+An index cache takes a path, without file extension, which will be provided
+by the subclasses.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000067_source')" id="l_M000067_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d5ca2d29deb4e597433bbfd23a52fa41f634e2d8/server/lib/picky/backends/redis/basic.rb#L21" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000067_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/redis/basic.rb, line 21</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">client</span>, <span class="ruby-identifier">namespace</span>
+          <span class="ruby-ivar">@client</span>    = <span class="ruby-identifier">client</span>
+          <span class="ruby-ivar">@namespace</span> = <span class="ruby-identifier">namespace</span>
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000070">
+                    
+                    <a name="M000070"></a><b>backup</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+<a href="../Redis.html">Redis</a> doesn&#8217;t do backup.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000070_source')" id="l_M000070_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d5ca2d29deb4e597433bbfd23a52fa41f634e2d8/server/lib/picky/backends/redis/basic.rb#L40" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000070_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/redis/basic.rb, line 40</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">backup</span>
+          <span class="ruby-comment cmt"># Nothing.</span>
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000073">
+                    
+                    <a name="M000073"></a><b>cache_ok?</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Is the cache ok?
+</p>
+<p>
+A small cache is still ok.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000073_source')" id="l_M000073_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d5ca2d29deb4e597433bbfd23a52fa41f634e2d8/server/lib/picky/backends/redis/basic.rb#L66" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000073_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/redis/basic.rb, line 66</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cache_ok?</span>
+          <span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000072">
+                    
+                    <a name="M000072"></a><b>cache_small?</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Is this cache suspiciously small?
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000072_source')" id="l_M000072_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d5ca2d29deb4e597433bbfd23a52fa41f634e2d8/server/lib/picky/backends/redis/basic.rb#L58" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000072_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/redis/basic.rb, line 58</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cache_small?</span>
+          <span class="ruby-identifier">size</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span>
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000071">
+                    
+                    <a name="M000071"></a><b>delete</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Deletes the <a href="../Redis.html">Redis</a> index namespace.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000071_source')" id="l_M000071_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d5ca2d29deb4e597433bbfd23a52fa41f634e2d8/server/lib/picky/backends/redis/basic.rb#L46" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000071_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/redis/basic.rb, line 46</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete</span>
+          <span class="ruby-comment cmt"># Not implemented here.</span>
+          <span class="ruby-comment cmt"># Note: backend.flushdb might be the way to go,</span>
+          <span class="ruby-comment cmt">#       but since we cannot delete by key pattern,</span>
+          <span class="ruby-comment cmt">#       we don't do anything.</span>
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000068">
+                    
+                    <a name="M000068"></a><b>load</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns itself.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000068_source')" id="l_M000068_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d5ca2d29deb4e597433bbfd23a52fa41f634e2d8/server/lib/picky/backends/redis/basic.rb#L28" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000068_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/redis/basic.rb, line 28</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">load</span>
+          <span class="ruby-keyword kw">self</span>
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000069">
+                    
+                    <a name="M000069"></a><b>retrieve</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+We do not use <a href="../Redis.html">Redis</a> to retrieve data.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000069_source')" id="l_M000069_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d5ca2d29deb4e597433bbfd23a52fa41f634e2d8/server/lib/picky/backends/redis/basic.rb#L34" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000069_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/redis/basic.rb, line 34</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">retrieve</span>
+          <span class="ruby-comment cmt"># Nothing.</span>
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000074">
+                    
+                    <a name="M000074"></a><b>size</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Extracts the size of the file in Bytes.
+</p>
+<p>
+Note: This is a very forgiving implementation.
+</p>
+<pre>
+      But as long as Redis does not implement
+      DBSIZE KEYPATTERN, we are stuck with this.
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000074_source')" id="l_M000074_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d5ca2d29deb4e597433bbfd23a52fa41f634e2d8/server/lib/picky/backends/redis/basic.rb#L76" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000074_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/redis/basic.rb, line 76</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">size</span>
+          <span class="ruby-identifier">client</span>.<span class="ruby-identifier">dbsize</span>
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000075">
+                    
+                    <a name="M000075"></a><b>to_s</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000075_source')" id="l_M000075_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/d5ca2d29deb4e597433bbfd23a52fa41f634e2d8/server/lib/picky/backends/redis/basic.rb#L82" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000075_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/redis/basic.rb, line 82</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
+          <span class="ruby-node">&quot;#{self.class}(#{namespace}:*)&quot;</span>
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

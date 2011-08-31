@@ -20,26 +20,19 @@
             
                 <span class="parent">&lt; 
                     
-                    Index
+                    <a href="../../Object.html">Object</a>
                     
                 </span>
             
         </h1>
         <ul class="files">
             
-            <li><a href="../../../files/lib/picky/indexes/redis_rb.html">lib/picky/indexes/redis.rb</a></li>
+            <li><a href="../../../files/lib/picky/migrations/from_30_to_31_rb.html">lib/picky/migrations/from_30_to_31.rb</a></li>
             
         </ul>
     </div>
     <div id="bodyContent">
         <div id="content">
-    
-    <div class="description">
-        <p>
-An index that is persisted in <a href="Redis.html">Redis</a>.
-</p>
-
-    </div>
     
 
     
@@ -52,13 +45,11 @@ An index that is persisted in <a href="Redis.html">Redis</a>.
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
     
-        <dt>I</dt>
+        <dt>N</dt>
         <dd>
             <ul>
                 
-                <li><a href="#M000192">indexed_bundle_class</a>,</li>
-                
-                <li><a href="#M000191">indexing_bundle_class</a></li>
+                <li><a href="#M000235">new</a></li>
                 
             </ul>
         </dd>
@@ -77,12 +68,12 @@ An index that is persisted in <a href="Redis.html">Redis</a>.
     
 
     
-            <div class="sectiontitle">Instance Public methods</div>
+            <div class="sectiontitle">Class Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000192">
+                <div class="title" id="M000235">
                     
-                    <a name="M000192"></a><b>indexed_bundle_class</b>()
+                    <a name="M000235"></a><b>new</b>(*)
                     
                 </div>
                 
@@ -91,42 +82,15 @@ An index that is persisted in <a href="Redis.html">Redis</a>.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000192_source')" id="l_M000192_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000235_source')" id="l_M000235_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/c0a06e6c8176429a7b3c3caa81ce74f37cc0ca1e/server/lib/picky/indexes/redis.rb#L12" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000192_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/indexes/redis.rb, line 12</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">indexed_bundle_class</span>
-        <span class="ruby-constant">Indexed</span><span class="ruby-operator">::</span><span class="ruby-constant">Bundle</span><span class="ruby-operator">::</span><span class="ruby-constant">Redis</span>
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <div class="method">
-                <div class="title" id="M000191">
-                    
-                    <a name="M000191"></a><b>indexing_bundle_class</b>()
-                    
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000191_source')" id="l_M000191_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/c0a06e6c8176429a7b3c3caa81ce74f37cc0ca1e/server/lib/picky/indexes/redis.rb#L9" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/8686066ac04d0dd48c0a9199a2b9e95a501533a8/server/lib/picky/migrations/from_30_to_31.rb#L34" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000191_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/indexes/redis.rb, line 9</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">indexing_bundle_class</span>
-        <span class="ruby-constant">Indexing</span><span class="ruby-operator">::</span><span class="ruby-constant">Bundle</span><span class="ruby-operator">::</span><span class="ruby-constant">Redis</span>
+                    <div id="M000235_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/migrations/from_30_to_31.rb, line 34</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-operator">*</span>)
+        <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;\nThe Picky::Indexes::Redis is not available anymore and has been replaced by Picky::Index.\n(with the addition of a \&quot;backend\&quot; option)\n\nSo instead of\n\nindex = Picky::Indexes::Redis.new :name do\n# your config\nend\n\nuse\n\nindex = Picky::Index.new :name do\nbackend Picky::Backends::Redis.new\n# your config\nend\n\nThanks and sorry for the inconvenience!\n\n&quot;</span>
       <span class="ruby-keyword kw">end</span></pre>
                     </div>
                 </div>

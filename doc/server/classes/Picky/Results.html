@@ -37,7 +37,7 @@
     <div class="description">
         <p>
 This is the internal results object. Usually, to_marshal, or <a
-href="Results.html#M000244">to_json</a> is called on it to get a string for
+href="Results.html#M000261">to_json</a> is called on it to get a string for
 the answer.
 </p>
 
@@ -58,7 +58,7 @@ the answer.
         <dd>
             <ul>
                 
-                <li><a href="#M000246">duration</a></li>
+                <li><a href="#M000258">duration</a></li>
                 
             </ul>
         </dd>
@@ -67,7 +67,7 @@ the answer.
         <dd>
             <ul>
                 
-                <li><a href="#M000242">from</a></li>
+                <li><a href="#M000255">from</a></li>
                 
             </ul>
         </dd>
@@ -76,7 +76,7 @@ the answer.
         <dd>
             <ul>
                 
-                <li><a href="#M000248">ids</a></li>
+                <li><a href="#M000256">ids</a></li>
                 
             </ul>
         </dd>
@@ -85,7 +85,7 @@ the answer.
         <dd>
             <ul>
                 
-                <li><a href="#M000250">log_type</a></li>
+                <li><a href="#M000262">log_type</a></li>
                 
             </ul>
         </dd>
@@ -94,7 +94,7 @@ the answer.
         <dd>
             <ul>
                 
-                <li><a href="#M000241">new</a></li>
+                <li><a href="#M000254">new</a></li>
                 
             </ul>
         </dd>
@@ -103,7 +103,7 @@ the answer.
         <dd>
             <ul>
                 
-                <li><a href="#M000245">prepare!</a></li>
+                <li><a href="#M000259">prepare!</a></li>
                 
             </ul>
         </dd>
@@ -112,13 +112,13 @@ the answer.
         <dd>
             <ul>
                 
-                <li><a href="#M000243">to_hash</a>,</li>
+                <li><a href="#M000260">to_hash</a>,</li>
                 
-                <li><a href="#M000244">to_json</a>,</li>
+                <li><a href="#M000261">to_json</a>,</li>
                 
-                <li><a href="#M000249">to_log</a>,</li>
+                <li><a href="#M000263">to_s</a>,</li>
                 
-                <li><a href="#M000247">total</a></li>
+                <li><a href="#M000257">total</a></li>
                 
             </ul>
         </dd>
@@ -172,6 +172,14 @@ Duration is set externally by the query.
             <td class='attr-desc'></td>
         </tr>
         
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>query</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
     </table>
     
 
@@ -179,9 +187,9 @@ Duration is set externally by the query.
             <div class="sectiontitle">Class Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000242">
+                <div class="title" id="M000255">
                     
-                    <a name="M000242"></a><b>from</b>(amount, offset, allocations)
+                    <a name="M000255"></a><b>from</b>(query, amount, offset, allocations)
                     
                 </div>
                 
@@ -197,15 +205,15 @@ Create new results and calculate the ids.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000242_source')" id="l_M000242_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000255_source')" id="l_M000255_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/6e956749b886e5e96fd2e5b94ec34b6594670979/server/lib/picky/results.rb#L22" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/935b5d2273ab81183bdfe801513dfad8c49d18f7/server/lib/picky/results.rb#L27" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000242_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 22</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">from</span> <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">allocations</span>
-      <span class="ruby-identifier">results</span> = <span class="ruby-identifier">new</span> <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">allocations</span>
+                    <div id="M000255_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 27</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">from</span> <span class="ruby-identifier">query</span>, <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">allocations</span>
+      <span class="ruby-identifier">results</span> = <span class="ruby-identifier">new</span> <span class="ruby-identifier">query</span>, <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">allocations</span>
       <span class="ruby-identifier">results</span>.<span class="ruby-identifier">prepare!</span>
       <span class="ruby-identifier">results</span>
     <span class="ruby-keyword kw">end</span></pre>
@@ -215,9 +223,9 @@ Create new results and calculate the ids.
             </div>
             
             <div class="method">
-                <div class="title" id="M000241">
+                <div class="title" id="M000254">
                     
-                    <a name="M000241"></a><b>new</b>(amount = 0, offset = 0, allocations = Query::Allocations.new)
+                    <a name="M000254"></a><b>new</b>(query = nil, amount = 0, offset = 0, allocations = Query::Allocations.new)
                     
                 </div>
                 
@@ -233,16 +241,17 @@ Takes instances of Query::Allocations as param.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000241_source')" id="l_M000241_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000254_source')" id="l_M000254_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/6e956749b886e5e96fd2e5b94ec34b6594670979/server/lib/picky/results.rb#L15" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/935b5d2273ab81183bdfe801513dfad8c49d18f7/server/lib/picky/results.rb#L18" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000241_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 15</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">amount</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">offset</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">allocations</span> = <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Allocations</span>.<span class="ruby-identifier">new</span>
-      <span class="ruby-ivar">@offset</span>      = <span class="ruby-identifier">offset</span>
+                    <div id="M000254_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 18</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">query</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">amount</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">offset</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">allocations</span> = <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Allocations</span>.<span class="ruby-identifier">new</span>
       <span class="ruby-ivar">@amount</span>      = <span class="ruby-identifier">amount</span>
+      <span class="ruby-ivar">@query</span>       = <span class="ruby-identifier">query</span>
+      <span class="ruby-ivar">@offset</span>      = <span class="ruby-identifier">offset</span>
       <span class="ruby-ivar">@allocations</span> = <span class="ruby-identifier">allocations</span>
     <span class="ruby-keyword kw">end</span></pre>
                     </div>
@@ -253,9 +262,9 @@ Takes instances of Query::Allocations as param.
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000246">
+                <div class="title" id="M000258">
                     
-                    <a name="M000246"></a><b>duration</b>()
+                    <a name="M000258"></a><b>duration</b>()
                     
                 </div>
                 
@@ -271,13 +280,13 @@ Duration default is 0.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000246_source')" id="l_M000246_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000258_source')" id="l_M000258_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/6e956749b886e5e96fd2e5b94ec34b6594670979/server/lib/picky/results.rb#L53" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/935b5d2273ab81183bdfe801513dfad8c49d18f7/server/lib/picky/results.rb#L47" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000246_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 53</span>
+                    <div id="M000258_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 47</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">duration</span>
       <span class="ruby-ivar">@duration</span> <span class="ruby-operator">||</span> <span class="ruby-value">0</span>
     <span class="ruby-keyword kw">end</span></pre>
@@ -287,9 +296,9 @@ Duration default is 0.
             </div>
             
             <div class="method">
-                <div class="title" id="M000248">
+                <div class="title" id="M000256">
                     
-                    <a name="M000248"></a><b>ids</b>(amount = 20)
+                    <a name="M000256"></a><b>ids</b>(amount = 20)
                     
                 </div>
                 
@@ -305,13 +314,13 @@ Delegates to allocations.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000248_source')" id="l_M000248_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000256_source')" id="l_M000256_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/6e956749b886e5e96fd2e5b94ec34b6594670979/server/lib/picky/results.rb#L69" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/935b5d2273ab81183bdfe801513dfad8c49d18f7/server/lib/picky/results.rb#L35" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000248_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 69</span>
+                    <div id="M000256_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 35</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ids</span> <span class="ruby-identifier">amount</span> = <span class="ruby-value">20</span>
       <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">ids</span> <span class="ruby-identifier">amount</span>
     <span class="ruby-keyword kw">end</span></pre>
@@ -321,9 +330,9 @@ Delegates to allocations.
             </div>
             
             <div class="method">
-                <div class="title" id="M000250">
+                <div class="title" id="M000262">
                     
-                    <a name="M000250"></a><b>log_type</b>()
+                    <a name="M000262"></a><b>log_type</b>()
                     
                 </div>
                 
@@ -342,13 +351,13 @@ No calculated ids means: No results.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000250_source')" id="l_M000250_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000262_source')" id="l_M000262_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/6e956749b886e5e96fd2e5b94ec34b6594670979/server/lib/picky/results.rb#L84" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/935b5d2273ab81183bdfe801513dfad8c49d18f7/server/lib/picky/results.rb#L79" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000250_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 84</span>
+                    <div id="M000262_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 79</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">log_type</span>
       <span class="ruby-identifier">amount</span>.<span class="ruby-identifier">zero?</span><span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-value str">'.'</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:'&gt;'</span>
     <span class="ruby-keyword kw">end</span></pre>
@@ -358,9 +367,9 @@ No calculated ids means: No results.
             </div>
             
             <div class="method">
-                <div class="title" id="M000245">
+                <div class="title" id="M000259">
                     
-                    <a name="M000245"></a><b>prepare!</b>()
+                    <a name="M000259"></a><b>prepare!</b>()
                     
                 </div>
                 
@@ -379,13 +388,13 @@ Without this, the allocations are not processed, and no ids are calculated.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000245_source')" id="l_M000245_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000259_source')" id="l_M000259_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/6e956749b886e5e96fd2e5b94ec34b6594670979/server/lib/picky/results.rb#L47" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/935b5d2273ab81183bdfe801513dfad8c49d18f7/server/lib/picky/results.rb#L56" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000245_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 47</span>
+                    <div id="M000259_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 56</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prepare!</span>
       <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">process!</span> <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>
     <span class="ruby-keyword kw">end</span></pre>
@@ -395,9 +404,9 @@ Without this, the allocations are not processed, and no ids are calculated.
             </div>
             
             <div class="method">
-                <div class="title" id="M000243">
+                <div class="title" id="M000260">
                     
-                    <a name="M000243"></a><b>to_hash</b>()
+                    <a name="M000260"></a><b>to_hash</b>()
                     
                 </div>
                 
@@ -413,13 +422,13 @@ Returns a hash with the allocations, offset, duration and total.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000243_source')" id="l_M000243_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000260_source')" id="l_M000260_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/6e956749b886e5e96fd2e5b94ec34b6594670979/server/lib/picky/results.rb#L30" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/935b5d2273ab81183bdfe801513dfad8c49d18f7/server/lib/picky/results.rb#L62" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000243_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 30</span>
+                    <div id="M000260_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 62</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_hash</span>
       { <span class="ruby-identifier">allocations</span><span class="ruby-operator">:</span> <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">to_result</span>,
         <span class="ruby-identifier">offset</span><span class="ruby-operator">:</span>      <span class="ruby-identifier">offset</span>,
@@ -432,9 +441,9 @@ Returns a hash with the allocations, offset, duration and total.
             </div>
             
             <div class="method">
-                <div class="title" id="M000244">
+                <div class="title" id="M000261">
                     
-                    <a name="M000244"></a><b>to_json</b>(options = {})
+                    <a name="M000261"></a><b>to_json</b>(options = {})
                     
                 </div>
                 
@@ -450,13 +459,13 @@ Convert to json format.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000244_source')" id="l_M000244_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000261_source')" id="l_M000261_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/6e956749b886e5e96fd2e5b94ec34b6594670979/server/lib/picky/results.rb#L38" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/935b5d2273ab81183bdfe801513dfad8c49d18f7/server/lib/picky/results.rb#L71" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000244_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 38</span>
+                    <div id="M000261_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 71</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_json</span> <span class="ruby-identifier">options</span> = {}
       <span class="ruby-identifier">to_hash</span>.<span class="ruby-identifier">to_json</span> <span class="ruby-identifier">options</span>
     <span class="ruby-keyword kw">end</span></pre>
@@ -466,18 +475,15 @@ Convert to json format.
             </div>
             
             <div class="method">
-                <div class="title" id="M000249">
+                <div class="title" id="M000263">
                     
-                    <a name="M000249"></a><b>to_log</b>(query)
+                    <a name="M000263"></a><b>to_s</b>()
                     
                 </div>
                 
                 <div class="description">
                   <p>
-Human readable log.
-</p>
-<p>
-TODO Should this be to_s? (And it should also hold the original query?)
+For logging.
 </p>
 
                 </div>
@@ -487,14 +493,14 @@ TODO Should this be to_s? (And it should also hold the original query?)
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000249_source')" id="l_M000249_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000263_source')" id="l_M000263_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/6e956749b886e5e96fd2e5b94ec34b6594670979/server/lib/picky/results.rb#L77" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/935b5d2273ab81183bdfe801513dfad8c49d18f7/server/lib/picky/results.rb#L85" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000249_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 77</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_log</span> <span class="ruby-identifier">query</span>
+                    <div id="M000263_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 85</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
       <span class="ruby-node">&quot;#{log_type}|#{Time.now.to_s(:db)}|#{'%8f' % duration}|#{'%-50s' % query}|#{'%8d' % total}|#{'%4d' % offset}|#{'%2d' % allocations.size}|&quot;</span>
     <span class="ruby-keyword kw">end</span></pre>
                     </div>
@@ -503,18 +509,15 @@ TODO Should this be to_s? (And it should also hold the original query?)
             </div>
             
             <div class="method">
-                <div class="title" id="M000247">
+                <div class="title" id="M000257">
                     
-                    <a name="M000247"></a><b>total</b>()
+                    <a name="M000257"></a><b>total</b>()
                     
                 </div>
                 
                 <div class="description">
                   <p>
 The total results. Delegates to the allocations.
-</p>
-<p>
-Caches.
 </p>
 
                 </div>
@@ -524,13 +527,13 @@ Caches.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000247_source')" id="l_M000247_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000257_source')" id="l_M000257_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/6e956749b886e5e96fd2e5b94ec34b6594670979/server/lib/picky/results.rb#L60" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/935b5d2273ab81183bdfe801513dfad8c49d18f7/server/lib/picky/results.rb#L41" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000247_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 60</span>
+                    <div id="M000257_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 41</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">total</span>
       <span class="ruby-ivar">@total</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@total</span> = <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">total</span> <span class="ruby-operator">||</span> <span class="ruby-value">0</span>
     <span class="ruby-keyword kw">end</span></pre>

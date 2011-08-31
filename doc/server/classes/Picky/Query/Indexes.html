@@ -66,11 +66,11 @@ Example:
         <dd>
             <ul>
                 
-                <li><a href="#M000230">allocation_for</a>,</li>
+                <li><a href="#M000243">allocation_for</a>,</li>
                 
-                <li><a href="#M000229">allocations_ary_for</a>,</li>
+                <li><a href="#M000242">allocations_ary_for</a>,</li>
                 
-                <li><a href="#M000228">allocations_for</a></li>
+                <li><a href="#M000241">allocations_for</a></li>
                 
             </ul>
         </dd>
@@ -79,7 +79,7 @@ Example:
         <dd>
             <ul>
                 
-                <li><a href="#M000231">expand_combinations_from</a></li>
+                <li><a href="#M000244">expand_combinations_from</a></li>
                 
             </ul>
         </dd>
@@ -88,7 +88,7 @@ Example:
         <dd>
             <ul>
                 
-                <li><a href="#M000226">map_categories</a></li>
+                <li><a href="#M000238">map_categories</a></li>
                 
             </ul>
         </dd>
@@ -97,7 +97,7 @@ Example:
         <dd>
             <ul>
                 
-                <li><a href="#M000225">new</a></li>
+                <li><a href="#M000237">new</a></li>
                 
             </ul>
         </dd>
@@ -106,7 +106,7 @@ Example:
         <dd>
             <ul>
                 
-                <li><a href="#M000227">prepared_allocations_for</a></li>
+                <li><a href="#M000240">prepared_allocations_for</a></li>
                 
             </ul>
         </dd>
@@ -141,15 +141,15 @@ Example:
             <div class="sectiontitle">Class Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000225">
+                <div class="title" id="M000237">
                     
-                    <a name="M000225"></a><b>new</b>(*indexes, combinations_type)
+                    <a name="M000237"></a><b>new</b>(*indexes)
                     
                 </div>
                 
                 <div class="description">
                   <p>
-Creates a new <a href="../Indexes.html">Query::Indexes</a>.
+Creates a new <a href="Indexes.html">Query::Indexes</a>.
 </p>
 <p>
 Its job is to generate all possible combinations. Note: We cannot mix
@@ -163,17 +163,18 @@ memory and redis indexes just yet.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000225_source')" id="l_M000225_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000237_source')" id="l_M000237_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/query/indexes.rb#L23" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/c10bdf5f49041ccfde516e6f10eeec15b7fb513d/server/lib/picky/query/indexes.rb#L23" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000225_source" class="dyn-source">
+                    <div id="M000237_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/query/indexes.rb, line 23</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-operator">*</span><span class="ruby-identifier">indexes</span>, <span class="ruby-identifier">combinations_type</span>
-        <span class="ruby-ivar">@indexes</span>           = <span class="ruby-identifier">indexes</span>
-        <span class="ruby-ivar">@combinations_type</span> = <span class="ruby-identifier">combinations_type</span>
-        <span class="ruby-ivar">@mapper</span>            = <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">QualifierCategoryMapper</span>.<span class="ruby-identifier">new</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-operator">*</span><span class="ruby-identifier">indexes</span>
+        <span class="ruby-constant">IndexesCheck</span>.<span class="ruby-identifier">check_backend_types</span> <span class="ruby-identifier">indexes</span>
+
+        <span class="ruby-ivar">@indexes</span> = <span class="ruby-identifier">indexes</span>
+        <span class="ruby-ivar">@mapper</span>  = <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">QualifierCategoryMapper</span>.<span class="ruby-identifier">new</span>
         <span class="ruby-identifier">map_categories</span>
       <span class="ruby-keyword kw">end</span></pre>
                     </div>
@@ -184,9 +185,9 @@ memory and redis indexes just yet.
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000230">
+                <div class="title" id="M000243">
                     
-                    <a name="M000230"></a><b>allocation_for</b>(tokens, index)
+                    <a name="M000243"></a><b>allocation_for</b>(tokens, index)
                     
                 </div>
                 
@@ -195,13 +196,13 @@ memory and redis indexes just yet.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000230_source')" id="l_M000230_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000243_source')" id="l_M000243_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/query/indexes.rb#L77" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/c10bdf5f49041ccfde516e6f10eeec15b7fb513d/server/lib/picky/query/indexes.rb#L78" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000230_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/query/indexes.rb, line 77</span>
+                    <div id="M000243_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/query/indexes.rb, line 78</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">allocation_for</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">index</span>
         <span class="ruby-comment cmt"># Expand the combinations.</span>
         <span class="ruby-comment cmt">#</span>
@@ -209,12 +210,12 @@ memory and redis indexes just yet.
 
         <span class="ruby-comment cmt"># Generate all possible combinations.</span>
         <span class="ruby-comment cmt">#</span>
-        <span class="ruby-identifier">expanded_combinations</span> = <span class="ruby-identifier">expand_combinations_from</span> <span class="ruby-identifier">possible_combinations</span>
+        <span class="ruby-identifier">all_possible_combinations</span> = <span class="ruby-identifier">expand_combinations_from</span> <span class="ruby-identifier">possible_combinations</span>
 
         <span class="ruby-comment cmt"># Add the wrapped possible allocations to the ones we already have.</span>
         <span class="ruby-comment cmt">#</span>
-        <span class="ruby-identifier">expanded_combinations</span>.<span class="ruby-identifier">map!</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">expanded_combination</span><span class="ruby-operator">|</span>
-          <span class="ruby-constant">Allocation</span>.<span class="ruby-identifier">new</span> <span class="ruby-ivar">@combinations_type</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">expanded_combination</span>), <span class="ruby-identifier">index</span>.<span class="ruby-identifier">result_identifier</span> <span class="ruby-comment cmt"># TODO Do not extract result_identifier.</span>
+        <span class="ruby-identifier">all_possible_combinations</span>.<span class="ruby-identifier">map!</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">expanded_combinations</span><span class="ruby-operator">|</span>
+          <span class="ruby-constant">Allocation</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">index</span>, <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Combinations</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">expanded_combinations</span>)
         <span class="ruby-keyword kw">end</span>
       <span class="ruby-keyword kw">end</span></pre>
                     </div>
@@ -223,9 +224,9 @@ memory and redis indexes just yet.
             </div>
             
             <div class="method">
-                <div class="title" id="M000229">
+                <div class="title" id="M000242">
                     
-                    <a name="M000229"></a><b>allocations_ary_for</b>(tokens)
+                    <a name="M000242"></a><b>allocations_ary_for</b>(tokens)
                     
                 </div>
                 
@@ -234,13 +235,13 @@ memory and redis indexes just yet.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000229_source')" id="l_M000229_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000242_source')" id="l_M000242_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/query/indexes.rb#L72" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/c10bdf5f49041ccfde516e6f10eeec15b7fb513d/server/lib/picky/query/indexes.rb#L73" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000229_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/query/indexes.rb, line 72</span>
+                    <div id="M000242_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/query/indexes.rb, line 73</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">allocations_ary_for</span> <span class="ruby-identifier">tokens</span>
         <span class="ruby-identifier">indexes</span>.<span class="ruby-identifier">inject</span>([]) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">allocations</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
           <span class="ruby-identifier">allocations</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">allocation_for</span>(<span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">index</span>)
@@ -252,9 +253,9 @@ memory and redis indexes just yet.
             </div>
             
             <div class="method">
-                <div class="title" id="M000228">
+                <div class="title" id="M000241">
                     
-                    <a name="M000228"></a><b>allocations_for</b>(tokens)
+                    <a name="M000241"></a><b>allocations_for</b>(tokens)
                     
                 </div>
                 
@@ -270,13 +271,13 @@ Returns a number of possible allocations for the given tokens.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000228_source')" id="l_M000228_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000241_source')" id="l_M000241_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/query/indexes.rb#L67" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/c10bdf5f49041ccfde516e6f10eeec15b7fb513d/server/lib/picky/query/indexes.rb#L68" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000228_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/query/indexes.rb, line 67</span>
+                    <div id="M000241_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/query/indexes.rb, line 68</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">allocations_for</span> <span class="ruby-identifier">tokens</span>
         <span class="ruby-identifier">tokens</span>.<span class="ruby-identifier">categorize</span> <span class="ruby-ivar">@mapper</span>
 
@@ -288,9 +289,9 @@ Returns a number of possible allocations for the given tokens.
             </div>
             
             <div class="method">
-                <div class="title" id="M000231">
+                <div class="title" id="M000244">
                     
-                    <a name="M000231"></a><b>expand_combinations_from</b>(possible_combinations)
+                    <a name="M000244"></a><b>expand_combinations_from</b>(possible_combinations)
                     
                 </div>
                 
@@ -411,13 +412,13 @@ Note: Of course I could split this method up into smaller
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000231_source')" id="l_M000231_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000244_source')" id="l_M000244_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/query/indexes.rb#L149" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/c10bdf5f49041ccfde516e6f10eeec15b7fb513d/server/lib/picky/query/indexes.rb#L150" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000231_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/query/indexes.rb, line 149</span>
+                    <div id="M000244_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/query/indexes.rb, line 150</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">expand_combinations_from</span> <span class="ruby-identifier">possible_combinations</span>
         <span class="ruby-comment cmt"># If an element has size 0, this means one of the</span>
         <span class="ruby-comment cmt"># tokens could not be allocated.</span>
@@ -480,9 +481,9 @@ Note: Of course I could split this method up into smaller
             </div>
             
             <div class="method">
-                <div class="title" id="M000226">
+                <div class="title" id="M000238">
                     
-                    <a name="M000226"></a><b>map_categories</b>()
+                    <a name="M000238"></a><b>map_categories</b>()
                     
                 </div>
                 
@@ -491,13 +492,13 @@ Note: Of course I could split this method up into smaller
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000226_source')" id="l_M000226_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000238_source')" id="l_M000238_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/query/indexes.rb#L29" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/c10bdf5f49041ccfde516e6f10eeec15b7fb513d/server/lib/picky/query/indexes.rb#L30" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000226_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/query/indexes.rb, line 29</span>
+                    <div id="M000238_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/query/indexes.rb, line 30</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">map_categories</span>
         <span class="ruby-ivar">@indexes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
           <span class="ruby-identifier">index</span>.<span class="ruby-identifier">each_category</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">category</span><span class="ruby-operator">|</span>
@@ -511,9 +512,9 @@ Note: Of course I could split this method up into smaller
             </div>
             
             <div class="method">
-                <div class="title" id="M000227">
+                <div class="title" id="M000240">
                     
-                    <a name="M000227"></a><b>prepared_allocations_for</b>(tokens, weights = {})
+                    <a name="M000240"></a><b>prepared_allocations_for</b>(tokens, weights = {})
                     
                 </div>
                 
@@ -530,13 +531,13 @@ given tokens.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000227_source')" id="l_M000227_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000240_source')" id="l_M000240_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/query/indexes.rb#L39" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/c10bdf5f49041ccfde516e6f10eeec15b7fb513d/server/lib/picky/query/indexes.rb#L40" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000227_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/query/indexes.rb, line 39</span>
+                    <div id="M000240_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/query/indexes.rb, line 40</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prepared_allocations_for</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">weights</span> = {}
         <span class="ruby-identifier">allocations</span> = <span class="ruby-identifier">allocations_for</span> <span class="ruby-identifier">tokens</span>
 
