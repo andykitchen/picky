@@ -12,8 +12,6 @@ h1 { width: 400px; }
 
 body { /* :width 600px */ /* :margin 1em auto */ font-family: "Lucida Grande"; line-height: 1.4; }
 
-iframe { padding: 10px; }
-
 ol { margin-left: 20px; }
 ol li { list-style: decimal inside; }
 
