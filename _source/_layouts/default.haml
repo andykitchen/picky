@@ -14,6 +14,7 @@
     %link{ :rel => 'stylesheet', :href => 'stylesheets/specific.css', :type => 'text/css' }
     %link{ :rel => 'stylesheet', :href => 'stylesheets/grid.css', :type => 'text/css' }
     %link{ :rel => 'stylesheet', :href => 'stylesheets/colors.css', :type => 'text/css' }
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
     %title
       Picky:
       = h page.title
@@ -33,6 +34,8 @@
         %img{ :style => 'position: fixed; top: -10px; right: -10px; border: 0; z-index: 1;', :src => 'images/forkme.png', :alt => 'Fork me on GitHub' }
     .picky{ :title => 'Happy Picky (drawn on iPhone)' }
     .container_2
+      .social
+        <div class="g-plusone" data-size="small" data-annotation="none"></div>
       %h1 Picky
       .navigation
         - def class_for(url, klass = ''); if page.url == url then "current #{klass}" else klass end end
