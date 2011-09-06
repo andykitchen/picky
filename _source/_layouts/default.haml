@@ -15,6 +15,7 @@
     %link{ :rel => 'stylesheet', :href => 'stylesheets/grid.css', :type => 'text/css' }
     %link{ :rel => 'stylesheet', :href => 'stylesheets/colors.css', :type => 'text/css' }
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+    <script type="text/javascript">function plusone_vote(obj){_gaq.push(['_trackEvent','plusone',obj.state]);}</script>
     %title
       Picky:
       = h page.title
@@ -35,7 +36,7 @@
     .picky{ :title => 'Happy Picky (drawn on iPhone)' }
     .container_2
       .social
-        <div class="g-plusone" data-size="small" data-annotation="none"></div>
+        <div class="g-plusone" data-size="small" data-annotation="none" callback="plusone_vote"></div>
       %h1 Picky
       .navigation
         - def class_for(url, klass = ''); if page.url == url then "current #{klass}" else klass end end
