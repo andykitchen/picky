@@ -37,7 +37,8 @@
     .picky{ :title => 'Happy Picky (drawn on iPhone)' }
     .container_2
       .social
-        <div class="g-plusone" data-size="small" callback="plusone_vote" data-href="http://florianhanke.com/picky/"></div>
+        <div class="g-plusone" data-size="medium" callback="plusone_vote" data-href="http://florianhanke.com/picky/"></div>
+        <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://florianhanke.com/picky/" data-text="Picky: The fast Ruby semantic search engine" data-count="none" data-via="hanke">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
       %h1 Picky
       .navigation
         - def class_for(url, klass = ''); if page.url == url then "current #{klass}" else klass end end
