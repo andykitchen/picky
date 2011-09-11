@@ -80,6 +80,10 @@ h2. Single Page Help
 ### "Using signals":#indexes-reloading-signals
 ## "Reindex":#indexes-reindexing
 # "Search":#search
+## "Options":#search-options
+### "Searching":#search-options-searching
+### "Boost":#search-options-boost
+### "Ignore Unassigned Tokens":#search-options-ignore
 # "Indexing / Tokenizing":#indexing
 # "Searching / Tokenizing":#searching
 # "Results":#results
@@ -929,16 +933,6 @@ Searching over multiple indexes:
 media = Search.new books_index, dvd_index, mp3_index
 </code></pre>
 
-It also takes a block to set some options:
-
-<pre><code>
-media = Search.new books_index, dvd_index, mp3_index do
-  searching tokenizer_options_or_tokenizer
-  boost [:title, :author] => +2,
-        [:author, :title] => -1
-end
-</code></pre>
-
 Such an instance can then search over all its indexes and returns a @Picky::Results@ object:
 
 <pre><code>
@@ -948,6 +942,60 @@ results = media.search "query", # the query text
 </code></pre>
 
 Please see the part about "Results":#results to know more about that.
+
+h3(#search-options). Options
+
+You use a block to set search options:
+
+<pre><code>
+media = Search.new books_index, dvd_index, mp3_index do
+  searching tokenizer_options_or_tokenizer
+  boost [:title, :author] => +2,
+        [:author, :title] => -1
+end
+</code></pre>
+
+h4(#search-options-searching). Searching
+
+See "below":#searching for detailed @searching@ options.
+
+h4(#search-options-boost). Boost
+
+The @boost@ option defines what combinations to boost.
+
+This is unlike boosting in most other search engines, where you can only boost a given field. I've found it much more useful to boost combinations.
+
+Say, you have an index of addresses. The usual case is that someone is looking for a street and a number. So if Picky encounters that combination (in that order), it should move these results to a more prominent spot.
+But if it thinks it's a street number, followed by a street, it is probably wrong, since usually you search for "Road 10", instead of "10 Road" (assuming this is the case where you come from).
+
+So let's boost @street, streetnumber@, while at the same time deboost @streetnumber, street@:
+
+<pre><code>
+addresses = Search.new address_index do
+  boost [:street, :streetnumber] => +2,
+        [:streetnumber, :street] => -1
+end
+</code></pre>
+
+h4(#search-options-ignore). Ignore Unassigned Tokens
+
+There's a "full blog post":http://florianhanke.com/blog/2011/09/05/picky-ignoring-unassigned-tokens.html devoted to this topic.
+
+In short the @ignore_unassigned_tokens@ option makes Picky be very lenient with your queries. Usually, if one of the search words is not found, say in a query "aston martin cockadoodledoo", Picky will return an empty result set, because "cockadoodledoo" is not in any index, in a car search, for example.
+
+By ignoring the "cockadoodledoo" that can't be assigned sensibly, you will still get results.
+
+This could be used in a search for advertisements that are shown next to the results.
+
+If you've defined an ads search like so:
+
+<pre><code>
+ads_search = Search.new cars_index do
+  ignore_unassigned_tokens true
+end
+</code></pre>
+
+then even if Picky does not find anything for "aston martin cockadoodledoo", it will find an ad, simply ignoring the unassigned token.
 
 h2(#indexing). Indexing / Tokenizing
 

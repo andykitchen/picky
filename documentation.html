@@ -142,7 +142,15 @@
     		</ol></li>
     		<li><a href="#indexes-reindexing">Reindex</a></li>
     	</ol></li>
-    	<li><a href="#search">Search</a></li>
+    	<li><a href="#search">Search</a>
+    	<ol>
+    		<li><a href="#search-options">Options</a>
+    		<ol>
+    			<li><a href="#search-options-searching">Searching</a></li>
+    			<li><a href="#search-options-boost">Boost</a></li>
+    			<li><a href="#search-options-ignore">Ignore Unassigned Tokens</a></li>
+    		</ol></li>
+    	</ol></li>
     	<li><a href="#indexing">Indexing / Tokenizing</a></li>
     	<li><a href="#searching">Searching / Tokenizing</a></li>
     	<li><a href="#results">Results</a>
@@ -733,14 +741,6 @@
     <pre><code>
     media = Search.new books_index, dvd_index, mp3_index
     </code></pre>
-    <p>It also takes a block to set some options:</p>
-    <pre><code>
-    media = Search.new books_index, dvd_index, mp3_index do
-      searching tokenizer_options_or_tokenizer
-      boost [:title, :author] =&gt; +2,
-            [:author, :title] =&gt; -1
-    end
-    </code></pre>
     <p>Such an instance can then search over all its indexes and returns a <code>Picky::Results</code> object:</p>
     <pre><code>
     results = media.search "query", # the query text
@@ -748,6 +748,41 @@
                                  0  # offset (for pagination)
     </code></pre>
     <p>Please see the part about <a href="#results">Results</a> to know more about that.</p>
+    <h3 id="search-options">Options</h3>
+    <p>You use a block to set search options:</p>
+    <pre><code>
+    media = Search.new books_index, dvd_index, mp3_index do
+      searching tokenizer_options_or_tokenizer
+      boost [:title, :author] =&gt; +2,
+            [:author, :title] =&gt; -1
+    end
+    </code></pre>
+    <h4 id="search-options-searching">Searching</h4>
+    <p>See <a href="#searching">below</a> for detailed <code>searching</code> options.</p>
+    <h4 id="search-options-boost">Boost</h4>
+    <p>The <code>boost</code> option defines what combinations to boost.</p>
+    <p>This is unlike boosting in most other search engines, where you can only boost a given field. I&#8217;ve found it much more useful to boost combinations.</p>
+    <p>Say, you have an index of addresses. The usual case is that someone is looking for a street and a number. So if Picky encounters that combination (in that order), it should move these results to a more prominent spot.
+    But if it thinks it&#8217;s a street number, followed by a street, it is probably wrong, since usually you search for &#8220;Road 10&#8221;, instead of &#8220;10 Road&#8221; (assuming this is the case where you come from).</p>
+    <p>So let&#8217;s boost <code>street, streetnumber</code>, while at the same time deboost <code>streetnumber, street</code>:</p>
+    <pre><code>
+    addresses = Search.new address_index do
+      boost [:street, :streetnumber] =&gt; +2,
+            [:streetnumber, :street] =&gt; -1
+    end
+    </code></pre>
+    <h4 id="search-options-ignore">Ignore Unassigned Tokens</h4>
+    <p>There&#8217;s a <a href="http://florianhanke.com/blog/2011/09/05/picky-ignoring-unassigned-tokens.html">full blog post</a> devoted to this topic.</p>
+    <p>In short the <code>ignore_unassigned_tokens</code> option makes Picky be very lenient with your queries. Usually, if one of the search words is not found, say in a query &#8220;aston martin cockadoodledoo&#8221;, Picky will return an empty result set, because &#8220;cockadoodledoo&#8221; is not in any index, in a car search, for example.</p>
+    <p>By ignoring the &#8220;cockadoodledoo&#8221; that can&#8217;t be assigned sensibly, you will still get results.</p>
+    <p>This could be used in a search for advertisements that are shown next to the results.</p>
+    <p>If you&#8217;ve defined an ads search like so:</p>
+    <pre><code>
+    ads_search = Search.new cars_index do
+      ignore_unassigned_tokens true
+    end
+    </code></pre>
+    <p>then even if Picky does not find anything for &#8220;aston martin cockadoodledoo&#8221;, it will find an ad, simply ignoring the unassigned token.</p>
     <h2 id="indexing">Indexing / Tokenizing</h2>
     <p>Indexing describes how <strong>text data from the data source</strong> is handled.</p>
     <p>Picky by default goes through the following list, in order:</p>
