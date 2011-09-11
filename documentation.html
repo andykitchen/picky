@@ -122,6 +122,7 @@
     			<li><a href="#indexes-sources-delayed">Delayed</a></li>
     			<li><a href="#indexes-sources-classic">Classic Style</a></li>
     		</ol></li>
+    		<li><a href="#indexes-indexing">Indexing / Tokenizing</a></li>
     		<li><a href="#indexes-categories">Categories</a>
     		<ol>
     			<li><a href="#indexes-categories-partial">Option partial</a></li>
@@ -146,13 +147,11 @@
     	<ol>
     		<li><a href="#search-options">Options</a>
     		<ol>
-    			<li><a href="#search-options-searching">Searching</a></li>
+    			<li><a href="#search-options-searching">Searching / Tokenizing</a></li>
     			<li><a href="#search-options-boost">Boost</a></li>
     			<li><a href="#search-options-ignore">Ignore Unassigned Tokens</a></li>
     		</ol></li>
     	</ol></li>
-    	<li><a href="#indexing">Indexing / Tokenizing</a></li>
-    	<li><a href="#searching">Searching / Tokenizing</a></li>
     	<li><a href="#results">Results</a>
     	<ol>
     		<li><a href="#results-logging">Logging</a></li>
@@ -533,6 +532,55 @@
     end
     </code></pre>
     <p>Use this one if you want to use a database source with very custom <span class="caps">SQL</span> statements. If not, we suggest you use an <span class="caps">ORM</span> as an <code>#each</code> source (see above).</p>
+    <h3 id="indexes-indexing">Indexing / Tokenizing</h3>
+    <p>The <code>indexing</code> option describes how <strong>text data from the data source</strong> is handled.</p>
+    <p>Picky by default goes through the following list, in order:</p>
+    <ol>
+    	<li><strong>substitutes_characters_with</strong>: A character substituter that responds to <code>#substitute(text) #=&gt; substituted text</code></li>
+    	<li><strong>removes_characters</strong>: Regexp of characters to remove.</li>
+    	<li><strong>stopwords</strong>: Regexp of stopwords to remove.</li>
+    	<li><strong>splits_text_on</strong>: Regexp on where to split the data text.</li>
+    	<li><strong>removes_characters_after_splitting</strong>: Regexp on which characters to remove after the splitting.</li>
+    	<li><strong>normalizes_words</strong>: [[/matching_regexp/, &#8216;replace match \1&#8217;]]</li>
+    	<li><strong>rejects_token_if</strong>: lambda { |gets_token| gets_token == :hello }</li>
+    	<li><strong>case_sensitive</strong>: true or false, false is default.</li>
+    </ol>
+    <p>You pass the above options into</p>
+    <pre><code>
+    Index.new :books do
+      indexing options_hash
+    end
+    </code></pre>
+    <p>Or, if you want it to be valid for <strong>all</strong> indexes, you can define it outside of the index definition:</p>
+    <pre><code>
+    indexing options_hash
+    
+    Index.new :books do
+      # ...
+    end
+    </code></pre>
+    <p>This only works in the sinatra server if you extend the Sinatra app with <code>Picky::Sinatra</code>, like so:</p>
+    <pre><code>
+    class MySearch &lt; Sinatra::Application
+    
+      extend Picky::Sinatra
+    
+      indexing options_hash
+    
+      # ...
+    
+    end
+    </code></pre>
+    <p>You can provide your own tokenizer:</p>
+    <pre><code>
+    Index.new :books do
+      indexing MyTokenizer.new
+    end
+    </code></pre>
+    <p>The tokenizer needs to respond to the method <code>#tokenize(text)</code>, returning an array of symbols, e.g. <code>[:my, :nice, :tokens]</code>. That&#8217;s it.</p>
+    <p>It should be rather performance efficient if you want your search engine to be fast.</p>
+    <p>Note that you can always take a look at the files in <code>/index</code> to see if everything is index tokenized correctly.</p>
+    <p>Also, <code>rake 'try[text,some_index,some_category]'</code> (<code>some_index</code>, <code>some_category</code> optional) tells you how a given text is indexed.</p>
     <h3 id="indexes-categories">Categories</h3>
     <p>Categories – usually what other search engines call fields – define <strong>categorized data</strong>. For example, book data might have a <code>title</code>, an <code>author</code> and an <code>isbn</code>.</p>
     <p>So you define that:</p>
@@ -650,7 +698,7 @@
     	<li>Multi-categorized: <code>title,author:something</code> (Picky will search in title and author categories, in each index of the search)</li>
     </ul>
     <p>These options can be combined (e.g. <code>title,author:"funky~"</code>). Non-partial will win over partial, though.</p>
-    <p>Also note that these options need to make it through the tokenizing (<a href="#searching">searching</a>).</p>
+    <p>Also note that these options need to make it through the tokenizing (<a href="#search-options-searching">searching</a>).</p>
     <h3 id="indexes-keyformat">Key Format (Format of the indexed Ids)</h3>
     <p>By default, the indexed data points to keys that are integers, or differently said, are formatted using <code>to_i</code>.</p>
     <p>If you are indexing keys that are strings, use <code>to_sym</code> – a good example are MongoDB <span class="caps">BSON</span> keys, or <span class="caps">UUID</span> keys.</p>
@@ -757,83 +805,8 @@
             [:author, :title] =&gt; -1
     end
     </code></pre>
-    <h4 id="search-options-searching">Searching</h4>
-    <p>See <a href="#searching">below</a> for detailed <code>searching</code> options.</p>
-    <h4 id="search-options-boost">Boost</h4>
-    <p>The <code>boost</code> option defines what combinations to boost.</p>
-    <p>This is unlike boosting in most other search engines, where you can only boost a given field. I&#8217;ve found it much more useful to boost combinations.</p>
-    <p>Say, you have an index of addresses. The usual case is that someone is looking for a street and a number. So if Picky encounters that combination (in that order), it should move these results to a more prominent spot.
-    But if it thinks it&#8217;s a street number, followed by a street, it is probably wrong, since usually you search for &#8220;Road 10&#8221;, instead of &#8220;10 Road&#8221; (assuming this is the case where you come from).</p>
-    <p>So let&#8217;s boost <code>street, streetnumber</code>, while at the same time deboost <code>streetnumber, street</code>:</p>
-    <pre><code>
-    addresses = Search.new address_index do
-      boost [:street, :streetnumber] =&gt; +2,
-            [:streetnumber, :street] =&gt; -1
-    end
-    </code></pre>
-    <h4 id="search-options-ignore">Ignore Unassigned Tokens</h4>
-    <p>There&#8217;s a <a href="http://florianhanke.com/blog/2011/09/05/picky-ignoring-unassigned-tokens.html">full blog post</a> devoted to this topic.</p>
-    <p>In short the <code>ignore_unassigned_tokens</code> option makes Picky be very lenient with your queries. Usually, if one of the search words is not found, say in a query &#8220;aston martin cockadoodledoo&#8221;, Picky will return an empty result set, because &#8220;cockadoodledoo&#8221; is not in any index, in a car search, for example.</p>
-    <p>By ignoring the &#8220;cockadoodledoo&#8221; that can&#8217;t be assigned sensibly, you will still get results.</p>
-    <p>This could be used in a search for advertisements that are shown next to the results.</p>
-    <p>If you&#8217;ve defined an ads search like so:</p>
-    <pre><code>
-    ads_search = Search.new cars_index do
-      ignore_unassigned_tokens true
-    end
-    </code></pre>
-    <p>then even if Picky does not find anything for &#8220;aston martin cockadoodledoo&#8221;, it will find an ad, simply ignoring the unassigned token.</p>
-    <h2 id="indexing">Indexing / Tokenizing</h2>
-    <p>Indexing describes how <strong>text data from the data source</strong> is handled.</p>
-    <p>Picky by default goes through the following list, in order:</p>
-    <ol>
-    	<li><strong>substitutes_characters_with</strong>: A character substituter that responds to <code>#substitute(text) #=&gt; substituted text</code></li>
-    	<li><strong>removes_characters</strong>: Regexp of characters to remove.</li>
-    	<li><strong>stopwords</strong>: Regexp of stopwords to remove.</li>
-    	<li><strong>splits_text_on</strong>: Regexp on where to split the data text.</li>
-    	<li><strong>removes_characters_after_splitting</strong>: Regexp on which characters to remove after the splitting.</li>
-    	<li><strong>normalizes_words</strong>: [[/matching_regexp/, &#8216;replace match \1&#8217;]]</li>
-    	<li><strong>rejects_token_if</strong>: lambda { |gets_token| gets_token == :hello }</li>
-    	<li><strong>case_sensitive</strong>: true or false, false is default.</li>
-    </ol>
-    <p>You pass the above options into</p>
-    <pre><code>
-    Index.new :books do
-      indexing options_hash
-    end
-    </code></pre>
-    <p>Or, if you want it to be valid for <strong>all</strong> indexes, you can define it outside of the index definition:</p>
-    <pre><code>
-    indexing options_hash
-    
-    Index.new :books do
-      # ...
-    end
-    </code></pre>
-    <p>This only works in the sinatra server if you extend the Sinatra app with <code>Picky::Sinatra</code>, like so:</p>
-    <pre><code>
-    class MySearch &lt; Sinatra::Application
-    
-      extend Picky::Sinatra
-    
-      indexing options_hash
-    
-      # ...
-    
-    end
-    </code></pre>
-    <p>You can provide your own tokenizer:</p>
-    <pre><code>
-    Index.new :books do
-      indexing MyTokenizer.new
-    end
-    </code></pre>
-    <p>The tokenizer needs to respond to the method <code>#tokenize(text)</code>, returning an array of symbols, e.g. <code>[:my, :nice, :tokens]</code>. That&#8217;s it.</p>
-    <p>It should be rather performance efficient if you want your search engine to be fast.</p>
-    <p>Note that you can always take a look at the files in <code>/index</code> to see if everything is index tokenized correctly.</p>
-    <p>Also, <code>rake 'try[text,some_index,some_category]'</code> (<code>some_index</code>, <code>some_category</code> optional) tells you how a given text is indexed.</p>
-    <h2 id="searching">Searching / Tokenizing</h2>
-    <p>Indexing describes how <strong>queries</strong> are handled.</p>
+    <h4 id="search-options-searching">Searching / Tokenizing</h4>
+    <p>The <code>searching</code> option describes how <strong>queries</strong> are handled.</p>
     <p>Picky by default goes through the following list, in order:</p>
     <ol>
     	<li><strong>substitutes_characters_with</strong>: A character substituter that responds to <code>#substitute(text) #=&gt; substituted text</code></li>
@@ -881,6 +854,30 @@
     you can pass it into <code>Picky::Query::Tokens.process(my_tokens)</code> to get the tokens and return these.</p>
     <p><code>rake 'try[text,some_index,some_category]'</code> (<code>some_index</code>, <code>some_category</code> optional) tells you how a given text is indexed.</p>
     <p>It should be rather performance efficient if you want your search engine to be fast.</p>
+    <h4 id="search-options-boost">Boost</h4>
+    <p>The <code>boost</code> option defines what combinations to boost.</p>
+    <p>This is unlike boosting in most other search engines, where you can only boost a given field. I&#8217;ve found it much more useful to boost combinations.</p>
+    <p>Say, you have an index of addresses. The usual case is that someone is looking for a street and a number. So if Picky encounters that combination (in that order), it should move these results to a more prominent spot.
+    But if it thinks it&#8217;s a street number, followed by a street, it is probably wrong, since usually you search for &#8220;Road 10&#8221;, instead of &#8220;10 Road&#8221; (assuming this is the case where you come from).</p>
+    <p>So let&#8217;s boost <code>street, streetnumber</code>, while at the same time deboost <code>streetnumber, street</code>:</p>
+    <pre><code>
+    addresses = Search.new address_index do
+      boost [:street, :streetnumber] =&gt; +2,
+            [:streetnumber, :street] =&gt; -1
+    end
+    </code></pre>
+    <h4 id="search-options-ignore">Ignore Unassigned Tokens</h4>
+    <p>There&#8217;s a <a href="http://florianhanke.com/blog/2011/09/05/picky-ignoring-unassigned-tokens.html">full blog post</a> devoted to this topic.</p>
+    <p>In short the <code>ignore_unassigned_tokens</code> option makes Picky be very lenient with your queries. Usually, if one of the search words is not found, say in a query &#8220;aston martin cockadoodledoo&#8221;, Picky will return an empty result set, because &#8220;cockadoodledoo&#8221; is not in any index, in a car search, for example.</p>
+    <p>By ignoring the &#8220;cockadoodledoo&#8221; that can&#8217;t be assigned sensibly, you will still get results.</p>
+    <p>This could be used in a search for advertisements that are shown next to the results.</p>
+    <p>If you&#8217;ve defined an ads search like so:</p>
+    <pre><code>
+    ads_search = Search.new cars_index do
+      ignore_unassigned_tokens true
+    end
+    </code></pre>
+    <p>then even if Picky does not find anything for &#8220;aston martin cockadoodledoo&#8221;, it will find an ad, simply ignoring the unassigned token.</p>
     <h2 id="results">Results</h2>
     <p>Results are returned by the <code>Search</code> instance.</p>
     <pre><code>
