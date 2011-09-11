@@ -1105,7 +1105,7 @@ In short, the @ignore :category_name@ option makes Picky throw away any result c
 If Picky finds the tokens "florian hanke" in both @:first_name, :last_name@ and @:last_name, :last_name@, and we've instructed it to ignore @first_name@,
 
 <pre><code>
-addresses = Search.new address_index do
+names = Search.new name_index do
   ignore :first_name
 end
 </code></pre>

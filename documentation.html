@@ -872,7 +872,7 @@
     <p>In short, the <code>ignore :category_name</code> option makes Picky throw away any result combinations that have the named category in it.</p>
     <p>If Picky finds the tokens &#8220;florian hanke&#8221; in both <code>:first_name, :last_name</code> and <code>:last_name, :last_name</code>, and we&#8217;ve instructed it to ignore <code>first_name</code>,</p>
     <pre><code>
-    addresses = Search.new address_index do
+    names = Search.new name_index do
       ignore :first_name
     end
     </code></pre>
