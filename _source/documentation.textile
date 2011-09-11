@@ -84,7 +84,8 @@ h2. Single Page Help
 ## "Options":#search-options
 ### "Searching / Tokenizing":#search-options-searching
 ### "Boost":#search-options-boost
-### "Ignore Unassigned Tokens":#search-options-ignore
+### "Ignore Categories":#search-options-ignore
+### "Ignore Unassigned Tokens":#search-options-unassigned
 # "Results":#results
 ## "Logging":#results-logging
 ## "Sorting":#results-sorting
@@ -1095,11 +1096,27 @@ addresses = Search.new address_index do
 end
 </code></pre>
 
-h4(#search-options-ignore). Ignore Unassigned Tokens
+h4(#search-options-ignore). Ignore Categories
+
+There's a "full blog post":http://florianhanke.com/blog/2011/09/01/picky-case-study-location-based-ads.html devoted to this topic.
+
+In short, the @ignore :category_name@ option makes Picky throw away any result combinations that have the named category in it.
+
+If Picky finds the tokens "florian hanke" in both @:first_name, :last_name@ and @:last_name, :last_name@, and we've instructed it to ignore @first_name@,
+
+<pre><code>
+addresses = Search.new address_index do
+  ignore :first_name
+end
+</code></pre>
+
+then it will throw away the solutions for @:first_name, :last_name@ and only use @:last_name, :last_name@.
+
+h4(#search-options-unassigned). Ignore Unassigned Tokens
 
 There's a "full blog post":http://florianhanke.com/blog/2011/09/05/picky-ignoring-unassigned-tokens.html devoted to this topic.
 
-In short the @ignore_unassigned_tokens@ option makes Picky be very lenient with your queries. Usually, if one of the search words is not found, say in a query "aston martin cockadoodledoo", Picky will return an empty result set, because "cockadoodledoo" is not in any index, in a car search, for example.
+In short, the @ignore_unassigned_tokens true/false@ option makes Picky be very lenient with your queries. Usually, if one of the search words is not found, say in a query "aston martin cockadoodledoo", Picky will return an empty result set, because "cockadoodledoo" is not in any index, in a car search, for example.
 
 By ignoring the "cockadoodledoo" that can't be assigned sensibly, you will still get results.
 
