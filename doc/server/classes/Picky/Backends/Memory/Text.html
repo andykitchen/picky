@@ -59,7 +59,7 @@ TODO Should this really be <a href="Text.html">Memory::Text</a>?
         <dd>
             <ul>
                 
-                <li><a href="#M000059">dump</a></li>
+                <li><a href="#M000064">dump</a></li>
                 
             </ul>
         </dd>
@@ -68,7 +68,7 @@ TODO Should this really be <a href="Text.html">Memory::Text</a>?
         <dd>
             <ul>
                 
-                <li><a href="#M000057">extension</a></li>
+                <li><a href="#M000062">extension</a></li>
                 
             </ul>
         </dd>
@@ -77,7 +77,7 @@ TODO Should this really be <a href="Text.html">Memory::Text</a>?
         <dd>
             <ul>
                 
-                <li><a href="#M000058">load</a></li>
+                <li><a href="#M000063">load</a></li>
                 
             </ul>
         </dd>
@@ -86,7 +86,7 @@ TODO Should this really be <a href="Text.html">Memory::Text</a>?
         <dd>
             <ul>
                 
-                <li><a href="#M000061">open</a></li>
+                <li><a href="#M000066">open</a></li>
                 
             </ul>
         </dd>
@@ -95,7 +95,7 @@ TODO Should this really be <a href="Text.html">Memory::Text</a>?
         <dd>
             <ul>
                 
-                <li><a href="#M000060">retrieve</a></li>
+                <li><a href="#M000065">retrieve</a></li>
                 
             </ul>
         </dd>
@@ -117,9 +117,9 @@ TODO Should this really be <a href="Text.html">Memory::Text</a>?
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000059">
+                <div class="title" id="M000064">
                     
-                    <a name="M000059"></a><b>dump</b>(hash)
+                    <a name="M000064"></a><b>dump</b>(hash)
                     
                 </div>
                 
@@ -136,12 +136,12 @@ files.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000059_source')" id="l_M000059_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000064_source')" id="l_M000064_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/f466fb717249c675cf6897ed67ab2086589a91f7/server/lib/picky/backends/memory/text.rb#L29" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000059_source" class="dyn-source">
+                    <div id="M000064_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/backends/memory/text.rb, line 29</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dump</span> <span class="ruby-identifier">hash</span>
           <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Can't dump to text file. Use JSON or Marshal.&quot;</span>
@@ -152,9 +152,9 @@ files.
             </div>
             
             <div class="method">
-                <div class="title" id="M000057">
+                <div class="title" id="M000062">
                     
-                    <a name="M000057"></a><b>extension</b>()
+                    <a name="M000062"></a><b>extension</b>()
                     
                 </div>
                 
@@ -170,12 +170,12 @@ Uses the extension &#8220;txt&#8221;.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000057_source')" id="l_M000057_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000062_source')" id="l_M000062_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/f466fb717249c675cf6897ed67ab2086589a91f7/server/lib/picky/backends/memory/text.rb#L15" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000057_source" class="dyn-source">
+                    <div id="M000062_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/backends/memory/text.rb, line 15</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extension</span>
           <span class="ruby-identifier">:txt</span>
@@ -186,9 +186,9 @@ Uses the extension &#8220;txt&#8221;.
             </div>
             
             <div class="method">
-                <div class="title" id="M000058">
+                <div class="title" id="M000063">
                     
-                    <a name="M000058"></a><b>load</b>()
+                    <a name="M000063"></a><b>load</b>()
                     
                 </div>
                 
@@ -205,12 +205,12 @@ files.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000058_source')" id="l_M000058_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000063_source')" id="l_M000063_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/f466fb717249c675cf6897ed67ab2086589a91f7/server/lib/picky/backends/memory/text.rb#L22" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000058_source" class="dyn-source">
+                    <div id="M000063_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/backends/memory/text.rb, line 22</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">load</span>
           <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Can't load from text file. Use JSON or Marshal.&quot;</span>
@@ -221,9 +221,9 @@ files.
             </div>
             
             <div class="method">
-                <div class="title" id="M000061">
+                <div class="title" id="M000066">
                     
-                    <a name="M000061"></a><b>open</b>(&amp;block)
+                    <a name="M000066"></a><b>open</b>(&amp;block)
                     
                 </div>
                 
@@ -232,12 +232,12 @@ files.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000061_source')" id="l_M000061_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000066_source')" id="l_M000066_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/f466fb717249c675cf6897ed67ab2086589a91f7/server/lib/picky/backends/memory/text.rb#L53" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000061_source" class="dyn-source">
+                    <div id="M000066_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/backends/memory/text.rb, line 53</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">open</span> <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>
           <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span> <span class="ruby-identifier">cache_path</span>, <span class="ruby-value str">'w:utf-8'</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>
@@ -248,9 +248,9 @@ files.
             </div>
             
             <div class="method">
-                <div class="title" id="M000060">
+                <div class="title" id="M000065">
                     
-                    <a name="M000060"></a><b>retrieve</b>()
+                    <a name="M000065"></a><b>retrieve</b>()
                     
                 </div>
                 
@@ -280,12 +280,12 @@ Yields an id string and a symbol token.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000060_source')" id="l_M000060_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000065_source')" id="l_M000065_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/f466fb717249c675cf6897ed67ab2086589a91f7/server/lib/picky/backends/memory/text.rb#L40" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000060_source" class="dyn-source">
+                    <div id="M000065_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/backends/memory/text.rb, line 40</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">retrieve</span>
           <span class="ruby-identifier">id</span>    = <span class="ruby-keyword kw">nil</span>

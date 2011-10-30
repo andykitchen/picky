@@ -59,257 +59,257 @@
       </div>
     </div>
     <div class="container_2">
-      <h2>Real-World Examples</h2>
-      <div class="grid_1">
-        <p>
-          Shoot me a message if you'd like to feature your project here. I'm happy to list it.
-        </p>
-        <p>
-          A library search:
-          <a href="http://picky-simple-example.heroku.com/">Online example</a>
-          from the
-          <a href="getting_started.html">"Getting Started"</a>
-        </p>
-        <p>
-          Telephone book search for Switzerland:
-          <a href="http://twixtel.com">TwixTel online</a>
-        </p>
-      </div>
-    </div>
-    <div class="container_2">
-      <h2 id="walkthrough">Walkthrough Example: Client and server.</h2>
-      <div class="grid_1">
-        <h2>Client</h2>
-        <p>
-          This column describes using a few examples how to set up a client and a front end for the picky server, described in the right column.
-        </p>
-        <h3>Setup</h3>
-        <p>
-          The examples assume you're using a Sinatra/Padrino or Rails app.
-        </p>
-        <p>
-          Start by getting the picky-client gem and adding it to your Gemfile. You could go on without it but it helps a lot.
-        </p>
-        <code><pre>gem install picky-client&#x000A;&#x000A;gem 'picky-client'</pre></code>
-        <p>
-          Don't forget to do a
-        </p>
-        <code><pre>bundle update</pre></code>
-        <p>
-          And that's already it for the client setup! Easy, isn't it? The configuration isn't much harder.
-        </p>
-      </div>
-      <div class="grid_1">
-        <h2>Server</h2>
-        <p>
-          This column describes using a few examples how to set up the picky server. You can actually read both columns back and forth if you want. Like ping pong. Played by two chinese master ping-pong pandas. (Not by me, then you'd already stop at gem install. And the table would be on fire.)
-        </p>
-        <h3>Setup</h3>
-        <p>
-          It starts out the same as in the Getting Started section. But this time, we do an actual example picky project called library_search. For that, we use the
-        </p>
-        <code><pre>picky generate unicorn_server &lt;project name&gt;</pre></code>
-        <p>
-          command that has been installed with the picky gem.
-        </p>
-        <code><pre>gem install picky-generators&#x000A;&#x000A;picky generate unicorn_server library_search&#x000A;&#x000A;cd library_search&#x000A;&#x000A;bundle install</pre></code>
-        <p>
-          You now have a nice directory (library_search) set up with all the needed Gems, ready to go!
-        </p>
-      </div>
-      <div class="grid_2"></div>
-      <div class="grid_1">
-        <h3>Configuration (Sinatra/Rails etc. Controller)</h3>
-        <p>
-          The Picky client provides an API to access the server. It looks like this:
-        </p>
-        <code><pre># The options define where the Picky server that&#x000A;# you have already set up is found.&#x000A;# (Haven't set it up yet – see the right column on&#x000A;# how to do this, then come back here)&#x000A;#&#x000A;# Options are:&#x000A;#  * host  # e.g. 'localhost'&#x000A;#  * port  # e.g. 8080&#x000A;#  * path  # e.g. '/books'&#x000A;#&#x000A;Picky::Client.new options</pre></code>
-        <p>
-          Usually, what I do is save the Picky client instance in a constant, like Books, or BookSearch.
-          This is so I can reuse that instance.
-        </p>
-        <p>
-          Since this configuration is environment specific, it is best – in Rails – to put it into development.rb / production.rb / test.rb.
-        </p>
-        <code><pre># In development.rb:&#x000A;#&#x000A;BookSearch = Picky::Client.new(&#x000A;  :host => 'localhost',&#x000A;  :port => 8080,&#x000A;  :path => '/books'&#x000A;)</pre></code>
-        <p>
-          The BookSearch constant is ready for use in your controller actions!
-        </p>
-        <p>
-          Please continue below to see how to use the configured searches.
-        </p>
-      </div>
-      <div class="grid_1">
-        <h3>Configuration</h3>
-        <p>
-          The most important file in your project is
-          <strong>app/application.rb</strong>
-        </p>
-        <p>
-          It defines how all the indexing and the searching is handled, and even the routing.
-        </p>
-        <h4>Define how the indexing works</h4>
-        <p>What characters pass through, which words are removed (stopwords), how is the text tokenized, i.e., split?</p>
-        <code><pre># In app/application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;default_indexing removes_characters:&#x000A;                   /[^a-zA-Z0-9\s\/\-\"\&\.]/&#x000A;                 ...</pre></code>
-        <h4>Define a few indexes.</h4>
-        <p>It's easy. If you have a filled database table ready, it's even easier.</p>
-        <code><pre># In app/application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;# Indexes have an identifier, e.g., :books, a source,&#x000A;# which here is a database table, and a number of categories.&#x000A;# (With a database source, the categories are equivalent&#x000A;# to the fields)&#x000A;#&#x000A;books_index = index :books, Sources::DB.new(&#x000A;    'SELECT id, title, author, description FROM books',&#x000A;    :file => 'app/db.yml'&#x000A;  )&#x000A;books_index.category(&#x000A;    :title, # identifier&#x000A;    :qualifiers => [:t, :title],&#x000A;    :similarity => Similarity::DoubleLevenshtone.new(3)&#x000A;  )&#x000A;books_index.category(...</pre></code>
-        <p>
-          An index has
-          <ol>
-            <li>an identifier (for index directory naming/referencing by Indexes[:identifier]),</li>
-            <li>
-              a data source (find out more on
-              <a href="http://github.com/floere/picky/wiki/Sources-Configuration">Sources in the Wiki</a>
-              ), and
-            </li>
-            <li>
-              a number of categories (find out more
-              <a href="http://github.com/floere/picky/wiki/Categories-Configuration">Categories in the Wiki</a>
-              in the Wiki), and finally,
-            </li>
-            <li>a number of options.</li>
-          </ol>
-        </p>
-        <h4>Define how querying works, i.e., query text is handled.</h4>
-        <p>
-          After having defined the indexing, this is a piece of cake, since it works the same way.
-        </p>
-        <code><pre># In app/application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;default_querying removes_characters:&#x000A;                   /[^a-zA-Z0-9\s\"\~\*\:]/&#x000A;...</pre></code>
-        <h4>Queries</h4>
-        <p>Define a few queries.</p>
-        <code><pre># In app/application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;# A full search returns ids, while a live search doesn't.&#x000A;#&#x000A;# The options define weights which will give bonus points&#x000A;# to certain combinations. If only title words are found,&#x000A;# a hefty bonus of 6 is given, which is very high.&#x000A;#&#x000A;# If a title is found before the author, like&#x000A;# "the hobbit, tolkien", 3 points are awarded.&#x000A;#&#x000A;options = {&#x000A;  :weights => Query::Weights.new([:title] => 6,&#x000A;                                 [:title, :author] => 3)&#x000A;}&#x000A;full_search = Query::Full.new(books_index, options)&#x000A;live_search = Query::Live.new(books_index, options)&#x000A;&#x000A;# It's possible to use multiple indexes in a query.&#x000A;#&#x000A;multi_search = Query::Full.new(&#x000A;                 books_index,&#x000A;                 dvd_index,&#x000A;                 mp3_index&#x000A;               )</pre></code>
-        <p>
-          Find out more in the
-          <a href="http://github.com/floere/picky/wiki/Queries-Configuration">Wiki on Query Configuration</a>
-        </p>
-        <h4>Map some URL paths</h4>
-        <p>Phew! Almost done :)</p>
-        <code><pre># In app/application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;# The method "route" maps URL paths to queries.&#x000A;# Use regexps or strings to define paths.&#x000A;#&#x000A;route %r{^/tracks/full} => full_search&#x000A;route %r{^/tracks/live} => live_search</pre></code>
-        <p>
-          Find out more in the
-          <a href="http://github.com/floere/picky/wiki/Routing-configuration">Wiki on Routing Queries</a>
-        </p>
-        <h3>Indexing</h3>
-        <p>Finally! Let picky have a look at the data!</p>
-        <code><pre>rake index</pre></code>
-        <h3>Gentlemen, start your engines</h3>
-        <code><pre>rake start</pre></code>
-        <p>
-          will start an Unicorn.
-        </p>
-        <h3>Refine!</h3>
-        <p>Define similarity searches, more specific indexes, more searches, etc.</p>
-      </div>
-      <div class="grid_2"></div>
-      <div class="grid_1">
-        <h3>Usage (Controller)</h3>
-        <p>
-          Now that you have defined the constants, let's use them!
-        </p>
-        <p>
-          The client provides a handy #search method, with the signature
-          <strong>search(options)</strong>
-          where the options are:
-          <ul>
-            <li>query: the query text</li>
-            <li>offset: the result offset (default 0, only used in Full)</li>
-          </ul>
-        </p>
-        <code><pre># In a controller, e.g. the index action:&#x000A;#&#x000A;def index&#x000A;  # A Picky client has a search method with some options:&#x000A;  # * query: The query to be sent to Picky.&#x000A;  # * offset: An offset on the result ids. # Default is 0.&#x000A;  #&#x000A;  results = FullBooks.search :query => 'hello picky'</pre></code>
-        <p>
-          If the server is running, just try it! The results should be a hash with the result data.
-        </p>
-        <p>
-          Now, this is nice, but not very useful, is it? Picky can make that hash a bit more accessible with Picky::Convenience™.
-        </p>
-        <code><pre># Still in the controller action:&#x000A;#&#x000A;results = FullBooks.search ...&#x000A;&#x000A;# Make the hash a bit more self-aware.&#x000A;#&#x000A;results.extend Picky::Convenience&#x000A;&#x000A;# Now you get:&#x000A;#&#x000A;results.empty?&#x000A;results.ids 10    # First 10 ids. Default is 20.&#x000A;results.clear_ids # Remove all ids.&#x000A;results.allocations&#x000A;results.allocations_size&#x000A;results.total     # The total amount of found ids.&#x000A;&#x000A;# The method I use most often is&#x000A;# populate_with, as this populates the results&#x000A;# with rendered results (using the ids), not&#x000A;# just the ids themselves.&#x000A;#&#x000A;# Note: Also clears the ids with clear_ids.&#x000A;#&#x000A;results.populate_with Book do |book|&#x000A;  # book is a model. Render it however you want.&#x000A;  book.to_s&#x000A;end&#x000A;&#x000A;# If you use the provided Picky JavaScript frontend,&#x000A;# then encode it in JSON before sending it off.&#x000A;#&#x000A;ActiveSupport::JSON.encode results</pre></code>
-        <p>
-          And that was it for the controller. It looks large, but when reduced to the essential lines, it is just this:
-        </p>
-        <code><pre># In an initializer or environment.&#x000A;#&#x000A;FullBooks = Picky::Client::Full.new ...&#x000A;LiveBooks = Picky::Client::Live.new ...&#x000A;&#x000A;# In a controller action.&#x000A;#&#x000A;results = FullBooks.search ...&#x000A;results.populate_with Book { |book| book.to_s }&#x000A;ActiveSupport::JSON.encode results</pre></code>
-        <p>
-          Unbeatably easy, right?
-        </p>
-        <p>
-          If you don't want to render the results in the controller, use #entries to render them in a view and use #populate_with without the rendering block.
-        </p>
-        <code><pre># In a controller action.&#x000A;#&#x000A;results = FullBooks.search ...&#x000A;results.populate_with Book&#x000A;&#x000A;# In your view:&#x000A;#&#x000A;results.entries do |book|&#x000A;  render book&#x000A;end&#x000A;ActiveSupport::JSON.encode results</pre></code>
-      </div>
-      <div class="grid_1">
-        <h3>Usage (Of the Server)</h3>
-        <p>
-          Either from Sinatra/Rails/Padrino/Camping etc. through the picky client (see left column) or using for example curl to access the json data from the server directly:
-        </p>
-        <code><pre>curl 'localhost:8080/books?offset=10&query=test'</pre></code>
-        <p>
-          Or access it from any app server in any language. The data you get is JSON, for which lots of good libraries are available.
-        </p>
-        <h3>Is something not correctly indexed?</h3>
-        <code><pre>rake 'try[My Words That Do Not Work]'</pre></code>
-        <p>Words to find should be indexed in basically the same way as the query processes them.</p>
-      </div>
-      <div class="grid_2"></div>
-      <div class="grid_1">
-        <h3>The provided JS frontend.</h3>
-        <p>
-          Picky provides a html structure which is in turn used by the Picky JS frontend.
-        </p>
-        <p>
-          Add the following line to your views (here in haml glory):
-        </p>
-        <code><pre>= Picky::Helper.cached_interface options</pre></code>
-        <p>or</p>
-        <code><pre>= Picky::Helper.interface options</pre></code>
-        <p>
-          The options (defaults after the ||) are
-        </p>
-        <code><pre>options[:button]     || 'search'&#x000A;options[:no_results] || 'Sorry, no results found!'&#x000A;options[:more]       || 'more'</pre></code>
-        <p>
-          This enables you to pass in your own translated texts. If you have only one language I suggest you use #cached_interface.
-        </p>
-        <p>
-          With the HTML structure in place, let's take a look at the Javascript.
-        </p>
-        <p>
-          The simplest example that works is:
-        </p>
-        <code><pre>new PickyClient({&#x000A;  full: '/search/full', // Displays the rendered results.&#x000A;  live: '/search/live'  // Just updates the count.&#x000A;});</pre></code>
-        <p>
-          You'd of course use the urls you want.
-        </p>
-        <p>
-          A more complicated example looks like this:
-        </p>
-        <code><pre>pickyClient = new PickyClient({&#x000A;  // A full query displays the rendered results.&#x000A;  //&#x000A;  full: '/search/full',&#x000A;&#x000A;  // A live query just updates the count.&#x000A;  //&#x000A;  live: '/search/live',&#x000A;&#x000A;  // Optional. Default is 10.&#x000A;  //&#x000A;  showResultsLimit: 20,&#x000A;&#x000A;  // Optional. Before Picky sends any data.&#x000A;  //&#x000A;  before: function(params, query, offset) {&#x000A;    console.log('Going to send your query. Oh boy!');&#x000A;  },&#x000A;&#x000A;  // Optional. Just after Picky receives data.&#x000A;  //           (Get a PickyData object)&#x000A;  //&#x000A;  success: function(data, query) {&#x000A;    console.log('Received the data.');&#x000A;  },&#x000A;&#x000A;  // Optional. After Picky has handled the&#x000A;  //           data and updated the view.&#x000A;  //&#x000A;  after: function(data, query) {&#x000A;    console.log('Found what you were looking for?');&#x000A;  },&#x000A;&#x000A;  // This is used to generate the correct query&#x000A;  // strings, localized. E.g. "subject:war".&#x000A;  //&#x000A;  // Optional. If you don't give these, the&#x000A;  // category identifier given in the Picky server&#x000A;  // is used.&#x000A;  //&#x000A;  qualifiers: {&#x000A;    en:{&#x000A;      subjects:  'subject'&#x000A;    }&#x000A;  },&#x000A;&#x000A;  // This is used to explain the preceding word&#x000A;  // in the suggestion text, localized.&#x000A;  // E.g. "Peter (author)".&#x000A;  //&#x000A;  // Optional. Default are the category identifiers&#x000A;  //           from the Picky server.&#x000A;  //&#x000A;  explanations: {&#x000A;    en:{&#x000A;      title:     'titled',&#x000A;      author:    'written by',&#x000A;      isbn:      'ISBN-13',&#x000A;      year:      'published in',&#x000A;      publisher: 'published by',&#x000A;      subjects:  'topics'&#x000A;    }&#x000A;  }&#x000A;});&#x000A;&#x000A;// An initial search text.&#x000A;//&#x000A;pickyClient.insert('initial search text');</pre></code>
-        <p>
-          And that's basically it. Wish you great success!
-        </p>
-      </div>
-      <div class="grid_1">
-        <h3>Usage (Become a Picky master)</h3>
-        <p>1. An asterisk (*) makes picky search for a partial hit. (If the index supports that)</p>
-        <code><pre>part*</pre></code>
-        <p>also finds partial, party, partogenesology.</p>
-        <p>2. The last word in a query is always partially searched.</p>
-        <code><pre>my beautiful query</pre></code>
-        <p>is actually</p>
-        <code><pre>my beautiful query*</pre></code>
-        <p>3. Asterisk searches can be stopped.</p>
-        <code><pre>"part"</pre></code>
-        <p>only finds "part", and nothing else.</p>
-        <p>4. If you have defined a similarity index on a category, a tilde (~) will look for similar matches.</p>
-        <code><pre>my beoootiful~ query</pre></code>
-        <p>will also find your "beautiful" query.</p>
-        <p>5. Qualifiers can be used with a colon (:)</p>
-        <code><pre>title:ulysses author:joyce</pre></code>
-        <p>will narrow the search space to complex novels.</p>
-        <p>6. The above options can be combined.</p>
-        <code><pre>name:flurion~ hank*</pre></code>
-        <p>will find me.</p>
-        <p>That is all, young grasshopper. Be on your way :)</p>
-      </div>
-    </div>
+          <h2>Real-World Examples</h2>
+          <div class="grid_1">
+            <p>
+              Shoot me a message if you'd like to feature your project here. I'm happy to list it.
+            </p>
+            <p>
+              A library search:
+              <a href="http://picky-simple-example.heroku.com/">Online example</a>
+              from the
+              <a href="getting_started.html">"Getting Started"</a>
+            </p>
+            <p>
+              Telephone book search for Switzerland:
+              <a href="http://twixtel.com">TwixTel online</a>
+            </p>
+          </div>
+        </div>
+        <div class="container_2">
+          <h2 id="walkthrough">Walkthrough Example: Client and server.</h2>
+          <div class="grid_1">
+            <h2>Client</h2>
+            <p>
+              This column describes using a few examples how to set up a client and a front end for the picky server, described in the right column.
+            </p>
+            <h3>Setup</h3>
+            <p>
+              The examples assume you're using a Sinatra/Padrino or Rails app.
+            </p>
+            <p>
+              Start by getting the picky-client gem and adding it to your Gemfile. You could go on without it but it helps a lot.
+            </p>
+            <code><pre>gem install picky-client&#x000A;&#x000A;gem 'picky-client'</pre></code>
+            <p>
+              Don't forget to do a
+            </p>
+            <code><pre>bundle update</pre></code>
+            <p>
+              And that's already it for the client setup! Easy, isn't it? The configuration isn't much harder.
+            </p>
+          </div>
+          <div class="grid_1">
+            <h2>Server</h2>
+            <p>
+              This column describes using a few examples how to set up the picky server. You can actually read both columns back and forth if you want. Like ping pong. Played by two chinese master ping-pong pandas. (Not by me, then you'd already stop at gem install. And the table would be on fire.)
+            </p>
+            <h3>Setup</h3>
+            <p>
+              It starts out the same as in the Getting Started section. But this time, we do an actual example picky project called library_search. For that, we use the
+            </p>
+            <code><pre>picky generate unicorn_server &lt;project name&gt;</pre></code>
+            <p>
+              command that has been installed with the picky gem.
+            </p>
+            <code><pre>gem install picky-generators&#x000A;&#x000A;picky generate unicorn_server library_search&#x000A;&#x000A;cd library_search&#x000A;&#x000A;bundle install</pre></code>
+            <p>
+              You now have a nice directory (library_search) set up with all the needed Gems, ready to go!
+            </p>
+          </div>
+          <div class="grid_2"></div>
+          <div class="grid_1">
+            <h3>Configuration (Sinatra/Rails etc. Controller)</h3>
+            <p>
+              The Picky client provides an API to access the server. It looks like this:
+            </p>
+            <code><pre># The options define where the Picky server that&#x000A;# you have already set up is found.&#x000A;# (Haven't set it up yet – see the right column on&#x000A;# how to do this, then come back here)&#x000A;#&#x000A;# Options are:&#x000A;#  * host  # e.g. 'localhost'&#x000A;#  * port  # e.g. 8080&#x000A;#  * path  # e.g. '/books'&#x000A;#&#x000A;Picky::Client.new options</pre></code>
+            <p>
+              Usually, what I do is save the Picky client instance in a constant, like Books, or BookSearch.
+              This is so I can reuse that instance.
+            </p>
+            <p>
+              Since this configuration is environment specific, it is best – in Rails – to put it into development.rb / production.rb / test.rb.
+            </p>
+            <code><pre># In development.rb:&#x000A;#&#x000A;BookSearch = Picky::Client.new(&#x000A;  :host => 'localhost',&#x000A;  :port => 8080,&#x000A;  :path => '/books'&#x000A;)</pre></code>
+            <p>
+              The BookSearch constant is ready for use in your controller actions!
+            </p>
+            <p>
+              Please continue below to see how to use the configured searches.
+            </p>
+          </div>
+          <div class="grid_1">
+            <h3>Configuration</h3>
+            <p>
+              The most important file in your project is
+              <strong>app/application.rb</strong>
+            </p>
+            <p>
+              It defines how all the indexing and the searching is handled, and even the routing.
+            </p>
+            <h4>Define how the indexing works</h4>
+            <p>What characters pass through, which words are removed (stopwords), how is the text tokenized, i.e., split?</p>
+            <code><pre># In app/application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;default_indexing removes_characters:&#x000A;                   /[^a-zA-Z0-9\s\/\-\"\&\.]/&#x000A;                 ...</pre></code>
+            <h4>Define a few indexes.</h4>
+            <p>It's easy. If you have a filled database table ready, it's even easier.</p>
+            <code><pre># In app/application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;# Indexes have an identifier, e.g., :books, a source,&#x000A;# which here is a database table, and a number of categories.&#x000A;# (With a database source, the categories are equivalent&#x000A;# to the fields)&#x000A;#&#x000A;books_index = index :books, Sources::DB.new(&#x000A;    'SELECT id, title, author, description FROM books',&#x000A;    :file => 'app/db.yml'&#x000A;  )&#x000A;books_index.category(&#x000A;    :title, # identifier&#x000A;    :qualifiers => [:t, :title],&#x000A;    :similarity => Similarity::DoubleLevenshtone.new(3)&#x000A;  )&#x000A;books_index.category(...</pre></code>
+            <p>
+              An index has
+              <ol>
+                <li>an identifier (for index directory naming/referencing by Indexes[:identifier]),</li>
+                <li>
+                  a data source (find out more on
+                  <a href="http://github.com/floere/picky/wiki/Sources-Configuration">Sources in the Wiki</a>
+                  ), and
+                </li>
+                <li>
+                  a number of categories (find out more
+                  <a href="http://github.com/floere/picky/wiki/Categories-Configuration">Categories in the Wiki</a>
+                  in the Wiki), and finally,
+                </li>
+                <li>a number of options.</li>
+              </ol>
+            </p>
+            <h4>Define how querying works, i.e., query text is handled.</h4>
+            <p>
+              After having defined the indexing, this is a piece of cake, since it works the same way.
+            </p>
+            <code><pre># In app/application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;default_querying removes_characters:&#x000A;                   /[^a-zA-Z0-9\s\"\~\*\:]/&#x000A;...</pre></code>
+            <h4>Queries</h4>
+            <p>Define a few queries.</p>
+            <code><pre># In app/application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;# A full search returns ids, while a live search doesn't.&#x000A;#&#x000A;# The options define weights which will give bonus points&#x000A;# to certain combinations. If only title words are found,&#x000A;# a hefty bonus of 6 is given, which is very high.&#x000A;#&#x000A;# If a title is found before the author, like&#x000A;# "the hobbit, tolkien", 3 points are awarded.&#x000A;#&#x000A;options = {&#x000A;  :weights => Query::Weights.new([:title] => 6,&#x000A;                                 [:title, :author] => 3)&#x000A;}&#x000A;full_search = Query::Full.new(books_index, options)&#x000A;live_search = Query::Live.new(books_index, options)&#x000A;&#x000A;# It's possible to use multiple indexes in a query.&#x000A;#&#x000A;multi_search = Query::Full.new(&#x000A;                 books_index,&#x000A;                 dvd_index,&#x000A;                 mp3_index&#x000A;               )</pre></code>
+            <p>
+              Find out more in the
+              <a href="http://github.com/floere/picky/wiki/Queries-Configuration">Wiki on Query Configuration</a>
+            </p>
+            <h4>Map some URL paths</h4>
+            <p>Phew! Almost done :)</p>
+            <code><pre># In app/application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;# The method "route" maps URL paths to queries.&#x000A;# Use regexps or strings to define paths.&#x000A;#&#x000A;route %r{^/tracks/full} => full_search&#x000A;route %r{^/tracks/live} => live_search</pre></code>
+            <p>
+              Find out more in the
+              <a href="http://github.com/floere/picky/wiki/Routing-configuration">Wiki on Routing Queries</a>
+            </p>
+            <h3>Indexing</h3>
+            <p>Finally! Let picky have a look at the data!</p>
+            <code><pre>rake index</pre></code>
+            <h3>Gentlemen, start your engines</h3>
+            <code><pre>rake start</pre></code>
+            <p>
+              will start an Unicorn.
+            </p>
+            <h3>Refine!</h3>
+            <p>Define similarity searches, more specific indexes, more searches, etc.</p>
+          </div>
+          <div class="grid_2"></div>
+          <div class="grid_1">
+            <h3>Usage (Controller)</h3>
+            <p>
+              Now that you have defined the constants, let's use them!
+            </p>
+            <p>
+              The client provides a handy #search method, with the signature
+              <strong>search(options)</strong>
+              where the options are:
+              <ul>
+                <li>query: the query text</li>
+                <li>offset: the result offset (default 0, only used in Full)</li>
+              </ul>
+            </p>
+            <code><pre># In a controller, e.g. the index action:&#x000A;#&#x000A;def index&#x000A;  # A Picky client has a search method with some options:&#x000A;  # * query: The query to be sent to Picky.&#x000A;  # * offset: An offset on the result ids. # Default is 0.&#x000A;  #&#x000A;  results = FullBooks.search :query => 'hello picky'</pre></code>
+            <p>
+              If the server is running, just try it! The results should be a hash with the result data.
+            </p>
+            <p>
+              Now, this is nice, but not very useful, is it? Picky can make that hash a bit more accessible with Picky::Convenience™.
+            </p>
+            <code><pre># Still in the controller action:&#x000A;#&#x000A;results = FullBooks.search ...&#x000A;&#x000A;# Make the hash a bit more self-aware.&#x000A;#&#x000A;results.extend Picky::Convenience&#x000A;&#x000A;# Now you get:&#x000A;#&#x000A;results.empty?&#x000A;results.ids 10    # First 10 ids. Default is 20.&#x000A;results.clear_ids # Remove all ids.&#x000A;results.allocations&#x000A;results.allocations_size&#x000A;results.total     # The total amount of found ids.&#x000A;&#x000A;# The method I use most often is&#x000A;# populate_with, as this populates the results&#x000A;# with rendered results (using the ids), not&#x000A;# just the ids themselves.&#x000A;#&#x000A;# Note: Also clears the ids with clear_ids.&#x000A;#&#x000A;results.populate_with Book do |book|&#x000A;  # book is a model. Render it however you want.&#x000A;  book.to_s&#x000A;end&#x000A;&#x000A;# If you use the provided Picky JavaScript frontend,&#x000A;# then encode it in JSON before sending it off.&#x000A;#&#x000A;ActiveSupport::JSON.encode results</pre></code>
+            <p>
+              And that was it for the controller. It looks large, but when reduced to the essential lines, it is just this:
+            </p>
+            <code><pre># In an initializer or environment.&#x000A;#&#x000A;FullBooks = Picky::Client::Full.new ...&#x000A;LiveBooks = Picky::Client::Live.new ...&#x000A;&#x000A;# In a controller action.&#x000A;#&#x000A;results = FullBooks.search ...&#x000A;results.populate_with Book { |book| book.to_s }&#x000A;ActiveSupport::JSON.encode results</pre></code>
+            <p>
+              Unbeatably easy, right?
+            </p>
+            <p>
+              If you don't want to render the results in the controller, use #entries to render them in a view and use #populate_with without the rendering block.
+            </p>
+            <code><pre># In a controller action.&#x000A;#&#x000A;results = FullBooks.search ...&#x000A;results.populate_with Book&#x000A;&#x000A;# In your view:&#x000A;#&#x000A;results.entries do |book|&#x000A;  render book&#x000A;end&#x000A;ActiveSupport::JSON.encode results</pre></code>
+          </div>
+          <div class="grid_1">
+            <h3>Usage (Of the Server)</h3>
+            <p>
+              Either from Sinatra/Rails/Padrino/Camping etc. through the picky client (see left column) or using for example curl to access the json data from the server directly:
+            </p>
+            <code><pre>curl 'localhost:8080/books?offset=10&query=test'</pre></code>
+            <p>
+              Or access it from any app server in any language. The data you get is JSON, for which lots of good libraries are available.
+            </p>
+            <h3>Is something not correctly indexed?</h3>
+            <code><pre>rake 'try[My Words That Do Not Work]'</pre></code>
+            <p>Words to find should be indexed in basically the same way as the query processes them.</p>
+          </div>
+          <div class="grid_2"></div>
+          <div class="grid_1">
+            <h3>The provided JS frontend.</h3>
+            <p>
+              Picky provides a html structure which is in turn used by the Picky JS frontend.
+            </p>
+            <p>
+              Add the following line to your views (here in haml glory):
+            </p>
+            <code><pre>= Picky::Helper.cached_interface options</pre></code>
+            <p>or</p>
+            <code><pre>= Picky::Helper.interface options</pre></code>
+            <p>
+              The options (defaults after the ||) are
+            </p>
+            <code><pre>options[:button]     || 'search'&#x000A;options[:no_results] || 'Sorry, no results found!'&#x000A;options[:more]       || 'more'</pre></code>
+            <p>
+              This enables you to pass in your own translated texts. If you have only one language I suggest you use #cached_interface.
+            </p>
+            <p>
+              With the HTML structure in place, let's take a look at the Javascript.
+            </p>
+            <p>
+              The simplest example that works is:
+            </p>
+            <code><pre>new PickyClient({&#x000A;  full: '/search/full', // Displays the rendered results.&#x000A;  live: '/search/live'  // Just updates the count.&#x000A;});</pre></code>
+            <p>
+              You'd of course use the urls you want.
+            </p>
+            <p>
+              A more complicated example looks like this:
+            </p>
+            <code><pre>pickyClient = new PickyClient({&#x000A;  // A full query displays the rendered results.&#x000A;  //&#x000A;  full: '/search/full',&#x000A;&#x000A;  // A live query just updates the count.&#x000A;  //&#x000A;  live: '/search/live',&#x000A;&#x000A;  // Optional. Default is 10.&#x000A;  //&#x000A;  showResultsLimit: 20,&#x000A;&#x000A;  // Optional. Before Picky sends any data.&#x000A;  //&#x000A;  before: function(params, query, offset) {&#x000A;    console.log('Going to send your query. Oh boy!');&#x000A;  },&#x000A;&#x000A;  // Optional. Just after Picky receives data.&#x000A;  //           (Get a PickyData object)&#x000A;  //&#x000A;  success: function(data, query) {&#x000A;    console.log('Received the data.');&#x000A;  },&#x000A;&#x000A;  // Optional. After Picky has handled the&#x000A;  //           data and updated the view.&#x000A;  //&#x000A;  after: function(data, query) {&#x000A;    console.log('Found what you were looking for?');&#x000A;  },&#x000A;&#x000A;  // This is used to generate the correct query&#x000A;  // strings, localized. E.g. "subject:war".&#x000A;  //&#x000A;  // Optional. If you don't give these, the&#x000A;  // category identifier given in the Picky server&#x000A;  // is used.&#x000A;  //&#x000A;  qualifiers: {&#x000A;    en:{&#x000A;      subjects:  'subject'&#x000A;    }&#x000A;  },&#x000A;&#x000A;  // This is used to explain the preceding word&#x000A;  // in the suggestion text, localized.&#x000A;  // E.g. "Peter (author)".&#x000A;  //&#x000A;  // Optional. Default are the category identifiers&#x000A;  //           from the Picky server.&#x000A;  //&#x000A;  explanations: {&#x000A;    en:{&#x000A;      title:     'titled',&#x000A;      author:    'written by',&#x000A;      isbn:      'ISBN-13',&#x000A;      year:      'published in',&#x000A;      publisher: 'published by',&#x000A;      subjects:  'topics'&#x000A;    }&#x000A;  }&#x000A;});&#x000A;&#x000A;// An initial search text.&#x000A;//&#x000A;pickyClient.insert('initial search text');</pre></code>
+            <p>
+              And that's basically it. Wish you great success!
+            </p>
+          </div>
+          <div class="grid_1">
+            <h3>Usage (Become a Picky master)</h3>
+            <p>1. An asterisk (*) makes picky search for a partial hit. (If the index supports that)</p>
+            <code><pre>part*</pre></code>
+            <p>also finds partial, party, partogenesology.</p>
+            <p>2. The last word in a query is always partially searched.</p>
+            <code><pre>my beautiful query</pre></code>
+            <p>is actually</p>
+            <code><pre>my beautiful query*</pre></code>
+            <p>3. Asterisk searches can be stopped.</p>
+            <code><pre>"part"</pre></code>
+            <p>only finds "part", and nothing else.</p>
+            <p>4. If you have defined a similarity index on a category, a tilde (~) will look for similar matches.</p>
+            <code><pre>my beoootiful~ query</pre></code>
+            <p>will also find your "beautiful" query.</p>
+            <p>5. Qualifiers can be used with a colon (:)</p>
+            <code><pre>title:ulysses author:joyce</pre></code>
+            <p>will narrow the search space to complex novels.</p>
+            <p>6. The above options can be combined.</p>
+            <code><pre>name:flurion~ hank*</pre></code>
+            <p>will find me.</p>
+            <p>That is all, young grasshopper. Be on your way :)</p>
+          </div>
+        </div>
     <div class="license">
       Logos and all images are
       <a href="http://creativecommons.org/licenses/by/1.0/">CC Attribution</a>

@@ -49,7 +49,7 @@
         <dd>
             <ul>
                 
-                <li><a href="#M000082">[]</a></li>
+                <li><a href="#M000087">[]</a></li>
                 
             </ul>
         </dd>
@@ -58,7 +58,7 @@
         <dd>
             <ul>
                 
-                <li><a href="#M000081">clear</a></li>
+                <li><a href="#M000086">clear</a></li>
                 
             </ul>
         </dd>
@@ -67,7 +67,7 @@
         <dd>
             <ul>
                 
-                <li><a href="#M000080">dump</a></li>
+                <li><a href="#M000085">dump</a></li>
                 
             </ul>
         </dd>
@@ -89,9 +89,9 @@
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000082">
+                <div class="title" id="M000087">
                     
-                    <a name="M000082"></a><b>[]</b>(key)
+                    <a name="M000087"></a><b>[]</b>(key)
                     
                 </div>
                 
@@ -110,12 +110,12 @@ Internal API method for the index.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000082_source')" id="l_M000082_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000087_source')" id="l_M000087_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/f466fb717249c675cf6897ed67ab2086589a91f7/server/lib/picky/backends/redis/string.rb#L30" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000082_source" class="dyn-source">
+                    <div id="M000087_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/backends/redis/string.rb, line 30</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span> <span class="ruby-identifier">key</span>
           <span class="ruby-identifier">client</span>.<span class="ruby-identifier">hget</span> <span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">key</span>
@@ -126,9 +126,9 @@ Internal API method for the index.
             </div>
             
             <div class="method">
-                <div class="title" id="M000081">
+                <div class="title" id="M000086">
                     
-                    <a name="M000081"></a><b>clear</b>()
+                    <a name="M000086"></a><b>clear</b>()
                     
                 </div>
                 
@@ -144,12 +144,12 @@ Clears the hash.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000081_source')" id="l_M000081_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000086_source')" id="l_M000086_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/f466fb717249c675cf6897ed67ab2086589a91f7/server/lib/picky/backends/redis/string.rb#L22" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000081_source" class="dyn-source">
+                    <div id="M000086_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/backends/redis/string.rb, line 22</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear</span>
           <span class="ruby-identifier">client</span>.<span class="ruby-identifier">del</span> <span class="ruby-identifier">namespace</span>
@@ -160,9 +160,9 @@ Clears the hash.
             </div>
             
             <div class="method">
-                <div class="title" id="M000080">
+                <div class="title" id="M000085">
                     
-                    <a name="M000080"></a><b>dump</b>(hash)
+                    <a name="M000085"></a><b>dump</b>(hash)
                     
                 </div>
                 
@@ -181,12 +181,12 @@ Note: We could use multi, but it did not help.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000080_source')" id="l_M000080_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000085_source')" id="l_M000085_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/f466fb717249c675cf6897ed67ab2086589a91f7/server/lib/picky/backends/redis/string.rb#L13" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000080_source" class="dyn-source">
+                    <div id="M000085_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/backends/redis/string.rb, line 13</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dump</span> <span class="ruby-identifier">hash</span>
           <span class="ruby-identifier">clear</span>

@@ -1,8 +1,8 @@
-body { background-color: #F5F5EA; }
+body { background-color: #f5f5ea; }
 
-.picky { background-image: url('../images/picky-enterprise.png'); }
+.picky { background-image: url("../images/picky-enterprise.png"); }
 
-.header { background-color: #A79C8E; background: -moz-radial-gradient(50% 100%, circle, #F5F5EA 90px, #A79C8E 600px); background: -webkit-gradient(radial, 50% 100%, 90, 50% 100%, 600, from(#F5F5EA), to(#A79C8E)); }
+.header { background-color: #a79c8e; background: -moz-radial-gradient(50% 100%, circle, #f5f5ea 90px, #a79c8e 600px); background: -webkit-gradient(radial, 50% 100%, 90, 50% 100%, 600, from(#f5f5ea), to(#a79c8e)); }
 
 .container_2 .grid_1 { background-color: white; }
 .container_2 .grid_2 { background-color: white; }

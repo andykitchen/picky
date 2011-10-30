@@ -85,7 +85,7 @@ And return a weight.
         <dd>
             <ul>
                 
-                <li><a href="#M000248">==</a></li>
+                <li><a href="#M000254">==</a></li>
                 
             </ul>
         </dd>
@@ -94,7 +94,7 @@ And return a weight.
         <dd>
             <ul>
                 
-                <li><a href="#M000245">new</a></li>
+                <li><a href="#M000251">new</a></li>
                 
             </ul>
         </dd>
@@ -103,7 +103,7 @@ And return a weight.
         <dd>
             <ul>
                 
-                <li><a href="#M000247">score_for</a></li>
+                <li><a href="#M000253">score_for</a></li>
                 
             </ul>
         </dd>
@@ -112,7 +112,7 @@ And return a weight.
         <dd>
             <ul>
                 
-                <li><a href="#M000249">to_s</a></li>
+                <li><a href="#M000255">to_s</a></li>
                 
             </ul>
         </dd>
@@ -121,7 +121,7 @@ And return a weight.
         <dd>
             <ul>
                 
-                <li><a href="#M000246">weight_for</a></li>
+                <li><a href="#M000252">weight_for</a></li>
                 
             </ul>
         </dd>
@@ -156,9 +156,9 @@ And return a weight.
             <div class="sectiontitle">Class Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000245">
+                <div class="title" id="M000251">
                     
-                    <a name="M000245"></a><b>new</b>(weights = {})
+                    <a name="M000251"></a><b>new</b>(weights = {})
                     
                 </div>
                 
@@ -180,12 +180,12 @@ Needs a Hash of
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000245_source')" id="l_M000245_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000251_source')" id="l_M000251_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/d328449356c329ac30f19b9df9ac76864ea5ad22/server/lib/picky/query/weights.rb#L35" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000245_source" class="dyn-source">
+                    <div id="M000251_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/query/weights.rb, line 35</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">weights</span> = {}
         <span class="ruby-ivar">@weights</span> = <span class="ruby-identifier">weights</span>
@@ -198,9 +198,9 @@ Needs a Hash of
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000248">
+                <div class="title" id="M000254">
                     
-                    <a name="M000248"></a><b>==</b>(other)
+                    <a name="M000254"></a><b>==</b>(other)
                     
                 </div>
                 
@@ -217,12 +217,12 @@ weights are the same.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000248_source')" id="l_M000248_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000254_source')" id="l_M000254_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/d328449356c329ac30f19b9df9ac76864ea5ad22/server/lib/picky/query/weights.rb#L70" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000248_source" class="dyn-source">
+                    <div id="M000254_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/query/weights.rb, line 70</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>
         <span class="ruby-ivar">@weights</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">weights</span>
@@ -233,9 +233,9 @@ weights are the same.
             </div>
             
             <div class="method">
-                <div class="title" id="M000247">
+                <div class="title" id="M000253">
                     
-                    <a name="M000247"></a><b>score_for</b>(combinations)
+                    <a name="M000253"></a><b>score_for</b>(combinations)
                     
                 </div>
                 
@@ -260,12 +260,12 @@ Maybe make combinations comparable to Symbols?
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000247_source')" id="l_M000247_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000253_source')" id="l_M000253_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/d328449356c329ac30f19b9df9ac76864ea5ad22/server/lib/picky/query/weights.rb#L63" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000247_source" class="dyn-source">
+                    <div id="M000253_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/query/weights.rb, line 63</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">score_for</span> <span class="ruby-identifier">combinations</span>
         <span class="ruby-identifier">weight_for</span> <span class="ruby-identifier">combinations</span>.<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">:category_name</span>)
@@ -276,9 +276,9 @@ Maybe make combinations comparable to Symbols?
             </div>
             
             <div class="method">
-                <div class="title" id="M000249">
+                <div class="title" id="M000255">
                     
-                    <a name="M000249"></a><b>to_s</b>()
+                    <a name="M000255"></a><b>to_s</b>()
                     
                 </div>
                 
@@ -294,12 +294,12 @@ Prints out a nice representation of the configured weights.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000249_source')" id="l_M000249_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000255_source')" id="l_M000255_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/d328449356c329ac30f19b9df9ac76864ea5ad22/server/lib/picky/query/weights.rb#L77" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000249_source" class="dyn-source">
+                    <div id="M000255_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/query/weights.rb, line 77</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
         <span class="ruby-node">&quot;#{self.class}(#{@weights})&quot;</span>
@@ -310,9 +310,9 @@ Prints out a nice representation of the configured weights.
             </div>
             
             <div class="method">
-                <div class="title" id="M000246">
+                <div class="title" id="M000252">
                     
-                    <a name="M000246"></a><b>weight_for</b>(category_names)
+                    <a name="M000252"></a><b>weight_for</b>(category_names)
                     
                 </div>
                 
@@ -344,12 +344,12 @@ Note: Use Array#clustered_uniq_fast to make
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000246_source')" id="l_M000246_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000252_source')" id="l_M000252_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/d328449356c329ac30f19b9df9ac76864ea5ad22/server/lib/picky/query/weights.rb#L50" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000246_source" class="dyn-source">
+                    <div id="M000252_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/query/weights.rb, line 50</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">weight_for</span> <span class="ruby-identifier">category_names</span>
         <span class="ruby-ivar">@weights</span>[<span class="ruby-identifier">category_names</span>.<span class="ruby-identifier">clustered_uniq_fast</span>] <span class="ruby-operator">||</span> <span class="ruby-value">0</span>

@@ -61,7 +61,7 @@ Subclasses of this class should respond to
         <dd>
             <ul>
                 
-                <li><a href="#M000000">respond_with</a></li>
+                <li><a href="#M000002">respond_with</a></li>
                 
             </ul>
         </dd>
@@ -83,9 +83,9 @@ Subclasses of this class should respond to
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000000">
+                <div class="title" id="M000002">
                     
-                    <a name="M000000"></a><b>respond_with</b>(response, content_type = 'application/json')
+                    <a name="M000002"></a><b>respond_with</b>(response, content_type = 'application/json')
                     
                 </div>
                 
@@ -106,12 +106,12 @@ href="../Rack.html">Rack</a>.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000000_source')" id="l_M000000_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000002_source')" id="l_M000002_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/c0a06e6c8176429a7b3c3caa81ce74f37cc0ca1e/server/lib/picky/adapters/rack/base.rb#L17" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000000_source" class="dyn-source">
+                    <div id="M000002_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/adapters/rack/base.rb, line 17</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">respond_with</span> <span class="ruby-identifier">response</span>, <span class="ruby-identifier">content_type</span> = <span class="ruby-value str">'application/json'</span>
           [<span class="ruby-value">200</span>, { <span class="ruby-value str">'Content-Type'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">content_type</span>, <span class="ruby-value str">'Content-Length'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">bytesize</span>.<span class="ruby-identifier">to_s</span> }, [<span class="ruby-identifier">response</span>]]

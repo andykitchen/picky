@@ -70,13 +70,13 @@ That map to positions the <a href="File.html">File</a>, encoded in JSON:
         <dd>
             <ul>
                 
-                <li><a href="#M000035">create_configuration</a>,</li>
+                <li><a href="#M000040">create_configuration</a>,</li>
                 
-                <li><a href="#M000032">create_inverted</a>,</li>
+                <li><a href="#M000037">create_inverted</a>,</li>
                 
-                <li><a href="#M000034">create_similarity</a>,</li>
+                <li><a href="#M000039">create_similarity</a>,</li>
                 
-                <li><a href="#M000033">create_weights</a></li>
+                <li><a href="#M000038">create_weights</a></li>
                 
             </ul>
         </dd>
@@ -85,7 +85,7 @@ That map to positions the <a href="File.html">File</a>, encoded in JSON:
         <dd>
             <ul>
                 
-                <li><a href="#M000036">ids</a></li>
+                <li><a href="#M000041">ids</a></li>
                 
             </ul>
         </dd>
@@ -116,9 +116,9 @@ That map to positions the <a href="File.html">File</a>, encoded in JSON:
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000035">
+                <div class="title" id="M000040">
                     
-                    <a name="M000035"></a><b>create_configuration</b>(bundle)
+                    <a name="M000040"></a><b>create_configuration</b>(bundle)
                     
                 </div>
                 
@@ -137,12 +137,12 @@ Returns an object that responds to:
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000035_source')" id="l_M000035_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000040_source')" id="l_M000040_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/222c07a88747acdb4892bb1f8112266607570bed/server/lib/picky/backends/file.rb#L34" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000035_source" class="dyn-source">
+                    <div id="M000040_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/backends/file.rb, line 34</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_configuration</span> <span class="ruby-identifier">bundle</span>
         <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-identifier">:configuration</span>)
@@ -153,9 +153,9 @@ Returns an object that responds to:
             </div>
             
             <div class="method">
-                <div class="title" id="M000032">
+                <div class="title" id="M000037">
                     
-                    <a name="M000032"></a><b>create_inverted</b>(bundle)
+                    <a name="M000037"></a><b>create_inverted</b>(bundle)
                     
                 </div>
                 
@@ -174,12 +174,12 @@ Returns an object that responds to:
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000032_source')" id="l_M000032_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000037_source')" id="l_M000037_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/222c07a88747acdb4892bb1f8112266607570bed/server/lib/picky/backends/file.rb#L16" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000032_source" class="dyn-source">
+                    <div id="M000037_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/backends/file.rb, line 16</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_inverted</span> <span class="ruby-identifier">bundle</span>
         <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-identifier">:inverted</span>)
@@ -190,9 +190,9 @@ Returns an object that responds to:
             </div>
             
             <div class="method">
-                <div class="title" id="M000034">
+                <div class="title" id="M000039">
                     
-                    <a name="M000034"></a><b>create_similarity</b>(bundle)
+                    <a name="M000039"></a><b>create_similarity</b>(bundle)
                     
                 </div>
                 
@@ -211,12 +211,12 @@ Returns an object that responds to:
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000034_source')" id="l_M000034_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000039_source')" id="l_M000039_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/222c07a88747acdb4892bb1f8112266607570bed/server/lib/picky/backends/file.rb#L28" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000034_source" class="dyn-source">
+                    <div id="M000039_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/backends/file.rb, line 28</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_similarity</span> <span class="ruby-identifier">bundle</span>
         <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-identifier">:similarity</span>)
@@ -227,9 +227,9 @@ Returns an object that responds to:
             </div>
             
             <div class="method">
-                <div class="title" id="M000033">
+                <div class="title" id="M000038">
                     
-                    <a name="M000033"></a><b>create_weights</b>(bundle)
+                    <a name="M000038"></a><b>create_weights</b>(bundle)
                     
                 </div>
                 
@@ -248,12 +248,12 @@ Returns an object that responds to:
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000033_source')" id="l_M000033_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000038_source')" id="l_M000038_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/222c07a88747acdb4892bb1f8112266607570bed/server/lib/picky/backends/file.rb#L22" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000033_source" class="dyn-source">
+                    <div id="M000038_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/backends/file.rb, line 22</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_weights</span> <span class="ruby-identifier">bundle</span>
         <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-identifier">:weights</span>)
@@ -264,9 +264,9 @@ Returns an object that responds to:
             </div>
             
             <div class="method">
-                <div class="title" id="M000036">
+                <div class="title" id="M000041">
                     
-                    <a name="M000036"></a><b>ids</b>(combinations, _, _)
+                    <a name="M000041"></a><b>ids</b>(combinations, _, _)
                     
                 </div>
                 
@@ -287,12 +287,12 @@ be most welcome.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000036_source')" id="l_M000036_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000041_source')" id="l_M000041_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/222c07a88747acdb4892bb1f8112266607570bed/server/lib/picky/backends/file.rb#L44" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000036_source" class="dyn-source">
+                    <div id="M000041_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/backends/file.rb, line 44</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ids</span> <span class="ruby-identifier">combinations</span>, <span class="ruby-identifier">_</span>, <span class="ruby-identifier">_</span>
         <span class="ruby-comment cmt"># Get the ids for each combination.</span>

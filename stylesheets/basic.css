@@ -4,9 +4,9 @@ ol, ul { list-style: none; }
 
 blockquote, q { quotes: none; }
 
-blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ""; content: none; }
 
-h1, h2, h3, h4 { font-family: Futura,"Century Gothic","URW Gothic L",Helvetica,sans-serif; font-weight: normal; border-bottom: 1px solid #777777; }
+h1, h2, h3, h4 { font-family: Futura, "Century Gothic", "URW Gothic L", Helvetica, sans-serif; font-weight: normal; border-bottom: 1px solid #777777; }
 
 h2, h3, h4, p, ul, ol { margin-top: 1em; font-size: 0.9em; }
 
@@ -26,7 +26,7 @@ h1 a, h2 a, h3 a, h4 a { border-bottom: none; }
 
 a:visited { color: #555666; }
 
-a:hover, a:focus { color: #224466; background-color: #fff; }
+a:hover, a:focus { color: #224466; background-color: white; }
 
 a:active { color: #224466; }
 
@@ -37,10 +37,10 @@ img { float: left; margin: 10px 10px 10px 0px; }
 ol ol li { list-style: none; }
 ol ol ol li { list-style: disc; }
 
-table { border: 2px solid #999; }
+table { border: 2px solid #999999; }
 
-/* :background white*/ :padding 1em :margin 0.5em td   :padding 0.5em */
-ol.nav { height: 1.5em; color: #ccc; }
+/*  :background white*/ :padding 1em :margin 0.5em  td :padding 0.5em */
+ol.nav { height: 1.5em; color: #cccccc; }
 ol.nav li { float: left; padding-right: 0.4em; }
 
 div.clear { clear: both; }
