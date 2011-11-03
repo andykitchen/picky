@@ -15,7 +15,7 @@ layout: enterprise
       Picky is in use in a telephone search web application,
       = succeed(',') do
         %a{ :href => '#use_case_1' } see use case 1
-      where it can handle more than 10 million moderately complex search requests per day. 
+      where it can handle more than 10 million moderately complex search requests per day.
 .container_2
   %h2 Enterprisey Features
   .grid_1
@@ -53,7 +53,7 @@ layout: enterprise
       you have exponential data growth, we do not recommend to use Picky.
     %p
       If your data is slowly growing (linearly), we recommend to use Picky.
-      
+
   .grid_1
     %h3 Speed
     %p
@@ -99,11 +99,11 @@ layout: enterprise
       We noticed a high variability of answer times, probably due to the combinatorial nature of Picky. From 0.00001 seconds up to 2 seconds (in extremely hard and rare cases). Due to this fact, using Unicorn paid off very much.
     %h3 Indexing speed
     %p
-      We had a rather complicating join to combine the data for use in Picky. Also, a lot of the data needed to be cleaned and prepared.
+      We had a rather complicated join to combine the data for use in Picky. Also, a lot of the data needed to be cleaned and prepared.
     %p
       Using a single server with 2 processors, we needed a bit more than an hour to prepare the indexes for Picky.
     %p
-      We were not too happy about the speed, but running the indexing process every night did at least not disturb normal operations. 
+      We were not too happy about the speed, but running the indexing process every night did at least not disturb normal operations.
     %p
       Also, we got it almost twice as fast by Picky using all the available processors.
     %h3 Final statements
