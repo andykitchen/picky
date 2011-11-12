@@ -4,16 +4,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Picky::Try</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
-    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
 </head>
 
 <body>     
     <div class="banner">
+        
         <h1>
             <span class="type">Class</span> 
             Picky::Try 
@@ -33,58 +37,85 @@
     </div>
     <div id="bodyContent">
         <div id="content">
-    
+  
 
-    
 
-    
-    
+  
 
-    
-    
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
-    
+      
         <dt>N</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000353">new</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>O</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000356">output</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-output">output</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>S</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000354">saved</a>,</li>
-                
-                <li><a href="#M000355">searched</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-saved">saved</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-searched">searched</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>T</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000357">to_stdout</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-to_stdout">to_stdout</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
     </dl>
-    
+  
+
+  
+
+
+
+  
 
     
 
@@ -92,175 +123,215 @@
 
     
 
-    
 
     
-    <div class="sectiontitle">Attributes</div>
-    <table border='0' cellpadding='5'>
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
         
-        <tr valign='top'>
+          <tr valign='top'>
             <td class='attr-rw'>
-                [R]
-            </td>
-            <td class='attr-name'>text</td>
-            <td class='attr-desc'></td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-rw'>
-                [R]
+              [R]
             </td>
             <td class='attr-name'>specific</td>
             <td class='attr-desc'></td>
-        </tr>
+          </tr>
         
-    </table>
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>text</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+      </table>
     
 
+
+    <!-- Methods -->
     
-            <div class="sectiontitle">Class Public methods</div>
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
             
-            <div class="method">
-                <div class="title" id="M000353">
-                    
-                    <a name="M000353"></a><b>new</b>(text, index = nil, category = nil)
-                    
-                </div>
+              <a name="method-c-new"></a><b>new</b>(text, index = nil, category = nil)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
                 
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000353_source')" id="l_M000353_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/46e734d17b5ea96c6c12ded9845bc96e6e0a170f/server/lib/tasks/try.rb#L7" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000353_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/tasks/try.rb, line 7</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">text</span>, <span class="ruby-identifier">index</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">category</span> = <span class="ruby-keyword kw">nil</span>
-      <span class="ruby-ivar">@text</span> = <span class="ruby-identifier">text</span>
-      <span class="ruby-ivar">@specific</span> = <span class="ruby-constant">Picky</span><span class="ruby-operator">::</span><span class="ruby-constant">Indexes</span>
-      <span class="ruby-ivar">@specific</span> = <span class="ruby-ivar">@specific</span>[<span class="ruby-identifier">index</span>.<span class="ruby-identifier">to_sym</span>]    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">index</span>
-      <span class="ruby-ivar">@specific</span> = <span class="ruby-ivar">@specific</span>[<span class="ruby-identifier">category</span>.<span class="ruby-identifier">to_sym</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">category</span>
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/tasks/try.rb, line 7</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> <span class="ruby-identifier">text</span>, <span class="ruby-identifier">index</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">category</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-ivar">@text</span> = <span class="ruby-identifier">text</span>
+  <span class="ruby-ivar">@specific</span> = <span class="ruby-constant">Picky</span><span class="ruby-operator">::</span><span class="ruby-constant">Indexes</span>
+  <span class="ruby-ivar">@specific</span> = <span class="ruby-ivar">@specific</span>[<span class="ruby-identifier">index</span>.<span class="ruby-identifier">intern</span>]    <span class="ruby-keyword">if</span> <span class="ruby-identifier">index</span>
+  <span class="ruby-ivar">@specific</span> = <span class="ruby-ivar">@specific</span>[<span class="ruby-identifier">category</span>.<span class="ruby-identifier">intern</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">category</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="sectiontitle">Instance Public methods</div>
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-output">
             
-            <div class="method">
-                <div class="title" id="M000356">
-                    
-                    <a name="M000356"></a><b>output</b>()
-                    
-                </div>
+              <a name="method-i-output"></a><b>output</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-output_source')" id="l_method-i-output_source">show</a>
                 
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000356_source')" id="l_M000356_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/46e734d17b5ea96c6c12ded9845bc96e6e0a170f/server/lib/tasks/try.rb#L22" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000356_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/tasks/try.rb, line 22</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">output</span>
-      <span class="ruby-value str">&quot;\\\&quot;\#{text}\\\&quot; is saved in the \#{specific.identifier} index as \#{saved}\n\\\&quot;\#{text}\\\&quot; as a search will be tokenized as \#{searched}\n\n(category qualifiers, e.g. title: are removed if they do not exist as a qualifier, so 'toitle:bla' -&gt; 'bla')\n&quot;</span>
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-output_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/tasks/try.rb, line 22</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">output</span>
+      <span class="ruby-string">&quot;\&quot;#{text}\&quot; is saved in the #{specific.identifier} index as #{saved}
+\&quot;#{text}\&quot; as a search will be tokenized as #{searched}
+
+(category qualifiers, e.g. title: are removed if they do not exist as a qualifier, so 'toitle:bla' -&gt; 'bla')
+&quot;</span>
+    <span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000354">
-                    
-                    <a name="M000354"></a><b>saved</b>()
-                    
-                </div>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-saved">
+            
+              <a name="method-i-saved"></a><b>saved</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-saved_source')" id="l_method-i-saved_source">show</a>
                 
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000354_source')" id="l_M000354_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/46e734d17b5ea96c6c12ded9845bc96e6e0a170f/server/lib/tasks/try.rb#L14" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000354_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/tasks/try.rb, line 14</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">saved</span>
-      <span class="ruby-identifier">specific</span>.<span class="ruby-identifier">tokenizer</span>.<span class="ruby-identifier">tokenize</span>(<span class="ruby-identifier">text</span>.<span class="ruby-identifier">dup</span>).<span class="ruby-identifier">first</span>
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-saved_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/tasks/try.rb, line 14</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">saved</span>
+  <span class="ruby-identifier">specific</span>.<span class="ruby-identifier">tokenizer</span>.<span class="ruby-identifier">tokenize</span>(<span class="ruby-identifier">text</span>.<span class="ruby-identifier">dup</span>).<span class="ruby-identifier">first</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000355">
-                    
-                    <a name="M000355"></a><b>searched</b>()
-                    
-                </div>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-searched">
+            
+              <a name="method-i-searched"></a><b>searched</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-searched_source')" id="l_method-i-searched_source">show</a>
                 
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000355_source')" id="l_M000355_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/46e734d17b5ea96c6c12ded9845bc96e6e0a170f/server/lib/tasks/try.rb#L18" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000355_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/tasks/try.rb, line 18</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">searched</span>
-      <span class="ruby-constant">Picky</span><span class="ruby-operator">::</span><span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">query_default</span>.<span class="ruby-identifier">tokenize</span>(<span class="ruby-identifier">text</span>.<span class="ruby-identifier">dup</span>).<span class="ruby-identifier">first</span>
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-searched_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/tasks/try.rb, line 18</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">searched</span>
+  <span class="ruby-constant">Picky</span><span class="ruby-operator">::</span><span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">query_default</span>.<span class="ruby-identifier">tokenize</span>(<span class="ruby-identifier">text</span>.<span class="ruby-identifier">dup</span>).<span class="ruby-identifier">first</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000357">
-                    
-                    <a name="M000357"></a><b>to_stdout</b>()
-                    
-                </div>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_stdout">
+            
+              <a name="method-i-to_stdout"></a><b>to_stdout</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_stdout_source')" id="l_method-i-to_stdout_source">show</a>
                 
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000357_source')" id="l_M000357_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/46e734d17b5ea96c6c12ded9845bc96e6e0a170f/server/lib/tasks/try.rb#L32" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000357_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/tasks/try.rb, line 32</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_stdout</span>
-      <span class="ruby-identifier">puts</span> <span class="ruby-identifier">output</span>
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-to_stdout_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/tasks/try.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_stdout</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-identifier">output</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-</div>
+          </div>
+                    </div>
     </div>
   </body>
 </html>    

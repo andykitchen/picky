@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Picky::Wrappers::Category::Location</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Module</span> 
+            Picky::Wrappers::Category::Location 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../../files/lib/picky/wrappers/category/location_rb.html">lib/picky/wrappers/category/location.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-tokenizer">tokenizer</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>W</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-wrap">wrap</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-wrap">
+            
+              <a name="method-c-wrap"></a><b>wrap</b>(category, grid, precision = 1, anchor = 0.0)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>THINK Is this the best way to do this?</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-wrap_source')" id="l_method-c-wrap_source">show</a>
+                
+              </p>
+              <div id="method-c-wrap_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/wrappers/category/location.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">wrap</span> <span class="ruby-identifier">category</span>, <span class="ruby-identifier">grid</span>, <span class="ruby-identifier">precision</span> = <span class="ruby-number">1</span>, <span class="ruby-identifier">anchor</span> = <span class="ruby-number">0.0</span>
+  <span class="ruby-identifier">wrapped_exact</span> = <span class="ruby-constant">Wrappers</span><span class="ruby-operator">::</span><span class="ruby-constant">Bundle</span><span class="ruby-operator">::</span><span class="ruby-constant">Location</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">category</span>.<span class="ruby-identifier">exact</span>, <span class="ruby-identifier">grid</span><span class="ruby-operator">:</span> <span class="ruby-identifier">grid</span>, <span class="ruby-identifier">precision</span><span class="ruby-operator">:</span> <span class="ruby-identifier">precision</span>, <span class="ruby-identifier">anchor</span><span class="ruby-operator">:</span> <span class="ruby-identifier">anchor</span>
+
+  <span class="ruby-identifier">category</span>.<span class="ruby-identifier">class_eval</span> <span class="ruby-keyword">do</span>
+
+    <span class="ruby-comment"># Uses a basic tokenizer.</span>
+    <span class="ruby-comment">#</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">tokenizer</span>
+      <span class="ruby-ivar">@tokenizer</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-comment"># Both use the exact index.</span>
+    <span class="ruby-comment">#</span>
+    <span class="ruby-comment"># TODO Necessary to wrap?</span>
+    <span class="ruby-comment">#</span>
+    <span class="ruby-identifier">define_method</span> <span class="ruby-value">:exact</span> <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">wrapped_exact</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">define_method</span> <span class="ruby-value">:partial</span> <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">wrapped_exact</span>
+    <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-tokenizer">
+            
+              <a name="method-i-tokenizer"></a><b>tokenizer</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Uses a basic tokenizer.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-tokenizer_source')" id="l_method-i-tokenizer_source">show</a>
+                
+              </p>
+              <div id="method-i-tokenizer_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/wrappers/category/location.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">tokenizer</span>
+  <span class="ruby-ivar">@tokenizer</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+    </div>
+  </body>
+</html>    

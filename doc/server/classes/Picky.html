@@ -4,16 +4,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Picky</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
-    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
 </head>
 
 <body>     
     <div class="banner">
+        
         <h1>
             <span class="type">Module</span> 
             Picky 
@@ -63,6 +67,12 @@
             
             <li><a href="../files/lib/picky/bundle_rb.html">lib/picky/bundle.rb</a></li>
             
+            <li><a href="../files/lib/picky/bundle_indexed_rb.html">lib/picky/bundle_indexed.rb</a></li>
+            
+            <li><a href="../files/lib/picky/bundle_indexing_rb.html">lib/picky/bundle_indexing.rb</a></li>
+            
+            <li><a href="../files/lib/picky/bundle_realtime_rb.html">lib/picky/bundle_realtime.rb</a></li>
+            
             <li><a href="../files/lib/picky/calculations/location_rb.html">lib/picky/calculations/location.rb</a></li>
             
             <li><a href="../files/lib/picky/categories_rb.html">lib/picky/categories.rb</a></li>
@@ -71,11 +81,15 @@
             
             <li><a href="../files/lib/picky/categories_indexing_rb.html">lib/picky/categories_indexing.rb</a></li>
             
+            <li><a href="../files/lib/picky/categories_realtime_rb.html">lib/picky/categories_realtime.rb</a></li>
+            
             <li><a href="../files/lib/picky/category_rb.html">lib/picky/category.rb</a></li>
             
             <li><a href="../files/lib/picky/category_indexed_rb.html">lib/picky/category_indexed.rb</a></li>
             
             <li><a href="../files/lib/picky/category_indexing_rb.html">lib/picky/category_indexing.rb</a></li>
+            
+            <li><a href="../files/lib/picky/category_realtime_rb.html">lib/picky/category_realtime.rb</a></li>
             
             <li><a href="../files/lib/picky/character_substituters/west_european_rb.html">lib/picky/character_substituters/west_european.rb</a></li>
             
@@ -95,11 +109,11 @@
             
             <li><a href="../files/lib/picky/generators/partial/none_rb.html">lib/picky/generators/partial/none.rb</a></li>
             
+            <li><a href="../files/lib/picky/generators/partial/postfix_rb.html">lib/picky/generators/partial/postfix.rb</a></li>
+            
             <li><a href="../files/lib/picky/generators/partial/strategy_rb.html">lib/picky/generators/partial/strategy.rb</a></li>
             
             <li><a href="../files/lib/picky/generators/partial/substring_rb.html">lib/picky/generators/partial/substring.rb</a></li>
-            
-            <li><a href="../files/lib/picky/generators/partial_generator_rb.html">lib/picky/generators/partial_generator.rb</a></li>
             
             <li><a href="../files/lib/picky/generators/similarity/default_rb.html">lib/picky/generators/similarity/default.rb</a></li>
             
@@ -107,15 +121,13 @@
             
             <li><a href="../files/lib/picky/generators/similarity/metaphone_rb.html">lib/picky/generators/similarity/metaphone.rb</a></li>
             
-            <li><a href="../files/lib/picky/generators/similarity/phonetic_rb.html">lib/picky/generators/similarity/phonetic.rb</a></li>
-            
             <li><a href="../files/lib/picky/generators/similarity/none_rb.html">lib/picky/generators/similarity/none.rb</a></li>
+            
+            <li><a href="../files/lib/picky/generators/similarity/phonetic_rb.html">lib/picky/generators/similarity/phonetic.rb</a></li>
             
             <li><a href="../files/lib/picky/generators/similarity/soundex_rb.html">lib/picky/generators/similarity/soundex.rb</a></li>
             
             <li><a href="../files/lib/picky/generators/similarity/strategy_rb.html">lib/picky/generators/similarity/strategy.rb</a></li>
-            
-            <li><a href="../files/lib/picky/generators/similarity_generator_rb.html">lib/picky/generators/similarity_generator.rb</a></li>
             
             <li><a href="../files/lib/picky/generators/strategy_rb.html">lib/picky/generators/strategy.rb</a></li>
             
@@ -125,8 +137,6 @@
             
             <li><a href="../files/lib/picky/generators/weights/strategy_rb.html">lib/picky/generators/weights/strategy.rb</a></li>
             
-            <li><a href="../files/lib/picky/generators/weights_generator_rb.html">lib/picky/generators/weights_generator.rb</a></li>
-            
             <li><a href="../files/lib/picky/helpers/measuring_rb.html">lib/picky/helpers/measuring.rb</a></li>
             
             <li><a href="../files/lib/picky/index_rb.html">lib/picky/index.rb</a></li>
@@ -135,17 +145,7 @@
             
             <li><a href="../files/lib/picky/index_indexing_rb.html">lib/picky/index_indexing.rb</a></li>
             
-            <li><a href="../files/lib/picky/indexed/bundle_rb.html">lib/picky/indexed/bundle.rb</a></li>
-            
-            <li><a href="../files/lib/picky/indexed/wrappers/bundle/calculation_rb.html">lib/picky/indexed/wrappers/bundle/calculation.rb</a></li>
-            
-            <li><a href="../files/lib/picky/indexed/wrappers/bundle/location_rb.html">lib/picky/indexed/wrappers/bundle/location.rb</a></li>
-            
-            <li><a href="../files/lib/picky/indexed/wrappers/bundle/wrapper_rb.html">lib/picky/indexed/wrappers/bundle/wrapper.rb</a></li>
-            
-            <li><a href="../files/lib/picky/indexed/wrappers/category/location_rb.html">lib/picky/indexed/wrappers/category/location.rb</a></li>
-            
-            <li><a href="../files/lib/picky/indexed/wrappers/exact_first_rb.html">lib/picky/indexed/wrappers/exact_first.rb</a></li>
+            <li><a href="../files/lib/picky/index_realtime_rb.html">lib/picky/index_realtime.rb</a></li>
             
             <li><a href="../files/lib/picky/indexers/base_rb.html">lib/picky/indexers/base.rb</a></li>
             
@@ -159,17 +159,11 @@
             
             <li><a href="../files/lib/picky/indexes_indexing_rb.html">lib/picky/indexes_indexing.rb</a></li>
             
-            <li><a href="../files/lib/picky/indexing/bundle_rb.html">lib/picky/indexing/bundle.rb</a></li>
-            
-            <li><a href="../files/lib/picky/indexing/wrappers/category/location_rb.html">lib/picky/indexing/wrappers/category/location.rb</a></li>
-            
             <li><a href="../files/lib/picky/interfaces/live_parameters_rb.html">lib/picky/interfaces/live_parameters.rb</a></li>
             
             <li><a href="../files/lib/picky/loader_rb.html">lib/picky/loader.rb</a></li>
             
             <li><a href="../files/lib/picky/migrations/from_30_to_31_rb.html">lib/picky/migrations/from_30_to_31.rb</a></li>
-            
-            <li><a href="../files/lib/picky/no_source_specified_exception_rb.html">lib/picky/no_source_specified_exception.rb</a></li>
             
             <li><a href="../files/lib/picky/performant_rb.html">lib/picky/performant.rb</a></li>
             
@@ -213,15 +207,25 @@
             
             <li><a href="../files/lib/picky/sources/mongo_rb.html">lib/picky/sources/mongo.rb</a></li>
             
-            <li><a href="../files/lib/picky/sources/wrappers/base_rb.html">lib/picky/sources/wrappers/base.rb</a></li>
-            
-            <li><a href="../files/lib/picky/sources/wrappers/location_rb.html">lib/picky/sources/wrappers/location.rb</a></li>
-            
             <li><a href="../files/lib/picky/statistics_rb.html">lib/picky/statistics.rb</a></li>
             
             <li><a href="../files/lib/picky/tokenizer_rb.html">lib/picky/tokenizer.rb</a></li>
             
             <li><a href="../files/lib/picky/tokenizers/location_rb.html">lib/picky/tokenizers/location.rb</a></li>
+            
+            <li><a href="../files/lib/picky/wrappers/bundle/calculation_rb.html">lib/picky/wrappers/bundle/calculation.rb</a></li>
+            
+            <li><a href="../files/lib/picky/wrappers/bundle/delegators_rb.html">lib/picky/wrappers/bundle/delegators.rb</a></li>
+            
+            <li><a href="../files/lib/picky/wrappers/bundle/exact_partial_rb.html">lib/picky/wrappers/bundle/exact_partial.rb</a></li>
+            
+            <li><a href="../files/lib/picky/wrappers/bundle/location_rb.html">lib/picky/wrappers/bundle/location.rb</a></li>
+            
+            <li><a href="../files/lib/picky/wrappers/bundle/wrapper_rb.html">lib/picky/wrappers/bundle/wrapper.rb</a></li>
+            
+            <li><a href="../files/lib/picky/wrappers/category/exact_first_rb.html">lib/picky/wrappers/category/exact_first.rb</a></li>
+            
+            <li><a href="../files/lib/picky/wrappers/category/location_rb.html">lib/picky/wrappers/category/location.rb</a></li>
             
             <li><a href="../files/lib/picky_rb.html">lib/picky.rb</a></li>
             
@@ -231,128 +235,261 @@
     </div>
     <div id="bodyContent">
         <div id="content">
-    
+  
     <div class="description">
-        <p>
-encoding: utf-8
-</p>
-<p>
-THINK Does it also remove diaritics, like べ to へ?
-</p>
-<hr size="1"></hr><p>
-encoding: utf-8
-</p>
-<hr size="1"></hr><p>
-encoding: utf-8
-</p>
-<hr size="1"></hr><p>
-encoding: utf-8
-</p>
-<hr size="1"></hr><p>
-encoding: utf-8
-</p>
-<hr size="1"></hr><p>
-encoding: utf-8
-</p>
-<hr size="1"></hr><p>
-encoding: utf-8
-</p>
-<hr size="1"></hr><p>
-encoding: utf-8
-</p>
+      
+<p>THINK Does it also remove diaritics, like べ to へ?</p>
 
     </div>
-    
+  
 
-    
 
-    
-    
+  
 
-    
-    
 
-    
+  
+  
 
-    
 
-    
-    <div class="sectiontitle">Classes and Modules</div>
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
     <ul>
-        
-        <li><span class="type">MODULE</span> <a href="Picky/Adapters.html">Picky::Adapters</a></li>
-        
-        <li><span class="type">MODULE</span> <a href="Picky/Backends.html">Picky::Backends</a></li>
-        
-        <li><span class="type">MODULE</span> <a href="Picky/Calculations.html">Picky::Calculations</a></li>
-        
-        <li><span class="type">MODULE</span> <a href="Picky/Capistrano.html">Picky::Capistrano</a></li>
-        
-        <li><span class="type">MODULE</span> <a href="Picky/CharacterSubstituters.html">Picky::CharacterSubstituters</a></li>
-        
-        <li><span class="type">MODULE</span> <a href="Picky/FrontendAdapters.html">Picky::FrontendAdapters</a></li>
-        
-        <li><span class="type">MODULE</span> <a href="Picky/Generators.html">Picky::Generators</a></li>
-        
-        <li><span class="type">MODULE</span> <a href="Picky/Helpers.html">Picky::Helpers</a></li>
-        
-        <li><span class="type">MODULE</span> <a href="Picky/Indexed.html">Picky::Indexed</a></li>
-        
-        <li><span class="type">MODULE</span> <a href="Picky/Indexers.html">Picky::Indexers</a></li>
-        
-        <li><span class="type">MODULE</span> <a href="Picky/Indexing.html">Picky::Indexing</a></li>
-        
-        <li><span class="type">MODULE</span> <a href="Picky/Interfaces.html">Picky::Interfaces</a></li>
-        
-        <li><span class="type">MODULE</span> <a href="Picky/Loader.html">Picky::Loader</a></li>
-        
-        <li><span class="type">MODULE</span> <a href="Picky/Performant.html">Picky::Performant</a></li>
-        
-        <li><span class="type">MODULE</span> <a href="Picky/Query.html">Picky::Query</a></li>
-        
-        <li><span class="type">MODULE</span> <a href="Picky/Rack.html">Picky::Rack</a></li>
-        
-        <li><span class="type">MODULE</span> <a href="Picky/Sinatra.html">Picky::Sinatra</a></li>
-        
-        <li><span class="type">MODULE</span> <a href="Picky/Sources.html">Picky::Sources</a></li>
-        
-        <li><span class="type">MODULE</span> <a href="Picky/Tokenizers.html">Picky::Tokenizers</a></li>
-        
-        <li><span class="type">CLASS</span> <a href="Picky/Application.html">Picky::Application</a></li>
-        
-        <li><span class="type">CLASS</span> <a href="Picky/Bundle.html">Picky::Bundle</a></li>
-        
-        <li><span class="type">CLASS</span> <a href="Picky/Categories.html">Picky::Categories</a></li>
-        
-        <li><span class="type">CLASS</span> <a href="Picky/Category.html">Picky::Category</a></li>
-        
-        <li><span class="type">CLASS</span> <a href="Picky/Cores.html">Picky::Cores</a></li>
-        
-        <li><span class="type">CLASS</span> <a href="Picky/Index.html">Picky::Index</a></li>
-        
-        <li><span class="type">CLASS</span> <a href="Picky/Indexes.html">Picky::Indexes</a></li>
-        
-        <li><span class="type">CLASS</span> <a href="Picky/NoSourceSpecifiedException.html">Picky::NoSourceSpecifiedException</a></li>
-        
-        <li><span class="type">CLASS</span> <a href="Picky/Results.html">Picky::Results</a></li>
-        
-        <li><span class="type">CLASS</span> <a href="Picky/Search.html">Picky::Search</a></li>
-        
-        <li><span class="type">CLASS</span> <a href="Picky/Statistics.html">Picky::Statistics</a></li>
-        
-        <li><span class="type">CLASS</span> <a href="Picky/Tokenizer.html">Picky::Tokenizer</a></li>
-        
-        <li><span class="type">CLASS</span> <a href="Picky/Try.html">Picky::Try</a></li>
-        
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Picky/Adapters.html">Picky::Adapters</a>
+        </li>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Picky/Backends.html">Picky::Backends</a>
+        </li>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Picky/Calculations.html">Picky::Calculations</a>
+        </li>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Picky/Capistrano.html">Picky::Capistrano</a>
+        </li>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Picky/CharacterSubstituters.html">Picky::CharacterSubstituters</a>
+        </li>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Picky/FrontendAdapters.html">Picky::FrontendAdapters</a>
+        </li>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Picky/Generators.html">Picky::Generators</a>
+        </li>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Picky/Helpers.html">Picky::Helpers</a>
+        </li>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Picky/Indexers.html">Picky::Indexers</a>
+        </li>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Picky/Interfaces.html">Picky::Interfaces</a>
+        </li>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Picky/Query.html">Picky::Query</a>
+        </li>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Picky/Rack.html">Picky::Rack</a>
+        </li>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Picky/Sinatra.html">Picky::Sinatra</a>
+        </li>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Picky/Sources.html">Picky::Sources</a>
+        </li>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Picky/Tokenizers.html">Picky::Tokenizers</a>
+        </li>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Picky/Wrappers.html">Picky::Wrappers</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Picky/Application.html">Picky::Application</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Picky/Bundle.html">Picky::Bundle</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Picky/Categories.html">Picky::Categories</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Picky/Category.html">Picky::Category</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Picky/Index.html">Picky::Index</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Picky/Indexes.html">Picky::Indexes</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Picky/Results.html">Picky::Results</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Picky/Search.html">Picky::Search</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Picky/Tokenizer.html">Picky::Tokenizer</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Picky/Try.html">Picky::Try</a>
+        </li>
+      
     </ul>
-    
+  
+
+
+  
+
+  
+
+
+
+  
 
     
 
     
 
     
-</div>
+      <!-- Section constants -->
+      <div class="sectiontitle">Constants</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class="attr-name">Infinity</td>
+            <td>=</td>
+            <td class="attr-value">1.0/0</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">Partial</td>
+            <td>=</td>
+            <td class="attr-value">Generators::Partial</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">Similarity</td>
+            <td>=</td>
+            <td class="attr-value">Generators::Similarity</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">Weights</td>
+            <td>=</td>
+            <td class="attr-value">Generators::Weights</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">LiveParameters</td>
+            <td>=</td>
+            <td class="attr-value">Interfaces::LiveParameters</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"><p>Aka.</p></td>
+            </tr>
+          
+        
+      </table>
+    
+
+
+    
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>logger</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+      </table>
+    
+
+
+    <!-- Methods -->
+              </div>
     </div>
   </body>
 </html>    

@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Picky::Wrappers::Bundle::Location</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Picky::Wrappers::Bundle::Location 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="Calculation.html">Picky::Wrappers::Bundle::Calculation</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../../files/lib/picky/wrappers/bundle/location_rb.html">lib/picky/wrappers/bundle/location.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>A location calculation recalculates a location to the <a
+href="../../../Picky.html">Picky</a> internal location.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-add">add</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-add_partialized">add_partialized</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-calculate">calculate</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-dump">dump</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>L</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-load">load</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <a name="method-c-new"></a><b>new</b>(bundle, options = {})
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/wrappers/bundle/location.rb, line 11</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> <span class="ruby-identifier">bundle</span>, <span class="ruby-identifier">options</span> = {}
+  <span class="ruby-keyword">super</span> <span class="ruby-identifier">bundle</span>
+
+  <span class="ruby-identifier">user_grid</span>  = <span class="ruby-identifier">options</span>[<span class="ruby-value">:grid</span>]      <span class="ruby-operator">||</span> <span class="ruby-identifier">raise</span>(<span class="ruby-node">&quot;Gridsize needs to be given for location #{bundle.identifier}.&quot;</span>)
+  <span class="ruby-identifier">anchor</span>     = <span class="ruby-identifier">options</span>[<span class="ruby-value">:anchor</span>]    <span class="ruby-operator">||</span> <span class="ruby-number">0.0</span>
+  <span class="ruby-identifier">precision</span>  = <span class="ruby-identifier">options</span>[<span class="ruby-value">:precision</span>] <span class="ruby-operator">||</span> <span class="ruby-number">1</span>
+
+  <span class="ruby-ivar">@calculation</span> = <span class="ruby-constant">Calculations</span><span class="ruby-operator">::</span><span class="ruby-constant">Location</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">user_grid</span>, <span class="ruby-identifier">anchor</span>, <span class="ruby-identifier">precision</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-add">
+            
+              <a name="method-i-add"></a><b>add</b>(id, location, where = :unshift)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Recalculates the added location.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-add_source')" id="l_method-i-add_source">show</a>
+                
+              </p>
+              <div id="method-i-add_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/wrappers/bundle/location.rb, line 29</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">location</span>, <span class="ruby-identifier">where</span> = <span class="ruby-value">:unshift</span>
+  <span class="ruby-ivar">@calculation</span>.<span class="ruby-identifier">calculated_range</span>(<span class="ruby-identifier">location</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">to_f</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">new_location</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">add</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">new_location</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">where</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-add_partialized">
+            
+              <a name="method-i-add_partialized"></a><b>add_partialized</b>(does_not, matter, at_all)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Do not generate a partial.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-add_partialized_source')" id="l_method-i-add_partialized_source">show</a>
+                
+              </p>
+              <div id="method-i-add_partialized_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/wrappers/bundle/location.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add_partialized</span> <span class="ruby-identifier">does_not</span>, <span class="ruby-identifier">matter</span>, <span class="ruby-identifier">at_all</span>
+  <span class="ruby-comment"># Nothing</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-calculate">
+            
+              <a name="method-i-calculate"></a><b>calculate</b>(float)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-calculate_source')" id="l_method-i-calculate_source">show</a>
+                
+              </p>
+              <div id="method-i-calculate_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/wrappers/bundle/location.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">calculate</span> <span class="ruby-identifier">float</span>
+  <span class="ruby-ivar">@calculation</span>.<span class="ruby-identifier">calculate</span> <span class="ruby-identifier">float</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-dump">
+            
+              <a name="method-i-dump"></a><b>dump</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Save the config, then dump normally.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-dump_source')" id="l_method-i-dump_source">show</a>
+                
+              </p>
+              <div id="method-i-dump_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/wrappers/bundle/location.rb, line 43</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">dump</span>
+  <span class="ruby-identifier">bundle</span>[<span class="ruby-value">:location_anchor</span>] = <span class="ruby-ivar">@calculation</span>.<span class="ruby-identifier">anchor</span>
+
+  <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">dump</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-load">
+            
+              <a name="method-i-load"></a><b>load</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Load first the bundle, then extract the config.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-load_source')" id="l_method-i-load_source">show</a>
+                
+              </p>
+              <div id="method-i-load_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/wrappers/bundle/location.rb, line 51</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">load</span>
+  <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">load</span>
+
+  <span class="ruby-comment"># TODO Symbols (of the location_anchor!!!).</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-ivar">@calculation</span>.<span class="ruby-identifier">anchor</span> = <span class="ruby-identifier">bundle</span>[<span class="ruby-string">'location_anchor'</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">bundle</span>[<span class="ruby-string">'location_anchor'</span>].<span class="ruby-identifier">to_f</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">raise</span>(<span class="ruby-node">&quot;Configuration 'location_anchor' for #{bundle.identifier} missing. Did you run rake index already?&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+    </div>
+  </body>
+</html>    

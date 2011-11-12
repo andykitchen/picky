@@ -4,23 +4,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Picky::TestClient</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
-    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
 </head>
 
 <body>     
     <div class="banner">
+        
         <h1>
             <span class="type">Class</span> 
             Picky::TestClient 
             
                 <span class="parent">&lt; 
                     
-                    Client
+                    <a href="Client.html">Picky::Client</a>
                     
                 </span>
             
@@ -33,40 +37,61 @@
     </div>
     <div id="bodyContent">
         <div id="content">
-    
+  
 
-    
 
-    
-    
+  
 
-    
-    
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
-    
+      
         <dt>N</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000043">new</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>S</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000044">search</a>,</li>
-                
-                <li><a href="#M000045">send_search</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-search">search</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-send_search">send_search</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
     </dl>
-    
+  
+
+  
+
+
+
+  
 
     
 
@@ -74,139 +99,140 @@
 
     
 
-    
 
     
-    <div class="sectiontitle">Attributes</div>
-    <table border='0' cellpadding='5'>
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
         
-        <tr valign='top'>
+          <tr valign='top'>
             <td class='attr-rw'>
-                [R]
+              [R]
             </td>
             <td class='attr-name'>request</td>
             <td class='attr-desc'></td>
-        </tr>
+          </tr>
         
-    </table>
+      </table>
     
 
+
+    <!-- Methods -->
     
-            <div class="sectiontitle">Class Public methods</div>
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
             
-            <div class="method">
-                <div class="title" id="M000043">
-                    
-                    <a name="M000043"></a><b>new</b>(rack_app, options = {})
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-Example:
-</p>
-<pre>
-  Picky::TestClient.new(BookSearch, :path =&gt; '/books')
+              <a name="method-c-new"></a><b>new</b>(rack_app, options = {})
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Example:</p>
+
+<pre class="ruby"><span class="ruby-constant">Picky</span><span class="ruby-operator">::</span><span class="ruby-constant">TestClient</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">BookSearch</span>, :<span class="ruby-identifier">path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'/books'</span>)
 </pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky-client/spec/test_client.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> <span class="ruby-identifier">rack_app</span>, <span class="ruby-identifier">options</span> = {}
+  <span class="ruby-keyword">super</span> <span class="ruby-identifier">options</span>
 
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000043_source')" id="l_M000043_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/a669958e5951ec9ef249bcc4cb7844c6250d673c/client/lib/picky-client/spec/test_client.rb#L12" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000043_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky-client/spec/test_client.rb, line 12</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">rack_app</span>, <span class="ruby-identifier">options</span> = {}
-      <span class="ruby-keyword kw">super</span> <span class="ruby-identifier">options</span>
-
-      <span class="ruby-ivar">@request</span> = <span class="ruby-operator">::</span><span class="ruby-constant">Rack</span><span class="ruby-operator">::</span><span class="ruby-constant">MockRequest</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">rack_app</span>
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+  <span class="ruby-ivar">@request</span> = <span class="ruby-operator">::</span><span class="ruby-constant">Rack</span><span class="ruby-operator">::</span><span class="ruby-constant">MockRequest</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">rack_app</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="sectiontitle">Instance Public methods</div>
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-search">
             
-            <div class="method">
-                <div class="title" id="M000044">
-                    
-                    <a name="M000044"></a><b>search</b>(query, params = {})
-                    
-                </div>
+              <a name="method-i-search"></a><b>search</b>(query, params = {})
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Wraps the search method to always extend the result with <a
+href="Convenience.html">Convenience</a>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-search_source')" id="l_method-i-search_source">show</a>
                 
-                <div class="description">
-                  <p>
-Wraps the search method to always extend the result with <a
-href="Convenience.html">Convenience</a>.
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000044_source')" id="l_M000044_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/a669958e5951ec9ef249bcc4cb7844c6250d673c/client/lib/picky-client/spec/test_client.rb#L20" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000044_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky-client/spec/test_client.rb, line 20</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">search</span> <span class="ruby-identifier">query</span>, <span class="ruby-identifier">params</span> = {}
-      <span class="ruby-keyword kw">super</span>.<span class="ruby-identifier">extend</span> <span class="ruby-constant">Convenience</span>
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-search_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky-client/spec/test_client.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">search</span> <span class="ruby-identifier">query</span>, <span class="ruby-identifier">params</span> = {}
+  <span class="ruby-keyword">super</span>.<span class="ruby-identifier">extend</span> <span class="ruby-constant">Convenience</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000045">
-                    
-                    <a name="M000045"></a><b>send_search</b>(params = {})
-                    
-                </div>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-send_search">
+            
+              <a name="method-i-send_search"></a><b>send_search</b>(params = {})
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Backend method that we override to not send a real search.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-send_search_source')" id="l_method-i-send_search_source">show</a>
                 
-                <div class="description">
-                  <p>
-Backend method that we override to not send a real search.
-</p>
+              </p>
+              <div id="method-i-send_search_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky-client/spec/test_client.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">send_search</span> <span class="ruby-identifier">params</span> = {}
+  <span class="ruby-identifier">params</span> = <span class="ruby-identifier">defaultize</span> <span class="ruby-identifier">params</span>
 
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000045_source')" id="l_M000045_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/a669958e5951ec9ef249bcc4cb7844c6250d673c/client/lib/picky-client/spec/test_client.rb#L26" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000045_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky-client/spec/test_client.rb, line 26</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">send_search</span> <span class="ruby-identifier">params</span> = {}
-      <span class="ruby-identifier">params</span> = <span class="ruby-identifier">defaultize</span> <span class="ruby-identifier">params</span>
-
-      <span class="ruby-identifier">request</span>.<span class="ruby-identifier">get</span>(<span class="ruby-node">&quot;#{self.path}?#{params.to_query}&quot;</span>).<span class="ruby-identifier">body</span>
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+  <span class="ruby-identifier">request</span>.<span class="ruby-identifier">get</span>(<span class="ruby-node">&quot;#{self.path}?#{params.to_query}&quot;</span>).<span class="ruby-identifier">body</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-</div>
+          </div>
+                    </div>
     </div>
   </body>
 </html>    

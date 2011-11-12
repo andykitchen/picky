@@ -4,16 +4,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Picky::Search</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
-    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
 </head>
 
 <body>     
     <div class="banner">
+        
         <h1>
             <span class="type">Class</span> 
             Picky::Search 
@@ -33,115 +37,151 @@
     </div>
     <div id="bodyContent">
         <div id="content">
-    
+  
     <div class="description">
-        <h1>Picky Searches</h1>
-<p>
-A Picky <a href="Search.html">Search</a> is an object which:
-</p>
-<pre>
- * holds one or more indexes
- * offers an interface to query these indexes.
-</pre>
-<p>
-You connect URL paths to indexes via a <a href="Query.html">Query</a>.
-</p>
-<p>
-We recommend to not use this directly, but connect it to an URL and query
-through one of these (Protip: Use &#8220;curl
-&#8216;localhost:8080/query/path?query=exampletext&#8217;)&#8221; in a
-Terminal.
-</p>
+      
+<h1 id="label-Picky+Searches"><a href="../Picky.html">Picky</a> Searches</h1>
+
+<p>A <a href="../Picky.html">Picky</a> <a href="Search.html">Search</a> is an
+object which:</p>
+
+<pre>* holds one or more indexes
+* offers an interface to query these indexes.</pre>
+
+<p>You connect URL paths to indexes via a <a href="Query.html">Query</a>.</p>
+
+<p>We recommend to not use this directly, but connect it to an URL and query
+through one of these (Protip: Use “curl
+‘localhost:8080/query/path?query=exampletext’)” in a Terminal.</p>
 
     </div>
-    
+  
 
-    
 
-    
-    
+  
 
-    
-    
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
-    
+      
         <dt>B</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000274">boost</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-boost">boost</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>E</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000279">execute</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-execute">execute</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>I</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000276">ignore_unassigned_tokens</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-ignore_unassigned_tokens">ignore_unassigned_tokens</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>N</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000272">new</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>S</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000277">search</a>,</li>
-                
-                <li><a href="#M000278">search_with</a>,</li>
-                
-                <li><a href="#M000273">searching</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-search">search</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-search_with">search_with</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-searching">searching</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>T</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000285">to_s</a>,</li>
-                
-                <li><a href="#M000283">tokenized</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-to_s">to_s</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-tokenized">tokenized</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
     </dl>
-    
+  
 
-    
+  
+    <!-- Includes -->
     <div class="sectiontitle">Included Modules</div>
     <ul>
-        
+      
         <li>
-            
-            <span>Helpers::Measuring</span>
-            
-            START:includes
+          
+            <a href="Helpers/Measuring.html">
+              Picky::Helpers::Measuring
+            </a>
+          
         </li>
-        
+      
     </ul>
-    
+  
+
+
+
+  
 
     
 
@@ -149,507 +189,486 @@ Terminal.
 
     
 
+
     
-    <div class="sectiontitle">Attributes</div>
-    <table border='0' cellpadding='5'>
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
         
-        <tr valign='top'>
+          <tr valign='top'>
             <td class='attr-rw'>
-                [R]
+              [R]
             </td>
             <td class='attr-name'>indexes</td>
             <td class='attr-desc'></td>
-        </tr>
+          </tr>
         
-        <tr valign='top'>
+          <tr valign='top'>
             <td class='attr-rw'>
-                [RW]
+              [RW]
             </td>
             <td class='attr-name'>tokenizer</td>
             <td class='attr-desc'></td>
-        </tr>
+          </tr>
         
-        <tr valign='top'>
+          <tr valign='top'>
             <td class='attr-rw'>
-                [RW]
+              [RW]
             </td>
             <td class='attr-name'>weights</td>
             <td class='attr-desc'></td>
-        </tr>
+          </tr>
         
-    </table>
+      </table>
     
 
+
+    <!-- Methods -->
     
-            <div class="sectiontitle">Class Public methods</div>
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
             
-            <div class="method">
-                <div class="title" id="M000272">
-                    
-                    <a name="M000272"></a><b>new</b>(*index_definitions)
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-Takes:
-</p>
-<ul>
-<li>A number of indexes
+              <a name="method-c-new"></a><b>new</b>(*index_definitions)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Takes:</p>
+<ul><li>
+<p>A number of indexes</p>
+</li></ul>
 
-</li>
-</ul>
-<p>
-TODO Add reduce_allocations_to_amount (rename).
-</p>
-<p>
-It is also possible to define the tokenizer and weights like so. Example:
-</p>
-<pre>
-  search = Search.new(index1, index2, index3) do
-    searching removes_characters: /[^a-z]/ # etc.
-    weights [:author, :title] =&gt; +3,
-            [:title, :isbn] =&gt; +1
-  end
+<p>TODO Add reduce_allocations_to_amount (rename).</p>
+
+<p>It is also possible to define the tokenizer and weights like so. Example:</p>
+
+<pre class="ruby"><span class="ruby-identifier">search</span> = <span class="ruby-constant">Search</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">index1</span>, <span class="ruby-identifier">index2</span>, <span class="ruby-identifier">index3</span>) <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">searching</span> <span class="ruby-identifier">removes_characters</span><span class="ruby-operator">:</span> <span class="ruby-regexp">/[^a-z]/</span> <span class="ruby-comment"># etc.</span>
+  <span class="ruby-identifier">weights</span> [:<span class="ruby-identifier">author</span>, :<span class="ruby-identifier">title</span>] =<span class="ruby-operator">&gt;</span> <span class="ruby-value">+3</span>,
+          [:<span class="ruby-identifier">title</span>, :<span class="ruby-identifier">isbn</span>] =<span class="ruby-operator">&gt;</span> <span class="ruby-value">+1</span>
+<span class="ruby-keyword">end</span>
 </pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 39</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> *<span class="ruby-identifier">index_definitions</span>
+  <span class="ruby-ivar">@indexes</span> = <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Indexes</span>.<span class="ruby-identifier">new</span> *<span class="ruby-identifier">index_definitions</span>
 
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000272_source')" id="l_M000272_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/28908cc28caced9eda29fed4ada53f93aef13596/server/lib/picky/search.rb#L40" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000272_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/search.rb, line 40</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-operator">*</span><span class="ruby-identifier">index_definitions</span>
-      <span class="ruby-ivar">@indexes</span> = <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Indexes</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">*</span><span class="ruby-identifier">index_definitions</span>
+  <span class="ruby-identifier">instance_eval</span>(&amp;<span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
 
-      <span class="ruby-identifier">instance_eval</span>(<span class="ruby-operator">&amp;</span><span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+  <span class="ruby-ivar">@tokenizer</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">query_default</span> <span class="ruby-comment"># THINK Not dynamic. Ok?</span>
+  <span class="ruby-ivar">@weights</span>   <span class="ruby-operator">||=</span> <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Weights</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@ignore_unassigned</span> = <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@ignore_unassigned</span>.<span class="ruby-identifier">nil?</span>
 
-      <span class="ruby-ivar">@tokenizer</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">query_default</span> <span class="ruby-comment cmt"># THINK Not dynamic. Ok?</span>
-      <span class="ruby-ivar">@weights</span>   <span class="ruby-operator">||=</span> <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Weights</span>.<span class="ruby-identifier">new</span>
-      <span class="ruby-ivar">@ignore_unassigned</span> = <span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@ignore_unassigned</span>.<span class="ruby-identifier">nil?</span>
-
-      <span class="ruby-keyword kw">self</span>
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+  <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="sectiontitle">Instance Public methods</div>
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-boost">
             
-            <div class="method">
-                <div class="title" id="M000274">
-                    
-                    <a name="M000274"></a><b>boost</b>(weights)
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-Examples:
-</p>
-<pre>
-  search = Search.new(books_index, dvd_index, mp3_index) do
-    boost [:author, :title] =&gt; +3,
-          [:title, :isbn]   =&gt; +1
-  end
-</pre>
-<p>
-or
-</p>
-<pre>
-  # Explicitly add a random number (0...1) to the weights.
-  #
-  my_weights = Class.new do
-    # Instance only needs to implement
-    #   score_for combinations
-    # and return a number that is
-    # added to the weight.
-    #
-    def score_for combinations
-      rand
-    end
-  end.new
+              <a name="method-i-boost"></a><b>boost</b>(weights)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Examples:</p>
 
-  search = Search.new(books_index, dvd_index, mp3_index) do
-    boost my_weights
-  end
+<pre class="ruby"><span class="ruby-identifier">search</span> = <span class="ruby-constant">Search</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">books_index</span>, <span class="ruby-identifier">dvd_index</span>, <span class="ruby-identifier">mp3_index</span>) <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">boost</span> [:<span class="ruby-identifier">author</span>, :<span class="ruby-identifier">title</span>] =<span class="ruby-operator">&gt;</span> <span class="ruby-value">+3</span>,
+        [:<span class="ruby-identifier">title</span>, :<span class="ruby-identifier">isbn</span>]   =<span class="ruby-operator">&gt;</span> <span class="ruby-value">+1</span>
+<span class="ruby-keyword">end</span>
 </pre>
 
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000274_source')" id="l_M000274_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/28908cc28caced9eda29fed4ada53f93aef13596/server/lib/picky/search.rb#L95" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000274_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/search.rb, line 95</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">boost</span> <span class="ruby-identifier">weights</span>
-      <span class="ruby-ivar">@weights</span> = <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">weights</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:score_for</span>)
-        <span class="ruby-identifier">weights</span>
-      <span class="ruby-keyword kw">else</span>
-        <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Weights</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">weights</span>
-      <span class="ruby-keyword kw">end</span>
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <div class="method">
-                <div class="title" id="M000279">
-                    
-                    <a name="M000279"></a><b>execute</b>(tokens, ids, offset, original_text = nil)
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-Execute a search using Query::Tokens.
-</p>
-<p>
-Note: Internal method, use <a href="Search.html#M000277">search</a> to
-search.
-</p>
+<p>or</p>
 
-                </div>
+<pre class="ruby"><span class="ruby-comment"># Explicitly add a random number (0...1) to the weights.</span>
+<span class="ruby-comment">#</span>
+<span class="ruby-identifier">my_weights</span> = <span class="ruby-constant">Class</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-comment"># Instance only needs to implement</span>
+  <span class="ruby-comment">#   score_for combinations</span>
+  <span class="ruby-comment"># and return a number that is</span>
+  <span class="ruby-comment"># added to the weight.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">score_for</span> <span class="ruby-identifier">combinations</span>
+    <span class="ruby-identifier">rand</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>.<span class="ruby-identifier">new</span>
+
+<span class="ruby-identifier">search</span> = <span class="ruby-constant">Search</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">books_index</span>, <span class="ruby-identifier">dvd_index</span>, <span class="ruby-identifier">mp3_index</span>) <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">boost</span> <span class="ruby-identifier">my_weights</span>
+<span class="ruby-keyword">end</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-boost_source')" id="l_method-i-boost_source">show</a>
                 
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000279_source')" id="l_M000279_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/28908cc28caced9eda29fed4ada53f93aef13596/server/lib/picky/search.rb#L163" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000279_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/search.rb, line 163</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">execute</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">ids</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">original_text</span> = <span class="ruby-keyword kw">nil</span>
-      <span class="ruby-constant">Results</span>.<span class="ruby-identifier">from</span> <span class="ruby-identifier">original_text</span>, <span class="ruby-identifier">ids</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">sorted_allocations</span>(<span class="ruby-identifier">tokens</span>)
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-boost_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 94</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">boost</span> <span class="ruby-identifier">weights</span>
+  <span class="ruby-ivar">@weights</span> = <span class="ruby-keyword">if</span> <span class="ruby-identifier">weights</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:score_for</span>)
+    <span class="ruby-identifier">weights</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Weights</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">weights</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000276">
-                    
-                    <a name="M000276"></a><b>ignore_unassigned_tokens</b>(value)
-                    
-                </div>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-execute">
+            
+              <a name="method-i-execute"></a><b>execute</b>(tokens, ids, offset, original_text = nil)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Execute a search using Query::Tokens.</p>
+
+<p>Note: Internal method, use <a
+href="Search.html#method-i-search">#search</a> to search.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-execute_source')" id="l_method-i-execute_source">show</a>
                 
-                <div class="description">
-                  <p>
-Ignore the given token if it cannot be matched to a category. The default
+              </p>
+              <div id="method-i-execute_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 162</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">execute</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">ids</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">original_text</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-constant">Results</span>.<span class="ruby-identifier">from</span> <span class="ruby-identifier">original_text</span>, <span class="ruby-identifier">ids</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">sorted_allocations</span>(<span class="ruby-identifier">tokens</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-ignore_unassigned_tokens">
+            
+              <a name="method-i-ignore_unassigned_tokens"></a><b>ignore_unassigned_tokens</b>(value)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Ignore the given token if it cannot be matched to a category. The default
 behaviour is that if a token does not match to any category, the query will
 not return anything (since a single token cannot be matched). If you set
 this option to true, any token that cannot be matched to a category will be
-simply ignored.
-</p>
-<p>
-Use this if only a few matched words are important, like for example of the
-query &#8220;Jonathan Myers 86455 Las Cucarachas&#8221; you only want to
-match the zipcode, to have the search engine display advertisements on the
-side for the zipcode.
-</p>
-<p>
-False by default.
-</p>
-<p>
-Example:
-</p>
-<pre>
-  search = Search.new(books_index, dvd_index, mp3_index) do
-    ignore_unassigned_tokens true
-  end
-</pre>
-<p>
-With this set to true, if in &#8220;Peter Flunder&#8221;,
-&#8220;Flunder&#8221; couldn&#8217;t be assigned to any category, it will
-simply be ignored. This is done for each categorization.
-</p>
+simply ignored.</p>
 
-                </div>
+<p>Use this if only a few matched words are important, like for example of the
+query “Jonathan Myers 86455 Las Cucarachas” you only want to match the
+zipcode, to have the search engine display advertisements on the side for
+the zipcode.</p>
+
+<p>False by default.</p>
+
+<p>Example:</p>
+
+<pre>search = Search.new(books_index, dvd_index, mp3_index) do
+  ignore_unassigned_tokens true
+end</pre>
+
+<p>With this set to true, if in “Peter Flunder”, “Flunder” couldn’t be
+assigned to any category, it will simply be ignored. This is done for each
+categorization.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-ignore_unassigned_tokens_source')" id="l_method-i-ignore_unassigned_tokens_source">show</a>
                 
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000276_source')" id="l_M000276_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/28908cc28caced9eda29fed4ada53f93aef13596/server/lib/picky/search.rb#L126" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000276_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/search.rb, line 126</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ignore_unassigned_tokens</span> <span class="ruby-identifier">value</span>
-      <span class="ruby-ivar">@ignore_unassigned</span> = <span class="ruby-identifier">value</span>
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-ignore_unassigned_tokens_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 125</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ignore_unassigned_tokens</span> <span class="ruby-identifier">value</span>
+  <span class="ruby-ivar">@ignore_unassigned</span> = <span class="ruby-identifier">value</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000277">
-                    
-                    <a name="M000277"></a><b>search</b>(text, ids = 20, offset = 0)
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-This is the main entry point for a query. Use this in specs and also for
-running queries.
-</p>
-<p>
-Parameters:
-</p>
-<ul>
-<li>text: The search text.
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-search">
+            
+              <a name="method-i-search"></a><b>search</b>(text, ids = 20, offset = 0)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>This is the main entry point for a query. Use this in specs and also for
+running queries.</p>
 
-</li>
-<li>ids = 20: The amount of ids to calculate (with offset).
+<p>Parameters:</p>
+<ul><li>
+<p>text:       The search text.</p>
+</li><li>
+<p>ids = 20:   The amount of ids to calculate (with offset).</p>
+</li><li>
+<p>offset = 0: The offset from which position to return the ids. Useful for
+pagination.</p>
+</li></ul>
 
-</li>
-<li>offset = 0: The offset from which position to return the ids. Useful for
-pagination.
-
-</li>
-</ul>
-<p>
-Note: The Rack adapter calls this method after unravelling the HTTP
-request.
-</p>
-
-                </div>
+<p>Note: The <a href="Rack.html">Rack</a> adapter calls this method after
+unravelling the HTTP request.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-search_source')" id="l_method-i-search_source">show</a>
                 
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000277_source')" id="l_M000277_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/28908cc28caced9eda29fed4ada53f93aef13596/server/lib/picky/search.rb#L140" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000277_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/search.rb, line 140</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">search</span> <span class="ruby-identifier">text</span>, <span class="ruby-identifier">ids</span> = <span class="ruby-value">20</span>, <span class="ruby-identifier">offset</span> = <span class="ruby-value">0</span>
-      <span class="ruby-identifier">search_with</span> <span class="ruby-identifier">tokenized</span>(<span class="ruby-identifier">text</span>), <span class="ruby-identifier">ids</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">offset</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">text</span>
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-search_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 139</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">search</span> <span class="ruby-identifier">text</span>, <span class="ruby-identifier">ids</span> = <span class="ruby-number">20</span>, <span class="ruby-identifier">offset</span> = <span class="ruby-number">0</span>
+  <span class="ruby-identifier">search_with</span> <span class="ruby-identifier">tokenized</span>(<span class="ruby-identifier">text</span>), <span class="ruby-identifier">ids</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">offset</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">text</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000278">
-                    
-                    <a name="M000278"></a><b>search_with</b>(tokens, ids = 20, offset = 0, original_text = nil)
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-Runs the actual search using Query::Tokens.
-</p>
-<p>
-Note: Internal method, use <a href="Search.html#M000277">search</a> to
-search.
-</p>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-search_with">
+            
+              <a name="method-i-search_with"></a><b>search_with</b>(tokens, ids = 20, offset = 0, original_text = nil)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Runs the actual search using Query::Tokens.</p>
 
-                </div>
+<p>Note: Internal method, use <a
+href="Search.html#method-i-search">#search</a> to search.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-search_with_source')" id="l_method-i-search_with_source">show</a>
                 
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000278_source')" id="l_M000278_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/28908cc28caced9eda29fed4ada53f93aef13596/server/lib/picky/search.rb#L148" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000278_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/search.rb, line 148</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">search_with</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">ids</span> = <span class="ruby-value">20</span>, <span class="ruby-identifier">offset</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">original_text</span> = <span class="ruby-keyword kw">nil</span>
-      <span class="ruby-identifier">results</span> = <span class="ruby-keyword kw">nil</span>
+              </p>
+              <div id="method-i-search_with_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 147</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">search_with</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">ids</span> = <span class="ruby-number">20</span>, <span class="ruby-identifier">offset</span> = <span class="ruby-number">0</span>, <span class="ruby-identifier">original_text</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">results</span> = <span class="ruby-keyword">nil</span>
 
-      <span class="ruby-identifier">duration</span> = <span class="ruby-identifier">timed</span> <span class="ruby-keyword kw">do</span>
-        <span class="ruby-identifier">results</span> = <span class="ruby-identifier">execute</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">ids</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">original_text</span>
-      <span class="ruby-keyword kw">end</span>
-      <span class="ruby-identifier">results</span>.<span class="ruby-identifier">duration</span> = <span class="ruby-identifier">duration</span>.<span class="ruby-identifier">round</span> <span class="ruby-value">6</span>
+  <span class="ruby-identifier">duration</span> = <span class="ruby-identifier">timed</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">results</span> = <span class="ruby-identifier">execute</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">ids</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">original_text</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">results</span>.<span class="ruby-identifier">duration</span> = <span class="ruby-identifier">duration</span>.<span class="ruby-identifier">round</span> <span class="ruby-number">6</span>
 
-      <span class="ruby-identifier">results</span>
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+  <span class="ruby-identifier">results</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000273">
-                    
-                    <a name="M000273"></a><b>searching</b>(options)
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-Examples:
-</p>
-<pre>
-  search = Search.new(index1, index2, index3) do
-    searching removes_characters: /[^a-z]/,
-              # etc.
-  end
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-searching">
+            
+              <a name="method-i-searching"></a><b>searching</b>(options)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Examples:</p>
 
-  search = Search.new(index1, index2, index3) do
-    searching MyTokenizerThatRespondsToTheMethodTokenize.new
-  end
-</pre>
+<pre>search = Search.new(index1, index2, index3) do
+  searching removes_characters: /[^a-z]/,
+            # etc.
+end
 
-                </div>
+search = Search.new(index1, index2, index3) do
+  searching MyTokenizerThatRespondsToTheMethodTokenize.new
+end</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-searching_source')" id="l_method-i-searching_source">show</a>
                 
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000273_source')" id="l_M000273_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/28908cc28caced9eda29fed4ada53f93aef13596/server/lib/picky/search.rb#L62" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000273_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/search.rb, line 62</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">searching</span> <span class="ruby-identifier">options</span>
-      <span class="ruby-ivar">@tokenizer</span> = <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:tokenize</span>)
-        <span class="ruby-identifier">options</span>
-      <span class="ruby-keyword kw">else</span>
-        <span class="ruby-identifier">options</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span>)
-      <span class="ruby-keyword kw">end</span>
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-searching_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 61</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">searching</span> <span class="ruby-identifier">options</span>
+  <span class="ruby-ivar">@tokenizer</span> = <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:tokenize</span>)
+    <span class="ruby-identifier">options</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">options</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000285">
-                    
-                    <a name="M000285"></a><b>to_s</b>()
-                    
-                </div>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_s">
+            
+              <a name="method-i-to_s"></a><b>to_s</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Display some nice information for the user.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_s_source')" id="l_method-i-to_s_source">show</a>
                 
-                <div class="description">
-                  <p>
-Display some nice information for the user.
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000285_source')" id="l_M000285_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/28908cc28caced9eda29fed4ada53f93aef13596/server/lib/picky/search.rb#L190" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000285_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/search.rb, line 190</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
-      <span class="ruby-identifier">s</span> = <span class="ruby-node">&quot;#{self.class}(&quot;</span>
-      <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@indexes</span>.<span class="ruby-identifier">indexes</span>.<span class="ruby-identifier">empty?</span>
-        <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-ivar">@indexes</span>.<span class="ruby-identifier">indexes</span>.<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">:name</span>).<span class="ruby-identifier">join</span>(<span class="ruby-value str">', '</span>)
-        <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;, &quot;</span>
-      <span class="ruby-keyword kw">end</span>
-      <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;weights: #{@weights}&quot;</span>
-      <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;)&quot;</span>
-      <span class="ruby-identifier">s</span>
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-to_s_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 190</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
+  <span class="ruby-identifier">s</span> = <span class="ruby-node">&quot;#{self.class}(&quot;</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@indexes</span>.<span class="ruby-identifier">indexes</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-ivar">@indexes</span>.<span class="ruby-identifier">indexes</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:name</span>).<span class="ruby-identifier">join</span>(<span class="ruby-string">', '</span>)
+    <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;, &quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;weights: #{@weights}&quot;</span>
+  <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;)&quot;</span>
+  <span class="ruby-identifier">s</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000283">
-                    
-                    <a name="M000283"></a><b>tokenized</b>(text)
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-Delegates the tokenizing to the query tokenizer.
-</p>
-<p>
-Parameters:
-</p>
-<ul>
-<li>text: The string to tokenize.
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-tokenized">
+            
+              <a name="method-i-tokenized"></a><b>tokenized</b>(text)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Delegates the tokenizing to the query tokenizer.</p>
 
-</li>
-</ul>
-<p>
-Returns:
-</p>
-<ul>
-<li>A Picky::Query::Tokens instance.
+<p>Parameters:</p>
+<ul><li>
+<p>text: The string to tokenize.</p>
+</li></ul>
 
-</li>
-</ul>
-
-                </div>
+<p>Returns:</p>
+<ul><li>
+<p>A Picky::Query::Tokens instance.</p>
+</li></ul>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-tokenized_source')" id="l_method-i-tokenized_source">show</a>
                 
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000283_source')" id="l_M000283_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/28908cc28caced9eda29fed4ada53f93aef13596/server/lib/picky/search.rb#L175" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000283_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/search.rb, line 175</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">tokenized</span> <span class="ruby-identifier">text</span>
-      <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">originals</span> = <span class="ruby-identifier">tokenizer</span>.<span class="ruby-identifier">tokenize</span> <span class="ruby-identifier">text</span>
-      <span class="ruby-identifier">tokens</span> = <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Tokens</span>.<span class="ruby-identifier">processed</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">originals</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-ivar">@ignore_unassigned</span>
-      <span class="ruby-identifier">tokens</span>.<span class="ruby-identifier">partialize_last</span> <span class="ruby-comment cmt"># Note: In the standard Picky search, the last token is always partial.</span>
-      <span class="ruby-identifier">tokens</span>
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-tokenized_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 174</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">tokenized</span> <span class="ruby-identifier">text</span>
+  <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">originals</span> = <span class="ruby-identifier">tokenizer</span>.<span class="ruby-identifier">tokenize</span> <span class="ruby-identifier">text</span>
+  <span class="ruby-identifier">tokens</span> = <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Tokens</span>.<span class="ruby-identifier">processed</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">originals</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-ivar">@ignore_unassigned</span>
+  <span class="ruby-comment"># tokens.symbolize # TODO Symbols.</span>
+  <span class="ruby-identifier">tokens</span>.<span class="ruby-identifier">partialize_last</span> <span class="ruby-comment"># Note: In the standard Picky search, the last token is always partial.</span>
+  <span class="ruby-identifier">tokens</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-</div>
+          </div>
+                    </div>
     </div>
   </body>
 </html>    

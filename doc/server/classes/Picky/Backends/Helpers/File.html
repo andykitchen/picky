@@ -4,16 +4,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Picky::Backends::Helpers::File</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
-    <script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
 </head>
 
 <body>     
     <div class="banner">
+        
         <h1>
             <span class="type">Module</span> 
             Picky::Backends::Helpers::File 
@@ -27,56 +31,91 @@
     </div>
     <div id="bodyContent">
         <div id="content">
-    
+  
     <div class="description">
-        <p>
-Common file helpers.
-</p>
+      
+<p>Common file helpers.</p>
 
     </div>
-    
+  
 
-    
 
-    
-    
+  
 
-    
-    
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
-    
+      
         <dt>B</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000042">backup_directory</a>,</li>
-                
-                <li><a href="#M000044">backup_file_path_of</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-backup_directory">backup_directory</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-backup_file_path_of">backup_file_path_of</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-create_directory">create_directory</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
         <dt>P</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000043">prepare_backup</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-prepare_backup">prepare_backup</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>S</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000045">size_of</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-size_of">size_of</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
     </dl>
-    
+  
+
+  
+
+
+
+  
 
     
 
@@ -84,152 +123,185 @@ Common file helpers.
 
     
 
-    
 
     
 
-    
-            <div class="sectiontitle">Instance Public methods</div>
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-backup_directory">
             
-            <div class="method">
-                <div class="title" id="M000042">
-                    
-                    <a name="M000042"></a><b>backup_directory</b>(path)
-                    
-                </div>
+              <a name="method-i-backup_directory"></a><b>backup_directory</b>(path)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>The backup directory of this file. Equal to the file’s dirname plus /backup</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-backup_directory_source')" id="l_method-i-backup_directory_source">show</a>
                 
-                <div class="description">
-                  <p>
-The backup directory of this file. Equal to the file&#8217;s dirname plus
-/backup
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000042_source')" id="l_M000042_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/15fd62159bc2aa317ccf228a2c40adc905c22c4a/server/lib/picky/backends/helpers/file.rb#L14" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000042_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/helpers/file.rb, line 14</span>
-        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">backup_directory</span> <span class="ruby-identifier">path</span>
-          <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">path</span>), <span class="ruby-value str">'backup'</span>
-        <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-backup_directory_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/helpers/file.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">backup_directory</span> <span class="ruby-identifier">path</span>
+  <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">path</span>), <span class="ruby-string">'backup'</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000044">
-                    
-                    <a name="M000044"></a><b>backup_file_path_of</b>(path)
-                    
-                </div>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-backup_file_path_of">
+            
+              <a name="method-i-backup_file_path_of"></a><b>backup_file_path_of</b>(path)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>The backup filename.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-backup_file_path_of_source')" id="l_method-i-backup_file_path_of_source">show</a>
                 
-                <div class="description">
-                  <p>
-The backup filename.
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000044_source')" id="l_M000044_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/15fd62159bc2aa317ccf228a2c40adc905c22c4a/server/lib/picky/backends/helpers/file.rb#L26" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000044_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/helpers/file.rb, line 26</span>
-        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">backup_file_path_of</span> <span class="ruby-identifier">path</span>
-          <span class="ruby-identifier">dir</span>, <span class="ruby-identifier">name</span> = <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">split</span> <span class="ruby-identifier">path</span>
-          <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span> <span class="ruby-identifier">dir</span>, <span class="ruby-value str">'backup'</span>, <span class="ruby-identifier">name</span>
-        <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-backup_file_path_of_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/helpers/file.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">backup_file_path_of</span> <span class="ruby-identifier">path</span>
+  <span class="ruby-identifier">dir</span>, <span class="ruby-identifier">name</span> = <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">split</span> <span class="ruby-identifier">path</span>
+  <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span> <span class="ruby-identifier">dir</span>, <span class="ruby-string">'backup'</span>, <span class="ruby-identifier">name</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000043">
-                    
-                    <a name="M000043"></a><b>prepare_backup</b>(target)
-                    
-                </div>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-create_directory">
+            
+              <a name="method-i-create_directory"></a><b>create_directory</b>(path)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Creates all necessary directories.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-create_directory_source')" id="l_method-i-create_directory_source">show</a>
                 
-                <div class="description">
-                  <p>
-Prepares the backup directory for the file.
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000043_source')" id="l_M000043_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/15fd62159bc2aa317ccf228a2c40adc905c22c4a/server/lib/picky/backends/helpers/file.rb#L20" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000043_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/helpers/file.rb, line 20</span>
-        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prepare_backup</span> <span class="ruby-identifier">target</span>
-          <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mkdir</span> <span class="ruby-identifier">target</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">target</span>)
-        <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-create_directory_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/helpers/file.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">create_directory</span> <span class="ruby-identifier">path</span>
+  <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mkdir_p</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">path</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000045">
-                    
-                    <a name="M000045"></a><b>size_of</b>(path)
-                    
-                </div>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-prepare_backup">
+            
+              <a name="method-i-prepare_backup"></a><b>prepare_backup</b>(target)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Prepares the backup directory for the file.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-prepare_backup_source')" id="l_method-i-prepare_backup_source">show</a>
                 
-                <div class="description">
-                  <p>
-Extracts the size of the file in Bytes.
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000045_source')" id="l_M000045_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/15fd62159bc2aa317ccf228a2c40adc905c22c4a/server/lib/picky/backends/helpers/file.rb#L33" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000045_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/helpers/file.rb, line 33</span>
-        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">size_of</span> <span class="ruby-identifier">path</span>
-          <span class="ruby-node">`ls -l #{path} | awk '{print $5}'`</span>.<span class="ruby-identifier">to_i</span>
-        <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-prepare_backup_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/helpers/file.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">prepare_backup</span> <span class="ruby-identifier">target</span>
+  <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mkdir</span> <span class="ruby-identifier">target</span> <span class="ruby-keyword">unless</span> <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">target</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-</div>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-size_of">
+            
+              <a name="method-i-size_of"></a><b>size_of</b>(path)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Extracts the size of the file in Bytes.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-size_of_source')" id="l_method-i-size_of_source">show</a>
+                
+              </p>
+              <div id="method-i-size_of_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/helpers/file.rb, line 39</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">size_of</span> <span class="ruby-identifier">path</span>
+  <span class="ruby-node">`ls -l #{path} | awk '{print $5}'`</span>.<span class="ruby-identifier">to_i</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
     </div>
   </body>
 </html>    

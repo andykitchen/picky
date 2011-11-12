@@ -4,23 +4,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Picky::Backends::Memory::JSON</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
-    <script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
 </head>
 
 <body>     
     <div class="banner">
+        
         <h1>
             <span class="type">Class</span> 
             Picky::Backends::Memory::JSON 
             
                 <span class="parent">&lt; 
                     
-                    Basic
+                    <a href="Basic.html">Picky::Backends::Memory::Basic</a>
                     
                 </span>
             
@@ -33,63 +37,86 @@
     </div>
     <div id="bodyContent">
         <div id="content">
-    
+  
     <div class="description">
-        <p>
-Memory-based index files dumped in the <a href="JSON.html">JSON</a> format.
-</p>
+      
+<p>Memory-based index files dumped in the <a href="JSON.html">JSON</a> format.</p>
 
     </div>
-    
+  
 
-    
 
-    
-    
+  
 
-    
-    
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
-    
+      
         <dt>D</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000056">dump</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-dump">dump</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>E</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000054">extension</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-extension">extension</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>L</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000055">load</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-load">load</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>R</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000057">retrieve</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-retrieve">retrieve</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
     </dl>
-    
+  
+
+  
+
+
+
+  
 
     
 
@@ -97,150 +124,151 @@ Memory-based index files dumped in the <a href="JSON.html">JSON</a> format.
 
     
 
-    
 
     
 
-    
-            <div class="sectiontitle">Instance Public methods</div>
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-dump">
             
-            <div class="method">
-                <div class="title" id="M000056">
-                    
-                    <a name="M000056"></a><b>dump</b>(hash)
-                    
-                </div>
+              <a name="method-i-dump"></a><b>dump</b>(hash)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Dumps the index hash in json format.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-dump_source')" id="l_method-i-dump_source">show</a>
                 
-                <div class="description">
-                  <p>
-Dumps the index hash in json format.
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000056_source')" id="l_M000056_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/f466fb717249c675cf6897ed67ab2086589a91f7/server/lib/picky/backends/memory/json.rb#L25" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000056_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/memory/json.rb, line 25</span>
-        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dump</span> <span class="ruby-identifier">hash</span>
-          <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">dump_json</span> <span class="ruby-identifier">cache_path</span>
-        <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-dump_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/memory/json.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">dump</span> <span class="ruby-identifier">hash</span>
+  <span class="ruby-identifier">create_directory</span> <span class="ruby-identifier">cache_path</span>
+  <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">dump_json</span> <span class="ruby-identifier">cache_path</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000054">
-                    
-                    <a name="M000054"></a><b>extension</b>()
-                    
-                </div>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-extension">
+            
+              <a name="method-i-extension"></a><b>extension</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Uses the extension “json”.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-extension_source')" id="l_method-i-extension_source">show</a>
                 
-                <div class="description">
-                  <p>
-Uses the extension &#8220;json&#8221;.
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000054_source')" id="l_M000054_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/f466fb717249c675cf6897ed67ab2086589a91f7/server/lib/picky/backends/memory/json.rb#L13" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000054_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/memory/json.rb, line 13</span>
-        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extension</span>
-          <span class="ruby-identifier">:json</span>
-        <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-extension_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/memory/json.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">extension</span>
+  <span class="ruby-value">:json</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000055">
-                    
-                    <a name="M000055"></a><b>load</b>()
-                    
-                </div>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-load">
+            
+              <a name="method-i-load"></a><b>load</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Loads the index hash from json format.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-load_source')" id="l_method-i-load_source">show</a>
                 
-                <div class="description">
-                  <p>
-Loads the index hash from json format.
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000055_source')" id="l_M000055_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/f466fb717249c675cf6897ed67ab2086589a91f7/server/lib/picky/backends/memory/json.rb#L19" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000055_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/memory/json.rb, line 19</span>
-        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">load</span>
-          <span class="ruby-constant">Yajl</span><span class="ruby-operator">::</span><span class="ruby-constant">Parser</span>.<span class="ruby-identifier">parse</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">cache_path</span>, <span class="ruby-value str">'r'</span>), <span class="ruby-identifier">symbolize_keys</span><span class="ruby-operator">:</span> <span class="ruby-keyword kw">true</span>
-        <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-load_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/memory/json.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">load</span>
+  <span class="ruby-constant">Yajl</span><span class="ruby-operator">::</span><span class="ruby-constant">Parser</span>.<span class="ruby-identifier">parse</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">cache_path</span>, <span class="ruby-string">'r'</span>) <span class="ruby-comment"># , symbolize_keys: true # TODO Symbols.</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000057">
-                    
-                    <a name="M000057"></a><b>retrieve</b>()
-                    
-                </div>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-retrieve">
+            
+              <a name="method-i-retrieve"></a><b>retrieve</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>A json file does not provide retrieve functionality.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-retrieve_source')" id="l_method-i-retrieve_source">show</a>
                 
-                <div class="description">
-                  <p>
-A json file does not provide retrieve functionality.
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000057_source')" id="l_M000057_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/f466fb717249c675cf6897ed67ab2086589a91f7/server/lib/picky/backends/memory/json.rb#L31" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000057_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/memory/json.rb, line 31</span>
-        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">retrieve</span>
-          <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Can't retrieve from JSON file. Use text file.&quot;</span>
-        <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-retrieve_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/memory/json.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">retrieve</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;Can't retrieve from JSON file. Use text file.&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-</div>
+          </div>
+                    </div>
     </div>
   </body>
 </html>    

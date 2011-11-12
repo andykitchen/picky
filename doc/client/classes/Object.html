@@ -4,23 +4,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Object</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
-    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
 </head>
 
 <body>     
     <div class="banner">
+        
         <h1>
             <span class="type">Class</span> 
             Object 
             
                 <span class="parent">&lt; 
                     
-                    <a href="Object.html">Object</a>
+                    BasicObject
                     
                 </span>
             
@@ -29,32 +33,101 @@
             
             <li><a href="../files/lib/picky-client/extensions/object_rb.html">lib/picky-client/extensions/object.rb</a></li>
             
+            <li><a href="../files/lib/picky-client/spec/support/matchers/have_categories_rb.html">lib/picky-client/spec/support/matchers/have_categories.rb</a></li>
+            
         </ul>
     </div>
     <div id="bodyContent">
         <div id="content">
-    
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-extract_categories">extract_categories</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
 
     
 
     
-    
-
-    
-    
 
     
 
-    
 
     
 
-    
 
-    
-
-    
-</div>
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-extract_categories">
+            
+              <a name="method-i-extract_categories"></a><b>extract_categories</b>(results)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-extract_categories_source')" id="l_method-i-extract_categories_source">show</a>
+                
+              </p>
+              <div id="method-i-extract_categories_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky-client/spec/support/matchers/have_categories.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">extract_categories</span> <span class="ruby-identifier">results</span>
+  <span class="ruby-identifier">results</span>.<span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">allocation</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">allocation</span>[<span class="ruby-number">3</span>].<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">combination</span><span class="ruby-operator">|</span> <span class="ruby-identifier">combination</span>[<span class="ruby-number">0</span>] }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
     </div>
   </body>
 </html>    

@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Picky::Generators::Partial::Infix</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Picky::Generators::Partial::Infix 
+            
+                <span class="parent">&lt; 
+                    
+                    Strategy
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../../files/lib/picky/generators/partial/infix_rb.html">lib/picky/generators/partial/infix.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>The subtoken partial strategy.</p>
+
+<p>If given “florian” it will index “floria”, “flori”, “flor”, “flo”, “fl”,
+“f” (Depending on what the given from value is, the example is with option
+from: 1)</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-each_partial">each_partial</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>G</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-generate_for">generate_for</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-generate_from">generate_from</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>max</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>min</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+      </table>
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <a name="method-c-new"></a><b>new</b>(options = {})
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>The min option signifies with what size it will start in generating the
+infix tokens.</p>
+
+<p>Examples:</p>
+
+<p>With :hello, and max: -1 (default)</p>
+<ul><li>
+<p>min: 1 # =&gt; [:hello, :hell, :ello, :hel, :ell, :llo, :he, :el, :ll, :lo,
+:h, :e, :l, :l, :o]</p>
+</li><li>
+<p>min: 4 # =&gt; [:hello, :hell, :ello]</p>
+</li></ul>
+
+<p>With :hello, and max: -2</p>
+<ul><li>
+<p>min: 1 # =&gt; [:hell, :ello, :hel, :ell, :llo, :he, :el, :ll, :lo, :h, :e,
+:l, :l, :o]</p>
+</li><li>
+<p>min: 4 # =&gt; [:hell, :ello]</p>
+</li></ul>
+
+<p>(min 1 is default)</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/generators/partial/infix.rb, line 33</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> <span class="ruby-identifier">options</span> = {}
+  <span class="ruby-ivar">@min</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:min</span>] <span class="ruby-operator">||</span> <span class="ruby-number">1</span>
+  <span class="ruby-ivar">@max</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:max</span>] <span class="ruby-operator">||</span> <span class="ruby-number">-1</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-each_partial">
+            
+              <a name="method-i-each_partial"></a><b>each_partial</b>(token, &amp;block)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Yields each generated partial.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-each_partial_source')" id="l_method-i-each_partial_source">show</a>
+                
+              </p>
+              <div id="method-i-each_partial_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/generators/partial/infix.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">each_partial</span> <span class="ruby-identifier">token</span>, &amp;<span class="ruby-identifier">block</span>
+  <span class="ruby-identifier">token</span>.<span class="ruby-identifier">each_intoken</span> <span class="ruby-identifier">min</span>, <span class="ruby-identifier">max</span>, &amp;<span class="ruby-identifier">block</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-generate_for">
+            
+              <a name="method-i-generate_for"></a><b>generate_for</b>(token, inverted, result)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>To each shortened token of :test :test, :tes, :te, :t add all ids of :test</p>
+
+<p>“token” here means just text.</p>
+
+<p>THINK Could be improved by appending the aforegoing ids?</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-generate_for_source')" id="l_method-i-generate_for_source">show</a>
+                
+              </p>
+              <div id="method-i-generate_for_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/generators/partial/infix.rb, line 81</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">generate_for</span> <span class="ruby-identifier">token</span>, <span class="ruby-identifier">inverted</span>, <span class="ruby-identifier">result</span>
+  <span class="ruby-identifier">each_partial</span> <span class="ruby-identifier">token</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">intoken</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">result</span>[<span class="ruby-identifier">intoken</span>]
+      <span class="ruby-identifier">result</span>[<span class="ruby-identifier">intoken</span>] <span class="ruby-operator">+=</span> <span class="ruby-identifier">inverted</span>[<span class="ruby-identifier">token</span>] <span class="ruby-comment"># unique</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">result</span>[<span class="ruby-identifier">intoken</span>] = <span class="ruby-identifier">inverted</span>[<span class="ruby-identifier">token</span>].<span class="ruby-identifier">dup</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-generate_from">
+            
+              <a name="method-i-generate_from"></a><b>generate_from</b>(inverted)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Generates a partial index from the given inverted index.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-generate_from_source')" id="l_method-i-generate_from_source">show</a>
+                
+              </p>
+              <div id="method-i-generate_from_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/generators/partial/infix.rb, line 46</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">generate_from</span> <span class="ruby-identifier">inverted</span>
+  <span class="ruby-identifier">result</span> = {}
+
+  <span class="ruby-comment"># Generate for each key token the subtokens.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">i</span> = <span class="ruby-number">0</span>
+  <span class="ruby-identifier">j</span> = <span class="ruby-number">0</span>
+  <span class="ruby-identifier">inverted</span>.<span class="ruby-identifier">each_key</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">token</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">i</span> <span class="ruby-operator">+=</span> <span class="ruby-number">1</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">==</span> <span class="ruby-number">5000</span>
+      <span class="ruby-identifier">j</span> <span class="ruby-operator">+=</span> <span class="ruby-number">1</span>
+      <span class="ruby-identifier">timed_exclaim</span> <span class="ruby-node">%Q{#{&quot;%8i&quot; % (i*j)} generated (current token: &quot;#{token}&quot;).}</span>
+      <span class="ruby-identifier">i</span> = <span class="ruby-number">0</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">generate_for</span> <span class="ruby-identifier">token</span>, <span class="ruby-identifier">inverted</span>, <span class="ruby-identifier">result</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># Remove duplicate ids.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-comment"># THINK If it is unique for a subtoken, it is</span>
+  <span class="ruby-comment">#       unique for all derived longer tokens.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">result</span>.<span class="ruby-identifier">each_value</span> &amp;<span class="ruby-value">:uniq!</span>
+
+  <span class="ruby-identifier">result</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+    </div>
+  </body>
+</html>    

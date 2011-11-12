@@ -4,16 +4,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Picky::Interfaces::LiveParameters</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
-    <script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
 </head>
 
 <body>     
     <div class="banner">
+        
         <h1>
             <span class="type">Class</span> 
             Picky::Interfaces::LiveParameters 
@@ -33,825 +37,955 @@
     </div>
     <div id="bodyContent">
         <div id="content">
-    
+  
     <div class="description">
-        <p>
-This is an interface that provides the user of Picky with the possibility
-to change parameters while the <a
-href="../Application.html">Application</a> is running.
-</p>
-<p>
-Important Note: This will only work in Master/Child configurations.
-</p>
+      
+<p>This is an interface that provides the user of <a
+href="../../Picky.html">Picky</a> with the possibility to change parameters
+while the <a href="../Application.html">Application</a> is running.</p>
+
+<p>Important Note: This will only work in Master/Child configurations.</p>
 
     </div>
-    
+  
 
-    
 
-    
-    
+  
 
-    
-    
+
+  
+  
+
+
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="LiveParameters/CouldNotUpdateConfigurationError.html">Picky::Interfaces::LiveParameters::CouldNotUpdateConfigurationError</a>
+        </li>
+      
+    </ul>
+  
+
+
+  
+    <!-- Method ref -->
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
-    
+      
         <dt>C</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000228">close_child</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-close_child">close_child</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>E</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000231">extract_configuration</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-extract_configuration">extract_configuration</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>H</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000226">harakiri</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-harakiri">harakiri</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>K</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000222">kill_each_worker_except</a>,</li>
-                
-                <li><a href="#M000223">kill_worker</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-kill_each_worker_except">kill_each_worker_except</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-kill_worker">kill_worker</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>N</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000219">new</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>P</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000225">parameters</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-parameters">parameters</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>Q</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000232">querying_removes_characters</a>,</li>
-                
-                <li><a href="#M000233">querying_removes_characters=</a>,</li>
-                
-                <li><a href="#M000236">querying_splits_text_on</a>,</li>
-                
-                <li><a href="#M000237">querying_splits_text_on=</a>,</li>
-                
-                <li><a href="#M000234">querying_stopwords</a>,</li>
-                
-                <li><a href="#M000235">querying_stopwords=</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-querying_removes_characters">querying_removes_characters</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-querying_removes_characters-3D">querying_removes_characters=</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-querying_splits_text_on">querying_splits_text_on</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-querying_splits_text_on-3D">querying_splits_text_on=</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-querying_stopwords">querying_stopwords</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-querying_stopwords-3D">querying_stopwords=</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>R</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000224">remove_worker</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-remove_worker">remove_worker</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>S</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000220">start_master_process_thread</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-start_master_process_thread">start_master_process_thread</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>T</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000238">to_s</a>,</li>
-                
-                <li><a href="#M000230">try_updating_configuration_with</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-to_s">to_s</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-try_updating_configuration_with">try_updating_configuration_with</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>W</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000221">worker_pids</a>,</li>
-                
-                <li><a href="#M000227">write_parent</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-worker_pids">worker_pids</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-write_parent">write_parent</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
     </dl>
-    
+  
+
+  
+
+
+
+  
 
     
 
     
 
     
-    <div class="sectiontitle">Classes and Modules</div>
-    <ul>
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <a name="method-c-new"></a><b>new</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/interfaces/live_parameters.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>
+  <span class="ruby-ivar">@child</span>, <span class="ruby-ivar">@parent</span> = <span class="ruby-constant">IO</span>.<span class="ruby-identifier">pipe</span>
+  <span class="ruby-identifier">start_master_process_thread</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-close_child">
+            
+              <a name="method-i-close_child"></a><b>close_child</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Close the child if it isn’t yet closed.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-close_child_source')" id="l_method-i-close_child_source">show</a>
+                
+              </p>
+              <div id="method-i-close_child_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/interfaces/live_parameters.rb, line 107</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">close_child</span>
+  <span class="ruby-ivar">@child</span>.<span class="ruby-identifier">close</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@child</span>.<span class="ruby-identifier">closed?</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
         
-        <li><span class="type">CLASS</span> <a href="LiveParameters/CouldNotUpdateConfigurationError.html">Picky::Interfaces::LiveParameters::CouldNotUpdateConfigurationError</a></li>
+        <div class="method">
+          <div class="title method-title" id="method-i-extract_configuration">
+            
+              <a name="method-i-extract_configuration"></a><b>extract_configuration</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-extract_configuration_source')" id="l_method-i-extract_configuration_source">show</a>
+                
+              </p>
+              <div id="method-i-extract_configuration_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/interfaces/live_parameters.rb, line 136</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">extract_configuration</span>
+  {
+    <span class="ruby-identifier">querying_removes_characters</span><span class="ruby-operator">:</span> <span class="ruby-identifier">querying_removes_characters</span>,
+    <span class="ruby-identifier">querying_stopwords</span><span class="ruby-operator">:</span>          <span class="ruby-identifier">querying_stopwords</span>,
+    <span class="ruby-identifier">querying_splits_text_on</span><span class="ruby-operator">:</span>     <span class="ruby-identifier">querying_splits_text_on</span>
+  }
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
         
-    </ul>
-    
+        <div class="method">
+          <div class="title method-title" id="method-i-harakiri">
+            
+              <a name="method-i-harakiri"></a><b>harakiri</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Kills itself, but still answering the request honorably.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-harakiri_source')" id="l_method-i-harakiri_source">show</a>
+                
+              </p>
+              <div id="method-i-harakiri_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/interfaces/live_parameters.rb, line 95</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">harakiri</span>
+  <span class="ruby-constant">Process</span>.<span class="ruby-identifier">kill</span> <span class="ruby-value">:QUIT</span>, <span class="ruby-constant">Process</span>.<span class="ruby-identifier">pid</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-kill_each_worker_except">
+            
+              <a name="method-i-kill_each_worker_except"></a><b>kill_each_worker_except</b>(pid)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Taken from Unicorn.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-kill_each_worker_except_source')" id="l_method-i-kill_each_worker_except_source">show</a>
+                
+              </p>
+              <div id="method-i-kill_each_worker_except_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/interfaces/live_parameters.rb, line 51</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">kill_each_worker_except</span> <span class="ruby-identifier">pid</span>
+  <span class="ruby-identifier">worker_pids</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">wpid</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">wpid</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">pid</span>
+    <span class="ruby-identifier">kill_worker</span> <span class="ruby-value">:KILL</span>, <span class="ruby-identifier">wpid</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-kill_worker">
+            
+              <a name="method-i-kill_worker"></a><b>kill_worker</b>(signal, wpid)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-kill_worker_source')" id="l_method-i-kill_worker_source">show</a>
+                
+              </p>
+              <div id="method-i-kill_worker_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/interfaces/live_parameters.rb, line 57</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">kill_worker</span> <span class="ruby-identifier">signal</span>, <span class="ruby-identifier">wpid</span>
+  <span class="ruby-constant">Process</span>.<span class="ruby-identifier">kill</span> <span class="ruby-identifier">signal</span>, <span class="ruby-identifier">wpid</span>
+  <span class="ruby-identifier">exclaim</span> <span class="ruby-node">&quot;Killing worker ##{wpid} with signal #{signal}.&quot;</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">ESRCH</span>
+  <span class="ruby-identifier">remove_worker</span> <span class="ruby-identifier">wpid</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-parameters">
+            
+              <a name="method-i-parameters"></a><b>parameters</b>(configuration_hash)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Updates any parameters with the ones given and returns the updated params.</p>
 
-    
+<p>The params are a strictly defined hash of:</p>
 
-    
+<pre>* querying_removes_characters: Regexp
+* querying_stopwords:          Regexp
+* querying_splits_text_on:     Regexp</pre>
 
-    
-            <div class="sectiontitle">Class Public methods</div>
+<p>This first tries to update in the child process, and if successful, in the
+parent process</p>
+            </div>
+          
+          
+          
+          
+          
             
-            <div class="method">
-                <div class="title" id="M000219">
-                    
-                    <a name="M000219"></a><b>new</b>()
-                    
-                </div>
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-parameters_source')" id="l_method-i-parameters_source">show</a>
                 
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000219_source')" id="l_M000219_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/cb66c930b8fa85c982b06707ce612b9d7fa1fbc0/server/lib/picky/interfaces/live_parameters.rb#L16" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000219_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/interfaces/live_parameters.rb, line 16</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>
-        <span class="ruby-ivar">@child</span>, <span class="ruby-ivar">@parent</span> = <span class="ruby-constant">IO</span>.<span class="ruby-identifier">pipe</span>
-        <span class="ruby-identifier">start_master_process_thread</span>
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-parameters_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/interfaces/live_parameters.rb, line 80</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">parameters</span> <span class="ruby-identifier">configuration_hash</span>
+  <span class="ruby-identifier">close_child</span>
+  <span class="ruby-identifier">exclaim</span> <span class="ruby-string">&quot;Trying to update worker child configuration.&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">configuration_hash</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-identifier">try_updating_configuration_with</span> <span class="ruby-identifier">configuration_hash</span>
+  <span class="ruby-identifier">write_parent</span> <span class="ruby-identifier">configuration_hash</span>
+  <span class="ruby-identifier">extract_configuration</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">CouldNotUpdateConfigurationError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+  <span class="ruby-comment"># I need to die such that my broken config is never used.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">exclaim</span> <span class="ruby-node">&quot;Child process #{Process.pid} performs harakiri because of broken config.&quot;</span>
+  <span class="ruby-identifier">harakiri</span>
+  { <span class="ruby-identifier">e</span>.<span class="ruby-identifier">config_key</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:ERROR</span> }
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="sectiontitle">Instance Public methods</div>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-querying_removes_characters">
             
-            <div class="method">
-                <div class="title" id="M000228">
-                    
-                    <a name="M000228"></a><b>close_child</b>()
-                    
-                </div>
+              <a name="method-i-querying_removes_characters"></a><b>querying_removes_characters</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>TODO Move to Interface object.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-querying_removes_characters_source')" id="l_method-i-querying_removes_characters_source">show</a>
                 
-                <div class="description">
-                  <p>
-Close the child if it isn&#8217;t yet closed.
-</p>
+              </p>
+              <div id="method-i-querying_removes_characters_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/interfaces/live_parameters.rb, line 146</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">querying_removes_characters</span>
+  <span class="ruby-identifier">regexp</span> = <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">query_default</span>.<span class="ruby-identifier">instance_variable_get</span> <span class="ruby-value">:@removes_characters_regexp</span>
+  <span class="ruby-identifier">regexp</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">regexp</span>.<span class="ruby-identifier">source</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-querying_removes_characters-3D">
+            
+              <a name="method-i-querying_removes_characters-3D"></a><b>querying_removes_characters=</b>(new_value)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-querying_removes_characters-3D_source')" id="l_method-i-querying_removes_characters-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-querying_removes_characters-3D_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/interfaces/live_parameters.rb, line 150</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">querying_removes_characters=</span> <span class="ruby-identifier">new_value</span>
+  <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">query_default</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-value">:@removes_characters_regexp</span>, <span class="ruby-node">%r{#{new_value}}</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-querying_splits_text_on">
+            
+              <a name="method-i-querying_splits_text_on"></a><b>querying_splits_text_on</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-querying_splits_text_on_source')" id="l_method-i-querying_splits_text_on_source">show</a>
+                
+              </p>
+              <div id="method-i-querying_splits_text_on_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/interfaces/live_parameters.rb, line 160</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">querying_splits_text_on</span>
+  <span class="ruby-identifier">splits</span> = <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">query_default</span>.<span class="ruby-identifier">instance_variable_get</span> <span class="ruby-value">:@splits_text_on</span>
+  <span class="ruby-identifier">splits</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">splits</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:source</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">splits</span>.<span class="ruby-identifier">source</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">splits</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-querying_splits_text_on-3D">
+            
+              <a name="method-i-querying_splits_text_on-3D"></a><b>querying_splits_text_on=</b>(new_value)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-querying_splits_text_on-3D_source')" id="l_method-i-querying_splits_text_on-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-querying_splits_text_on-3D_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/interfaces/live_parameters.rb, line 164</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">querying_splits_text_on=</span> <span class="ruby-identifier">new_value</span>
+  <span class="ruby-identifier">splits</span> = <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">query_default</span>.<span class="ruby-identifier">instance_variable_get</span> <span class="ruby-value">:@splits_text_on</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">splits</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:source</span>)
+    <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">query_default</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-value">:@splits_text_on</span>, <span class="ruby-node">%r{#{new_value}}</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">query_default</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-value">:@splits_text_on</span>, <span class="ruby-identifier">new_value</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-querying_stopwords">
+            
+              <a name="method-i-querying_stopwords"></a><b>querying_stopwords</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-querying_stopwords_source')" id="l_method-i-querying_stopwords_source">show</a>
+                
+              </p>
+              <div id="method-i-querying_stopwords_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/interfaces/live_parameters.rb, line 153</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">querying_stopwords</span>
+  <span class="ruby-identifier">regexp</span> = <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">query_default</span>.<span class="ruby-identifier">instance_variable_get</span> <span class="ruby-value">:@remove_stopwords_regexp</span>
+  <span class="ruby-identifier">regexp</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">regexp</span>.<span class="ruby-identifier">source</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-querying_stopwords-3D">
+            
+              <a name="method-i-querying_stopwords-3D"></a><b>querying_stopwords=</b>(new_value)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-querying_stopwords-3D_source')" id="l_method-i-querying_stopwords-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-querying_stopwords-3D_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/interfaces/live_parameters.rb, line 157</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">querying_stopwords=</span> <span class="ruby-identifier">new_value</span>
+  <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">query_default</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-value">:@remove_stopwords_regexp</span>, <span class="ruby-node">%r{#{new_value}}</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-remove_worker">
+            
+              <a name="method-i-remove_worker"></a><b>remove_worker</b>(wpid)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>TODO This needs to be Webserver agnostic.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-remove_worker_source')" id="l_method-i-remove_worker_source">show</a>
+                
+              </p>
+              <div id="method-i-remove_worker_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/interfaces/live_parameters.rb, line 65</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">remove_worker</span> <span class="ruby-identifier">wpid</span>
+  <span class="ruby-identifier">worker</span> = <span class="ruby-constant">Unicorn</span><span class="ruby-operator">::</span><span class="ruby-constant">HttpServer</span><span class="ruby-operator">::</span><span class="ruby-constant">WORKERS</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">wpid</span>) <span class="ruby-keyword">and</span> <span class="ruby-identifier">worker</span>.<span class="ruby-identifier">tmp</span>.<span class="ruby-identifier">close</span> <span class="ruby-keyword">rescue</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-start_master_process_thread">
+            
+              <a name="method-i-start_master_process_thread"></a><b>start_master_process_thread</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>This runs a thread that listens to child processes.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-start_master_process_thread_source')" id="l_method-i-start_master_process_thread_source">show</a>
+                
+              </p>
+              <div id="method-i-start_master_process_thread_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/interfaces/live_parameters.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">start_master_process_thread</span>
+  <span class="ruby-comment"># This thread is stopped in the children.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span>
+      <span class="ruby-constant">IO</span>.<span class="ruby-identifier">select</span>([<span class="ruby-ivar">@child</span>], <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-number">2</span>) <span class="ruby-keyword">or</span> <span class="ruby-keyword">next</span>
+      <span class="ruby-identifier">result</span> = <span class="ruby-ivar">@child</span>.<span class="ruby-identifier">gets</span> <span class="ruby-string">';;;'</span>
+      <span class="ruby-identifier">pid</span>, <span class="ruby-identifier">configuration_hash</span> = <span class="ruby-identifier">eval</span> <span class="ruby-identifier">result</span>
+      <span class="ruby-keyword">next</span> <span class="ruby-keyword">unless</span> <span class="ruby-constant">Hash</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">configuration_hash</span>
+      <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">configuration_hash</span>.<span class="ruby-identifier">empty?</span>
+      <span class="ruby-identifier">exclaim</span> <span class="ruby-string">&quot;Trying to update MASTER configuration.&quot;</span>
+      <span class="ruby-identifier">try_updating_configuration_with</span> <span class="ruby-identifier">configuration_hash</span>
+      <span class="ruby-identifier">kill_each_worker_except</span> <span class="ruby-identifier">pid</span>
 
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000228_source')" id="l_M000228_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/cb66c930b8fa85c982b06707ce612b9d7fa1fbc0/server/lib/picky/interfaces/live_parameters.rb#L107" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000228_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/interfaces/live_parameters.rb, line 107</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">close_child</span>
-        <span class="ruby-ivar">@child</span>.<span class="ruby-identifier">close</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@child</span>.<span class="ruby-identifier">closed?</span>
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+      <span class="ruby-comment"># Fails hard on an error.</span>
+      <span class="ruby-comment">#</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000231">
-                    
-                    <a name="M000231"></a><b>extract_configuration</b>()
-                    
-                </div>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_s">
+            
+              <a name="method-i-to_s"></a><b>to_s</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_s_source')" id="l_method-i-to_s_source">show</a>
                 
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000231_source')" id="l_M000231_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/cb66c930b8fa85c982b06707ce612b9d7fa1fbc0/server/lib/picky/interfaces/live_parameters.rb#L136" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000231_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/interfaces/live_parameters.rb, line 136</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extract_configuration</span>
-        {
-          <span class="ruby-identifier">querying_removes_characters</span><span class="ruby-operator">:</span> <span class="ruby-identifier">querying_removes_characters</span>,
-          <span class="ruby-identifier">querying_stopwords</span><span class="ruby-operator">:</span>          <span class="ruby-identifier">querying_stopwords</span>,
-          <span class="ruby-identifier">querying_splits_text_on</span><span class="ruby-operator">:</span>     <span class="ruby-identifier">querying_splits_text_on</span>
-        }
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-to_s_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/interfaces/live_parameters.rb, line 175</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
+  <span class="ruby-string">&quot;Suckerfish Live Interface (Use the picky-live gem to introspect)&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000226">
-                    
-                    <a name="M000226"></a><b>harakiri</b>()
-                    
-                </div>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-try_updating_configuration_with">
+            
+              <a name="method-i-try_updating_configuration_with"></a><b>try_updating_configuration_with</b>(configuration_hash)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Tries updating the configuration in the child process or parent process.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-try_updating_configuration_with_source')" id="l_method-i-try_updating_configuration_with_source">show</a>
                 
-                <div class="description">
-                  <p>
-Kills itself, but still answering the request honorably.
-</p>
+              </p>
+              <div id="method-i-try_updating_configuration_with_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/interfaces/live_parameters.rb, line 121</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">try_updating_configuration_with</span> <span class="ruby-identifier">configuration_hash</span>
+  <span class="ruby-identifier">current_key</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-identifier">configuration_hash</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">new_value</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">exclaim</span> <span class="ruby-node">&quot;  Setting #{key} with #{new_value}.&quot;</span>
+      <span class="ruby-identifier">current_key</span> = <span class="ruby-identifier">key</span>
+      <span class="ruby-identifier">send</span> <span class="ruby-value">:&quot;#{key}=&quot;</span>, <span class="ruby-identifier">new_value</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+    <span class="ruby-comment"># Catch any error and reraise as config error.</span>
+    <span class="ruby-comment">#</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">CouldNotUpdateConfigurationError</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">current_key</span>, <span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-worker_pids">
+            
+              <a name="method-i-worker_pids"></a><b>worker_pids</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>TODO This needs to be webserver agnostic.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-worker_pids_source')" id="l_method-i-worker_pids_source">show</a>
+                
+              </p>
+              <div id="method-i-worker_pids_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/interfaces/live_parameters.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">worker_pids</span>
+  <span class="ruby-constant">Unicorn</span><span class="ruby-operator">::</span><span class="ruby-constant">HttpServer</span><span class="ruby-operator">::</span><span class="ruby-constant">WORKERS</span>.<span class="ruby-identifier">keys</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-write_parent">
+            
+              <a name="method-i-write_parent"></a><b>write_parent</b>(configuration_hash)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Write the parent.</p>
 
-                </div>
+<p>Note: The ;;; is the end marker for the message.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-write_parent_source')" id="l_method-i-write_parent_source">show</a>
                 
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000226_source')" id="l_M000226_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/cb66c930b8fa85c982b06707ce612b9d7fa1fbc0/server/lib/picky/interfaces/live_parameters.rb#L95" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000226_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/interfaces/live_parameters.rb, line 95</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">harakiri</span>
-        <span class="ruby-constant">Process</span>.<span class="ruby-identifier">kill</span> <span class="ruby-identifier">:QUIT</span>, <span class="ruby-constant">Process</span>.<span class="ruby-identifier">pid</span>
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-write_parent_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/interfaces/live_parameters.rb, line 102</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">write_parent</span> <span class="ruby-identifier">configuration_hash</span>
+  <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">write</span> <span class="ruby-node">&quot;#{[Process.pid, configuration_hash]};;;&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000222">
-                    
-                    <a name="M000222"></a><b>kill_each_worker_except</b>(pid)
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-Taken from Unicorn.
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000222_source')" id="l_M000222_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/cb66c930b8fa85c982b06707ce612b9d7fa1fbc0/server/lib/picky/interfaces/live_parameters.rb#L51" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000222_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/interfaces/live_parameters.rb, line 51</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">kill_each_worker_except</span> <span class="ruby-identifier">pid</span>
-        <span class="ruby-identifier">worker_pids</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">wpid</span><span class="ruby-operator">|</span>
-          <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">wpid</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">pid</span>
-          <span class="ruby-identifier">kill_worker</span> <span class="ruby-identifier">:KILL</span>, <span class="ruby-identifier">wpid</span>
-        <span class="ruby-keyword kw">end</span>
-      <span class="ruby-keyword kw">end</span></pre>
+          </div>
                     </div>
-                </div>
-                
-            </div>
-            
-            <div class="method">
-                <div class="title" id="M000223">
-                    
-                    <a name="M000223"></a><b>kill_worker</b>(signal, wpid)
-                    
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000223_source')" id="l_M000223_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/cb66c930b8fa85c982b06707ce612b9d7fa1fbc0/server/lib/picky/interfaces/live_parameters.rb#L57" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000223_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/interfaces/live_parameters.rb, line 57</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">kill_worker</span> <span class="ruby-identifier">signal</span>, <span class="ruby-identifier">wpid</span>
-        <span class="ruby-constant">Process</span>.<span class="ruby-identifier">kill</span> <span class="ruby-identifier">signal</span>, <span class="ruby-identifier">wpid</span>
-        <span class="ruby-identifier">exclaim</span> <span class="ruby-node">&quot;Killing worker ##{wpid} with signal #{signal}.&quot;</span>
-      <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">ESRCH</span>
-        <span class="ruby-identifier">remove_worker</span> <span class="ruby-identifier">wpid</span>
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <div class="method">
-                <div class="title" id="M000225">
-                    
-                    <a name="M000225"></a><b>parameters</b>(configuration_hash)
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-Updates any parameters with the ones given and returns the updated params.
-</p>
-<p>
-The params are a strictly defined hash of:
-</p>
-<pre>
-  * querying_removes_characters: Regexp
-  * querying_stopwords:          Regexp
-  * querying_splits_text_on:     Regexp
-</pre>
-<p>
-This first tries to update in the child process, and if successful, in the
-parent process
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000225_source')" id="l_M000225_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/cb66c930b8fa85c982b06707ce612b9d7fa1fbc0/server/lib/picky/interfaces/live_parameters.rb#L80" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000225_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/interfaces/live_parameters.rb, line 80</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parameters</span> <span class="ruby-identifier">configuration_hash</span>
-        <span class="ruby-identifier">close_child</span>
-        <span class="ruby-identifier">exclaim</span> <span class="ruby-value str">&quot;Trying to update worker child configuration.&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">configuration_hash</span>.<span class="ruby-identifier">empty?</span>
-        <span class="ruby-identifier">try_updating_configuration_with</span> <span class="ruby-identifier">configuration_hash</span>
-        <span class="ruby-identifier">write_parent</span> <span class="ruby-identifier">configuration_hash</span>
-        <span class="ruby-identifier">extract_configuration</span>
-      <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">CouldNotUpdateConfigurationError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
-        <span class="ruby-comment cmt"># I need to die such that my broken config is never used.</span>
-        <span class="ruby-comment cmt">#</span>
-        <span class="ruby-identifier">exclaim</span> <span class="ruby-node">&quot;Child process #{Process.pid} performs harakiri because of broken config.&quot;</span>
-        <span class="ruby-identifier">harakiri</span>
-        { <span class="ruby-identifier">e</span>.<span class="ruby-identifier">config_key</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:ERROR</span> }
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <div class="method">
-                <div class="title" id="M000232">
-                    
-                    <a name="M000232"></a><b>querying_removes_characters</b>()
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-TODO Move to Interface object.
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000232_source')" id="l_M000232_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/cb66c930b8fa85c982b06707ce612b9d7fa1fbc0/server/lib/picky/interfaces/live_parameters.rb#L146" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000232_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/interfaces/live_parameters.rb, line 146</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">querying_removes_characters</span>
-        <span class="ruby-identifier">regexp</span> = <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">query_default</span>.<span class="ruby-identifier">instance_variable_get</span> <span class="ruby-identifier">:@removes_characters_regexp</span>
-        <span class="ruby-identifier">regexp</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">regexp</span>.<span class="ruby-identifier">source</span>
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <div class="method">
-                <div class="title" id="M000233">
-                    
-                    <a name="M000233"></a><b>querying_removes_characters=</b>(new_value)
-                    
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000233_source')" id="l_M000233_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/cb66c930b8fa85c982b06707ce612b9d7fa1fbc0/server/lib/picky/interfaces/live_parameters.rb#L150" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000233_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/interfaces/live_parameters.rb, line 150</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">querying_removes_characters=</span> <span class="ruby-identifier">new_value</span>
-        <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">query_default</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-identifier">:@removes_characters_regexp</span>, <span class="ruby-node">%r{#{new_value}}</span>)
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <div class="method">
-                <div class="title" id="M000236">
-                    
-                    <a name="M000236"></a><b>querying_splits_text_on</b>()
-                    
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000236_source')" id="l_M000236_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/cb66c930b8fa85c982b06707ce612b9d7fa1fbc0/server/lib/picky/interfaces/live_parameters.rb#L160" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000236_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/interfaces/live_parameters.rb, line 160</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">querying_splits_text_on</span>
-        <span class="ruby-identifier">splits</span> = <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">query_default</span>.<span class="ruby-identifier">instance_variable_get</span> <span class="ruby-identifier">:@splits_text_on</span>
-        <span class="ruby-identifier">splits</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">splits</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:source</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">splits</span>.<span class="ruby-identifier">source</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">splits</span>
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <div class="method">
-                <div class="title" id="M000237">
-                    
-                    <a name="M000237"></a><b>querying_splits_text_on=</b>(new_value)
-                    
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000237_source')" id="l_M000237_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/cb66c930b8fa85c982b06707ce612b9d7fa1fbc0/server/lib/picky/interfaces/live_parameters.rb#L164" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000237_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/interfaces/live_parameters.rb, line 164</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">querying_splits_text_on=</span> <span class="ruby-identifier">new_value</span>
-        <span class="ruby-identifier">splits</span> = <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">query_default</span>.<span class="ruby-identifier">instance_variable_get</span> <span class="ruby-identifier">:@splits_text_on</span>
-        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">splits</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:source</span>)
-          <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">query_default</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-identifier">:@splits_text_on</span>, <span class="ruby-node">%r{#{new_value}}</span>)
-        <span class="ruby-keyword kw">else</span>
-          <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">query_default</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-identifier">:@splits_text_on</span>, <span class="ruby-identifier">new_value</span>)
-        <span class="ruby-keyword kw">end</span>
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <div class="method">
-                <div class="title" id="M000234">
-                    
-                    <a name="M000234"></a><b>querying_stopwords</b>()
-                    
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000234_source')" id="l_M000234_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/cb66c930b8fa85c982b06707ce612b9d7fa1fbc0/server/lib/picky/interfaces/live_parameters.rb#L153" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000234_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/interfaces/live_parameters.rb, line 153</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">querying_stopwords</span>
-        <span class="ruby-identifier">regexp</span> = <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">query_default</span>.<span class="ruby-identifier">instance_variable_get</span> <span class="ruby-identifier">:@remove_stopwords_regexp</span>
-        <span class="ruby-identifier">regexp</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">regexp</span>.<span class="ruby-identifier">source</span>
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <div class="method">
-                <div class="title" id="M000235">
-                    
-                    <a name="M000235"></a><b>querying_stopwords=</b>(new_value)
-                    
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000235_source')" id="l_M000235_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/cb66c930b8fa85c982b06707ce612b9d7fa1fbc0/server/lib/picky/interfaces/live_parameters.rb#L157" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000235_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/interfaces/live_parameters.rb, line 157</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">querying_stopwords=</span> <span class="ruby-identifier">new_value</span>
-        <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">query_default</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-identifier">:@remove_stopwords_regexp</span>, <span class="ruby-node">%r{#{new_value}}</span>)
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <div class="method">
-                <div class="title" id="M000224">
-                    
-                    <a name="M000224"></a><b>remove_worker</b>(wpid)
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-TODO This needs to be Webserver agnostic.
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000224_source')" id="l_M000224_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/cb66c930b8fa85c982b06707ce612b9d7fa1fbc0/server/lib/picky/interfaces/live_parameters.rb#L65" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000224_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/interfaces/live_parameters.rb, line 65</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remove_worker</span> <span class="ruby-identifier">wpid</span>
-        <span class="ruby-identifier">worker</span> = <span class="ruby-constant">Unicorn</span><span class="ruby-operator">::</span><span class="ruby-constant">HttpServer</span><span class="ruby-operator">::</span><span class="ruby-constant">WORKERS</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">wpid</span>) <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">worker</span>.<span class="ruby-identifier">tmp</span>.<span class="ruby-identifier">close</span> <span class="ruby-keyword kw">rescue</span> <span class="ruby-keyword kw">nil</span>
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <div class="method">
-                <div class="title" id="M000220">
-                    
-                    <a name="M000220"></a><b>start_master_process_thread</b>()
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-This runs a thread that listens to child processes.
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000220_source')" id="l_M000220_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/cb66c930b8fa85c982b06707ce612b9d7fa1fbc0/server/lib/picky/interfaces/live_parameters.rb#L23" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000220_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/interfaces/live_parameters.rb, line 23</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">start_master_process_thread</span>
-        <span class="ruby-comment cmt"># This thread is stopped in the children.</span>
-        <span class="ruby-comment cmt">#</span>
-        <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span>
-          <span class="ruby-identifier">loop</span> <span class="ruby-keyword kw">do</span>
-            <span class="ruby-constant">IO</span>.<span class="ruby-identifier">select</span>([<span class="ruby-ivar">@child</span>], <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-value">2</span>) <span class="ruby-keyword kw">or</span> <span class="ruby-keyword kw">next</span>
-            <span class="ruby-identifier">result</span> = <span class="ruby-ivar">@child</span>.<span class="ruby-identifier">gets</span> <span class="ruby-value str">';;;'</span>
-            <span class="ruby-identifier">pid</span>, <span class="ruby-identifier">configuration_hash</span> = <span class="ruby-identifier">eval</span> <span class="ruby-identifier">result</span>
-            <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">Hash</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">configuration_hash</span>
-            <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">configuration_hash</span>.<span class="ruby-identifier">empty?</span>
-            <span class="ruby-identifier">exclaim</span> <span class="ruby-value str">&quot;Trying to update MASTER configuration.&quot;</span>
-            <span class="ruby-identifier">try_updating_configuration_with</span> <span class="ruby-identifier">configuration_hash</span>
-            <span class="ruby-identifier">kill_each_worker_except</span> <span class="ruby-identifier">pid</span>
-
-            <span class="ruby-comment cmt"># Fails hard on an error.</span>
-            <span class="ruby-comment cmt">#</span>
-          <span class="ruby-keyword kw">end</span>
-        <span class="ruby-keyword kw">end</span>
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <div class="method">
-                <div class="title" id="M000238">
-                    
-                    <a name="M000238"></a><b>to_s</b>()
-                    
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000238_source')" id="l_M000238_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/cb66c930b8fa85c982b06707ce612b9d7fa1fbc0/server/lib/picky/interfaces/live_parameters.rb#L175" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000238_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/interfaces/live_parameters.rb, line 175</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
-        <span class="ruby-value str">&quot;Suckerfish Live Interface (Use the picky-live gem to introspect)&quot;</span>
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <div class="method">
-                <div class="title" id="M000230">
-                    
-                    <a name="M000230"></a><b>try_updating_configuration_with</b>(configuration_hash)
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-Tries updating the configuration in the child process or parent process.
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000230_source')" id="l_M000230_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/cb66c930b8fa85c982b06707ce612b9d7fa1fbc0/server/lib/picky/interfaces/live_parameters.rb#L121" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000230_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/interfaces/live_parameters.rb, line 121</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">try_updating_configuration_with</span> <span class="ruby-identifier">configuration_hash</span>
-        <span class="ruby-identifier">current_key</span> = <span class="ruby-keyword kw">nil</span>
-        <span class="ruby-keyword kw">begin</span>
-          <span class="ruby-identifier">configuration_hash</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">new_value</span><span class="ruby-operator">|</span>
-            <span class="ruby-identifier">exclaim</span> <span class="ruby-node">&quot;  Setting #{key} with #{new_value}.&quot;</span>
-            <span class="ruby-identifier">current_key</span> = <span class="ruby-identifier">key</span>
-            <span class="ruby-identifier">send</span> <span class="ruby-identifier">:&quot;#{key}=&quot;</span>, <span class="ruby-identifier">new_value</span>
-          <span class="ruby-keyword kw">end</span>
-        <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">StandardError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
-          <span class="ruby-comment cmt"># Catch any error and reraise as config error.</span>
-          <span class="ruby-comment cmt">#</span>
-          <span class="ruby-identifier">raise</span> <span class="ruby-constant">CouldNotUpdateConfigurationError</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">current_key</span>, <span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span>
-        <span class="ruby-keyword kw">end</span>
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <div class="method">
-                <div class="title" id="M000221">
-                    
-                    <a name="M000221"></a><b>worker_pids</b>()
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-TODO This needs to be webserver agnostic.
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000221_source')" id="l_M000221_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/cb66c930b8fa85c982b06707ce612b9d7fa1fbc0/server/lib/picky/interfaces/live_parameters.rb#L45" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000221_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/interfaces/live_parameters.rb, line 45</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">worker_pids</span>
-        <span class="ruby-constant">Unicorn</span><span class="ruby-operator">::</span><span class="ruby-constant">HttpServer</span><span class="ruby-operator">::</span><span class="ruby-constant">WORKERS</span>.<span class="ruby-identifier">keys</span>
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <div class="method">
-                <div class="title" id="M000227">
-                    
-                    <a name="M000227"></a><b>write_parent</b>(configuration_hash)
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-Write the parent.
-</p>
-<p>
-Note: The ;;; is the end marker for the message.
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000227_source')" id="l_M000227_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/cb66c930b8fa85c982b06707ce612b9d7fa1fbc0/server/lib/picky/interfaces/live_parameters.rb#L102" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000227_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/interfaces/live_parameters.rb, line 102</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">write_parent</span> <span class="ruby-identifier">configuration_hash</span>
-        <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">write</span> <span class="ruby-node">&quot;#{[Process.pid, configuration_hash]};;;&quot;</span>
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
-            </div>
-            
-</div>
     </div>
   </body>
 </html>    

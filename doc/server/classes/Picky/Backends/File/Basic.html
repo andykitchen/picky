@@ -4,16 +4,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Picky::Backends::File::Basic</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
-    <script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
 </head>
 
 <body>     
     <div class="banner">
+        
         <h1>
             <span class="type">Class</span> 
             Picky::Backends::File::Basic 
@@ -33,101 +37,161 @@
     </div>
     <div id="bodyContent">
         <div id="content">
-    
+  
     <div class="description">
-        <p>
-Base class for all file-based index files.
-</p>
-<p>
-Provides necessary helper methods for its subclasses. Not directly useable,
-as it does not provide dump/load methods.
-</p>
+      
+<p>Base class for all file-based index files.</p>
+
+<p>Provides necessary helper methods for its subclasses. Not directly useable,
+as it does not provide dump/load methods.</p>
 
     </div>
-    
+  
 
-    
 
-    
-    
+  
 
-    
-    
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
-    
+      
         <dt>B</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000026">backup</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-backup">backup</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>C</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000030">cache_ok?</a>,</li>
-                
-                <li><a href="#M000029">cache_small?</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-cache_ok-3F">cache_ok?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-cache_small-3F">cache_small?</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>D</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000028">delete</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-delete">delete</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>E</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000025">extension</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-empty">empty</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-extension">extension</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-initial">initial</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
         <dt>N</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000024">new</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>R</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000027">restore</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-restore">restore</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-to_s">to_s</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
     </dl>
-    
+  
 
-    
+  
+    <!-- Includes -->
     <div class="sectiontitle">Included Modules</div>
     <ul>
-        
+      
         <li>
-            
-            <span>Helpers::File</span>
-            
-            START:includes
+          
+            <a href="../Helpers/File.html">
+              Picky::Backends::Helpers::File
+            </a>
+          
         </li>
-        
+      
     </ul>
-    
+  
+
+
+
+  
 
     
 
@@ -135,290 +199,402 @@ as it does not provide dump/load methods.
 
     
 
+
     
-    <div class="sectiontitle">Attributes</div>
-    <table border='0' cellpadding='5'>
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
         
-        <tr valign='top'>
+          <tr valign='top'>
             <td class='attr-rw'>
-                [R]
+              [R]
             </td>
             <td class='attr-name'>cache_path</td>
             <td class='attr-desc'></td>
-        </tr>
+          </tr>
         
-        <tr valign='top'>
+          <tr valign='top'>
             <td class='attr-rw'>
-                [R]
+              [R]
             </td>
             <td class='attr-name'>mapping_file</td>
             <td class='attr-desc'></td>
-        </tr>
+          </tr>
         
-    </table>
+      </table>
     
 
+
+    <!-- Methods -->
     
-            <div class="sectiontitle">Class Public methods</div>
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
             
-            <div class="method">
-                <div class="title" id="M000024">
-                    
-                    <a name="M000024"></a><b>new</b>(cache_path)
-                    
-                </div>
+              <a name="method-c-new"></a><b>new</b>(cache_path, options = {})
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>An index cache takes a path, without file extension, which will be provided
+by the subclasses.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
                 
-                <div class="description">
-                  <p>
-An index cache takes a path, without file extension, which will be provided
-by the subclasses.
-</p>
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/file/basic.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> <span class="ruby-identifier">cache_path</span>, <span class="ruby-identifier">options</span> = {}
+  <span class="ruby-ivar">@cache_path</span> = <span class="ruby-node">&quot;#{cache_path}.file.#{extension}&quot;</span>
 
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000024_source')" id="l_M000024_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/8b7af59c4a924dbc57c56625922d1cba4f508e7e/server/lib/picky/backends/file/basic.rb#L24" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000024_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/file/basic.rb, line 24</span>
-        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">cache_path</span>
-          <span class="ruby-ivar">@cache_path</span> = <span class="ruby-node">&quot;#{cache_path}.file.#{extension}&quot;</span>
+  <span class="ruby-comment"># This is the mapping file with the in-memory hash for the</span>
+  <span class="ruby-comment"># file position/offset mappings.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-ivar">@mapping_file</span> = <span class="ruby-constant">Memory</span><span class="ruby-operator">::</span><span class="ruby-constant">JSON</span>.<span class="ruby-identifier">new</span> <span class="ruby-node">&quot;#{cache_path}.file_mapping.#{extension}&quot;</span>
 
-          <span class="ruby-comment cmt"># This is the mapping file with the in-memory hash for the</span>
-          <span class="ruby-comment cmt"># file position/offset mappings.</span>
-          <span class="ruby-comment cmt">#</span>
-          <span class="ruby-ivar">@mapping_file</span> = <span class="ruby-constant">Memory</span><span class="ruby-operator">::</span><span class="ruby-constant">JSON</span>.<span class="ruby-identifier">new</span> <span class="ruby-node">&quot;#{cache_path}.file_mapping.#{extension}&quot;</span>
-        <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+  <span class="ruby-ivar">@empty</span>   = <span class="ruby-identifier">options</span>[<span class="ruby-value">:empty</span>]
+  <span class="ruby-ivar">@initial</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:initial</span>]
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="sectiontitle">Instance Public methods</div>
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-backup">
             
-            <div class="method">
-                <div class="title" id="M000026">
-                    
-                    <a name="M000026"></a><b>backup</b>()
-                    
-                </div>
+              <a name="method-i-backup"></a><b>backup</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Will copy the index file to a location that is in a directory named
+“backup” right under the directory the index file is in.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-backup_source')" id="l_method-i-backup_source">show</a>
                 
-                <div class="description">
-                  <p>
-Will copy the index file to a location that is in a directory named
-&#8220;backup&#8221; right under the directory the index file is in.
-</p>
+              </p>
+              <div id="method-i-backup_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/file/basic.rb, line 62</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">backup</span>
+  <span class="ruby-identifier">mapping_file</span>.<span class="ruby-identifier">backup</span>
 
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000026_source')" id="l_M000026_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/8b7af59c4a924dbc57c56625922d1cba4f508e7e/server/lib/picky/backends/file/basic.rb#L43" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000026_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/file/basic.rb, line 43</span>
-        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">backup</span>
-          <span class="ruby-identifier">mapping_file</span>.<span class="ruby-identifier">backup</span>
-
-          <span class="ruby-identifier">prepare_backup</span> <span class="ruby-identifier">backup_directory</span>(<span class="ruby-identifier">cache_path</span>)
-          <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">cp</span> <span class="ruby-identifier">cache_path</span>, <span class="ruby-identifier">target</span>, <span class="ruby-identifier">verbose</span><span class="ruby-operator">:</span> <span class="ruby-keyword kw">true</span>
-        <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+  <span class="ruby-identifier">prepare_backup</span> <span class="ruby-identifier">backup_directory</span>(<span class="ruby-identifier">cache_path</span>)
+  <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">cp</span> <span class="ruby-identifier">cache_path</span>, <span class="ruby-identifier">target</span>, <span class="ruby-identifier">verbose</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000030">
-                    
-                    <a name="M000030"></a><b>cache_ok?</b>()
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-Is the cache ok? (existing and larger than zero Bytes in size)
-</p>
-<p>
-A small cache is still ok.
-</p>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-cache_ok-3F">
+            
+              <a name="method-i-cache_ok-3F"></a><b>cache_ok?</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Is the cache ok? (existing and larger than zero Bytes in size)</p>
 
-                </div>
+<p>A small cache is still ok.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-cache_ok-3F_source')" id="l_method-i-cache_ok-3F_source">show</a>
                 
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000030_source')" id="l_M000030_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/8b7af59c4a924dbc57c56625922d1cba4f508e7e/server/lib/picky/backends/file/basic.rb#L79" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000030_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/file/basic.rb, line 79</span>
-        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cache_ok?</span>
-          <span class="ruby-identifier">size_of</span>(<span class="ruby-identifier">cache_path</span>) <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
-        <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-cache_ok-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/file/basic.rb, line 98</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">cache_ok?</span>
+  <span class="ruby-identifier">size_of</span>(<span class="ruby-identifier">cache_path</span>) <span class="ruby-operator">&gt;</span> <span class="ruby-number">0</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000029">
-                    
-                    <a name="M000029"></a><b>cache_small?</b>()
-                    
-                </div>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-cache_small-3F">
+            
+              <a name="method-i-cache_small-3F"></a><b>cache_small?</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Is this cache file suspiciously small? (less than 8 Bytes of size)</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-cache_small-3F_source')" id="l_method-i-cache_small-3F_source">show</a>
                 
-                <div class="description">
-                  <p>
-Is this cache file suspiciously small? (less than 8 Bytes of size)
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000029_source')" id="l_M000029_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/8b7af59c4a924dbc57c56625922d1cba4f508e7e/server/lib/picky/backends/file/basic.rb#L70" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000029_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/file/basic.rb, line 70</span>
-        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cache_small?</span>
-          <span class="ruby-identifier">size_of</span>(<span class="ruby-identifier">cache_path</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-value">8</span>
-        <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-cache_small-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/file/basic.rb, line 89</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">cache_small?</span>
+  <span class="ruby-identifier">size_of</span>(<span class="ruby-identifier">cache_path</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-number">8</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000028">
-                    
-                    <a name="M000028"></a><b>delete</b>()
-                    
-                </div>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-delete">
+            
+              <a name="method-i-delete"></a><b>delete</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Deletes the file.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-delete_source')" id="l_method-i-delete_source">show</a>
                 
-                <div class="description">
-                  <p>
-Deletes the file.
-</p>
+              </p>
+              <div id="method-i-delete_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/file/basic.rb, line 80</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">delete</span>
+  <span class="ruby-identifier">mapping_file</span>.<span class="ruby-identifier">delete</span>
 
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000028_source')" id="l_M000028_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/8b7af59c4a924dbc57c56625922d1cba4f508e7e/server/lib/picky/backends/file/basic.rb#L61" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000028_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/file/basic.rb, line 61</span>
-        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete</span>
-          <span class="ruby-identifier">mapping_file</span>.<span class="ruby-identifier">delete</span>
-
-          <span class="ruby-node">`rm -Rf #{cache_path}`</span>
-        <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+  <span class="ruby-node">`rm -Rf #{cache_path}`</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000025">
-                    
-                    <a name="M000025"></a><b>extension</b>()
-                    
-                </div>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-empty">
+            
+              <a name="method-i-empty"></a><b>empty</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>The empty index that is used for putting the index together before it is
+saved into the files.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-empty_source')" id="l_method-i-empty_source">show</a>
                 
-                <div class="description">
-                  <p>
-The default extension for index files is &#8220;index&#8221;.
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000025_source')" id="l_M000025_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/8b7af59c4a924dbc57c56625922d1cba4f508e7e/server/lib/picky/backends/file/basic.rb#L35" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000025_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/file/basic.rb, line 35</span>
-        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extension</span>
-          <span class="ruby-identifier">:index</span>
-        <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-empty_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/file/basic.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">empty</span>
+  <span class="ruby-ivar">@empty</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@empty</span>.<span class="ruby-identifier">clone</span> <span class="ruby-operator">||</span> {}
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000027">
-                    
-                    <a name="M000027"></a><b>restore</b>()
-                    
-                </div>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-extension">
+            
+              <a name="method-i-extension"></a><b>extension</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>The default extension for index files is “index”.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-extension_source')" id="l_method-i-extension_source">show</a>
                 
-                <div class="description">
-                  <p>
-Copies the file from its backup location back to the original location.
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000027_source')" id="l_M000027_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/8b7af59c4a924dbc57c56625922d1cba4f508e7e/server/lib/picky/backends/file/basic.rb#L53" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000027_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/file/basic.rb, line 53</span>
-        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">restore</span>
-          <span class="ruby-identifier">mapping_file</span>.<span class="ruby-identifier">restore</span>
-
-          <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">cp</span> <span class="ruby-identifier">backup_file_path_of</span>(<span class="ruby-identifier">cache_path</span>), <span class="ruby-identifier">cache_path</span>, <span class="ruby-identifier">verbose</span><span class="ruby-operator">:</span> <span class="ruby-keyword kw">true</span>
-        <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-extension_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/file/basic.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">extension</span>
+  <span class="ruby-value">:index</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-</div>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-initial">
+            
+              <a name="method-i-initial"></a><b>initial</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>The initial content before loading.</p>
+
+<p>Note: We could also load the mapping file</p>
+
+<pre>as in #load.</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-initial_source')" id="l_method-i-initial_source">show</a>
+                
+              </p>
+              <div id="method-i-initial_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/file/basic.rb, line 54</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initial</span>
+  <span class="ruby-ivar">@initial</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@initial</span>.<span class="ruby-identifier">clone</span> <span class="ruby-operator">||</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-restore">
+            
+              <a name="method-i-restore"></a><b>restore</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Copies the file from its backup location back to the original location.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-restore_source')" id="l_method-i-restore_source">show</a>
+                
+              </p>
+              <div id="method-i-restore_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/file/basic.rb, line 72</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">restore</span>
+  <span class="ruby-identifier">mapping_file</span>.<span class="ruby-identifier">restore</span>
+
+  <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">cp</span> <span class="ruby-identifier">backup_file_path_of</span>(<span class="ruby-identifier">cache_path</span>), <span class="ruby-identifier">cache_path</span>, <span class="ruby-identifier">verbose</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_s">
+            
+              <a name="method-i-to_s"></a><b>to_s</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_s_source')" id="l_method-i-to_s_source">show</a>
+                
+              </p>
+              <div id="method-i-to_s_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/file/basic.rb, line 104</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
+  <span class="ruby-node">&quot;#{self.class}(#{cache_path},#{mapping_file.cache_path})&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
     </div>
   </body>
 </html>    

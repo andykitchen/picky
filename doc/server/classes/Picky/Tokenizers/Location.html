@@ -4,16 +4,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Picky::Tokenizers::Location</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
-    <script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
 </head>
 
 <body>     
     <div class="banner">
+        
         <h1>
             <span class="type">Class</span> 
             Picky::Tokenizers::Location 
@@ -33,38 +37,56 @@
     </div>
     <div id="bodyContent">
         <div id="content">
-    
+  
 
-    
 
-    
-    
+  
 
-    
-    
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
-    
+      
         <dt>N</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000331">new</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>T</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000332">tokenize</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-tokenize">tokenize</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
     </dl>
-    
+  
+
+  
+
+
+
+  
 
     
 
@@ -72,113 +94,128 @@
 
     
 
-    
 
     
-    <div class="sectiontitle">Attributes</div>
-    <table border='0' cellpadding='5'>
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
         
-        <tr valign='top'>
+          <tr valign='top'>
             <td class='attr-rw'>
-                [R]
+              [R]
             </td>
             <td class='attr-name'>calculation</td>
             <td class='attr-desc'></td>
-        </tr>
+          </tr>
         
-    </table>
+      </table>
     
 
+
+    <!-- Methods -->
     
-            <div class="sectiontitle">Class Public methods</div>
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
             
-            <div class="method">
-                <div class="title" id="M000331">
-                    
-                    <a name="M000331"></a><b>new</b>(options = {})
-                    
-                </div>
+              <a name="method-c-new"></a><b>new</b>(options = {})
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
                 
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000331_source')" id="l_M000331_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/a996bb628c5540c2f899a932144ee154a7a933b9/server/lib/picky/tokenizers/location.rb#L9" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000331_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/tokenizers/location.rb, line 9</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">options</span> = {}
-        <span class="ruby-keyword kw">super</span> <span class="ruby-identifier">options</span>
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/tokenizers/location.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> <span class="ruby-identifier">options</span> = {}
+  <span class="ruby-keyword">super</span> <span class="ruby-identifier">options</span>
 
-        <span class="ruby-identifier">grid</span>      = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:grid</span>]
-        <span class="ruby-identifier">precision</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:precision</span>] <span class="ruby-operator">||</span> <span class="ruby-value">1</span>
+  <span class="ruby-identifier">grid</span>      = <span class="ruby-identifier">options</span>[<span class="ruby-value">:grid</span>]
+  <span class="ruby-identifier">precision</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:precision</span>] <span class="ruby-operator">||</span> <span class="ruby-number">1</span>
 
-        <span class="ruby-ivar">@calculation</span> = <span class="ruby-constant">Calculations</span><span class="ruby-operator">::</span><span class="ruby-constant">Location</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">grid</span>, <span class="ruby-identifier">precision</span>
+  <span class="ruby-ivar">@calculation</span> = <span class="ruby-constant">Calculations</span><span class="ruby-operator">::</span><span class="ruby-constant">Location</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">grid</span>, <span class="ruby-identifier">precision</span>
 
-        <span class="ruby-ivar">@minimum</span> = <span class="ruby-value">1.0</span> <span class="ruby-operator">/</span> <span class="ruby-value">0</span>
+  <span class="ruby-ivar">@minimum</span> = <span class="ruby-number">1.0</span> <span class="ruby-operator">/</span> <span class="ruby-number">0</span>
 
-        <span class="ruby-ivar">@locations</span> = []
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+  <span class="ruby-ivar">@locations</span> = []
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="sectiontitle">Instance Public methods</div>
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-tokenize">
             
-            <div class="method">
-                <div class="title" id="M000332">
-                    
-                    <a name="M000332"></a><b>tokenize</b>(text)
-                    
-                </div>
+              <a name="method-i-tokenize"></a><b>tokenize</b>(text)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-tokenize_source')" id="l_method-i-tokenize_source">show</a>
                 
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000332_source')" id="l_M000332_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/a996bb628c5540c2f899a932144ee154a7a933b9/server/lib/picky/tokenizers/location.rb#L24" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000332_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/tokenizers/location.rb, line 24</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">tokenize</span> <span class="ruby-identifier">text</span>
+              </p>
+              <div id="method-i-tokenize_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/tokenizers/location.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">tokenize</span> <span class="ruby-identifier">text</span>
 
-        <span class="ruby-comment cmt"># Gather min/max.</span>
-        <span class="ruby-comment cmt">#</span>
-        <span class="ruby-identifier">source</span>.<span class="ruby-identifier">harvest</span> <span class="ruby-identifier">category</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">indexed_id</span>, <span class="ruby-identifier">location</span><span class="ruby-operator">|</span>
-          <span class="ruby-identifier">location</span> = <span class="ruby-identifier">location</span>.<span class="ruby-identifier">to_f</span>
-          <span class="ruby-identifier">minimum</span> = <span class="ruby-identifier">location</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">location</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">minimum</span>
-          <span class="ruby-identifier">locations</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">indexed_id</span>, <span class="ruby-identifier">location</span>]
-        <span class="ruby-keyword kw">end</span>
+  <span class="ruby-comment"># Gather min/max.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">source</span>.<span class="ruby-identifier">harvest</span> <span class="ruby-identifier">category</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">indexed_id</span>, <span class="ruby-identifier">location</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">location</span> = <span class="ruby-identifier">location</span>.<span class="ruby-identifier">to_f</span>
+    <span class="ruby-identifier">minimum</span> = <span class="ruby-identifier">location</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">location</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">minimum</span>
+    <span class="ruby-identifier">locations</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">indexed_id</span>, <span class="ruby-identifier">location</span>]
+  <span class="ruby-keyword">end</span>
 
-        <span class="ruby-identifier">calculation</span>.<span class="ruby-identifier">minimum</span> = <span class="ruby-identifier">minimum</span>
+  <span class="ruby-identifier">calculation</span>.<span class="ruby-identifier">minimum</span> = <span class="ruby-identifier">minimum</span>
 
-        <span class="ruby-comment cmt"># Recalculate locations.</span>
-        <span class="ruby-comment cmt">#</span>
-        <span class="ruby-identifier">locations</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">indexed_id</span>, <span class="ruby-identifier">location</span><span class="ruby-operator">|</span>
-          <span class="ruby-identifier">calculation</span>.<span class="ruby-identifier">recalculated_range</span>(<span class="ruby-identifier">location</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">new_location</span><span class="ruby-operator">|</span>
-            <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">indexed_id</span>, <span class="ruby-identifier">new_location</span>.<span class="ruby-identifier">to_s</span>
-          <span class="ruby-keyword kw">end</span>
-        <span class="ruby-keyword kw">end</span>
+  <span class="ruby-comment"># Recalculate locations.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">locations</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">indexed_id</span>, <span class="ruby-identifier">location</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">calculation</span>.<span class="ruby-identifier">recalculated_range</span>(<span class="ruby-identifier">location</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">new_location</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">yield</span> <span class="ruby-identifier">indexed_id</span>, <span class="ruby-identifier">new_location</span>.<span class="ruby-identifier">to_s</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
 
-        <span class="ruby-comment cmt"># TODO Move to the right place.</span>
-        <span class="ruby-comment cmt">#</span>
-        <span class="ruby-identifier">category</span>.<span class="ruby-identifier">indexing_exact</span>[<span class="ruby-identifier">:location_minimum</span>] = <span class="ruby-identifier">minimum</span>
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+  <span class="ruby-comment"># TODO Move to the right place.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">category</span>.<span class="ruby-identifier">exact</span>[<span class="ruby-value">:location_minimum</span>] = <span class="ruby-identifier">minimum</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-</div>
+          </div>
+                    </div>
     </div>
   </body>
 </html>    

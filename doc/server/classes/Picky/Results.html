@@ -4,16 +4,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Picky::Results</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
-    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
 </head>
 
 <body>     
     <div class="banner">
+        
         <h1>
             <span class="type">Class</span> 
             Picky::Results 
@@ -33,98 +37,139 @@
     </div>
     <div id="bodyContent">
         <div id="content">
-    
+  
     <div class="description">
-        <p>
-This is the internal results object. Usually, to_marshal, or <a
-href="Results.html#M000267">to_json</a> is called on it to get a string for
-the answer.
-</p>
+      
+<p>This is the internal results object. Usually, to_marshal, or <a
+href="Results.html#method-i-to_json">#to_json</a> is called on it to get a
+string for the answer.</p>
 
     </div>
-    
+  
 
-    
 
-    
-    
+  
 
-    
-    
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
-    
+      
         <dt>D</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000264">duration</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-duration">duration</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>F</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000261">from</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-from">from</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>I</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000262">ids</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-ids">ids</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>L</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000268">log_type</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-log_type">log_type</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>N</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000260">new</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>P</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000265">prepare!</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-prepare-21">prepare!</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>T</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000266">to_hash</a>,</li>
-                
-                <li><a href="#M000267">to_json</a>,</li>
-                
-                <li><a href="#M000269">to_s</a>,</li>
-                
-                <li><a href="#M000263">total</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-to_hash">to_hash</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_json">to_json</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_s">to_s</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-total">total</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
     </dl>
-    
+  
+
+  
+
+
+
+  
 
     
 
@@ -132,417 +177,414 @@ the answer.
 
     
 
-    
 
     
-    <div class="sectiontitle">Attributes</div>
-    <table border='0' cellpadding='5'>
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
         
-        <tr valign='top'>
+          <tr valign='top'>
             <td class='attr-rw'>
-                [W]
-            </td>
-            <td class='attr-name'>duration</td>
-            <td class='attr-desc'><p>
-Duration is set externally by the query.
-</p></td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-rw'>
-                [R]
+              [R]
             </td>
             <td class='attr-name'>allocations</td>
             <td class='attr-desc'></td>
-        </tr>
+          </tr>
         
-        <tr valign='top'>
+          <tr valign='top'>
             <td class='attr-rw'>
-                [R]
-            </td>
-            <td class='attr-name'>offset</td>
-            <td class='attr-desc'></td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-rw'>
-                [R]
+              [R]
             </td>
             <td class='attr-name'>amount</td>
             <td class='attr-desc'></td>
-        </tr>
+          </tr>
         
-        <tr valign='top'>
+          <tr valign='top'>
             <td class='attr-rw'>
-                [R]
+              [W]
+            </td>
+            <td class='attr-name'>duration</td>
+            <td class='attr-desc'><p>Duration is set externally by the query.</p></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>offset</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
             </td>
             <td class='attr-name'>query</td>
             <td class='attr-desc'></td>
-        </tr>
+          </tr>
         
-    </table>
+      </table>
     
 
+
+    <!-- Methods -->
     
-            <div class="sectiontitle">Class Public methods</div>
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-from">
             
-            <div class="method">
-                <div class="title" id="M000261">
-                    
-                    <a name="M000261"></a><b>from</b>(query, amount, offset, allocations)
-                    
-                </div>
+              <a name="method-c-from"></a><b>from</b>(query, amount, offset, allocations)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Create new results and calculate the ids.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-from_source')" id="l_method-c-from_source">show</a>
                 
-                <div class="description">
-                  <p>
-Create new results and calculate the ids.
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000261_source')" id="l_M000261_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/935b5d2273ab81183bdfe801513dfad8c49d18f7/server/lib/picky/results.rb#L27" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000261_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 27</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">from</span> <span class="ruby-identifier">query</span>, <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">allocations</span>
-      <span class="ruby-identifier">results</span> = <span class="ruby-identifier">new</span> <span class="ruby-identifier">query</span>, <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">allocations</span>
-      <span class="ruby-identifier">results</span>.<span class="ruby-identifier">prepare!</span>
-      <span class="ruby-identifier">results</span>
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-c-from_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 27</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">from</span> <span class="ruby-identifier">query</span>, <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">allocations</span>
+  <span class="ruby-identifier">results</span> = <span class="ruby-identifier">new</span> <span class="ruby-identifier">query</span>, <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">allocations</span>
+  <span class="ruby-identifier">results</span>.<span class="ruby-identifier">prepare!</span>
+  <span class="ruby-identifier">results</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000260">
-                    
-                    <a name="M000260"></a><b>new</b>(query = nil, amount = 0, offset = 0, allocations = Query::Allocations.new)
-                    
-                </div>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <a name="method-c-new"></a><b>new</b>(query = nil, amount = 0, offset = 0, allocations = Query::Allocations.new)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Takes instances of Query::Allocations as param.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
                 
-                <div class="description">
-                  <p>
-Takes instances of Query::Allocations as param.
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000260_source')" id="l_M000260_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/935b5d2273ab81183bdfe801513dfad8c49d18f7/server/lib/picky/results.rb#L18" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000260_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 18</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">query</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">amount</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">offset</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">allocations</span> = <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Allocations</span>.<span class="ruby-identifier">new</span>
-      <span class="ruby-ivar">@amount</span>      = <span class="ruby-identifier">amount</span>
-      <span class="ruby-ivar">@query</span>       = <span class="ruby-identifier">query</span>
-      <span class="ruby-ivar">@offset</span>      = <span class="ruby-identifier">offset</span>
-      <span class="ruby-ivar">@allocations</span> = <span class="ruby-identifier">allocations</span>
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 18</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> <span class="ruby-identifier">query</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">amount</span> = <span class="ruby-number">0</span>, <span class="ruby-identifier">offset</span> = <span class="ruby-number">0</span>, <span class="ruby-identifier">allocations</span> = <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Allocations</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@amount</span>      = <span class="ruby-identifier">amount</span>
+  <span class="ruby-ivar">@query</span>       = <span class="ruby-identifier">query</span>
+  <span class="ruby-ivar">@offset</span>      = <span class="ruby-identifier">offset</span>
+  <span class="ruby-ivar">@allocations</span> = <span class="ruby-identifier">allocations</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="sectiontitle">Instance Public methods</div>
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-duration">
             
-            <div class="method">
-                <div class="title" id="M000264">
-                    
-                    <a name="M000264"></a><b>duration</b>()
-                    
-                </div>
+              <a name="method-i-duration"></a><b>duration</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Duration default is 0.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-duration_source')" id="l_method-i-duration_source">show</a>
                 
-                <div class="description">
-                  <p>
-Duration default is 0.
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000264_source')" id="l_M000264_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/935b5d2273ab81183bdfe801513dfad8c49d18f7/server/lib/picky/results.rb#L47" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000264_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 47</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">duration</span>
-      <span class="ruby-ivar">@duration</span> <span class="ruby-operator">||</span> <span class="ruby-value">0</span>
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-duration_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 47</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">duration</span>
+  <span class="ruby-ivar">@duration</span> <span class="ruby-operator">||</span> <span class="ruby-number">0</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000262">
-                    
-                    <a name="M000262"></a><b>ids</b>(amount = 20)
-                    
-                </div>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-ids">
+            
+              <a name="method-i-ids"></a><b>ids</b>(amount = 20)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Delegates to allocations.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-ids_source')" id="l_method-i-ids_source">show</a>
                 
-                <div class="description">
-                  <p>
-Delegates to allocations.
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000262_source')" id="l_M000262_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/935b5d2273ab81183bdfe801513dfad8c49d18f7/server/lib/picky/results.rb#L35" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000262_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 35</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ids</span> <span class="ruby-identifier">amount</span> = <span class="ruby-value">20</span>
-      <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">ids</span> <span class="ruby-identifier">amount</span>
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-ids_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ids</span> <span class="ruby-identifier">amount</span> = <span class="ruby-number">20</span>
+  <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">ids</span> <span class="ruby-identifier">amount</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000268">
-                    
-                    <a name="M000268"></a><b>log_type</b>()
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-The first character in the blog designates what type of query it is.
-</p>
-<p>
-No calculated ids means: No results.
-</p>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-log_type">
+            
+              <a name="method-i-log_type"></a><b>log_type</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>The first character in the blog designates what type of query it is.</p>
 
-                </div>
+<p>No calculated ids means: No results.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-log_type_source')" id="l_method-i-log_type_source">show</a>
                 
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000268_source')" id="l_M000268_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/935b5d2273ab81183bdfe801513dfad8c49d18f7/server/lib/picky/results.rb#L79" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000268_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 79</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">log_type</span>
-      <span class="ruby-identifier">amount</span>.<span class="ruby-identifier">zero?</span><span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-value str">'.'</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:'&gt;'</span>
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-log_type_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 79</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">log_type</span>
+  <span class="ruby-identifier">amount</span>.<span class="ruby-identifier">zero?</span><span class="ruby-operator">?</span> <span class="ruby-value">:'.'</span> <span class="ruby-operator">:</span> <span class="ruby-value">:'&gt;'</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000265">
-                    
-                    <a name="M000265"></a><b>prepare!</b>()
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-This starts the actual processing.
-</p>
-<p>
-Without this, the allocations are not processed, and no ids are calculated.
-</p>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-prepare-21">
+            
+              <a name="method-i-prepare-21"></a><b>prepare!</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>This starts the actual processing.</p>
 
-                </div>
+<p>Without this, the allocations are not processed, and no ids are calculated.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-prepare-21_source')" id="l_method-i-prepare-21_source">show</a>
                 
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000265_source')" id="l_M000265_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/935b5d2273ab81183bdfe801513dfad8c49d18f7/server/lib/picky/results.rb#L56" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000265_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 56</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prepare!</span>
-      <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">process!</span> <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-prepare-21_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 56</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">prepare!</span>
+  <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">process!</span> <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000266">
-                    
-                    <a name="M000266"></a><b>to_hash</b>()
-                    
-                </div>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_hash">
+            
+              <a name="method-i-to_hash"></a><b>to_hash</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns a hash with the allocations, offset, duration and total.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_hash_source')" id="l_method-i-to_hash_source">show</a>
                 
-                <div class="description">
-                  <p>
-Returns a hash with the allocations, offset, duration and total.
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000266_source')" id="l_M000266_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/935b5d2273ab81183bdfe801513dfad8c49d18f7/server/lib/picky/results.rb#L62" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000266_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 62</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_hash</span>
-      { <span class="ruby-identifier">allocations</span><span class="ruby-operator">:</span> <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">to_result</span>,
-        <span class="ruby-identifier">offset</span><span class="ruby-operator">:</span>      <span class="ruby-identifier">offset</span>,
-        <span class="ruby-identifier">duration</span><span class="ruby-operator">:</span>    <span class="ruby-identifier">duration</span>,
-        <span class="ruby-identifier">total</span><span class="ruby-operator">:</span>       <span class="ruby-identifier">total</span> }
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-to_hash_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 62</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_hash</span>
+  { <span class="ruby-identifier">allocations</span><span class="ruby-operator">:</span> <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">to_result</span>,
+    <span class="ruby-identifier">offset</span><span class="ruby-operator">:</span>      <span class="ruby-identifier">offset</span>,
+    <span class="ruby-identifier">duration</span><span class="ruby-operator">:</span>    <span class="ruby-identifier">duration</span>,
+    <span class="ruby-identifier">total</span><span class="ruby-operator">:</span>       <span class="ruby-identifier">total</span> }
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000267">
-                    
-                    <a name="M000267"></a><b>to_json</b>(options = {})
-                    
-                </div>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_json">
+            
+              <a name="method-i-to_json"></a><b>to_json</b>(options = {})
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Convert to json format.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_json_source')" id="l_method-i-to_json_source">show</a>
                 
-                <div class="description">
-                  <p>
-Convert to json format.
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000267_source')" id="l_M000267_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/935b5d2273ab81183bdfe801513dfad8c49d18f7/server/lib/picky/results.rb#L71" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000267_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 71</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_json</span> <span class="ruby-identifier">options</span> = {}
-      <span class="ruby-identifier">to_hash</span>.<span class="ruby-identifier">to_json</span> <span class="ruby-identifier">options</span>
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-to_json_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 71</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_json</span> <span class="ruby-identifier">options</span> = {}
+  <span class="ruby-identifier">to_hash</span>.<span class="ruby-identifier">to_json</span> <span class="ruby-identifier">options</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000269">
-                    
-                    <a name="M000269"></a><b>to_s</b>()
-                    
-                </div>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_s">
+            
+              <a name="method-i-to_s"></a><b>to_s</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>For logging.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_s_source')" id="l_method-i-to_s_source">show</a>
                 
-                <div class="description">
-                  <p>
-For logging.
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000269_source')" id="l_M000269_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/935b5d2273ab81183bdfe801513dfad8c49d18f7/server/lib/picky/results.rb#L85" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000269_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 85</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
-      <span class="ruby-node">&quot;#{log_type}|#{Time.now.to_s(:db)}|#{'%8f' % duration}|#{'%-50s' % query}|#{'%8d' % total}|#{'%4d' % offset}|#{'%2d' % allocations.size}|&quot;</span>
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-to_s_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 85</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
+  <span class="ruby-node">&quot;#{log_type}|#{Time.now.to_s(:db)}|#{'%8f' % duration}|#{'%-50s' % query}|#{'%8d' % total}|#{'%4d' % offset}|#{'%2d' % allocations.size}|&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000263">
-                    
-                    <a name="M000263"></a><b>total</b>()
-                    
-                </div>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-total">
+            
+              <a name="method-i-total"></a><b>total</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>The total results. Delegates to the allocations.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-total_source')" id="l_method-i-total_source">show</a>
                 
-                <div class="description">
-                  <p>
-The total results. Delegates to the allocations.
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000263_source')" id="l_M000263_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/935b5d2273ab81183bdfe801513dfad8c49d18f7/server/lib/picky/results.rb#L41" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000263_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/results.rb, line 41</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">total</span>
-      <span class="ruby-ivar">@total</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@total</span> = <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">total</span> <span class="ruby-operator">||</span> <span class="ruby-value">0</span>
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-total_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 41</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">total</span>
+  <span class="ruby-ivar">@total</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@total</span> = <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">total</span> <span class="ruby-operator">||</span> <span class="ruby-number">0</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-</div>
+          </div>
+                    </div>
     </div>
   </body>
 </html>    

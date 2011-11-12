@@ -4,16 +4,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Picky::Rack::Harakiri</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
-    <script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
 </head>
 
 <body>     
     <div class="banner">
+        
         <h1>
             <span class="type">Class</span> 
             Picky::Rack::Harakiri 
@@ -33,71 +37,91 @@
     </div>
     <div id="bodyContent">
         <div id="content">
-    
+  
     <div class="description">
-        <p>
-Simple Rack Middleware to kill Unicorns after X requests.
-</p>
-<p>
-Use as follows in e.g. your rackup File:
-</p>
-<pre>
-  Rack::Harakiri.after = 100
-  use Rack::Harakiri
-</pre>
-<p>
-Then the Unicorn will commit suicide after 100 requests (50 is the
-default).
-</p>
-<p>
-The Master Unicorn process forks a new child Unicorn to replace the old
-one.
-</p>
+      
+<p>Simple <a href="../Rack.html">Rack</a> Middleware to kill Unicorns after X
+requests.</p>
+
+<p>Use as follows in e.g. your rackup File:</p>
+
+<pre>Rack::Harakiri.after = 100
+use Rack::Harakiri</pre>
+
+<p>Then the Unicorn will commit suicide after 100 requests (50 is the
+default).</p>
+
+<p>The Master Unicorn process forks a new child Unicorn to replace the old
+one.</p>
 
     </div>
-    
+  
 
-    
 
-    
-    
+  
 
-    
-    
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
-    
+      
         <dt>C</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000257">call</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-call">call</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>H</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000258">harakiri</a>,</li>
-                
-                <li><a href="#M000259">harakiri?</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-harakiri">harakiri</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-harakiri-3F">harakiri?</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>N</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000256">new</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
     </dl>
-    
+  
+
+  
+
+
+
+  
 
     
 
@@ -105,161 +129,179 @@ one.
 
     
 
-    
 
     
-
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>after</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+      </table>
     
-            <div class="sectiontitle">Class Public methods</div>
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
             
-            <div class="method">
-                <div class="title" id="M000256">
-                    
-                    <a name="M000256"></a><b>new</b>(app)
-                    
-                </div>
+              <a name="method-c-new"></a><b>new</b>(app)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
                 
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000256_source')" id="l_M000256_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/rack/harakiri.rb#L22" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000256_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/rack/harakiri.rb, line 22</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">app</span>
-        <span class="ruby-ivar">@app</span> = <span class="ruby-identifier">app</span>
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/rack/harakiri.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> <span class="ruby-identifier">app</span>
+  <span class="ruby-ivar">@app</span> = <span class="ruby-identifier">app</span>
 
-        <span class="ruby-ivar">@requests</span>            = <span class="ruby-value">0</span>
-        <span class="ruby-ivar">@quit_after_requests</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">after</span> <span class="ruby-operator">||</span> <span class="ruby-value">50</span>
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+  <span class="ruby-ivar">@requests</span>            = <span class="ruby-number">0</span>
+  <span class="ruby-ivar">@quit_after_requests</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">after</span> <span class="ruby-operator">||</span> <span class="ruby-number">50</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="sectiontitle">Instance Public methods</div>
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-call">
             
-            <div class="method">
-                <div class="title" id="M000257">
-                    
-                    <a name="M000257"></a><b>call</b>(env)
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-<a href="Harakiri.html#M000257">call</a> interface method.
-</p>
-<p>
-<a href="Harakiri.html">Harakiri</a> is a middleware, so it delegates the
+              <a name="method-i-call"></a><b>call</b>(env)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p><a href="Harakiri.html#method-i-call">#call</a> interface method.</p>
+
+<p><a href="Harakiri.html">Harakiri</a> is a middleware, so it delegates the
 the app or the next middleware after checking if it is time to honorably
-retire.
-</p>
-
-                </div>
+retire.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-call_source')" id="l_method-i-call_source">show</a>
                 
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000257_source')" id="l_M000257_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/rack/harakiri.rb#L34" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000257_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/rack/harakiri.rb, line 34</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">call</span> <span class="ruby-identifier">env</span>
-        <span class="ruby-identifier">harakiri</span>
-        <span class="ruby-ivar">@app</span>.<span class="ruby-identifier">call</span> <span class="ruby-identifier">env</span>
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-call_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/rack/harakiri.rb, line 36</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">call</span> <span class="ruby-identifier">env</span>
+  <span class="ruby-identifier">harakiri</span>
+  <span class="ruby-ivar">@app</span>.<span class="ruby-identifier">call</span> <span class="ruby-identifier">env</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000258">
-                    
-                    <a name="M000258"></a><b>harakiri</b>()
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-Checks to see if it is time to honorably retire.
-</p>
-<p>
-If yes, kills itself (Unicorn will answer the request, honorably).
-</p>
-<p>
-Note: Sends its process a QUIT signal if it is time.
-</p>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-harakiri">
+            
+              <a name="method-i-harakiri"></a><b>harakiri</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Checks to see if it is time to honorably retire.</p>
 
-                </div>
+<p>If yes, kills itself (Unicorn will answer the request, honorably).</p>
+
+<p>Note: Sends its process a QUIT signal if it is time.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-harakiri_source')" id="l_method-i-harakiri_source">show</a>
                 
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000258_source')" id="l_M000258_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/rack/harakiri.rb#L45" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000258_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/rack/harakiri.rb, line 45</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">harakiri</span>
-        <span class="ruby-ivar">@requests</span> = <span class="ruby-ivar">@requests</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
-        <span class="ruby-constant">Process</span>.<span class="ruby-identifier">kill</span>(<span class="ruby-identifier">:QUIT</span>, <span class="ruby-constant">Process</span>.<span class="ruby-identifier">pid</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">harakiri?</span>
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-harakiri_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/rack/harakiri.rb, line 47</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">harakiri</span>
+  <span class="ruby-ivar">@requests</span> = <span class="ruby-ivar">@requests</span> <span class="ruby-operator">+</span> <span class="ruby-number">1</span>
+  <span class="ruby-constant">Process</span>.<span class="ruby-identifier">kill</span>(<span class="ruby-value">:QUIT</span>, <span class="ruby-constant">Process</span>.<span class="ruby-identifier">pid</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">harakiri?</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000259">
-                    
-                    <a name="M000259"></a><b>harakiri?</b>()
-                    
-                </div>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-harakiri-3F">
+            
+              <a name="method-i-harakiri-3F"></a><b>harakiri?</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Is it time to honorably retire?</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-harakiri-3F_source')" id="l_method-i-harakiri-3F_source">show</a>
                 
-                <div class="description">
-                  <p>
-Is it time to honorably retire?
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000259_source')" id="l_M000259_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/d6dbbb41c1307e0daaa94cabb67f3fa333332b0f/server/lib/picky/rack/harakiri.rb#L52" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000259_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/rack/harakiri.rb, line 52</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">harakiri?</span>
-        <span class="ruby-ivar">@requests</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-ivar">@quit_after_requests</span>
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-harakiri-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/rack/harakiri.rb, line 54</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">harakiri?</span>
+  <span class="ruby-ivar">@requests</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-ivar">@quit_after_requests</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-</div>
+          </div>
+                    </div>
     </div>
   </body>
 </html>    

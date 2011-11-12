@@ -4,23 +4,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Picky::Backends::Redis::List</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
-    <script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
 </head>
 
 <body>     
     <div class="banner">
+        
         <h1>
             <span class="type">Class</span> 
             Picky::Backends::Redis::List 
             
                 <span class="parent">&lt; 
                     
-                    Basic
+                    <a href="Basic.html">Picky::Backends::Redis::Basic</a>
                     
                 </span>
             
@@ -33,47 +37,68 @@
     </div>
     <div id="bodyContent">
         <div id="content">
-    
+  
 
-    
 
-    
-    
+  
 
-    
-    
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
-    
+      
         <dt>#</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000084">[]</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-5B-5D">[]</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>C</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000083">clear</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-clear">clear</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>D</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000082">dump</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-dump">dump</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
     </dl>
-    
+  
+
+  
+
+
+
+  
 
     
 
@@ -81,136 +106,133 @@
 
     
 
-    
 
     
 
-    
-            <div class="sectiontitle">Instance Public methods</div>
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-5B-5D">
             
-            <div class="method">
-                <div class="title" id="M000084">
-                    
-                    <a name="M000084"></a><b>[]</b>(key)
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-Get a collection.
-</p>
-<p>
-Internal API method for the index.
-</p>
+              <a name="method-i-5B-5D"></a><b>[]</b>(key)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Get a collection.</p>
 
-                </div>
+<p>Internal API method for the index.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-5B-5D_source')" id="l_method-i-5B-5D_source">show</a>
                 
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000084_source')" id="l_M000084_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/f466fb717249c675cf6897ed67ab2086589a91f7/server/lib/picky/backends/redis/list.rb#L39" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000084_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/redis/list.rb, line 39</span>
-        <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span> <span class="ruby-identifier">key</span>
-          <span class="ruby-identifier">client</span>.<span class="ruby-identifier">zrange</span> <span class="ruby-node">&quot;#{namespace}:#{key}&quot;</span>, <span class="ruby-value">0</span>, <span class="ruby-value">-1</span>
-        <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-5B-5D_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis/list.rb, line 39</span>
+<span class="ruby-keyword">def</span> <span class="ruby-operator">[]</span> <span class="ruby-keyword ruby-title">key</span>
+  <span class="ruby-identifier">client</span>.<span class="ruby-identifier">zrange</span> <span class="ruby-node">&quot;#{namespace}:#{key}&quot;</span>, <span class="ruby-number">0</span>, <span class="ruby-number">-1</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000083">
-                    
-                    <a name="M000083"></a><b>clear</b>()
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-Clear the index for this list.
-</p>
-<p>
-Note: Perhaps we can use a server only command.
-</p>
-<pre>
-      This is not the optimal way to do it.
-</pre>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-clear">
+            
+              <a name="method-i-clear"></a><b>clear</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Clear the index for this list.</p>
 
-                </div>
+<p>Note: Perhaps we can use a server only command.</p>
+
+<pre>This is not the optimal way to do it.</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-clear_source')" id="l_method-i-clear_source">show</a>
                 
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000083_source')" id="l_M000083_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/f466fb717249c675cf6897ed67ab2086589a91f7/server/lib/picky/backends/redis/list.rb#L28" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000083_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/redis/list.rb, line 28</span>
-        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear</span>
-          <span class="ruby-identifier">redis_key</span> = <span class="ruby-node">&quot;#{namespace}:*&quot;</span>
-          <span class="ruby-identifier">client</span>.<span class="ruby-identifier">keys</span>(<span class="ruby-identifier">redis_key</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
-            <span class="ruby-identifier">client</span>.<span class="ruby-identifier">del</span> <span class="ruby-identifier">key</span>
-          <span class="ruby-keyword kw">end</span>
-        <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-clear_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis/list.rb, line 28</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">clear</span>
+  <span class="ruby-identifier">redis_key</span> = <span class="ruby-node">&quot;#{namespace}:*&quot;</span>
+  <span class="ruby-identifier">client</span>.<span class="ruby-identifier">keys</span>(<span class="ruby-identifier">redis_key</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">client</span>.<span class="ruby-identifier">del</span> <span class="ruby-identifier">key</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000082">
-                    
-                    <a name="M000082"></a><b>dump</b>(hash)
-                    
-                </div>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-dump">
+            
+              <a name="method-i-dump"></a><b>dump</b>(hash)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Writes the hash into <a href="../Redis.html">Redis</a>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-dump_source')" id="l_method-i-dump_source">show</a>
                 
-                <div class="description">
-                  <p>
-Writes the hash into <a href="../Redis.html">Redis</a>.
-</p>
-
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000082_source')" id="l_M000082_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/f466fb717249c675cf6897ed67ab2086589a91f7/server/lib/picky/backends/redis/list.rb#L11" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000082_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/redis/list.rb, line 11</span>
-        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dump</span> <span class="ruby-identifier">hash</span>
-          <span class="ruby-identifier">clear</span>
-          <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">values</span><span class="ruby-operator">|</span>
-            <span class="ruby-identifier">redis_key</span> = <span class="ruby-node">&quot;#{namespace}:#{key}&quot;</span>
-            <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
-            <span class="ruby-identifier">values</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
-              <span class="ruby-identifier">i</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
-              <span class="ruby-identifier">client</span>.<span class="ruby-identifier">zadd</span> <span class="ruby-identifier">redis_key</span>, <span class="ruby-identifier">i</span>, <span class="ruby-identifier">value</span>
-            <span class="ruby-keyword kw">end</span>
-          <span class="ruby-keyword kw">end</span>
-        <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-dump_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis/list.rb, line 11</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">dump</span> <span class="ruby-identifier">hash</span>
+  <span class="ruby-identifier">clear</span>
+  <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">values</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">redis_key</span> = <span class="ruby-node">&quot;#{namespace}:#{key}&quot;</span>
+    <span class="ruby-identifier">i</span> = <span class="ruby-number">0</span>
+    <span class="ruby-identifier">values</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">i</span> <span class="ruby-operator">+=</span> <span class="ruby-number">1</span>
+      <span class="ruby-identifier">client</span>.<span class="ruby-identifier">zadd</span> <span class="ruby-identifier">redis_key</span>, <span class="ruby-identifier">i</span>, <span class="ruby-identifier">value</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-</div>
+          </div>
+                    </div>
     </div>
   </body>
 </html>    

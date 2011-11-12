@@ -4,16 +4,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Picky::CharacterSubstituters::WestEuropean</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
-    <script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
 </head>
 
 <body>     
     <div class="banner">
+        
         <h1>
             <span class="type">Class</span> 
             Picky::CharacterSubstituters::WestEuropean 
@@ -33,112 +37,123 @@
     </div>
     <div id="bodyContent">
         <div id="content">
-    
+  
     <div class="description">
-        <p>
-Substitutes Umlauts like ä, ö, ü => ae, oe, ue. (and more, see specs)
-</p>
+      
+<p>Substitutes Umlauts like ä, ö, ü =&gt; ae, oe, ue. (and more, see specs)</p>
 
     </div>
-    
+  
 
-    
 
-    
-    
+  
 
-    
-    
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
-    
+      
         <dt>S</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000158">substitute</a></li>
-                
-            </ul>
-        </dd>
-    
-    </dl>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-            <div class="sectiontitle">Instance Public methods</div>
+          <ul>
             
-            <div class="method">
-                <div class="title" id="M000158">
-                    
-                    <a name="M000158"></a><b>substitute</b>(text)
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-Substitutes occurrences of certain characters (like Umlauts) with ASCII
-representations of them.
-</p>
-<p>
-Examples:
-</p>
-<pre>
-  ä -&gt; ae
-  Ö -&gt; Oe
-  ß -&gt; ss
-  ç -&gt; c
-</pre>
-<p>
-(See the associated spec for all examples)
-</p>
+              
+              <li>
+                <a href="#method-i-substitute">substitute</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
 
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000158_source')" id="l_M000158_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/b9cd113454be6f771a4dcce5f3aa562b92d9a6e1/server/lib/picky/character_substituters/west_european.rb#L30" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000158_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/character_substituters/west_european.rb, line 30</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">substitute</span> <span class="ruby-identifier">text</span>
-        <span class="ruby-identifier">trans</span> = <span class="ruby-ivar">@chars</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">text</span>).<span class="ruby-identifier">normalize</span>(<span class="ruby-identifier">:kd</span>)
+  
 
-        <span class="ruby-comment cmt"># Substitute special cases.</span>
-        <span class="ruby-comment cmt">#</span>
-        <span class="ruby-identifier">trans</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-value str">'ß'</span>, <span class="ruby-value str">'ss'</span>)
 
-        <span class="ruby-comment cmt"># Substitute umlauts (of A,O,U,a,o,u).</span>
-        <span class="ruby-comment cmt">#</span>
-        <span class="ruby-identifier">trans</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp re">/([AOUaou])\314\210/</span><span class="ruby-identifier">u</span>, <span class="ruby-value str">'\1e'</span>)
 
-        <span class="ruby-comment cmt"># Get rid of ecutes, graves etc.</span>
-        <span class="ruby-comment cmt">#</span>
-        <span class="ruby-identifier">trans</span>.<span class="ruby-identifier">unpack</span>(<span class="ruby-value str">'U*'</span>).<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">cp</span><span class="ruby-operator">|</span>
-          <span class="ruby-identifier">cp</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0x0300</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">cp</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0x035</span><span class="ruby-constant">F</span>
-        }.<span class="ruby-identifier">pack</span>(<span class="ruby-value str">'U*'</span>)
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-substitute">
+            
+              <a name="method-i-substitute"></a><b>substitute</b>(text)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Substitutes occurrences of certain characters (like Umlauts) with ASCII
+representations of them.</p>
+
+<p>Examples:</p>
+
+<pre>ä -&gt; ae
+Ö -&gt; Oe
+ß -&gt; ss
+ç -&gt; c</pre>
+
+<p>(See the associated spec for all examples)</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-substitute_source')" id="l_method-i-substitute_source">show</a>
                 
+              </p>
+              <div id="method-i-substitute_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/character_substituters/west_european.rb, line 29</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">substitute</span> <span class="ruby-identifier">text</span>
+  <span class="ruby-identifier">trans</span> = <span class="ruby-ivar">@chars</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">text</span>).<span class="ruby-identifier">normalize</span>(<span class="ruby-value">:kd</span>)
+
+  <span class="ruby-comment"># Substitute special cases.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">trans</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-string">'ß'</span>, <span class="ruby-string">'ss'</span>)
+
+  <span class="ruby-comment"># Substitute umlauts (of A,O,U,a,o,u).</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">trans</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp">/([AOUaou])\3314\2210/</span>, <span class="ruby-string">'\1e'</span>)
+
+  <span class="ruby-comment"># Get rid of ecutes, graves etc.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">trans</span>.<span class="ruby-identifier">unpack</span>(<span class="ruby-string">'U*'</span>).<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">cp</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">cp</span> <span class="ruby-operator">&lt;</span> <span class="ruby-number">0x0300</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">cp</span> <span class="ruby-operator">&gt;</span> <span class="ruby-number">0x035F</span>
+  }.<span class="ruby-identifier">pack</span>(<span class="ruby-string">'U*'</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-</div>
+          </div>
+                    </div>
     </div>
   </body>
 </html>    

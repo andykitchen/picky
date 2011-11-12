@@ -4,23 +4,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Picky::Backends::Memory</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
-    <script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
 </head>
 
 <body>     
     <div class="banner">
+        
         <h1>
             <span class="type">Class</span> 
             Picky::Backends::Memory 
             
                 <span class="parent">&lt; 
                     
-                    Backend
+                    <a href="Backend.html">Picky::Backends::Backend</a>
                     
                 </span>
             
@@ -41,291 +45,326 @@
     </div>
     <div id="bodyContent">
         <div id="content">
-    
+  
 
-    
 
-    
-    
+  
 
-    
-    
+
+  
+  
+
+
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Memory/Basic.html">Picky::Backends::Memory::Basic</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Memory/JSON.html">Picky::Backends::Memory::JSON</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Memory/Marshal.html">Picky::Backends::Memory::Marshal</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Memory/Text.html">Picky::Backends::Memory::Text</a>
+        </li>
+      
+    </ul>
+  
+
+
+  
+    <!-- Method ref -->
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
-    
+      
         <dt>C</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000070">create_configuration</a>,</li>
-                
-                <li><a href="#M000067">create_inverted</a>,</li>
-                
-                <li><a href="#M000069">create_similarity</a>,</li>
-                
-                <li><a href="#M000068">create_weights</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-create_configuration">create_configuration</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-create_inverted">create_inverted</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-create_similarity">create_similarity</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-create_weights">create_weights</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
         <dt>I</dt>
         <dd>
-            <ul>
-                
-                <li><a href="#M000071">ids</a></li>
-                
-            </ul>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-ids">ids</a>
+              </li>
+            
+          </ul>
         </dd>
-    
+      
     </dl>
-    
+  
+
+  
+
+
+
+  
 
     
 
     
 
     
-    <div class="sectiontitle">Classes and Modules</div>
-    <ul>
+
+
+    
+
+
+    <!-- Methods -->
         
-        <li><span class="type">CLASS</span> <a href="Memory/Basic.html">Picky::Backends::Memory::Basic</a></li>
-        
-        <li><span class="type">CLASS</span> <a href="Memory/JSON.html">Picky::Backends::Memory::JSON</a></li>
-        
-        <li><span class="type">CLASS</span> <a href="Memory/Marshal.html">Picky::Backends::Memory::Marshal</a></li>
-        
-        <li><span class="type">CLASS</span> <a href="Memory/Text.html">Picky::Backends::Memory::Text</a></li>
-        
-    </ul>
-    
-
-    
-
-    
-
-    
-            <div class="sectiontitle">Instance Public methods</div>
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-create_configuration">
             
-            <div class="method">
-                <div class="title" id="M000070">
-                    
-                    <a name="M000070"></a><b>create_configuration</b>(bundle)
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-Returns an object that responds to:
-</p>
-<pre>
-  [:key] # =&gt; value (a value for this config key)
-</pre>
+              <a name="method-i-create_configuration"></a><b>create_configuration</b>(bundle)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns an object that on initial, load returns an object that responds to:</p>
 
-                </div>
+<pre class="ruby">[:<span class="ruby-identifier">key</span>] <span class="ruby-comment"># =&gt; value (a value for this config key)</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-create_configuration_source')" id="l_method-i-create_configuration_source">show</a>
                 
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000070_source')" id="l_M000070_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/222c07a88747acdb4892bb1f8112266607570bed/server/lib/picky/backends/memory.rb#L28" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000070_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/memory.rb, line 28</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_configuration</span> <span class="ruby-identifier">bundle</span>
-        <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-identifier">:configuration</span>)
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-create_configuration_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/memory.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">create_configuration</span> <span class="ruby-identifier">bundle</span>
+  <span class="ruby-identifier">extract_lambda_or</span>(<span class="ruby-identifier">configuration</span>, <span class="ruby-identifier">bundle</span>) <span class="ruby-operator">||</span>
+  <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-value">:configuration</span>))
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000067">
-                    
-                    <a name="M000067"></a><b>create_inverted</b>(bundle)
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-Returns an object that responds to:
-</p>
-<pre>
-  [:token] # =&gt; [id, id, id, id, id] (an array of ids)
-</pre>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-create_inverted">
+            
+              <a name="method-i-create_inverted"></a><b>create_inverted</b>(bundle)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns an object that on initial, load returns an object that responds to:</p>
 
-                </div>
+<pre class="ruby">[:<span class="ruby-identifier">token</span>] <span class="ruby-comment"># =&gt; [id, id, id, id, id] (an array of ids)</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-create_inverted_source')" id="l_method-i-create_inverted_source">show</a>
                 
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000067_source')" id="l_M000067_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/222c07a88747acdb4892bb1f8112266607570bed/server/lib/picky/backends/memory.rb#L10" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000067_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/memory.rb, line 10</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_inverted</span> <span class="ruby-identifier">bundle</span>
-        <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-identifier">:inverted</span>)
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-create_inverted_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/memory.rb, line 10</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">create_inverted</span> <span class="ruby-identifier">bundle</span>
+  <span class="ruby-identifier">extract_lambda_or</span>(<span class="ruby-identifier">inverted</span>, <span class="ruby-identifier">bundle</span>) <span class="ruby-operator">||</span>
+  <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-value">:inverted</span>))
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000069">
-                    
-                    <a name="M000069"></a><b>create_similarity</b>(bundle)
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-Returns an object that responds to:
-</p>
-<pre>
-  [:encoded] # =&gt; [:original, :original] (an array of original symbols this similarity encoded thing maps to)
-</pre>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-create_similarity">
+            
+              <a name="method-i-create_similarity"></a><b>create_similarity</b>(bundle)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns an object that on initial, load returns an object that responds to:</p>
 
-                </div>
+<pre class="ruby">[:<span class="ruby-identifier">encoded</span>] <span class="ruby-comment"># =&gt; [:original, :original] (an array of original symbols this similarity encoded thing maps to)</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-create_similarity_source')" id="l_method-i-create_similarity_source">show</a>
                 
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000069_source')" id="l_M000069_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/222c07a88747acdb4892bb1f8112266607570bed/server/lib/picky/backends/memory.rb#L22" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000069_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/memory.rb, line 22</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_similarity</span> <span class="ruby-identifier">bundle</span>
-        <span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-identifier">:similarity</span>)
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-create_similarity_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/memory.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">create_similarity</span> <span class="ruby-identifier">bundle</span>
+  <span class="ruby-identifier">extract_lambda_or</span>(<span class="ruby-identifier">similarity</span>, <span class="ruby-identifier">bundle</span>) <span class="ruby-operator">||</span>
+  <span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-value">:similarity</span>))
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000068">
-                    
-                    <a name="M000068"></a><b>create_weights</b>(bundle)
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-Returns an object that responds to:
-</p>
-<pre>
-  [:token] # =&gt; 1.23 (a weight)
-</pre>
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-create_weights">
+            
+              <a name="method-i-create_weights"></a><b>create_weights</b>(bundle)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns an object that on initial, load returns an object that responds to:</p>
 
-                </div>
+<pre class="ruby">[:<span class="ruby-identifier">token</span>] <span class="ruby-comment"># =&gt; 1.23 (a weight)</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-create_weights_source')" id="l_method-i-create_weights_source">show</a>
                 
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000068_source')" id="l_M000068_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/222c07a88747acdb4892bb1f8112266607570bed/server/lib/picky/backends/memory.rb#L16" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000068_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/memory.rb, line 16</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_weights</span> <span class="ruby-identifier">bundle</span>
-        <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-identifier">:weights</span>)
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
+              </p>
+              <div id="method-i-create_weights_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/memory.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">create_weights</span> <span class="ruby-identifier">bundle</span>
+  <span class="ruby-identifier">extract_lambda_or</span>(<span class="ruby-identifier">weights</span>, <span class="ruby-identifier">bundle</span>) <span class="ruby-operator">||</span>
+  <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-value">:weights</span>))
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-            <div class="method">
-                <div class="title" id="M000071">
-                    
-                    <a name="M000071"></a><b>ids</b>(combinations, _, _)
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-Returns the result ids for the allocation.
-</p>
-<p>
-Sorts the ids by size and &amp; through them in the following order
-(sizes):
-</p>
-<ol>
-<li>[100_000, 400, 30, 2]
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-ids">
+            
+              <a name="method-i-ids"></a><b>ids</b>(combinations, _, _)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the result ids for the allocation.</p>
 
-</li>
-<li>[2, 30, 400, 100_000]
+<p>Sorts the ids by size and &amp; through them in the following order
+(sizes):</p>
+<ol><li><dl class="rdoc-list label-list"><dt>100_000, 400, 30, 2
+<dd></dd></dl>
+</li><li><dl class="rdoc-list label-list"><dt>2, 30, 400, 100_000
+<dd></dd></dl>
+</li><li>
+<p>(100_000 &amp; (400 &amp; (30 &amp; 2))) # =&gt; result</p>
+</li></ol>
 
-</li>
-<li>(100_000 &amp; (400 &amp; (30 &amp; 2))) # => result
+<p>Note: Uses a C-optimized intersection routine (in performant.c)</p>
 
-</li>
-</ol>
-<p>
-Note: Uses a C-optimized intersection routine (in performant.c)
-</p>
-<pre>
-      for speed and memory efficiency.
-</pre>
-<p>
-Note: In the memory based version we ignore the amount and offset hints.
-</p>
-<pre>
-      We cannot use the information to speed up the algorithm, unfortunately.
-</pre>
+<pre>for speed and memory efficiency.</pre>
 
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000071_source')" id="l_M000071_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/222c07a88747acdb4892bb1f8112266607570bed/server/lib/picky/backends/memory.rb#L45" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000071_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/backends/memory.rb, line 45</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ids</span> <span class="ruby-identifier">combinations</span>, <span class="ruby-identifier">_</span>, <span class="ruby-identifier">_</span>
-        <span class="ruby-comment cmt"># Get the ids for each combination.</span>
-        <span class="ruby-comment cmt">#</span>
-        <span class="ruby-identifier">id_arrays</span> = <span class="ruby-identifier">combinations</span>.<span class="ruby-identifier">inject</span>([]) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">total</span>, <span class="ruby-identifier">combination</span><span class="ruby-operator">|</span>
-          <span class="ruby-identifier">total</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">combination</span>.<span class="ruby-identifier">ids</span>
-        <span class="ruby-keyword kw">end</span>
+<p>Note: In the memory based version we ignore the amount and offset hints.</p>
 
-        <span class="ruby-comment cmt"># Call the optimized C algorithm.</span>
-        <span class="ruby-comment cmt">#</span>
-        <span class="ruby-comment cmt"># Note: It orders the passed arrays by size.</span>
-        <span class="ruby-comment cmt">#</span>
-        <span class="ruby-constant">Performant</span><span class="ruby-operator">::</span><span class="ruby-constant">Array</span>.<span class="ruby-identifier">memory_efficient_intersect</span> <span class="ruby-identifier">id_arrays</span>
-      <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
+<pre>We cannot use the information to speed up the algorithm, unfortunately.</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-ids_source')" id="l_method-i-ids_source">show</a>
                 
+              </p>
+              <div id="method-i-ids_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/memory.rb, line 49</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ids</span> <span class="ruby-identifier">combinations</span>, <span class="ruby-identifier">_</span>, <span class="ruby-identifier">_</span>
+  <span class="ruby-comment"># Get the ids for each combination.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">id_arrays</span> = <span class="ruby-identifier">combinations</span>.<span class="ruby-identifier">inject</span>([]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">total</span>, <span class="ruby-identifier">combination</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">total</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">combination</span>.<span class="ruby-identifier">ids</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># Call the optimized C algorithm.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-comment"># Note: It orders the passed arrays by size.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-constant">Performant</span><span class="ruby-operator">::</span><span class="ruby-constant">Array</span>.<span class="ruby-identifier">memory_efficient_intersect</span> <span class="ruby-identifier">id_arrays</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
             </div>
             
-</div>
+          </div>
+                    </div>
     </div>
   </body>
 </html>    

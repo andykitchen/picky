@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Picky::Generators::Partial::SubstringGenerator</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Picky::Generators::Partial::SubstringGenerator 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../../../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../../files/lib/picky/generators/partial/substring_rb.html">lib/picky/generators/partial/substring.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>Generates the right substrings for use in the substring strategy.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-each_subtoken">each_subtoken</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>from</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>to</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+      </table>
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <a name="method-c-new"></a><b>new</b>(from, to)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/generators/partial/substring.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> <span class="ruby-identifier">from</span>, <span class="ruby-identifier">to</span>
+  <span class="ruby-ivar">@from</span>, <span class="ruby-ivar">@to</span> = <span class="ruby-identifier">from</span>, <span class="ruby-identifier">to</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@to</span>.<span class="ruby-identifier">zero?</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">each_subtoken</span> <span class="ruby-identifier">token</span>, &amp;<span class="ruby-identifier">block</span>
+      <span class="ruby-identifier">token</span>.<span class="ruby-identifier">each_subtoken</span> <span class="ruby-ivar">@from</span>, &amp;<span class="ruby-identifier">block</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@from</span> <span class="ruby-operator">&lt;</span> <span class="ruby-number">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@to</span> <span class="ruby-operator">&lt;</span> <span class="ruby-number">0</span>
+      <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">each_subtoken</span> <span class="ruby-identifier">token</span>, &amp;<span class="ruby-identifier">block</span>
+        <span class="ruby-identifier">token</span>.<span class="ruby-identifier">each_subtoken</span> <span class="ruby-ivar">@from</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@to</span> <span class="ruby-operator">-</span> <span class="ruby-number">1</span>, (<span class="ruby-number">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@to</span>), &amp;<span class="ruby-identifier">block</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">each_subtoken</span> <span class="ruby-identifier">token</span>, &amp;<span class="ruby-identifier">block</span>
+        <span class="ruby-identifier">token</span>.<span class="ruby-identifier">each_subtoken</span> <span class="ruby-ivar">@from</span>, (<span class="ruby-number">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@to</span>), &amp;<span class="ruby-identifier">block</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-each_subtoken">
+            
+              <a name="method-i-each_subtoken"></a><b>each_subtoken</b>(token, &amp;block)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-each_subtoken_source')" id="l_method-i-each_subtoken_source">show</a>
+                
+              </p>
+              <div id="method-i-each_subtoken_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/generators/partial/substring.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">each_subtoken</span> <span class="ruby-identifier">token</span>, &amp;<span class="ruby-identifier">block</span>
+  <span class="ruby-identifier">token</span>.<span class="ruby-identifier">each_subtoken</span> <span class="ruby-ivar">@from</span>, &amp;<span class="ruby-identifier">block</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+    </div>
+  </body>
+</html>    
