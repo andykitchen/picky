@@ -614,15 +614,16 @@
         </code></pre>
         <p>The default is <code>Weights::Logarithmic.new</code>.</p>
         <p>You can also pass in your own weights generators. See <a href="http://florianhanke.com/blog/2011/08/15/picky-30-its-all-ruby-part-1.html">this article</a> to learn more.</p>
-        <p>If you don&#8217;t want Picky to calculate weights for your indexed entries, you can use constant or dynamic weights:</p>
+        <p>If you don&#8217;t want Picky to calculate weights for your indexed entries, you can use constant or dynamic weights.</p>
+        <p>With 0.0 as default weight:</p>
         <pre><code>
         category :some, weights: Weights::Constant.new # Returns 0.0 for all results.
         </code></pre>
-        
+        <p>With 3.14 as set weight:</p>
         <pre><code>
         category :some, weights: Weights::Constant.new(3.14) # Returns 3.14 for all results.
         </code></pre>
-        
+        <p>Or with a dynamically calculated weight:</p>
         <pre><code>
           Weights::Dynamic.new do |str_or_sym|
             sym_or_str.length # Uses the length of the symbol as weight.
