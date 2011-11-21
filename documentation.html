@@ -607,7 +607,6 @@
         </code></pre>
         <p>You can also pass in your own partial generators. See <a href="http://florianhanke.com/blog/2011/08/15/picky-30-its-all-ruby-part-1.html">this article</a> to learn more.</p>
         <h4 id="indexes-categories-weights">Option weights</h4>
-        <p>You almost never need this. You can also <code>boost</code> combination weights in searches, which might be more fitting.</p>
         <p>The weights option defines how strongly a word is weighed. By default, Picky rates a word according to the logarithm of its occurrence. This means that a word that occurs more often will be slightly higher weighed.</p>
         <p>You define this by this:</p>
         <pre><code>
@@ -615,6 +614,21 @@
         </code></pre>
         <p>The default is <code>Weights::Logarithmic.new</code>.</p>
         <p>You can also pass in your own weights generators. See <a href="http://florianhanke.com/blog/2011/08/15/picky-30-its-all-ruby-part-1.html">this article</a> to learn more.</p>
+        <p>If you don&#8217;t want Picky to calculate weights for your indexed entries, you can use constant or dynamic weights:</p>
+        <pre><code>
+        category :some, weights: Weights::Constant.new # Returns 0.0 for all results.
+        </code></pre>
+        
+        <pre><code>
+        category :some, weights: Weights::Constant.new(3.14) # Returns 3.14 for all results.
+        </code></pre>
+        
+        <pre><code>
+          Weights::Dynamic.new do |str_or_sym|
+            sym_or_str.length # Uses the length of the symbol as weight.
+          end
+        </code></pre>
+        <p>You almost never need to use your specific weights. More often than not, you can fiddle with boosting combinations of categories, via the <code>boost</code> method in searches.</p>
         <h4 id="indexes-categories-similarity">Option similarity</h4>
         <p>The similarity option defines if a word is also found when it is typed wrong, or <em>close</em> to another word. So, &#8220;Picky&#8221; might be already found when typing &#8220;Pocky~&#8221;. (Picky will search for similar word when you use the tilde, ~)</p>
         <p>You define this by this:</p>
