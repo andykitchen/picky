@@ -1047,7 +1047,7 @@ Picky by default goes through the following list, in order:
 # *substitutes_characters_with*: A character substituter that responds to @#substitute(text) #=> substituted text@
 # *removes_characters*: Regexp of characters to remove.
 # *stopwords*: Regexp of stopwords to remove.
-# *splits_text_on*: Regexp on where to split the data text.
+# *splits_text_on*: Regexp on where to split the query text, including category qualifiers.
 # *removes_characters_after_splitting*: Regexp on which characters to remove after the splitting.
 # *normalizes_words*: [[/matching_regexp/, 'replace match \1']]
 # *rejects_token_if*: lambda { |gets_token| gets_token == :hello }
