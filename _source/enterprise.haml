@@ -12,10 +12,15 @@ layout: enterprise
     %p
       Don't be deceived by the cute appearance! Picky is a tough little bastard.
     %p
-      Picky is in use in a telephone search web application,
-      = succeed(',') do
-        %a{ :href => '#use_case_1' } see use case 1
-      where it can handle more than 10 million moderately complex search requests per day.
+      %ol
+        %li
+          A
+          %a{ :href => '#use_case_1' } telephone search
+          where it can handle more than 10 million moderately complex search requests per day.
+        %li
+          The
+          %a{ :href => '#use_case_2' } largest German-Japanese
+          dictionary in the world.
 .container_2
   %h2 Enterprisey Features
   .grid_1
@@ -106,7 +111,7 @@ layout: enterprise
       We were not too happy about the speed, but running the indexing process every night did at least not disturb normal operations.
     %p
       Also, we got it almost twice as fast by Picky using all the available processors.
-    %h3 Final statements
+    %h3 Final remarks
     %p
       Picky is relatively memory hungry. This is in part due to its non-specific index (useable with any data).
     %p
@@ -118,6 +123,51 @@ layout: enterprise
     %p
       Also, we noted that requests by our management were very easy to implement, even if the requests seemed to be very hard to build in at first sight. This is due to Picky's very modular nature.
   .grid_1
-    %h2#use_case_2 Case 2: Your use case!
+    %h3#use_case_2 Case 2: WaDokuJT dictionary search
     %p
-      %a{ :href => 'http://github.com/inbox/new/floere' } Write me, happy to hear it :)
+      (In the words of
+      %a{ :href => 'http://twitter.com/rogerbraun' } Roger Braun
+      from
+      %a{ :href => 'http://github.com/rogerbraun/WadokuWeb/wiki/Use-Case' } the original
+      and the
+      %a{ :href => 'http://wadoku.eu' } Japanese German Dictionary
+      this use case is about)
+    %p
+      Picky is used to find dictionary entries in
+      = succeed(',') do
+        %a{ :href => 'http://wadoku.eu' } WaDokuJT
+      the largest Japanese-German dictionary.
+    %h3 Amount of Data
+    %p
+      There are around 250K entries in the WaDokuJT file, with around 5 main fields.
+    %p
+      The file is only 60 MB in size, but the field for the German version of the entries has a lot of internal structure that would in other cases often be modeled with database relations. These relations have a lot of semantic information and have to be remodeled in the indexing step.
+    %h3 Features
+    %p
+      All categories are indexed with full partial search. Also, several virtual fields exist that are created at indexing time, like the romaji field, which is generated directly from the Japanese characters.
+    %p
+      In the future it is planned to add more virtual fields like headwords, place names etc. Picky makes this very easy, as you can just write these virtual fields with standard Ruby code.
+    %h3 Speed
+    %p
+      Queries are often just one word searches and not very complex. Picky can usually serve the request in under a millisecond. A "like %"-based SQLite search on the same data took around 2~3 seconds.
+    %p
+      Indexing is very fast, too. The server is an Xserve3,1 with a Quad-Core Xeon with 2.26 Ghz.
+    %p
+      %code
+        %pre
+          :preserve
+            edv@rokuhara:~/Sites/picky_speed_test$ time bundle exec rake index
+            Loaded picky with environment 'development' in /Users/edv/Sites/picky_s
+            peed_test on Ruby 1.9.2.
+            Application  loaded.
+            [...]
+            real    8m39.234s
+            user    11m46.977s
+            sys     1m11.744s
+    %h3 Final remarks
+    %p
+      Using Picky is one of the things that makes wadoku.eu good and easy to use. Having just one search field instead of the usual "advanced search" is great and we expect it to be a great advantage. This still has to be tested by our users, though.
+    %p
+      Having your search completely seperated from your database design is a huge relief and makes it easy to change and optimize both search and database functions separately.
+    %p
+      Picky can also serve as a lightweight search API for third party services that want to use our data without any additional work on our part.

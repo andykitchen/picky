@@ -66,9 +66,18 @@
               Don't be deceived by the cute appearance! Picky is a tough little bastard.
             </p>
             <p>
-              Picky is in use in a telephone search web application,
-              <a href="#use_case_1">see use case 1</a>,
-              where it can handle more than 10 million moderately complex search requests per day.
+              <ol>
+                <li>
+                  A
+                  <a href="#use_case_1">telephone search</a>
+                  where it can handle more than 10 million moderately complex search requests per day.
+                </li>
+                <li>
+                  The
+                  <a href="#use_case_2">largest German-Japanese</a>
+                  dictionary in the world.
+                </li>
+              </ol>
             </p>
           </div>
         </div>
@@ -191,7 +200,7 @@
             <p>
               Also, we got it almost twice as fast by Picky using all the available processors.
             </p>
-            <h3>Final statements</h3>
+            <h3>Final remarks</h3>
             <p>
               Picky is relatively memory hungry. This is in part due to its non-specific index (useable with any data).
             </p>
@@ -209,9 +218,54 @@
             </p>
           </div>
           <div class="grid_1">
-            <h2 id="use_case_2">Case 2: Your use case!</h2>
+            <h3 id="use_case_2">Case 2: WaDokuJT dictionary search</h3>
             <p>
-              <a href="http://github.com/inbox/new/floere">Write me, happy to hear it :)</a>
+              (In the words of
+              <a href="http://twitter.com/rogerbraun">Roger Braun</a>
+              from
+              <a href="http://github.com/rogerbraun/WadokuWeb/wiki/Use-Case">the original</a>
+              and the
+              <a href="http://wadoku.eu">Japanese German Dictionary</a>
+              this use case is about)
+            </p>
+            <p>
+              Picky is used to find dictionary entries in
+              <a href="http://wadoku.eu">WaDokuJT</a>,
+              the largest Japanese-German dictionary.
+            </p>
+            <h3>Amount of Data</h3>
+            <p>
+              There are around 250K entries in the WaDokuJT file, with around 5 main fields.
+            </p>
+            <p>
+              The file is only 60 MB in size, but the field for the German version of the entries has a lot of internal structure that would in other cases often be modeled with database relations. These relations have a lot of semantic information and have to be remodeled in the indexing step.
+            </p>
+            <h3>Features</h3>
+            <p>
+              All categories are indexed with full partial search. Also, several virtual fields exist that are created at indexing time, like the romaji field, which is generated directly from the Japanese characters.
+            </p>
+            <p>
+              In the future it is planned to add more virtual fields like headwords, place names etc. Picky makes this very easy, as you can just write these virtual fields with standard Ruby code.
+            </p>
+            <h3>Speed</h3>
+            <p>
+              Queries are often just one word searches and not very complex. Picky can usually serve the request in under a millisecond. A "like %"-based SQLite search on the same data took around 2~3 seconds.
+            </p>
+            <p>
+              Indexing is very fast, too. The server is an Xserve3,1 with a Quad-Core Xeon with 2.26 Ghz.
+            </p>
+            <p>
+              <code><pre>edv@rokuhara:~/Sites/picky_speed_test$ time bundle exec rake index&#x000A;Loaded picky with environment 'development' in /Users/edv/Sites/picky_s&#x000A;peed_test on Ruby 1.9.2.&#x000A;Application  loaded.&#x000A;[...]&#x000A;real    8m39.234s&#x000A;user    11m46.977s&#x000A;sys     1m11.744s</pre></code>
+            </p>
+            <h3>Final remarks</h3>
+            <p>
+              Using Picky is one of the things that makes wadoku.eu good and easy to use. Having just one search field instead of the usual "advanced search" is great and we expect it to be a great advantage. This still has to be tested by our users, though.
+            </p>
+            <p>
+              Having your search completely seperated from your database design is a huge relief and makes it easy to change and optimize both search and database functions separately.
+            </p>
+            <p>
+              Picky can also serve as a lightweight search API for third party services that want to use our data without any additional work on our part.
             </p>
           </div>
         </div>
