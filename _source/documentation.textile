@@ -1156,7 +1156,7 @@ end
 
 then even if Picky does not find anything for "aston martin cockadoodledoo", it will find an ad, simply ignoring the unassigned token.
 
-h4(#search-options-maxallocations). Ignore Unassigned Tokens
+h4(#search-options-maxallocations). Maximum Allocations
 
 The @max_allocations(integer)@ option cuts off calculation of allocations.
 
