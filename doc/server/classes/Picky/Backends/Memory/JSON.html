@@ -67,7 +67,12 @@
             
               
               <li>
-                <a href="#method-i-dump">dump</a>
+                <a href="#method-i-dump">dump</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-dump_json">dump_json</a>
               </li>
             
           </ul>
@@ -135,13 +140,13 @@
         <div class="method">
           <div class="title method-title" id="method-i-dump">
             
-              <a name="method-i-dump"></a><b>dump</b>(hash)
+              <a name="method-i-dump"></a><b>dump</b>(internal)
             
           </div>
           
           
             <div class="description">
-              <p>Dumps the index hash in json format.</p>
+              <p>Dumps the index internal backend in json format.</p>
             </div>
           
           
@@ -158,9 +163,45 @@
               </p>
               <div id="method-i-dump_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/backends/memory/json.rb, line 25</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">dump</span> <span class="ruby-identifier">hash</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">dump</span> <span class="ruby-identifier">internal</span>
   <span class="ruby-identifier">create_directory</span> <span class="ruby-identifier">cache_path</span>
-  <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">dump_json</span> <span class="ruby-identifier">cache_path</span>
+  <span class="ruby-identifier">dump_json</span> <span class="ruby-identifier">internal</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-dump_json">
+            
+              <a name="method-i-dump_json"></a><b>dump_json</b>(internal)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-dump_json_source')" id="l_method-i-dump_json_source">show</a>
+                
+              </p>
+              <div id="method-i-dump_json_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/memory/json.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">dump_json</span> <span class="ruby-identifier">internal</span>
+  <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">cache_path</span>, <span class="ruby-string">'w'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">out_file</span><span class="ruby-operator">|</span>
+    <span class="ruby-constant">Yajl</span><span class="ruby-operator">::</span><span class="ruby-constant">Encoder</span>.<span class="ruby-identifier">encode</span> <span class="ruby-identifier">internal</span>, <span class="ruby-identifier">out_file</span>
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -260,7 +301,7 @@
                 
               </p>
               <div id="method-i-retrieve_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/memory/json.rb, line 32</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/memory/json.rb, line 40</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">retrieve</span>
   <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;Can't retrieve from JSON file. Use text file.&quot;</span>
 <span class="ruby-keyword">end</span></pre>

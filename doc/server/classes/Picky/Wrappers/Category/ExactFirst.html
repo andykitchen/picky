@@ -62,6 +62,18 @@ results such that exact hits are found first.</p>
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
       
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-combination_for">combination_for</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
         <dt>I</dt>
         <dd>
           <ul>
@@ -156,8 +168,9 @@ results such that exact hits are found first.</p>
                 
               </p>
               <div id="method-c-new_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/wrappers/category/exact_first.rb, line 27</span>
+                <pre><span class="ruby-comment"># File lib/picky/wrappers/category/exact_first.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> <span class="ruby-identifier">category</span>
+  <span class="ruby-ivar">@category</span> = <span class="ruby-identifier">category</span>
   <span class="ruby-ivar">@exact</span>   = <span class="ruby-identifier">category</span>.<span class="ruby-identifier">exact</span>
   <span class="ruby-ivar">@partial</span> = <span class="ruby-identifier">category</span>.<span class="ruby-identifier">partial</span>
 <span class="ruby-keyword">end</span></pre>
@@ -191,7 +204,7 @@ results such that exact hits are found first.</p>
                 
               </p>
               <div id="method-c-wrap_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/wrappers/category/exact_first.rb, line 32</span>
+                <pre><span class="ruby-comment"># File lib/picky/wrappers/category/exact_first.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">wrap</span> <span class="ruby-identifier">index_or_category</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">index_or_category</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:categories</span>
     <span class="ruby-identifier">wrap_each_of</span> <span class="ruby-identifier">index_or_category</span>.<span class="ruby-identifier">categories</span>
@@ -230,9 +243,14 @@ results such that exact hits are found first.</p>
                 
               </p>
               <div id="method-c-wrap_each_of_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/wrappers/category/exact_first.rb, line 40</span>
+                <pre><span class="ruby-comment"># File lib/picky/wrappers/category/exact_first.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">wrap_each_of</span> <span class="ruby-identifier">categories</span>
-  <span class="ruby-identifier">categories</span>.<span class="ruby-identifier">categories</span>.<span class="ruby-identifier">collect!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">category</span><span class="ruby-operator">|</span> <span class="ruby-identifier">new</span>(<span class="ruby-identifier">category</span>) }
+  <span class="ruby-identifier">actual_categories</span> = <span class="ruby-identifier">categories</span>.<span class="ruby-identifier">categories</span>
+  <span class="ruby-identifier">categories</span>.<span class="ruby-identifier">clear_categories</span>
+
+  <span class="ruby-identifier">actual_categories</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">category</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">categories</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">new</span>(<span class="ruby-identifier">category</span>)
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -242,9 +260,44 @@ results such that exact hits are found first.</p>
       <div class="sectiontitle">Instance Public methods</div>
       
         <div class="method">
+          <div class="title method-title" id="method-i-combination_for">
+            
+              <a name="method-i-combination_for"></a><b>combination_for</b>(token)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>TODO Refactor! (Subclass <a
+href="../../Category.html">Picky::Category</a>?)</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-combination_for_source')" id="l_method-i-combination_for_source">show</a>
+                
+              </p>
+              <div id="method-i-combination_for_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/wrappers/category/exact_first.rb, line 72</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">combination_for</span> <span class="ruby-identifier">token</span>
+  <span class="ruby-identifier">weight</span>(<span class="ruby-identifier">token</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Combination</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">token</span>, <span class="ruby-keyword">self</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
           <div class="title method-title" id="method-i-ids">
             
-              <a name="method-i-ids"></a><b>ids</b>(text)
+              <a name="method-i-ids"></a><b>ids</b>(token)
             
           </div>
           
@@ -266,9 +319,14 @@ results such that exact hits are found first.</p>
                 
               </p>
               <div id="method-i-ids_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/wrappers/category/exact_first.rb, line 44</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ids</span> <span class="ruby-identifier">text</span>
-  <span class="ruby-ivar">@exact</span>.<span class="ruby-identifier">ids</span>(<span class="ruby-identifier">text</span>) <span class="ruby-operator">+</span> <span class="ruby-ivar">@partial</span>.<span class="ruby-identifier">ids</span>(<span class="ruby-identifier">text</span>)
+                <pre><span class="ruby-comment"># File lib/picky/wrappers/category/exact_first.rb, line 52</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ids</span> <span class="ruby-identifier">token</span>
+  <span class="ruby-identifier">text</span> = <span class="ruby-identifier">token</span>.<span class="ruby-identifier">text</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">token</span>.<span class="ruby-identifier">partial?</span>
+    <span class="ruby-ivar">@exact</span>.<span class="ruby-identifier">ids</span>(<span class="ruby-identifier">text</span>) <span class="ruby-operator">|</span> <span class="ruby-ivar">@partial</span>.<span class="ruby-identifier">ids</span>(<span class="ruby-identifier">text</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@exact</span>.<span class="ruby-identifier">ids</span> <span class="ruby-identifier">text</span>
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -278,7 +336,7 @@ results such that exact hits are found first.</p>
         <div class="method">
           <div class="title method-title" id="method-i-weight">
             
-              <a name="method-i-weight"></a><b>weight</b>(text)
+              <a name="method-i-weight"></a><b>weight</b>(token)
             
           </div>
           
@@ -300,9 +358,14 @@ results such that exact hits are found first.</p>
                 
               </p>
               <div id="method-i-weight_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/wrappers/category/exact_first.rb, line 48</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">weight</span> <span class="ruby-identifier">text</span>
-  [<span class="ruby-ivar">@exact</span>.<span class="ruby-identifier">weight</span>(<span class="ruby-identifier">text</span>) <span class="ruby-operator">||</span> <span class="ruby-number">0</span>, <span class="ruby-ivar">@partial</span>.<span class="ruby-identifier">weight</span>(<span class="ruby-identifier">text</span>) <span class="ruby-operator">||</span> <span class="ruby-number">0</span>].<span class="ruby-identifier">max</span>
+                <pre><span class="ruby-comment"># File lib/picky/wrappers/category/exact_first.rb, line 61</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">weight</span> <span class="ruby-identifier">token</span>
+  <span class="ruby-identifier">text</span> = <span class="ruby-identifier">token</span>.<span class="ruby-identifier">text</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">token</span>.<span class="ruby-identifier">partial?</span>
+    [<span class="ruby-ivar">@exact</span>.<span class="ruby-identifier">weight</span>(<span class="ruby-identifier">text</span>), <span class="ruby-ivar">@partial</span>.<span class="ruby-identifier">weight</span>(<span class="ruby-identifier">text</span>)].<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">max</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@exact</span>.<span class="ruby-identifier">weight</span> <span class="ruby-identifier">text</span>
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>

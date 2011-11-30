@@ -86,6 +86,7 @@ h2. Single Page Help
 ### "Boost":#search-options-boost
 ### "Ignore Categories":#search-options-ignore
 ### "Ignore Unassigned Tokens":#search-options-unassigned
+### "Maximum Allocations":#search-options-maxallocations
 # "Results":#results
 ## "Logging":#results-logging
 ## "Sorting":#results-sorting
@@ -1052,6 +1053,7 @@ Picky by default goes through the following list, in order:
 # *normalizes_words*: [[/matching_regexp/, 'replace match \1']]
 # *rejects_token_if*: lambda { |gets_token| gets_token == :hello }
 # *case_sensitive*: true or false, false is default.
+# *max_words*: How many words will be passed into the core engine. Default: Infinity.
 
 You pass the above options into
 
@@ -1153,6 +1155,33 @@ end
 </code></pre>
 
 then even if Picky does not find anything for "aston martin cockadoodledoo", it will find an ad, simply ignoring the unassigned token.
+
+h4(#search-options-maxallocations). Ignore Unassigned Tokens
+
+The @max_allocations(integer)@ option cuts off calculation of allocations.
+
+What does this mean? Say you have code like:
+
+<pre><code>
+phone_search = Search.new phonebook do
+  max_allocations 1
+end
+</code></pre>
+
+And someone searches for "peter thomas".
+
+Picky then generates all possible allocations and sorts them.
+
+It might get
+
+* [first_name, last_name]
+* [last_name, first_name]
+* [first_name, first_name]
+* etc.
+
+with the first allocation being the most probable one.
+
+So, with @max_allocations 1@ it will only use the topmost one and throw away all the others.
 
 h2(#results). Results
 

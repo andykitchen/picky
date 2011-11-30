@@ -101,10 +101,14 @@
             <div class="description">
               <p>Get a single value.</p>
 
-<p>Internal API method for the index.</p>
+<p><a href="../Internal.html">Internal</a> API method for the index.</p>
 
 <p>Note: Works like the StringHash method, but returns a float corresponding
 to that string.</p>
+
+<p>Note: nil.to_f returns 0.0. That’s why the</p>
+
+<pre>code below looks a bit funny.</pre>
             </div>
           
           
@@ -120,9 +124,10 @@ to that string.</p>
                 
               </p>
               <div id="method-i-5B-5D_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/redis/float.rb, line 16</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis/float.rb, line 19</span>
 <span class="ruby-keyword">def</span> <span class="ruby-operator">[]</span> <span class="ruby-keyword ruby-title">key</span>
-  <span class="ruby-keyword">super</span>.<span class="ruby-identifier">to_f</span>
+  <span class="ruby-identifier">float</span> = <span class="ruby-keyword">super</span>
+  <span class="ruby-identifier">float</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">float</span>.<span class="ruby-identifier">to_f</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>

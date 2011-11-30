@@ -252,7 +252,7 @@
               <div id="method-i-to_s_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/backends/backend.rb, line 25</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
-  <span class="ruby-node">&quot;#{self.class}(#{[inverted, weights, similarity, configuration].join(', ')})&quot;</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">name</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>

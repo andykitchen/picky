@@ -61,7 +61,12 @@
             
               
               <li>
-                <a href="#method-i-5B-5D">[]</a>
+                <a href="#method-i-5B-5D">[]</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-5B-5D-3D">[]=</a>
               </li>
             
           </ul>
@@ -82,6 +87,11 @@
         <dt>D</dt>
         <dd>
           <ul>
+            
+              
+              <li>
+                <a href="#method-i-delete">delete</a>,
+              </li>
             
               
               <li>
@@ -125,7 +135,7 @@
             <div class="description">
               <p>Get a collection.</p>
 
-<p>Internal API method for the index.</p>
+<p><a href="../Internal.html">Internal</a> API method for the index.</p>
             </div>
           
           
@@ -141,9 +151,52 @@
                 
               </p>
               <div id="method-i-5B-5D_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/redis/list.rb, line 39</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis/list.rb, line 49</span>
 <span class="ruby-keyword">def</span> <span class="ruby-operator">[]</span> <span class="ruby-keyword ruby-title">key</span>
-  <span class="ruby-identifier">client</span>.<span class="ruby-identifier">zrange</span> <span class="ruby-node">&quot;#{namespace}:#{key}&quot;</span>, <span class="ruby-number">0</span>, <span class="ruby-number">-1</span>
+  <span class="ruby-identifier">list</span> = <span class="ruby-identifier">client</span>.<span class="ruby-identifier">zrange</span> <span class="ruby-node">&quot;#{namespace}:#{key}&quot;</span>, <span class="ruby-value">:'0'</span>, <span class="ruby-value">:'-1'</span>
+  <span class="ruby-constant">DirectlyManipulable</span>.<span class="ruby-identifier">make</span> <span class="ruby-keyword">self</span>, <span class="ruby-identifier">list</span>, <span class="ruby-identifier">key</span>
+  <span class="ruby-identifier">list</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-5B-5D-3D">
+            
+              <a name="method-i-5B-5D-3D"></a><b>[]=</b>(key, values)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Set a single list.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-5B-5D-3D_source')" id="l_method-i-5B-5D-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-5B-5D-3D_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis/list.rb, line 57</span>
+<span class="ruby-keyword">def</span> <span class="ruby-operator">[]=</span> <span class="ruby-keyword ruby-title">key</span>, <span class="ruby-identifier">values</span>
+  <span class="ruby-identifier">redis_key</span> = <span class="ruby-node">&quot;#{namespace}:#{key}&quot;</span>
+  <span class="ruby-identifier">i</span> = <span class="ruby-number">0</span>
+  <span class="ruby-identifier">values</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">i</span> <span class="ruby-operator">+=</span> <span class="ruby-number">1</span>
+    <span class="ruby-identifier">client</span>.<span class="ruby-identifier">zadd</span> <span class="ruby-identifier">redis_key</span>, <span class="ruby-identifier">i</span>, <span class="ruby-identifier">value</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">self</span>[<span class="ruby-identifier">key</span>] <span class="ruby-comment"># TODO Performance?</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -179,12 +232,46 @@
                 
               </p>
               <div id="method-i-clear_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/redis/list.rb, line 28</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis/list.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">clear</span>
   <span class="ruby-identifier">redis_key</span> = <span class="ruby-node">&quot;#{namespace}:*&quot;</span>
   <span class="ruby-identifier">client</span>.<span class="ruby-identifier">keys</span>(<span class="ruby-identifier">redis_key</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">client</span>.<span class="ruby-identifier">del</span> <span class="ruby-identifier">key</span>
   <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-delete">
+            
+              <a name="method-i-delete"></a><b>delete</b>(key)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Deletes the list for the key.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-delete_source')" id="l_method-i-delete_source">show</a>
+                
+              </p>
+              <div id="method-i-delete_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis/list.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">delete</span> <span class="ruby-identifier">key</span>
+  <span class="ruby-identifier">client</span>.<span class="ruby-identifier">del</span> <span class="ruby-node">&quot;#{namespace}:#{key}&quot;</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -216,16 +303,20 @@
                 
               </p>
               <div id="method-i-dump_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/redis/list.rb, line 11</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis/list.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">dump</span> <span class="ruby-identifier">hash</span>
-  <span class="ruby-identifier">clear</span>
-  <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">values</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">redis_key</span> = <span class="ruby-node">&quot;#{namespace}:#{key}&quot;</span>
-    <span class="ruby-identifier">i</span> = <span class="ruby-number">0</span>
-    <span class="ruby-identifier">values</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">i</span> <span class="ruby-operator">+=</span> <span class="ruby-number">1</span>
-      <span class="ruby-identifier">client</span>.<span class="ruby-identifier">zadd</span> <span class="ruby-identifier">redis_key</span>, <span class="ruby-identifier">i</span>, <span class="ruby-identifier">value</span>
-    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@immediate</span>
+    <span class="ruby-identifier">clear</span>
+    <span class="ruby-comment"># client.pipelined do</span>
+      <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">values</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">redis_key</span> = <span class="ruby-node">&quot;#{namespace}:#{key}&quot;</span>
+        <span class="ruby-identifier">i</span> = <span class="ruby-number">0</span>
+        <span class="ruby-identifier">values</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">i</span> <span class="ruby-operator">+=</span> <span class="ruby-number">1</span>
+          <span class="ruby-identifier">client</span>.<span class="ruby-identifier">zadd</span> <span class="ruby-identifier">redis_key</span>, <span class="ruby-identifier">i</span>, <span class="ruby-identifier">value</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-comment"># end</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
               </div>

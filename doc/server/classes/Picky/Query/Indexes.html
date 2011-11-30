@@ -632,7 +632,7 @@ given tokens.</p>
               </p>
               <div id="method-i-prepared_allocations_for_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 57</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">prepared_allocations_for</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">weights</span> = {}
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">prepared_allocations_for</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">weights</span> = {}, <span class="ruby-identifier">amount</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-identifier">allocations</span> = <span class="ruby-identifier">allocations_for</span> <span class="ruby-identifier">tokens</span>
 
   <span class="ruby-comment"># Remove double allocations.</span>
@@ -650,7 +650,7 @@ given tokens.</p>
 
   <span class="ruby-comment"># Reduce the amount of allocations.</span>
   <span class="ruby-comment">#</span>
-  <span class="ruby-comment"># allocations.reduce_to some_amount</span>
+  <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">reduce_to</span> <span class="ruby-identifier">amount</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">amount</span>
 
   <span class="ruby-comment"># Remove categories from allocations.</span>
   <span class="ruby-comment">#</span>

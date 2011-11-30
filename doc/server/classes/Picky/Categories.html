@@ -33,6 +33,8 @@
             
             <li><a href="../../files/lib/picky/categories_rb.html">lib/picky/categories.rb</a></li>
             
+            <li><a href="../../files/lib/picky/categories_convenience_rb.html">lib/picky/categories_convenience.rb</a></li>
+            
             <li><a href="../../files/lib/picky/categories_indexed_rb.html">lib/picky/categories_indexed.rb</a></li>
             
             <li><a href="../../files/lib/picky/categories_indexing_rb.html">lib/picky/categories_indexing.rb</a></li>
@@ -85,6 +87,18 @@
               
               <li>
                 <a href="#method-i-clear_categories">clear_categories</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-each_category">each_category</a>
               </li>
             
           </ul>
@@ -247,7 +261,7 @@
                 
               </p>
               <div id="method-c-new_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/categories.rb, line 22</span>
+                <pre><span class="ruby-comment"># File lib/picky/categories.rb, line 23</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> <span class="ruby-identifier">options</span> = {}
   <span class="ruby-identifier">clear_categories</span>
 <span class="ruby-keyword">end</span></pre>
@@ -283,7 +297,7 @@
                 
               </p>
               <div id="method-i-3C-3C_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/categories.rb, line 35</span>
+                <pre><span class="ruby-comment"># File lib/picky/categories.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword ruby-title">category</span>
   <span class="ruby-identifier">categories</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">category</span>
   <span class="ruby-identifier">category_hash</span>[<span class="ruby-identifier">category</span>.<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">category</span>
@@ -318,7 +332,7 @@
                 
               </p>
               <div id="method-i-5B-5D_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/categories.rb, line 42</span>
+                <pre><span class="ruby-comment"># File lib/picky/categories.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-operator">[]</span> <span class="ruby-keyword ruby-title">category_name</span>
   <span class="ruby-identifier">category_name</span> = <span class="ruby-identifier">category_name</span>.<span class="ruby-identifier">intern</span>
   <span class="ruby-identifier">category_hash</span>[<span class="ruby-identifier">category_name</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">raise_not_found</span>(<span class="ruby-identifier">category_name</span>)
@@ -353,10 +367,44 @@
                 
               </p>
               <div id="method-i-clear_categories_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/categories.rb, line 28</span>
+                <pre><span class="ruby-comment"># File lib/picky/categories.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">clear_categories</span>
   <span class="ruby-ivar">@categories</span>    = []
   <span class="ruby-ivar">@category_hash</span> = {}
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-each_category">
+            
+              <a name="method-i-each_category"></a><b>each_category</b>(&amp;block)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-each_category_source')" id="l_method-i-each_category_source">show</a>
+                
+              </p>
+              <div id="method-i-each_category_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/categories_convenience.rb, line 10</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">each_category</span> &amp;<span class="ruby-identifier">block</span>
+  <span class="ruby-identifier">categories</span>.<span class="ruby-identifier">each</span> &amp;<span class="ruby-identifier">block</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -541,7 +589,7 @@ if no categories matched (will produce no result).</p>
                 
               </p>
               <div id="method-i-raise_not_found_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/categories.rb, line 46</span>
+                <pre><span class="ruby-comment"># File lib/picky/categories.rb, line 47</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">raise_not_found</span> <span class="ruby-identifier">category_name</span>
   <span class="ruby-identifier">raise</span> <span class="ruby-node">%Q{Index category &quot;#{category_name}&quot; not found. Possible categories: &quot;#{categories.map(&amp;:name).join('&quot;, &quot;')}&quot;.}</span>
 <span class="ruby-keyword">end</span></pre>
@@ -657,9 +705,9 @@ each found similar token.</p>
                 
               </p>
               <div id="method-i-to_s_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/categories.rb, line 50</span>
+                <pre><span class="ruby-comment"># File lib/picky/categories.rb, line 51</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
-  <span class="ruby-identifier">categories</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">', '</span>)
+  <span class="ruby-node">&quot;#{self.class}(#{categories.join(', ')})&quot;</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>

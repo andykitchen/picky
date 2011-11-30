@@ -146,7 +146,7 @@
                 
               </p>
               <div id="method-c-new_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/indexers/base.rb, line 14</span>
+                <pre><span class="ruby-comment"># File lib/picky/indexers/base.rb, line 15</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> <span class="ruby-identifier">index_or_category</span>
   <span class="ruby-ivar">@index_or_category</span> = <span class="ruby-identifier">index_or_category</span>
 <span class="ruby-keyword">end</span></pre>
@@ -182,11 +182,14 @@
                 
               </p>
               <div id="method-i-index_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/indexers/base.rb, line 20</span>
+                <pre><span class="ruby-comment"># File lib/picky/indexers/base.rb, line 21</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">index</span> <span class="ruby-identifier">categories</span>
+  <span class="ruby-identifier">check_source</span>
+  <span class="ruby-identifier">categories</span>.<span class="ruby-identifier">empty</span>
   <span class="ruby-identifier">process</span> <span class="ruby-identifier">categories</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">notify_finished</span> <span class="ruby-identifier">file</span>
   <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">categories</span>.<span class="ruby-identifier">cache</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -218,7 +221,7 @@
                 
               </p>
               <div id="method-i-notify_finished_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/indexers/base.rb, line 26</span>
+                <pre><span class="ruby-comment"># File lib/picky/indexers/base.rb, line 34</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">notify_finished</span> <span class="ruby-identifier">file</span>
   <span class="ruby-identifier">timed_exclaim</span> <span class="ruby-node">%Q{&quot;#{@index_or_category.identifier}&quot;: Tokenized -&gt; #{file.path.gsub(&quot;#{PICKY_ROOT}/&quot;, '')}.}</span>
 <span class="ruby-keyword">end</span></pre>

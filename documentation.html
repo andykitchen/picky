@@ -147,6 +147,7 @@
         			<li><a href="#search-options-boost">Boost</a></li>
         			<li><a href="#search-options-ignore">Ignore Categories</a></li>
         			<li><a href="#search-options-unassigned">Ignore Unassigned Tokens</a></li>
+        			<li><a href="#search-options-maxallocations">Maximum Allocations</a></li>
         		</ol></li>
         	</ol></li>
         	<li><a href="#results">Results</a>
@@ -829,6 +830,7 @@
         	<li><strong>normalizes_words</strong>: [[/matching_regexp/, &#8216;replace match \1&#8217;]]</li>
         	<li><strong>rejects_token_if</strong>: lambda { |gets_token| gets_token == :hello }</li>
         	<li><strong>case_sensitive</strong>: true or false, false is default.</li>
+        	<li><strong>max_words</strong>: How many words will be passed into the core engine. Default: Infinity.</li>
         </ol>
         <p>You pass the above options into</p>
         <pre><code>
@@ -900,6 +902,25 @@
         end
         </code></pre>
         <p>then even if Picky does not find anything for &#8220;aston martin cockadoodledoo&#8221;, it will find an ad, simply ignoring the unassigned token.</p>
+        <h4 id="search-options-maxallocations">Ignore Unassigned Tokens</h4>
+        <p>The <code>max_allocations(integer)</code> option cuts off calculation of allocations.</p>
+        <p>What does this mean? Say you have code like:</p>
+        <pre><code>
+        phone_search = Search.new phonebook do
+          max_allocations 1
+        end
+        </code></pre>
+        <p>And someone searches for &#8220;peter thomas&#8221;.</p>
+        <p>Picky then generates all possible allocations and sorts them.</p>
+        <p>It might get</p>
+        <ul>
+        	<li>[first_name, last_name]</li>
+        	<li>[last_name, first_name]</li>
+        	<li>[first_name, first_name]</li>
+        	<li>etc.</li>
+        </ul>
+        <p>with the first allocation being the most probable one.</p>
+        <p>So, with <code>max_allocations 1</code> it will only use the topmost one and throw away all the others.</p>
         <h2 id="results">Results</h2>
         <p>Results are returned by the <code>Search</code> instance.</p>
         <pre><code>

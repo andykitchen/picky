@@ -1,8 +1,8 @@
-Sun, 13 Nov 2011 01:28:26 +1100
+Wed, 30 Nov 2011 14:45:57 +1100
 lib/picky-client/aux/cursed.rb	Wed, 20 Apr 2011 20:32:48 +1000
 lib/picky-client/aux/README	Wed, 20 Apr 2011 20:40:35 +1000
 lib/picky-client/aux/terminal.rb	Wed, 20 Apr 2011 20:40:35 +1000
-lib/picky-client/client.rb	Fri, 11 Nov 2011 18:58:54 +1100
+lib/picky-client/client.rb	Tue, 22 Nov 2011 21:02:00 +1100
 lib/picky-client/convenience.rb	Tue, 08 Nov 2011 14:06:22 +1100
 lib/picky-client/extensions/object.rb	Thu, 07 Jul 2011 22:45:17 +1000
 lib/picky-client/helper.rb	Wed, 20 Apr 2011 20:32:48 +1000

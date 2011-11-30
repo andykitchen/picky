@@ -90,6 +90,11 @@
             
               
               <li>
+                <a href="#method-i-delete">delete</a>,
+              </li>
+            
+              
+              <li>
                 <a href="#method-i-dump">dump</a>
               </li>
             
@@ -130,7 +135,7 @@
             <div class="description">
               <p>Get a single value.</p>
 
-<p>Internal API method for the index.</p>
+<p><a href="../Internal.html">Internal</a> API method for the index.</p>
             </div>
           
           
@@ -146,7 +151,7 @@
                 
               </p>
               <div id="method-i-5B-5D_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/redis/string.rb, line 30</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis/string.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-operator">[]</span> <span class="ruby-keyword ruby-title">key</span>
   <span class="ruby-identifier">client</span>.<span class="ruby-identifier">hget</span> <span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">key</span>
 <span class="ruby-keyword">end</span></pre>
@@ -180,7 +185,7 @@
                 
               </p>
               <div id="method-i-5B-5D-3D_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/redis/string.rb, line 36</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis/string.rb, line 44</span>
 <span class="ruby-keyword">def</span> <span class="ruby-operator">[]=</span> <span class="ruby-keyword ruby-title">key</span>, <span class="ruby-identifier">value</span>
   <span class="ruby-identifier">client</span>.<span class="ruby-identifier">hset</span> <span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>
 <span class="ruby-keyword">end</span></pre>
@@ -214,9 +219,43 @@
                 
               </p>
               <div id="method-i-clear_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/redis/string.rb, line 22</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis/string.rb, line 11</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">clear</span>
   <span class="ruby-identifier">client</span>.<span class="ruby-identifier">del</span> <span class="ruby-identifier">namespace</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-delete">
+            
+              <a name="method-i-delete"></a><b>delete</b>(key)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Deletes the single value.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-delete_source')" id="l_method-i-delete_source">show</a>
+                
+              </p>
+              <div id="method-i-delete_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis/string.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">delete</span> <span class="ruby-identifier">key</span>
+  <span class="ruby-identifier">client</span>.<span class="ruby-identifier">hdel</span> <span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">key</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -250,11 +289,13 @@
                 
               </p>
               <div id="method-i-dump_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/redis/string.rb, line 13</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis/string.rb, line 25</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">dump</span> <span class="ruby-identifier">hash</span>
-  <span class="ruby-identifier">clear</span>
-  <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">client</span>.<span class="ruby-identifier">hset</span> <span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@immediate</span>
+    <span class="ruby-identifier">clear</span>
+    <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">client</span>.<span class="ruby-identifier">hset</span> <span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>
+    <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
               </div>

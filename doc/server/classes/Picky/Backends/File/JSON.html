@@ -121,6 +121,18 @@
           </ul>
         </dd>
       
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-mapping">mapping</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
         <dt>R</dt>
         <dd>
           <ul>
@@ -156,11 +168,10 @@
         
           <tr valign='top'>
             <td class='attr-rw'>
-              [RW]
+              [W]
             </td>
             <td class='attr-name'>mapping</td>
-            <td class='attr-desc'><p>The in-memory mapping hash, mapping a Symbol key to [length, offset] of the
-<a href="JSON.html">JSON</a> data in the file.</p></td>
+            <td class='attr-desc'></td>
           </tr>
         
       </table>
@@ -201,7 +212,7 @@
                 
               </p>
               <div id="method-i-5B-5D_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/file/json.rb, line 22</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/file/json.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-operator">[]</span> <span class="ruby-keyword ruby-title">key</span>
   <span class="ruby-identifier">length</span>, <span class="ruby-identifier">offset</span> = <span class="ruby-identifier">mapping</span>[<span class="ruby-identifier">key</span>]
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">length</span>
@@ -243,7 +254,7 @@ anymore, at least to the application.</pre>
                 
               </p>
               <div id="method-i-clear_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/file/json.rb, line 35</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/file/json.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">clear</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">mapping</span>.<span class="ruby-identifier">clear</span>
 <span class="ruby-keyword">end</span></pre>
@@ -282,7 +293,7 @@ anymore, at least to the application.</pre>
                 
               </p>
               <div id="method-i-dump_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/file/json.rb, line 51</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/file/json.rb, line 55</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">dump</span> <span class="ruby-identifier">hash</span>
   <span class="ruby-identifier">offset</span> = <span class="ruby-number">0</span>
   <span class="ruby-identifier">mapping</span> = {}
@@ -330,7 +341,7 @@ anymore, at least to the application.</pre>
                 
               </p>
               <div id="method-i-extension_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/file/json.rb, line 77</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/file/json.rb, line 81</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">extension</span>
   <span class="ruby-value">:json</span>
 <span class="ruby-keyword">end</span></pre>
@@ -364,10 +375,45 @@ anymore, at least to the application.</pre>
                 
               </p>
               <div id="method-i-load_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/file/json.rb, line 41</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/file/json.rb, line 45</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">load</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">mapping</span> = <span class="ruby-identifier">mapping_file</span>.<span class="ruby-identifier">load</span>
   <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-mapping">
+            
+              <a name="method-i-mapping"></a><b>mapping</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>The in-memory mapping hash, mapping a Symbol key to [length, offset] of the
+<a href="JSON.html">JSON</a> data in the file.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-mapping_source')" id="l_method-i-mapping_source">show</a>
+                
+              </p>
+              <div id="method-i-mapping_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/file/json.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">mapping</span>
+  <span class="ruby-ivar">@mapping</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">raise</span>(<span class="ruby-string">&quot;The File index/category needs to be loaded first.&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -399,7 +445,7 @@ anymore, at least to the application.</pre>
                 
               </p>
               <div id="method-i-retrieve_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/file/json.rb, line 71</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/file/json.rb, line 75</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">retrieve</span>
   <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;Can't retrieve from JSON file. Use text file.&quot;</span>
 <span class="ruby-keyword">end</span></pre>

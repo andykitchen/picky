@@ -33,6 +33,8 @@
             
             <li><a href="../../files/lib/picky/indexes_rb.html">lib/picky/indexes.rb</a></li>
             
+            <li><a href="../../files/lib/picky/indexes_convenience_rb.html">lib/picky/indexes_convenience.rb</a></li>
+            
             <li><a href="../../files/lib/picky/indexes_indexed_rb.html">lib/picky/indexes_indexed.rb</a></li>
             
             <li><a href="../../files/lib/picky/indexes_indexing_rb.html">lib/picky/indexes_indexing.rb</a></li>
@@ -169,7 +171,12 @@ them.</p>
             
               
               <li>
-                <a href="#method-c-register">register</a>
+                <a href="#method-c-register">register</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-reload">reload</a>
               </li>
             
           </ul>
@@ -308,7 +315,7 @@ them.</p>
         <div class="method">
           <div class="title method-title" id="method-c-new">
             
-              <a name="method-c-new"></a><b>new</b>()
+              <a name="method-c-new"></a><b>new</b>(*indexes)
             
           </div>
           
@@ -330,9 +337,10 @@ them.</p>
                 
               </p>
               <div id="method-c-new_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/indexes.rb, line 22</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>
+                <pre><span class="ruby-comment"># File lib/picky/indexes.rb, line 21</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> *<span class="ruby-identifier">indexes</span>
   <span class="ruby-identifier">clear_indexes</span>
+  <span class="ruby-identifier">indexes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">index</span><span class="ruby-operator">|</span> <span class="ruby-identifier">register</span> <span class="ruby-identifier">index</span> }
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -364,9 +372,43 @@ them.</p>
                 
               </p>
               <div id="method-c-register_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/indexes.rb, line 57</span>
+                <pre><span class="ruby-comment"># File lib/picky/indexes.rb, line 58</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">register</span> <span class="ruby-identifier">index</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">register</span> <span class="ruby-identifier">index</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-reload">
+            
+              <a name="method-c-reload"></a><b>reload</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>TODO Remove in 4.0.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-reload_source')" id="l_method-c-reload_source">show</a>
+                
+              </p>
+              <div id="method-c-reload_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/indexes_indexed.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">reload</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">reload</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -400,7 +442,7 @@ them.</p>
                 
               </p>
               <div id="method-i-5B-5D_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/indexes.rb, line 63</span>
+                <pre><span class="ruby-comment"># File lib/picky/indexes.rb, line 64</span>
 <span class="ruby-keyword">def</span> <span class="ruby-operator">[]</span> <span class="ruby-keyword ruby-title">identifier</span>
   <span class="ruby-identifier">index_name</span> = <span class="ruby-identifier">identifier</span>.<span class="ruby-identifier">intern</span>
   <span class="ruby-identifier">index_mapping</span>[<span class="ruby-identifier">index_name</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">raise_not_found</span>(<span class="ruby-identifier">index_name</span>)
@@ -435,7 +477,7 @@ them.</p>
                 
               </p>
               <div id="method-i-clear_indexes_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/indexes.rb, line 46</span>
+                <pre><span class="ruby-comment"># File lib/picky/indexes.rb, line 47</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">clear_indexes</span>
   <span class="ruby-ivar">@indexes</span>       = []
   <span class="ruby-ivar">@index_mapping</span> = {}
@@ -470,7 +512,7 @@ them.</p>
                 
               </p>
               <div id="method-i-index_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/indexes_indexing.rb, line 23</span>
+                <pre><span class="ruby-comment"># File lib/picky/indexes_indexing.rb, line 17</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">index</span> <span class="ruby-identifier">randomly</span> = <span class="ruby-keyword">true</span>
   <span class="ruby-comment"># Run in parallel.</span>
   <span class="ruby-comment">#</span>
@@ -516,7 +558,7 @@ href="Indexes.html#method-i-index">#index</a>.</p>
                 
               </p>
               <div id="method-i-index_for_tests_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/indexes_indexing.rb, line 40</span>
+                <pre><span class="ruby-comment"># File lib/picky/indexes_indexing.rb, line 34</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">index_for_tests</span>
   <span class="ruby-identifier">indexes</span>.<span class="ruby-identifier">each</span>(&amp;<span class="ruby-value">:index</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -550,7 +592,7 @@ href="Indexes.html#method-i-index">#index</a>.</p>
                 
               </p>
               <div id="method-i-raise_not_found_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/indexes.rb, line 70</span>
+                <pre><span class="ruby-comment"># File lib/picky/indexes.rb, line 71</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">raise_not_found</span> <span class="ruby-identifier">index_name</span>
   <span class="ruby-identifier">raise</span> <span class="ruby-node">%Q{Index &quot;#{index_name}&quot; not found. Possible indexes: &quot;#{indexes.map(&amp;:name).join('&quot;, &quot;')}&quot;.}</span>
 <span class="ruby-keyword">end</span></pre>
@@ -584,7 +626,7 @@ href="Indexes.html#method-i-index">#index</a>.</p>
                 
               </p>
               <div id="method-i-register_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/indexes.rb, line 53</span>
+                <pre><span class="ruby-comment"># File lib/picky/indexes.rb, line 54</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">register</span> <span class="ruby-identifier">index</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">indexes</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">index</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">index_mapping</span>[<span class="ruby-identifier">index</span>.<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">index</span>
@@ -619,7 +661,7 @@ href="Indexes.html#method-i-index">#index</a>.</p>
                 
               </p>
               <div id="method-i-to_s_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/indexes.rb, line 76</span>
+                <pre><span class="ruby-comment"># File lib/picky/indexes.rb, line 77</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
   <span class="ruby-identifier">indexes</span>.<span class="ruby-identifier">indented_to_s</span>
 <span class="ruby-keyword">end</span></pre>
@@ -653,7 +695,7 @@ href="Indexes.html#method-i-index">#index</a>.</p>
                 
               </p>
               <div id="method-i-tokenizer_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/indexes_indexing.rb, line 46</span>
+                <pre><span class="ruby-comment"># File lib/picky/indexes_indexing.rb, line 40</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">tokenizer</span>
   <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">index_default</span>
 <span class="ruby-keyword">end</span></pre>

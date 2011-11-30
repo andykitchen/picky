@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Picky::Backends::SQLite</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Picky::Backends::SQLite 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="Backend.html">Picky::Backends::Backend</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/lib/picky/backends/sqlite/array_rb.html">lib/picky/backends/sqlite/array.rb</a></li>
+            
+            <li><a href="../../../files/lib/picky/backends/sqlite/basic_rb.html">lib/picky/backends/sqlite/basic.rb</a></li>
+            
+            <li><a href="../../../files/lib/picky/backends/sqlite/directly_manipulable_rb.html">lib/picky/backends/sqlite/directly_manipulable.rb</a></li>
+            
+            <li><a href="../../../files/lib/picky/backends/sqlite/integer_key_array_rb.html">lib/picky/backends/sqlite/integer_key_array.rb</a></li>
+            
+            <li><a href="../../../files/lib/picky/backends/sqlite/string_key_array_rb.html">lib/picky/backends/sqlite/string_key_array.rb</a></li>
+            
+            <li><a href="../../../files/lib/picky/backends/sqlite/value_rb.html">lib/picky/backends/sqlite/value.rb</a></li>
+            
+            <li><a href="../../../files/lib/picky/backends/sqlite_rb.html">lib/picky/backends/sqlite.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="SQLite/DirectlyManipulable.html">Picky::Backends::SQLite::DirectlyManipulable</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="SQLite/Array.html">Picky::Backends::SQLite::Array</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="SQLite/Basic.html">Picky::Backends::SQLite::Basic</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="SQLite/IntegerKeyArray.html">Picky::Backends::SQLite::IntegerKeyArray</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="SQLite/StringKeyArray.html">Picky::Backends::SQLite::StringKeyArray</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="SQLite/Value.html">Picky::Backends::SQLite::Value</a>
+        </li>
+      
+    </ul>
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-create_configuration">create_configuration</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-create_inverted">create_inverted</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-create_realtime">create_realtime</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-create_similarity">create_similarity</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-create_weights">create_weights</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-ids">ids</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>self_indexed</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+      </table>
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <a name="method-c-new"></a><b>new</b>(options = {})
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> <span class="ruby-identifier">options</span> = {}
+  <span class="ruby-keyword">super</span> <span class="ruby-identifier">options</span>
+  <span class="ruby-ivar">@self_indexed</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:self_indexed</span>]
+
+  <span class="ruby-identifier">require</span> <span class="ruby-string">'sqlite3'</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">LoadError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+  <span class="ruby-identifier">warn_gem_missing</span> <span class="ruby-string">'sqlite3'</span>, <span class="ruby-string">'SQLite bindings'</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-create_configuration">
+            
+              <a name="method-i-create_configuration"></a><b>create_configuration</b>(bundle)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns an object that on initial, load returns an object that responds to:</p>
+
+<pre class="ruby">[:<span class="ruby-identifier">key</span>] <span class="ruby-comment"># =&gt; value (a value for this config key)</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-create_configuration_source')" id="l_method-i-create_configuration_source">show</a>
+                
+              </p>
+              <div id="method-i-create_configuration_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">create_configuration</span> <span class="ruby-identifier">bundle</span>
+  <span class="ruby-identifier">extract_lambda_or</span>(<span class="ruby-identifier">configuration</span>, <span class="ruby-identifier">bundle</span>) <span class="ruby-operator">||</span>
+    <span class="ruby-constant">Value</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-value">:configuration</span>), <span class="ruby-identifier">self_indexed</span><span class="ruby-operator">:</span> <span class="ruby-identifier">self_indexed</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-create_inverted">
+            
+              <a name="method-i-create_inverted"></a><b>create_inverted</b>(bundle)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns an object that on initial, load returns an object that responds to:</p>
+
+<pre class="ruby">[:<span class="ruby-identifier">token</span>] <span class="ruby-comment"># =&gt; [id, id, id, id, id] (an array of ids)</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-create_inverted_source')" id="l_method-i-create_inverted_source">show</a>
+                
+              </p>
+              <div id="method-i-create_inverted_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite.rb, line 21</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">create_inverted</span> <span class="ruby-identifier">bundle</span>
+  <span class="ruby-identifier">extract_lambda_or</span>(<span class="ruby-identifier">inverted</span>, <span class="ruby-identifier">bundle</span>) <span class="ruby-operator">||</span>
+    <span class="ruby-constant">StringKeyArray</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-value">:inverted</span>), <span class="ruby-identifier">self_indexed</span><span class="ruby-operator">:</span> <span class="ruby-identifier">self_indexed</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-create_realtime">
+            
+              <a name="method-i-create_realtime"></a><b>create_realtime</b>(bundle)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns an object that on initial, load returns an object that responds to:</p>
+
+<pre class="ruby">[<span class="ruby-identifier">id</span>] <span class="ruby-comment"># =&gt; [:sym1, :sym2]</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-create_realtime_source')" id="l_method-i-create_realtime_source">show</a>
+                
+              </p>
+              <div id="method-i-create_realtime_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite.rb, line 49</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">create_realtime</span> <span class="ruby-identifier">bundle</span>
+  <span class="ruby-identifier">extract_lambda_or</span>(<span class="ruby-identifier">similarity</span>, <span class="ruby-identifier">bundle</span>) <span class="ruby-operator">||</span>
+    <span class="ruby-constant">IntegerKeyArray</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-value">:realtime</span>), <span class="ruby-identifier">self_indexed</span><span class="ruby-operator">:</span> <span class="ruby-identifier">self_indexed</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-create_similarity">
+            
+              <a name="method-i-create_similarity"></a><b>create_similarity</b>(bundle)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns an object that on initial, load returns an object that responds to:</p>
+
+<pre class="ruby">[:<span class="ruby-identifier">encoded</span>] <span class="ruby-comment"># =&gt; [:original, :original] (an array of original symbols this similarity encoded thing maps to)</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-create_similarity_source')" id="l_method-i-create_similarity_source">show</a>
+                
+              </p>
+              <div id="method-i-create_similarity_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">create_similarity</span> <span class="ruby-identifier">bundle</span>
+  <span class="ruby-identifier">extract_lambda_or</span>(<span class="ruby-identifier">similarity</span>, <span class="ruby-identifier">bundle</span>) <span class="ruby-operator">||</span>
+    <span class="ruby-constant">StringKeyArray</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-value">:similarity</span>), <span class="ruby-identifier">self_indexed</span><span class="ruby-operator">:</span> <span class="ruby-identifier">self_indexed</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-create_weights">
+            
+              <a name="method-i-create_weights"></a><b>create_weights</b>(bundle)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns an object that on initial, load returns an object that responds to:</p>
+
+<pre class="ruby">[:<span class="ruby-identifier">token</span>] <span class="ruby-comment"># =&gt; 1.23 (a weight)</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-create_weights_source')" id="l_method-i-create_weights_source">show</a>
+                
+              </p>
+              <div id="method-i-create_weights_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite.rb, line 28</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">create_weights</span> <span class="ruby-identifier">bundle</span>
+  <span class="ruby-identifier">extract_lambda_or</span>(<span class="ruby-identifier">weights</span>, <span class="ruby-identifier">bundle</span>) <span class="ruby-operator">||</span>
+    <span class="ruby-constant">Value</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-value">:weights</span>), <span class="ruby-identifier">self_indexed</span><span class="ruby-operator">:</span> <span class="ruby-identifier">self_indexed</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-ids">
+            
+              <a name="method-i-ids"></a><b>ids</b>(combinations, _, _)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the result ids for the allocation.</p>
+
+<p>Sorts the ids by size and &amp; through them in the following order
+(sizes):</p>
+<ol><li><dl class="rdoc-list label-list"><dt>100_000, 400, 30, 2
+<dd></dd></dl>
+</li><li><dl class="rdoc-list label-list"><dt>2, 30, 400, 100_000
+<dd></dd></dl>
+</li><li>
+<p>(100_000 &amp; (400 &amp; (30 &amp; 2))) # =&gt; result</p>
+</li></ol>
+
+<p>Note: Uses a C-optimized intersection routine (in performant.c)</p>
+
+<pre>for speed and memory efficiency.</pre>
+
+<p>Note: In the memory based version we ignore the amount and offset hints.</p>
+
+<pre>We cannot use the information to speed up the algorithm, unfortunately.</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-ids_source')" id="l_method-i-ids_source">show</a>
+                
+              </p>
+              <div id="method-i-ids_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite.rb, line 67</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ids</span> <span class="ruby-identifier">combinations</span>, <span class="ruby-identifier">_</span>, <span class="ruby-identifier">_</span>
+  <span class="ruby-comment"># Get the ids for each combination.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">id_arrays</span> = <span class="ruby-identifier">combinations</span>.<span class="ruby-identifier">inject</span>([]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">total</span>, <span class="ruby-identifier">combination</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">total</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">combination</span>.<span class="ruby-identifier">ids</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># Call the optimized C algorithm.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-comment"># Note: It orders the passed arrays by size.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-constant">Performant</span><span class="ruby-operator">::</span><span class="ruby-constant">Array</span>.<span class="ruby-identifier">memory_efficient_intersect</span> <span class="ruby-identifier">id_arrays</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+    </div>
+  </body>
+</html>    

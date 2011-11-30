@@ -64,30 +64,6 @@ levenshtein.</p>
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
       
-        <dt>G</dt>
-        <dd>
-          <ul>
-            
-              
-              <li>
-                <a href="#method-i-generate_from">generate_from</a>
-              </li>
-            
-          </ul>
-        </dd>
-      
-        <dt>H</dt>
-        <dd>
-          <ul>
-            
-              
-              <li>
-                <a href="#method-i-hashify">hashify</a>
-              </li>
-            
-          </ul>
-        </dd>
-      
         <dt>N</dt>
         <dd>
           <ul>
@@ -184,93 +160,8 @@ levenshtein.</p>
             
           </div>
                   
-      <div class="sectiontitle">Instance Public methods</div>
-      
-        <div class="method">
-          <div class="title method-title" id="method-i-generate_from">
-            
-              <a name="method-i-generate_from"></a><b>generate_from</b>(inverted)
-            
-          </div>
-          
-          
-            <div class="description">
-              <p>Generates an index for the given index (in exact index style).</p>
-
-<p>In the following form:</p>
-<dl class="rdoc-list label-list"><dt>:meier, :mueller, :peter, :pater
-<dd>
-<h1 id="method-i-generate_from-label-%3E+%7B+MR%3A+%5B%3Ameier%5D%2C+MLR%3A+%5B%3Amueller%5D%2C+PTR%3A+%5B%3Apeter%2C+%3Apater%5D+%7D">&gt; { MR: [:meier], MLR: [:mueller], PTR: [:peter, :pater] }</h1>
-</dd></dl>
-            </div>
-          
-          
-          
-          
-          
-            
-            <div class="sourcecode">
-              
-              <p class="source-link">
-                Source: 
-                <a href="javascript:toggleSource('method-i-generate_from_source')" id="l_method-i-generate_from_source">show</a>
-                
-              </p>
-              <div id="method-i-generate_from_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/generators/similarity/phonetic.rb, line 31</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">generate_from</span> <span class="ruby-identifier">inverted</span>
-  <span class="ruby-identifier">hash</span> = <span class="ruby-identifier">hashify</span> <span class="ruby-identifier">inverted</span>.<span class="ruby-identifier">keys</span>
-  <span class="ruby-identifier">sort</span> <span class="ruby-identifier">hash</span>
-<span class="ruby-keyword">end</span></pre>
-              </div>
-            </div>
-            
-          </div>
-              
       <div class="sectiontitle">Instance Protected methods</div>
       
-        <div class="method">
-          <div class="title method-title" id="method-i-hashify">
-            
-              <a name="method-i-hashify"></a><b>hashify</b>(list)
-            
-          </div>
-          
-          
-            <div class="description">
-              <p>Hashifies a list of symbols.</p>
-
-<p>Where: { encoded_sym =&gt; [syms] }</p>
-            </div>
-          
-          
-          
-          
-          
-            
-            <div class="sourcecode">
-              
-              <p class="source-link">
-                Source: 
-                <a href="javascript:toggleSource('method-i-hashify_source')" id="l_method-i-hashify_source">show</a>
-                
-              </p>
-              <div id="method-i-hashify_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/generators/similarity/phonetic.rb, line 53</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">hashify</span> <span class="ruby-identifier">list</span>
-  <span class="ruby-identifier">list</span>.<span class="ruby-identifier">inject</span>({}) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">total</span>, <span class="ruby-identifier">element</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">code</span> = <span class="ruby-identifier">encoded</span>(<span class="ruby-identifier">element</span>)
-      <span class="ruby-identifier">total</span>[<span class="ruby-identifier">code</span>] <span class="ruby-operator">||=</span> []
-      <span class="ruby-identifier">total</span>[<span class="ruby-identifier">code</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">element</span>
-    <span class="ruby-keyword">end</span>
-    <span class="ruby-identifier">total</span>
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
-              </div>
-            </div>
-            
-          </div>
-        
         <div class="method">
           <div class="title method-title" id="method-i-sort">
             
@@ -281,6 +172,10 @@ levenshtein.</p>
           
             <div class="description">
               <p>Sorts the index values in place.</p>
+
+<p>TODO Include this again. Sort at the end.</p>
+
+<pre>Or sort when inserting in realtime.</pre>
             </div>
           
           
@@ -296,7 +191,7 @@ levenshtein.</p>
                 
               </p>
               <div id="method-i-sort_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/generators/similarity/phonetic.rb, line 40</span>
+                <pre><span class="ruby-comment"># File lib/picky/generators/similarity/phonetic.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">sort</span> <span class="ruby-identifier">hash</span>
   <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each_pair</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">code</span>, <span class="ruby-identifier">ary</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">ary</span>.<span class="ruby-identifier">sort_by_levenshtein!</span> <span class="ruby-identifier">code</span>

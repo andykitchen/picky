@@ -33,6 +33,8 @@
             
             <li><a href="../../files/lib/picky/category_rb.html">lib/picky/category.rb</a></li>
             
+            <li><a href="../../files/lib/picky/category_convenience_rb.html">lib/picky/category_convenience.rb</a></li>
+            
             <li><a href="../../files/lib/picky/category_indexed_rb.html">lib/picky/category_indexed.rb</a></li>
             
             <li><a href="../../files/lib/picky/category_indexing_rb.html">lib/picky/category_indexing.rb</a></li>
@@ -60,6 +62,18 @@
     <!-- Method ref -->
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
+      
+        <dt>#</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-3C-3C">&lt;&lt;</a>
+              </li>
+            
+          </ul>
+        </dd>
       
         <dt>A</dt>
         <dd>
@@ -89,7 +103,7 @@
             
               
               <li>
-                <a href="#method-i-backup">backup</a>,
+                <a href="#method-i-build_realtime_mapping">build_realtime_mapping</a>,
               </li>
             
               
@@ -111,17 +125,12 @@
             
               
               <li>
-                <a href="#method-i-check">check</a>,
-              </li>
-            
-              
-              <li>
                 <a href="#method-i-clear">clear</a>,
               </li>
             
               
               <li>
-                <a href="#method-i-clear_realtime_mapping">clear_realtime_mapping</a>,
+                <a href="#method-i-clear_realtime">clear_realtime</a>,
               </li>
             
               
@@ -147,6 +156,11 @@
         <dt>E</dt>
         <dd>
           <ul>
+            
+              
+              <li>
+                <a href="#method-i-each_bundle">each_bundle</a>,
+              </li>
             
               
               <li>
@@ -238,7 +252,7 @@
             
               
               <li>
-                <a href="#method-i-load_from_cache">load_from_cache</a>
+                <a href="#method-i-load">load</a>
               </li>
             
           </ul>
@@ -316,7 +330,7 @@
             
               
               <li>
-                <a href="#method-i-restore">restore</a>,
+                <a href="#method-i-reset_backend">reset_backend</a>,
               </li>
             
               
@@ -351,6 +365,18 @@
               
               <li>
                 <a href="#method-i-tokenizer">tokenizer</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>U</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-unshift">unshift</a>
               </li>
             
           </ul>
@@ -393,6 +419,14 @@
       <!-- Section attributes -->
       <div class="sectiontitle">Attributes</div>
       <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>backend</td>
+            <td class='attr-desc'></td>
+          </tr>
         
           <tr valign='top'>
             <td class='attr-rw'>
@@ -477,7 +511,7 @@
                 
               </p>
               <div id="method-c-new_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category.rb, line 26</span>
+                <pre><span class="ruby-comment"># File lib/picky/category.rb, line 27</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">index</span>, <span class="ruby-identifier">options</span> = {}
   <span class="ruby-ivar">@name</span>  = <span class="ruby-identifier">name</span>
   <span class="ruby-ivar">@index</span> = <span class="ruby-identifier">index</span>
@@ -487,9 +521,13 @@
   <span class="ruby-ivar">@source</span>     = <span class="ruby-identifier">options</span>[<span class="ruby-value">:source</span>]
   <span class="ruby-ivar">@from</span>       = <span class="ruby-identifier">options</span>[<span class="ruby-value">:from</span>]
   <span class="ruby-ivar">@tokenizer</span>  = <span class="ruby-identifier">options</span>[<span class="ruby-value">:tokenizer</span>]
-  <span class="ruby-ivar">@key_format</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:key_format</span>]
-  <span class="ruby-comment"># @symbols    = options[:use_symbols] || index.use_symbols? # TODO Symbols.</span>
+
+  <span class="ruby-ivar">@key_format</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span> <span class="ruby-value">:key_format</span>
+  <span class="ruby-ivar">@backend</span>    = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span> <span class="ruby-value">:backend</span>
+
   <span class="ruby-ivar">@qualifiers</span> = <span class="ruby-identifier">extract_qualifiers_from</span> <span class="ruby-identifier">options</span>
+
+  <span class="ruby-comment"># @symbols    = options[:use_symbols] || index.use_symbols? # TODO Symbols.</span>
 
   <span class="ruby-identifier">weights</span>    = <span class="ruby-identifier">options</span>[<span class="ruby-value">:weights</span>]    <span class="ruby-operator">||</span> <span class="ruby-constant">Generators</span><span class="ruby-operator">::</span><span class="ruby-constant">Weights</span><span class="ruby-operator">::</span><span class="ruby-constant">Default</span>
   <span class="ruby-identifier">partial</span>    = <span class="ruby-identifier">options</span>[<span class="ruby-value">:partial</span>]    <span class="ruby-operator">||</span> <span class="ruby-constant">Generators</span><span class="ruby-operator">::</span><span class="ruby-constant">Partial</span><span class="ruby-operator">::</span><span class="ruby-constant">Default</span>
@@ -498,11 +536,11 @@
   <span class="ruby-identifier">no_partial</span>    = <span class="ruby-constant">Generators</span><span class="ruby-operator">::</span><span class="ruby-constant">Partial</span><span class="ruby-operator">::</span><span class="ruby-constant">None</span>.<span class="ruby-identifier">new</span>
   <span class="ruby-identifier">no_similarity</span> = <span class="ruby-constant">Generators</span><span class="ruby-operator">::</span><span class="ruby-constant">Similarity</span><span class="ruby-operator">::</span><span class="ruby-constant">None</span>.<span class="ruby-identifier">new</span>
 
-  <span class="ruby-ivar">@exact</span> = <span class="ruby-constant">Bundle</span>.<span class="ruby-identifier">new</span> <span class="ruby-value">:exact</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">index</span>.<span class="ruby-identifier">backend</span>, <span class="ruby-identifier">weights</span>, <span class="ruby-identifier">no_partial</span>, <span class="ruby-identifier">similarity</span>, <span class="ruby-identifier">options</span>
+  <span class="ruby-ivar">@exact</span> = <span class="ruby-constant">Bundle</span>.<span class="ruby-identifier">new</span> <span class="ruby-value">:exact</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">weights</span>, <span class="ruby-identifier">no_partial</span>, <span class="ruby-identifier">similarity</span>, <span class="ruby-identifier">options</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">partial</span>.<span class="ruby-identifier">use_exact_for_partial?</span>
     <span class="ruby-ivar">@partial</span> = <span class="ruby-constant">Wrappers</span><span class="ruby-operator">::</span><span class="ruby-constant">Bundle</span><span class="ruby-operator">::</span><span class="ruby-constant">ExactPartial</span>.<span class="ruby-identifier">new</span> <span class="ruby-ivar">@exact</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-ivar">@partial</span> = <span class="ruby-constant">Bundle</span>.<span class="ruby-identifier">new</span> <span class="ruby-value">:partial</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">index</span>.<span class="ruby-identifier">backend</span>, <span class="ruby-identifier">weights</span>, <span class="ruby-identifier">partial</span>, <span class="ruby-identifier">no_similarity</span>, <span class="ruby-identifier">options</span>
+    <span class="ruby-ivar">@partial</span> = <span class="ruby-constant">Bundle</span>.<span class="ruby-identifier">new</span> <span class="ruby-value">:partial</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">weights</span>, <span class="ruby-identifier">partial</span>, <span class="ruby-identifier">no_similarity</span>, <span class="ruby-identifier">options</span>
   <span class="ruby-keyword">end</span>
 
   <span class="ruby-ivar">@prepared</span> = <span class="ruby-constant">Backends</span><span class="ruby-operator">::</span><span class="ruby-constant">Memory</span><span class="ruby-operator">::</span><span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">prepared_index_path</span>
@@ -514,6 +552,40 @@
                   
       <div class="sectiontitle">Instance Public methods</div>
       
+        <div class="method">
+          <div class="title method-title" id="method-i-3C-3C">
+            
+              <a name="method-i-3C-3C"></a><b>&lt;&lt;</b>(thing)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Add at the end.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3C-3C_source')" id="l_method-i-3C-3C_source">show</a>
+                
+              </p>
+              <div id="method-i-3C-3C_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword ruby-title">thing</span>
+  <span class="ruby-identifier">add</span> <span class="ruby-identifier">thing</span>, <span class="ruby-identifier">__method__</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
         <div class="method">
           <div class="title method-title" id="method-i-add">
             
@@ -539,7 +611,7 @@
                 
               </p>
               <div id="method-i-add_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 16</span>
+                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 17</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add</span> <span class="ruby-identifier">object</span>, <span class="ruby-identifier">where</span> = <span class="ruby-value">:unshift</span>
   <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">_</span> = <span class="ruby-identifier">tokenizer</span>.<span class="ruby-identifier">tokenize</span> <span class="ruby-identifier">object</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">from</span>)
   <span class="ruby-identifier">add_tokenized</span> <span class="ruby-identifier">object</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">where</span>
@@ -574,7 +646,7 @@
                 
               </p>
               <div id="method-i-add_tokenized_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 32</span>
+                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 45</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add_tokenized</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">where</span> = <span class="ruby-value">:unshift</span>
   <span class="ruby-identifier">tokens</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">text</span><span class="ruby-operator">|</span> <span class="ruby-identifier">add_tokenized_token</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">text</span>, <span class="ruby-identifier">where</span> }
 <span class="ruby-keyword">end</span></pre>
@@ -608,10 +680,11 @@
                 
               </p>
               <div id="method-i-add_tokenized_token_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 38</span>
+                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 51</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add_tokenized_token</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">text</span>, <span class="ruby-identifier">where</span> = <span class="ruby-value">:unshift</span>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">text</span>
-  <span class="ruby-identifier">id</span>   = <span class="ruby-identifier">id</span>.<span class="ruby-identifier">send</span> <span class="ruby-identifier">key_format</span> <span class="ruby-comment"># TODO Speed this up!</span>
+  <span class="ruby-identifier">id</span> = <span class="ruby-identifier">id</span>.<span class="ruby-identifier">send</span> <span class="ruby-identifier">key_format</span> <span class="ruby-comment"># TODO Speed this up!</span>
+
   <span class="ruby-comment"># text = text.to_sym if @symbols # TODO Symbols.</span>
   <span class="ruby-identifier">exact</span>.<span class="ruby-identifier">add</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">text</span>, <span class="ruby-identifier">where</span>
   <span class="ruby-identifier">partial</span>.<span class="ruby-identifier">add_partialized</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">text</span>, <span class="ruby-identifier">where</span>
@@ -622,15 +695,15 @@
           </div>
         
         <div class="method">
-          <div class="title method-title" id="method-i-backup">
+          <div class="title method-title" id="method-i-build_realtime_mapping">
             
-              <a name="method-i-backup"></a><b>backup</b>()
+              <a name="method-i-build_realtime_mapping"></a><b>build_realtime_mapping</b>()
             
           </div>
           
           
             <div class="description">
-              <p>Backup the caches. (Revert with restore_caches)</p>
+              <p>Builds the realtime mapping.</p>
             </div>
           
           
@@ -642,15 +715,14 @@
               
               <p class="source-link">
                 Source: 
-                <a href="javascript:toggleSource('method-i-backup_source')" id="l_method-i-backup_source">show</a>
+                <a href="javascript:toggleSource('method-i-build_realtime_mapping_source')" id="l_method-i-build_realtime_mapping_source">show</a>
                 
               </p>
-              <div id="method-i-backup_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_indexing.rb, line 130</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">backup</span>
-  <span class="ruby-identifier">timed_exclaim</span> <span class="ruby-node">&quot;Backing up #{identifier}.&quot;</span>
-  <span class="ruby-identifier">exact</span>.<span class="ruby-identifier">backup</span>
-  <span class="ruby-identifier">partial</span>.<span class="ruby-identifier">backup</span>
+              <div id="method-i-build_realtime_mapping_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 69</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">build_realtime_mapping</span>
+  <span class="ruby-identifier">exact</span>.<span class="ruby-identifier">build_realtime</span>
+  <span class="ruby-identifier">partial</span>.<span class="ruby-identifier">build_realtime</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -682,7 +754,7 @@
                 
               </p>
               <div id="method-i-bundle_for_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_indexed.rb, line 31</span>
+                <pre><span class="ruby-comment"># File lib/picky/category_indexed.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">bundle_for</span> <span class="ruby-identifier">token</span>
   <span class="ruby-identifier">token</span>.<span class="ruby-identifier">partial?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">partial</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">exact</span>
 <span class="ruby-keyword">end</span></pre>
@@ -716,48 +788,12 @@
                 
               </p>
               <div id="method-i-cache_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_indexing.rb, line 49</span>
+                <pre><span class="ruby-comment"># File lib/picky/category_indexing.rb, line 50</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">cache</span>
   <span class="ruby-identifier">empty</span>
   <span class="ruby-identifier">retrieve</span>
   <span class="ruby-identifier">dump</span>
-  <span class="ruby-identifier">clear_realtime_mapping</span> <span class="ruby-comment"># TODO To call or not to call, that is the question.</span>
-<span class="ruby-keyword">end</span></pre>
-              </div>
-            </div>
-            
-          </div>
-        
-        <div class="method">
-          <div class="title method-title" id="method-i-check">
-            
-              <a name="method-i-check"></a><b>check</b>()
-            
-          </div>
-          
-          
-            <div class="description">
-              <p>Checks the caches for existence.</p>
-            </div>
-          
-          
-          
-          
-          
-            
-            <div class="sourcecode">
-              
-              <p class="source-link">
-                Source: 
-                <a href="javascript:toggleSource('method-i-check_source')" id="l_method-i-check_source">show</a>
-                
-              </p>
-              <div id="method-i-check_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_indexing.rb, line 113</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">check</span>
-  <span class="ruby-identifier">timed_exclaim</span> <span class="ruby-node">&quot;Checking #{identifier}.&quot;</span>
-  <span class="ruby-identifier">exact</span>.<span class="ruby-identifier">raise_unless_cache_exists</span>
-  <span class="ruby-identifier">partial</span>.<span class="ruby-identifier">raise_unless_cache_exists</span>
+  <span class="ruby-identifier">clear_realtime</span> <span class="ruby-comment"># TODO To call or not to call, that is the question.</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -773,7 +809,11 @@
           
           
             <div class="description">
-              <p>Deletes the caches.</p>
+              <p>Clears the caches.</p>
+
+<p>TODO Think about the semantics of clear.</p>
+
+<pre>Is a delete even needed or is it clear+dump?</pre>
             </div>
           
           
@@ -789,11 +829,10 @@
                 
               </p>
               <div id="method-i-clear_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_indexing.rb, line 121</span>
+                <pre><span class="ruby-comment"># File lib/picky/category_indexing.rb, line 115</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">clear</span>
-  <span class="ruby-identifier">timed_exclaim</span> <span class="ruby-node">&quot;Deleting #{identifier}.&quot;</span>
-  <span class="ruby-identifier">exact</span>.<span class="ruby-identifier">delete</span>
-  <span class="ruby-identifier">partial</span>.<span class="ruby-identifier">delete</span>
+  <span class="ruby-identifier">exact</span>.<span class="ruby-identifier">clear</span>
+  <span class="ruby-identifier">partial</span>.<span class="ruby-identifier">clear</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -801,9 +840,9 @@
           </div>
         
         <div class="method">
-          <div class="title method-title" id="method-i-clear_realtime_mapping">
+          <div class="title method-title" id="method-i-clear_realtime">
             
-              <a name="method-i-clear_realtime_mapping"></a><b>clear_realtime_mapping</b>()
+              <a name="method-i-clear_realtime"></a><b>clear_realtime</b>()
             
           </div>
           
@@ -821,14 +860,14 @@
               
               <p class="source-link">
                 Source: 
-                <a href="javascript:toggleSource('method-i-clear_realtime_mapping_source')" id="l_method-i-clear_realtime_mapping_source">show</a>
+                <a href="javascript:toggleSource('method-i-clear_realtime_source')" id="l_method-i-clear_realtime_source">show</a>
                 
               </p>
-              <div id="method-i-clear_realtime_mapping_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 48</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">clear_realtime_mapping</span>
-  <span class="ruby-identifier">exact</span>.<span class="ruby-identifier">clear_realtime_mapping</span>
-  <span class="ruby-identifier">partial</span>.<span class="ruby-identifier">clear_realtime_mapping</span>
+              <div id="method-i-clear_realtime_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 62</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">clear_realtime</span>
+  <span class="ruby-identifier">exact</span>.<span class="ruby-identifier">clear_realtime</span>
+  <span class="ruby-identifier">partial</span>.<span class="ruby-identifier">clear_realtime</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -860,7 +899,7 @@
                 
               </p>
               <div id="method-i-combination_for_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_indexed.rb, line 38</span>
+                <pre><span class="ruby-comment"># File lib/picky/category_indexed.rb, line 40</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">combination_for</span> <span class="ruby-identifier">token</span>
   <span class="ruby-identifier">weight</span>(<span class="ruby-identifier">token</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Combination</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">token</span>, <span class="ruby-keyword">self</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -878,7 +917,7 @@
           
           
             <div class="description">
-              
+              <p>Dumps both bundles.</p>
             </div>
           
           
@@ -894,11 +933,50 @@
                 
               </p>
               <div id="method-i-dump_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category.rb, line 63</span>
+                <pre><span class="ruby-comment"># File lib/picky/category.rb, line 70</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">dump</span>
   <span class="ruby-identifier">exact</span>.<span class="ruby-identifier">dump</span>
   <span class="ruby-identifier">partial</span>.<span class="ruby-identifier">dump</span>
   <span class="ruby-identifier">timed_exclaim</span> <span class="ruby-node">%Q{&quot;#{identifier}&quot;: Generated -&gt; #{index_directory.gsub(&quot;#{PICKY_ROOT}/&quot;, '')}.}</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-each_bundle">
+            
+              <a name="method-i-each_bundle"></a><b>each_bundle</b>(&amp;block)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-each_bundle_source')" id="l_method-i-each_bundle_source">show</a>
+                
+              </p>
+              <div id="method-i-each_bundle_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/category_convenience.rb, line 5</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">each_bundle</span> &amp;<span class="ruby-identifier">block</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">block</span>
+    <span class="ruby-keyword">yield</span> <span class="ruby-identifier">exact</span>
+    <span class="ruby-keyword">yield</span> <span class="ruby-identifier">partial</span>
+  <span class="ruby-keyword">else</span>
+    [<span class="ruby-identifier">exact</span>, <span class="ruby-identifier">partial</span>]
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -930,7 +1008,7 @@
                 
               </p>
               <div id="method-i-each_category_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category.rb, line 89</span>
+                <pre><span class="ruby-comment"># File lib/picky/category.rb, line 110</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">each_category</span>
   <span class="ruby-keyword">yield</span> <span class="ruby-keyword">self</span>
 <span class="ruby-keyword">end</span></pre>
@@ -964,7 +1042,7 @@
                 
               </p>
               <div id="method-i-empty_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_indexing.rb, line 30</span>
+                <pre><span class="ruby-comment"># File lib/picky/category_indexing.rb, line 31</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">empty</span>
   <span class="ruby-identifier">exact</span>.<span class="ruby-identifier">empty</span>
   <span class="ruby-identifier">partial</span>.<span class="ruby-identifier">empty</span>
@@ -999,7 +1077,7 @@
                 
               </p>
               <div id="method-i-extract_qualifiers_from_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category.rb, line 83</span>
+                <pre><span class="ruby-comment"># File lib/picky/category.rb, line 104</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">extract_qualifiers_from</span> <span class="ruby-identifier">options</span>
   <span class="ruby-identifier">options</span>[<span class="ruby-value">:qualifiers</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:qualifier</span>] <span class="ruby-operator">&amp;&amp;</span> [<span class="ruby-identifier">options</span>[<span class="ruby-value">:qualifier</span>]]
 <span class="ruby-keyword">end</span></pre>
@@ -1019,8 +1097,6 @@
             <div class="description">
               <p>Extract the actual source if it is wrapped in a time capsule, i.e. a
 block/lambda.</p>
-
-<p>TODO Extract into module.</p>
             </div>
           
           
@@ -1036,7 +1112,7 @@ block/lambda.</p>
                 
               </p>
               <div id="method-i-extract_source_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_indexing.rb, line 75</span>
+                <pre><span class="ruby-comment"># File lib/picky/category_indexing.rb, line 74</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">extract_source</span>
   <span class="ruby-ivar">@source</span> = <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:call</span>) <span class="ruby-operator">?</span> <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">call</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@source</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1070,7 +1146,7 @@ block/lambda.</p>
                 
               </p>
               <div id="method-i-from_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_indexing.rb, line 93</span>
+                <pre><span class="ruby-comment"># File lib/picky/category_indexing.rb, line 92</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">from</span>
   <span class="ruby-ivar">@from</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">name</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1104,7 +1180,7 @@ block/lambda.</p>
                 
               </p>
               <div id="method-i-identifier_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category.rb, line 117</span>
+                <pre><span class="ruby-comment"># File lib/picky/category.rb, line 138</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">identifier</span>
   <span class="ruby-node">&quot;#{@index.identifier}:#{name}&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1138,7 +1214,7 @@ block/lambda.</p>
                 
               </p>
               <div id="method-i-ids_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_indexed.rb, line 25</span>
+                <pre><span class="ruby-comment"># File lib/picky/category_indexed.rb, line 27</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ids</span> <span class="ruby-identifier">token</span>
   <span class="ruby-identifier">bundle_for</span>(<span class="ruby-identifier">token</span>).<span class="ruby-identifier">ids</span> <span class="ruby-identifier">token</span>.<span class="ruby-identifier">text</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1211,7 +1287,7 @@ block/lambda.</p>
                 
               </p>
               <div id="method-i-index_directory_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category.rb, line 111</span>
+                <pre><span class="ruby-comment"># File lib/picky/category.rb, line 132</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">index_directory</span>
   <span class="ruby-ivar">@index_directory</span> <span class="ruby-operator">||=</span> <span class="ruby-node">&quot;#{PICKY_ROOT}/index/#{PICKY_ENVIRONMENT}/#{@index.name}&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1245,7 +1321,7 @@ block/lambda.</p>
                 
               </p>
               <div id="method-i-index_name_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category.rb, line 71</span>
+                <pre><span class="ruby-comment"># File lib/picky/category.rb, line 92</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">index_name</span>
   <span class="ruby-ivar">@index</span>.<span class="ruby-identifier">name</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1279,7 +1355,7 @@ block/lambda.</p>
                 
               </p>
               <div id="method-i-indexer_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_indexing.rb, line 99</span>
+                <pre><span class="ruby-comment"># File lib/picky/category_indexing.rb, line 98</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">indexer</span>
   <span class="ruby-ivar">@indexer</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">source</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:each</span>) <span class="ruby-operator">?</span> <span class="ruby-constant">Indexers</span><span class="ruby-operator">::</span><span class="ruby-constant">Parallel</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>) <span class="ruby-operator">:</span> <span class="ruby-constant">Indexers</span><span class="ruby-operator">::</span><span class="ruby-constant">Serial</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -1319,7 +1395,7 @@ one.</p>
                 
               </p>
               <div id="method-i-key_format_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_indexing.rb, line 87</span>
+                <pre><span class="ruby-comment"># File lib/picky/category_indexing.rb, line 86</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">key_format</span>
   <span class="ruby-ivar">@key_format</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">source</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:key_format</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">source</span>.<span class="ruby-identifier">key_format</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@index</span>.<span class="ruby-identifier">key_format</span> <span class="ruby-operator">||</span> <span class="ruby-value">:to_i</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1329,9 +1405,9 @@ one.</p>
           </div>
         
         <div class="method">
-          <div class="title method-title" id="method-i-load_from_cache">
+          <div class="title method-title" id="method-i-load">
             
-              <a name="method-i-load_from_cache"></a><b>load_from_cache</b>()
+              <a name="method-i-load"></a><b>load</b>()
             
           </div>
           
@@ -1353,14 +1429,14 @@ one.</p>
               
               <p class="source-link">
                 Source: 
-                <a href="javascript:toggleSource('method-i-load_from_cache_source')" id="l_method-i-load_from_cache_source">show</a>
+                <a href="javascript:toggleSource('method-i-load_source')" id="l_method-i-load_source">show</a>
                 
               </p>
-              <div id="method-i-load_from_cache_source" class="dyn-source">
+              <div id="method-i-load_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/category_indexed.rb, line 9</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">load_from_cache</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">load</span>
   <span class="ruby-identifier">timed_exclaim</span> <span class="ruby-node">%Q{&quot;#{identifier}&quot;: Loading index from cache.}</span>
-  <span class="ruby-identifier">clear_realtime_mapping</span>
+  <span class="ruby-identifier">clear_realtime</span> <span class="ruby-comment"># TODO What to do?</span>
   <span class="ruby-identifier">exact</span>.<span class="ruby-identifier">load</span>
   <span class="ruby-identifier">partial</span>.<span class="ruby-identifier">load</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1396,9 +1472,10 @@ one.</p>
               <div id="method-i-prepare_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/category_indexing.rb, line 21</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">prepare</span>
-  <span class="ruby-identifier">empty</span>
+  <span class="ruby-identifier">categories</span> = <span class="ruby-constant">Categories</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">categories</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword">self</span>
   <span class="ruby-identifier">with_data_snapshot</span> <span class="ruby-keyword">do</span>
-    <span class="ruby-identifier">indexer</span>.<span class="ruby-identifier">index</span> [<span class="ruby-keyword">self</span>]
+    <span class="ruby-identifier">indexer</span>.<span class="ruby-identifier">index</span> <span class="ruby-identifier">categories</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
@@ -1433,7 +1510,7 @@ one.</p>
                 
               </p>
               <div id="method-i-prepared_index_file_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category.rb, line 102</span>
+                <pre><span class="ruby-comment"># File lib/picky/category.rb, line 123</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">prepared_index_file</span> &amp;<span class="ruby-identifier">block</span>
   <span class="ruby-ivar">@prepared_index_file</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Backends</span><span class="ruby-operator">::</span><span class="ruby-constant">Memory</span><span class="ruby-operator">::</span><span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">prepared_index_path</span>
   <span class="ruby-ivar">@prepared_index_file</span>.<span class="ruby-identifier">open</span> &amp;<span class="ruby-identifier">block</span>
@@ -1468,7 +1545,7 @@ one.</p>
                 
               </p>
               <div id="method-i-prepared_index_path_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category.rb, line 95</span>
+                <pre><span class="ruby-comment"># File lib/picky/category.rb, line 116</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">prepared_index_path</span>
   <span class="ruby-ivar">@prepared_index_path</span> <span class="ruby-operator">||=</span> <span class="ruby-node">&quot;#{index_directory}/prepared_#{name}_index&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1502,7 +1579,7 @@ one.</p>
                 
               </p>
               <div id="method-i-qualifiers_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category.rb, line 78</span>
+                <pre><span class="ruby-comment"># File lib/picky/category.rb, line 99</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">qualifiers</span>
   <span class="ruby-ivar">@qualifiers</span> <span class="ruby-operator">||</span> [<span class="ruby-identifier">name</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -1520,7 +1597,7 @@ one.</p>
           
           
             <div class="description">
-              <p><a href="Indexes.html">Indexes</a> and reloads the category.</p>
+              <p><a href="Indexes.html">Indexes</a> and loads the category.</p>
             </div>
           
           
@@ -1536,10 +1613,10 @@ one.</p>
                 
               </p>
               <div id="method-i-reindex_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category.rb, line 58</span>
+                <pre><span class="ruby-comment"># File lib/picky/category.rb, line 63</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">reindex</span>
   <span class="ruby-identifier">index</span>
-  <span class="ruby-identifier">reload</span>
+  <span class="ruby-identifier">load</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -1555,7 +1632,7 @@ one.</p>
           
           
             <div class="description">
-              
+              <p>TODO Remove in 4.0.</p>
             </div>
           
           
@@ -1591,6 +1668,7 @@ one.</p>
               <div id="method-i-remove_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 8</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">remove</span> <span class="ruby-identifier">id</span>
+  <span class="ruby-identifier">id</span> = <span class="ruby-identifier">id</span>.<span class="ruby-identifier">send</span> <span class="ruby-identifier">key_format</span>
   <span class="ruby-identifier">exact</span>.<span class="ruby-identifier">remove</span> <span class="ruby-identifier">id</span>
   <span class="ruby-identifier">partial</span>.<span class="ruby-identifier">remove</span> <span class="ruby-identifier">id</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1624,7 +1702,7 @@ one.</p>
                 
               </p>
               <div id="method-i-replace_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 24</span>
+                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 25</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">replace</span> <span class="ruby-identifier">object</span>, <span class="ruby-identifier">where</span> = <span class="ruby-value">:unshift</span>
   <span class="ruby-identifier">remove</span> <span class="ruby-identifier">object</span>.<span class="ruby-identifier">id</span>
   <span class="ruby-identifier">add</span> <span class="ruby-identifier">object</span>, <span class="ruby-identifier">where</span>
@@ -1635,15 +1713,15 @@ one.</p>
           </div>
         
         <div class="method">
-          <div class="title method-title" id="method-i-restore">
+          <div class="title method-title" id="method-i-reset_backend">
             
-              <a name="method-i-restore"></a><b>restore</b>()
+              <a name="method-i-reset_backend"></a><b>reset_backend</b>()
             
           </div>
           
           
             <div class="description">
-              <p>Restore the caches. (Revert with backup_caches)</p>
+              <p>Resets backends in both bundles.</p>
             </div>
           
           
@@ -1655,15 +1733,14 @@ one.</p>
               
               <p class="source-link">
                 Source: 
-                <a href="javascript:toggleSource('method-i-restore_source')" id="l_method-i-restore_source">show</a>
+                <a href="javascript:toggleSource('method-i-reset_backend_source')" id="l_method-i-reset_backend_source">show</a>
                 
               </p>
-              <div id="method-i-restore_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_indexing.rb, line 139</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">restore</span>
-  <span class="ruby-identifier">timed_exclaim</span> <span class="ruby-node">&quot;Restoring #{identifier}.&quot;</span>
-  <span class="ruby-identifier">exact</span>.<span class="ruby-identifier">restore</span>
-  <span class="ruby-identifier">partial</span>.<span class="ruby-identifier">restore</span>
+              <div id="method-i-reset_backend_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/category.rb, line 85</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">reset_backend</span>
+  <span class="ruby-identifier">exact</span>.<span class="ruby-identifier">reset_backend</span>
+  <span class="ruby-identifier">partial</span>.<span class="ruby-identifier">reset_backend</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -1696,7 +1773,7 @@ necessary derived indexes.</p>
                 
               </p>
               <div id="method-i-retrieve_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_indexing.rb, line 59</span>
+                <pre><span class="ruby-comment"># File lib/picky/category_indexing.rb, line 60</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">retrieve</span>
   <span class="ruby-identifier">prepared</span>.<span class="ruby-identifier">retrieve</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">id</span>, <span class="ruby-identifier">token</span><span class="ruby-operator">|</span> <span class="ruby-identifier">add_tokenized_token</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">token</span>, <span class="ruby-value">:&lt;&lt;</span> }
 <span class="ruby-keyword">end</span></pre>
@@ -1732,9 +1809,9 @@ necessary derived indexes.</p>
                 
               </p>
               <div id="method-i-source_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_indexing.rb, line 67</span>
+                <pre><span class="ruby-comment"># File lib/picky/category_indexing.rb, line 68</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">source</span>
-  (<span class="ruby-ivar">@source</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">extract_source</span>) <span class="ruby-operator">||</span> <span class="ruby-ivar">@index</span>.<span class="ruby-identifier">source</span>
+  <span class="ruby-identifier">extract_source</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@index</span>.<span class="ruby-identifier">source</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -1766,7 +1843,7 @@ necessary derived indexes.</p>
                 
               </p>
               <div id="method-i-to_s_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category.rb, line 123</span>
+                <pre><span class="ruby-comment"># File lib/picky/category.rb, line 144</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
   <span class="ruby-node">&quot;#{self.class}(#{identifier})&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1801,9 +1878,43 @@ try the index, and finally the default index tokenizer.</p>
                 
               </p>
               <div id="method-i-tokenizer_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_indexing.rb, line 107</span>
+                <pre><span class="ruby-comment"># File lib/picky/category_indexing.rb, line 106</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">tokenizer</span>
   <span class="ruby-ivar">@tokenizer</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@index</span>.<span class="ruby-identifier">tokenizer</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-unshift">
+            
+              <a name="method-i-unshift"></a><b>unshift</b>(thing)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Add at the beginning.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-unshift_source')" id="l_method-i-unshift_source">show</a>
+                
+              </p>
+              <div id="method-i-unshift_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">unshift</span> <span class="ruby-identifier">thing</span>
+  <span class="ruby-identifier">add</span> <span class="ruby-identifier">thing</span>, <span class="ruby-identifier">__method__</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -1835,7 +1946,7 @@ try the index, and finally the default index tokenizer.</p>
                 
               </p>
               <div id="method-i-weight_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_indexed.rb, line 19</span>
+                <pre><span class="ruby-comment"># File lib/picky/category_indexed.rb, line 21</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">weight</span> <span class="ruby-identifier">token</span>
   <span class="ruby-identifier">bundle_for</span>(<span class="ruby-identifier">token</span>).<span class="ruby-identifier">weight</span> <span class="ruby-identifier">token</span>.<span class="ruby-identifier">text</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1869,7 +1980,7 @@ try the index, and finally the default index tokenizer.</p>
                 
               </p>
               <div id="method-i-with_data_snapshot_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_indexing.rb, line 37</span>
+                <pre><span class="ruby-comment"># File lib/picky/category_indexing.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">with_data_snapshot</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">source</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:with_snapshot</span>
     <span class="ruby-identifier">source</span>.<span class="ruby-identifier">with_snapshot</span>(<span class="ruby-ivar">@index</span>) <span class="ruby-keyword">do</span>

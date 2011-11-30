@@ -68,7 +68,12 @@ href="Marshal.html">Marshal</a> format.</p>
             
               
               <li>
-                <a href="#method-i-dump">dump</a>
+                <a href="#method-i-dump">dump</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-dump_marshal">dump_marshal</a>
               </li>
             
           </ul>
@@ -136,13 +141,13 @@ href="Marshal.html">Marshal</a> format.</p>
         <div class="method">
           <div class="title method-title" id="method-i-dump">
             
-              <a name="method-i-dump"></a><b>dump</b>(hash)
+              <a name="method-i-dump"></a><b>dump</b>(internal)
             
           </div>
           
           
             <div class="description">
-              <p>Dumps the index hash in marshal format.</p>
+              <p>Dumps the index internal backend in marshal format.</p>
             </div>
           
           
@@ -159,9 +164,45 @@ href="Marshal.html">Marshal</a> format.</p>
               </p>
               <div id="method-i-dump_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/backends/memory/marshal.rb, line 25</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">dump</span> <span class="ruby-identifier">hash</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">dump</span> <span class="ruby-identifier">internal</span>
   <span class="ruby-identifier">create_directory</span> <span class="ruby-identifier">cache_path</span>
-  <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">dump_marshal</span> <span class="ruby-identifier">cache_path</span>
+  <span class="ruby-identifier">dump_marshal</span> <span class="ruby-identifier">internal</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-dump_marshal">
+            
+              <a name="method-i-dump_marshal"></a><b>dump_marshal</b>(internal)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Dumps binary self to the path given. Minus extension.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-dump_marshal_source')" id="l_method-i-dump_marshal_source">show</a>
+                
+              </p>
+              <div id="method-i-dump_marshal_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/memory/marshal.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">dump_marshal</span> <span class="ruby-identifier">internal</span>
+  <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">cache_path</span>, <span class="ruby-string">'w:binary'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">out_file</span><span class="ruby-operator">|</span>
+    <span class="ruby-operator">::</span><span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">dump</span> <span class="ruby-identifier">internal</span>, <span class="ruby-identifier">out_file</span>
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -261,7 +302,7 @@ href="Marshal.html">Marshal</a> format.</p>
                 
               </p>
               <div id="method-i-retrieve_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/memory/marshal.rb, line 32</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/memory/marshal.rb, line 40</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">retrieve</span>
   <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;Can't retrieve from marshalled file. Use text file.&quot;</span>
 <span class="ruby-keyword">end</span></pre>

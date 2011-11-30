@@ -135,7 +135,7 @@
             
               
               <li>
-                <a href="#method-i-maximum_tokens">maximum_tokens</a>
+                <a href="#method-i-max_words">max_words</a>
               </li>
             
           </ul>
@@ -449,14 +449,14 @@
                 
               </p>
               <div id="method-c-new_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 156</span>
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 163</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> <span class="ruby-identifier">options</span> = {}
   <span class="ruby-identifier">substitutes_characters_with</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:substitutes_characters_with</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:substitutes_characters_with</span>]
   <span class="ruby-identifier">removes_characters</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:removes_characters</span>]                   <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:removes_characters</span>]
   <span class="ruby-identifier">stopwords</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:stopwords</span>]                                     <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:stopwords</span>]
   <span class="ruby-identifier">splits_text_on</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:splits_text_on</span>]                           <span class="ruby-operator">||</span> <span class="ruby-regexp">/\s/</span>
   <span class="ruby-identifier">normalizes_words</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:normalizes_words</span>]                       <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:normalizes_words</span>]
-  <span class="ruby-identifier">maximum_tokens</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:maximum_tokens</span>]
+  <span class="ruby-identifier">max_words</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:max_words</span>]
   <span class="ruby-identifier">rejects_token_if</span> &amp;(<span class="ruby-identifier">options</span>[<span class="ruby-value">:rejects_token_if</span>]                     <span class="ruby-operator">||</span> <span class="ruby-value">:blank?</span>)
   <span class="ruby-identifier">case_sensitive</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:case_sensitive</span>]                           <span class="ruby-keyword">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:case_sensitive</span>].<span class="ruby-identifier">nil?</span>
 <span class="ruby-keyword">end</span></pre>
@@ -560,9 +560,9 @@
                 
               </p>
               <div id="method-i-cap_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 140</span>
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 147</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">cap</span> <span class="ruby-identifier">words</span>
-  <span class="ruby-identifier">words</span>.<span class="ruby-identifier">slice!</span>(<span class="ruby-ivar">@maximum_tokens</span><span class="ruby-operator">..</span><span class="ruby-number">-1</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">cap?</span>(<span class="ruby-identifier">words</span>)
+  <span class="ruby-identifier">words</span>.<span class="ruby-identifier">slice!</span>(<span class="ruby-ivar">@max_words</span><span class="ruby-operator">..</span><span class="ruby-number">-1</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">cap?</span>(<span class="ruby-identifier">words</span>)
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -594,9 +594,9 @@
                 
               </p>
               <div id="method-i-cap-3F_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 143</span>
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 150</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">cap?</span> <span class="ruby-identifier">words</span>
-  <span class="ruby-ivar">@maximum_tokens</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">words</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@maximum_tokens</span>
+  <span class="ruby-ivar">@max_words</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">words</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@max_words</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -612,7 +612,9 @@
           
           
             <div class="description">
-              
+              <p>Case sensitivity.</p>
+
+<p>Note: If false, simply downcases the data/query.</p>
             </div>
           
           
@@ -628,7 +630,7 @@
                 
               </p>
               <div id="method-i-case_sensitive_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 130</span>
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 134</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">case_sensitive</span> <span class="ruby-identifier">case_sensitive</span>
   <span class="ruby-ivar">@case_sensitive</span> = <span class="ruby-identifier">case_sensitive</span>
 <span class="ruby-keyword">end</span></pre>
@@ -662,7 +664,7 @@
                 
               </p>
               <div id="method-i-check_argument_in_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 149</span>
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 156</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">check_argument_in</span> <span class="ruby-identifier">method</span>, <span class="ruby-identifier">type</span>, <span class="ruby-identifier">argument</span>, &amp;<span class="ruby-identifier">condition</span>
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>.<span class="ruby-identifier">new</span> <span class="ruby-node">&quot;Application##{method} takes a #{type} as argument, not a #{argument.class}.&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">argument</span>
 <span class="ruby-keyword">end</span></pre>
@@ -696,7 +698,7 @@
                 
               </p>
               <div id="method-i-downcase-3F_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 133</span>
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 137</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">downcase?</span>
   <span class="ruby-operator">!</span><span class="ruby-ivar">@case_sensitive</span>
 <span class="ruby-keyword">end</span></pre>
@@ -730,7 +732,7 @@
                 
               </p>
               <div id="method-i-empty_tokens_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 224</span>
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 231</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">empty_tokens</span>
   [[], []]
 <span class="ruby-keyword">end</span></pre>
@@ -740,15 +742,15 @@
           </div>
         
         <div class="method">
-          <div class="title method-title" id="method-i-maximum_tokens">
+          <div class="title method-title" id="method-i-max_words">
             
-              <a name="method-i-maximum_tokens"></a><b>maximum_tokens</b>(amount)
+              <a name="method-i-max_words"></a><b>max_words</b>(amount)
             
           </div>
           
           
             <div class="description">
-              
+              <p>The maximum amount of words to pass into the search engine.</p>
             </div>
           
           
@@ -760,13 +762,13 @@
               
               <p class="source-link">
                 Source: 
-                <a href="javascript:toggleSource('method-i-maximum_tokens_source')" id="l_method-i-maximum_tokens_source">show</a>
+                <a href="javascript:toggleSource('method-i-max_words_source')" id="l_method-i-max_words_source">show</a>
                 
               </p>
-              <div id="method-i-maximum_tokens_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 137</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">maximum_tokens</span> <span class="ruby-identifier">amount</span>
-  <span class="ruby-ivar">@maximum_tokens</span> = <span class="ruby-identifier">amount</span>
+              <div id="method-i-max_words_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 144</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">max_words</span> <span class="ruby-identifier">amount</span>
+  <span class="ruby-ivar">@max_words</span> = <span class="ruby-identifier">amount</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -920,7 +922,7 @@
                 
               </p>
               <div id="method-i-preprocess_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 189</span>
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 196</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">preprocess</span> <span class="ruby-identifier">text</span>
   <span class="ruby-identifier">text</span> = <span class="ruby-identifier">substitute_characters</span> <span class="ruby-identifier">text</span>
   <span class="ruby-identifier">remove_illegals</span> <span class="ruby-identifier">text</span>
@@ -951,7 +953,7 @@
 <p>Does:</p>
 
 <pre>* Split the text into words.
-* Cap the amount of tokens if maximum_tokens is set.</pre>
+* Cap the amount of tokens if max_words is set.</pre>
             </div>
           
           
@@ -967,7 +969,7 @@
                 
               </p>
               <div id="method-i-pretokenize_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 207</span>
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 214</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">pretokenize</span> <span class="ruby-identifier">text</span>
   <span class="ruby-identifier">words</span> = <span class="ruby-identifier">split</span> <span class="ruby-identifier">text</span>
   <span class="ruby-identifier">words</span>.<span class="ruby-identifier">collect!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">word</span><span class="ruby-operator">|</span> <span class="ruby-identifier">normalize_with_patterns</span> <span class="ruby-identifier">word</span> } <span class="ruby-keyword">if</span> <span class="ruby-identifier">normalize_with_patterns?</span>
@@ -1445,7 +1447,7 @@ parameters given.</p>
                 
               </p>
               <div id="method-i-tokenize_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 173</span>
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 180</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">tokenize</span> <span class="ruby-identifier">text</span>
   <span class="ruby-identifier">text</span>   = <span class="ruby-identifier">preprocess</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-comment"># processing the text</span>
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">empty_tokens</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">blank?</span>
@@ -1484,7 +1486,7 @@ parameters given.</p>
                 
               </p>
               <div id="method-i-tokens_for_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 217</span>
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 224</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">tokens_for</span> <span class="ruby-identifier">words</span>
   <span class="ruby-identifier">words</span>.<span class="ruby-identifier">collect!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">word</span><span class="ruby-operator">|</span> <span class="ruby-identifier">word</span>.<span class="ruby-identifier">downcase!</span>; <span class="ruby-identifier">word</span> } <span class="ruby-keyword">if</span> <span class="ruby-identifier">downcase?</span>
   <span class="ruby-identifier">words</span>

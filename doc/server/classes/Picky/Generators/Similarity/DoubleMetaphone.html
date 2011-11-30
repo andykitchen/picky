@@ -102,13 +102,13 @@ levenshtein.</p>
         <div class="method">
           <div class="title method-title" id="method-i-encoded">
             
-              <a name="method-i-encoded"></a><b>encoded</b>(sym)
+              <a name="method-i-encoded"></a><b>encoded</b>(str_or_sym)
             
           </div>
           
           
             <div class="description">
-              <p>Encodes the given symbol.</p>
+              <p>Encodes the given string/symbol.</p>
 
 <p>Returns a symbol.</p>
             </div>
@@ -127,9 +127,8 @@ levenshtein.</p>
               </p>
               <div id="method-i-encoded_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/generators/similarity/double_metaphone.rb, line 21</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">encoded</span> <span class="ruby-identifier">sym</span>
-  <span class="ruby-identifier">codes</span> = <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-constant">Metaphone</span>.<span class="ruby-identifier">double_metaphone</span> <span class="ruby-identifier">sym</span>.<span class="ruby-identifier">to_s</span>
-  <span class="ruby-identifier">codes</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">intern</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">codes</span>.<span class="ruby-identifier">empty?</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">encoded</span> <span class="ruby-identifier">str_or_sym</span>
+  <span class="ruby-identifier">str_or_sym</span>.<span class="ruby-identifier">double_metaphone</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>

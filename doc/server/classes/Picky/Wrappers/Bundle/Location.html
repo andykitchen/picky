@@ -362,6 +362,7 @@ href="../../../Picky.html">Picky</a> internal location.</p>
   <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">load</span>
 
   <span class="ruby-comment"># TODO Symbols (of the location_anchor!!!).</span>
+  <span class="ruby-comment">#      It should always be a Symbol.</span>
   <span class="ruby-comment">#</span>
   <span class="ruby-ivar">@calculation</span>.<span class="ruby-identifier">anchor</span> = <span class="ruby-identifier">bundle</span>[<span class="ruby-string">'location_anchor'</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">bundle</span>[<span class="ruby-string">'location_anchor'</span>].<span class="ruby-identifier">to_f</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">raise</span>(<span class="ruby-node">&quot;Configuration 'location_anchor' for #{bundle.identifier} missing. Did you run rake index already?&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
