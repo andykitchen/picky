@@ -55,229 +55,229 @@
       </div>
     </div>
     <div class="container_2">
-          <h2>Features</h2>
-          <div class="grid_2 plain">
+      <h2>Features</h2>
+      <div class="grid_2 plain">
+        <ul>
+          <li>
+            <a href="#server">Full-blown standalone search server</a>
+          </li>
+          <li>
+            <a href="#client">Helpful, comfortable Javascript web client and server query interface.</a>
+          </li>
+          <li>
+            <a href="#statistics">Clam: Gaining insight on how good your search works</a>
+          </li>
+          <li>
+            <a href="#live">Suckerfish: Looking at and changing server parameters on the fly in the running server</a>
+          </li>
+        </ul>
+      </div>
+      <div class="grid_2">
+        <h3 id="server">Full-blown standalone search server</h3>
+        <div class="grid_1">
+          <h4>Goodies</h4>
+          <p>
+            Picky is a standalone search server currently offering a HTTP interface (returning JSON) and a nice in-code Ruby configuration (no huge XML files).
+            Also:
             <ul>
+              <li>Flexibly configure indexing</li>
               <li>
-                <a href="#server">Full-blown standalone search server</a>
+                Easily configure handling query text, e.g.
+                <code>splits_text_on:&nbsp;/[\s\/\-\"\&]/</code>
+              </li>
+              <li>Multiple data sources (DB, CSV, ...)</li>
+              <li>Choice of in-memory or Redis indexes.</li>
+              <li>
+                Partial searching,
+                <code>pick*</code>
               </li>
               <li>
-                <a href="#client">Helpful, comfortable Javascript web client and server query interface.</a>
+                Phonetic similarity,
+                <code>pecky~</code>
               </li>
               <li>
-                <a href="#statistics">Clam: Gaining insight on how good your search works</a>
+                Categorized searching,
+                <code>napoleon, title:war</code>
               </li>
               <li>
-                <a href="#live">Suckerfish: Looking at and changing server parameters on the fly in the running server</a>
+                Weighing not only categories, but combinations!
+                <code>{&nbsp;[:title,&nbsp;:author]&nbsp;=>&nbsp;+3,&nbsp;[:isbn,&nbsp;:author]&nbsp;=>&nbsp;-5&nbsp;}</code>
+              </li>
+              <li>
+                Range queries
+              </li>
+              <li>
+                Comfortable routing,
+                <code>route %r{/books} => book_query</code>
               </li>
             </ul>
-          </div>
-          <div class="grid_2">
-            <h3 id="server">Full-blown standalone search server</h3>
-            <div class="grid_1">
-              <h4>Goodies</h4>
-              <p>
-                Picky is a standalone search server currently offering a HTTP interface (returning JSON) and a nice in-code Ruby configuration (no huge XML files).
-                Also:
-                <ul>
-                  <li>Flexibly configure indexing</li>
-                  <li>
-                    Easily configure handling query text, e.g.
-                    <code>splits_text_on:&nbsp;/[\s\/\-\"\&]/</code>
-                  </li>
-                  <li>Multiple data sources (DB, CSV, ...)</li>
-                  <li>Choice of in-memory or Redis indexes.</li>
-                  <li>
-                    Partial searching,
-                    <code>pick*</code>
-                  </li>
-                  <li>
-                    Phonetic similarity,
-                    <code>pecky~</code>
-                  </li>
-                  <li>
-                    Categorized searching,
-                    <code>napoleon, title:war</code>
-                  </li>
-                  <li>
-                    Weighing not only categories, but combinations!
-                    <code>{&nbsp;[:title,&nbsp;:author]&nbsp;=>&nbsp;+3,&nbsp;[:isbn,&nbsp;:author]&nbsp;=>&nbsp;-5&nbsp;}</code>
-                  </li>
-                  <li>
-                    Range queries
-                  </li>
-                  <li>
-                    Comfortable routing,
-                    <code>route %r{/books} => book_query</code>
-                  </li>
-                </ul>
-                <p>
-                  … and much more.
-                </p>
-              </p>
-            </div>
-            <div class="grid_1">
-              <h4>Getting Started</h4>
-              <p>
-                <code><pre>gem install picky</pre></code>
-              </p>
-              <p>
-                There's a whole section devoted to getting started with Picky!
-                See
-                <a href="getting_started.html">here</a>
-                for getting on your feet quickly :)
-              </p>
-            </div>
-          </div>
-          <div class="grid_2">
-            <h3 id="client">Helpful, comfortable web client</h3>
-            <div class="grid_1">
-              <h4>Goodies</h4>
-              <p>
-                Offers a Ruby client that connects to the Server's JSON interface and provides a clever (in a helpful way) and easily configurable Javascript interface.
-              </p>
-              <p>
-                Including the interface in your views is as easy as
-                <code><pre>= Picky::Client.interface</pre></code>
-              </p>
-              <p>
-                and adding the
-                <code>picky.min.js</code>
-                file.
-              </p>
-              <p>
-                This is it:
-                <img src="images/client1.png" width="480px" />
-              </p>
-              <p>
-                This is how you search for books with title similar to lyterature that were published in 2002.
-              </p>
-              <p>
-                The gem also contains useful methods to render results into the JSON that is sent to the Javascript interface, extracting just the ids, and much more.
-              </p>
-            </div>
-            <div class="grid_1">
-              <h4>Getting Started</h4>
-              <p>
-                <code><pre>gem install picky-client</pre></code>
-              </p>
-              <p>
-                There's a whole section devoted to getting started with the Picky client!
-                See
-                <a href="getting_started.html">here</a>
-                and scroll down to the client part on the left.
-              </p>
-            </div>
-          </div>
-          <div class="grid_2">
-            <h3 id="statistics">Clam: Statistics Server</h3>
-            <div class="grid_1">
-              <h4>Goodies</h4>
-              <p>
-                Clam is a simple log parser that starts a in-gem webapp and shows you relevant statistics about your app.
-              </p>
-              <p>
-                This is part of its interface:
-                <img src="images/statistics.png" width="480px" />
-              </p>
-              <p>
-                It shows you
-                <ul>
-                  <li>how often people were successful in finding things</li>
-                  <li>if it was a request for "more results" (indicating that they haven't found it in the first 20 displayed results)</li>
-                  <li>how fast Picky was</li>
-                  <li>if the query was just a "results while you type" or a full one</li>
-                </ul>
-              </p>
-              <p>
-                and other things.
-              </p>
-            </div>
-            <div class="grid_1">
-              <h4>Getting Started</h4>
-              <p>
-                <code><pre>gem install picky-statistics</pre></code>
-              </p>
-              <p>Then run:</p>
-              <p>
-                <code><pre>picky stats path/to/pickys/log/search.log</pre></code>
-              </p>
-              <p>
-                If you are in the Picky server directory, the path is probably
-                <code>log/search.log</code>
-                .
-              </p>
-              <p>You should see a message like:</p>
-              <p>
-                <code><pre>Clam, Picky's friend, is looking at Picky's logfile.&#x000A;... and showing results on port 4567.</pre></code>
-              </p>
-              <p>
-                Go to
-                <a href="localhost:4567">localhost:4567</a>
-                and you should see the statistics interface in its full glory!
-              </p>
-              <p>
-                More params are available, just enter
-                <code>picky</code>
-                in the console.
-              </p>
-            </div>
-          </div>
-          <div class="grid_2">
-            <h3 id="live">Suckerfish: Live Interface into a running Picky</h3>
-            <div class="grid_1">
-              <h4>Goodies</h4>
-              <p>
-                Suckerfish is an introspective system that allows you to look at parameters of a running Picky Server. Not only that, it allows you to change parameters on the fly.
-              </p>
-              <p>
-                This is part of its interface:
-                <img src="images/live.png" width="480px" />
-              </p>
-              <p>
-                Currently, you have the possibility to modify how the server handles query input.
-              </p>
-              <p>
-                Hit "Update Server now" and see the effects instantly on all queries.
-              </p>
-              <p>
-                Note: Only works with multiprocessing servers, like Unicorn.
-              </p>
-            </div>
-            <div class="grid_1">
-              <h4>Getting Started</h4>
-              <p>
-                <code><pre>gem install picky-live</pre></code>
-              </p>
-              <p>
-                Add this to
-                <code>app/application.rb</code>
-                in the server:
-              </p>
-              <p>
-                <code><pre>%r{/admin} => LiveParameters.new</pre></code>
-              </p>
-              <p>Start the server and enter:</p>
-              <p>
-                <code><pre>picky live</pre></code>
-              </p>
-              <p>You should see a message like:</p>
-              <p>
-                <code><pre>Suckerfish has sucked onto Picky at localhost:8080/admin.&#x000A;Sinatra has taken the stage on port 4568...</pre></code>
-              </p>
-              <p>
-                Go to
-                <a href="localhost:4568">localhost:4568</a>
-                and fiddle with the parameters (server needs to be running).
-              </p>
-              <p>
-                More params are available, just enter
-                <code>picky</code>
-                in the console.
-              </p>
-            </div>
-          </div>
+            <p>
+              … and much more.
+            </p>
+          </p>
         </div>
+        <div class="grid_1">
+          <h4>Getting Started</h4>
+          <p>
+            <code><pre>gem install picky</pre></code>
+          </p>
+          <p>
+            There's a whole section devoted to getting started with Picky!
+            See
+            <a href="getting_started.html">here</a>
+            for getting on your feet quickly :)
+          </p>
+        </div>
+      </div>
+      <div class="grid_2">
+        <h3 id="client">Helpful, comfortable web client</h3>
+        <div class="grid_1">
+          <h4>Goodies</h4>
+          <p>
+            Offers a Ruby client that connects to the Server's JSON interface and provides a clever (in a helpful way) and easily configurable Javascript interface.
+          </p>
+          <p>
+            Including the interface in your views is as easy as
+            <code><pre>= Picky::Client.interface</pre></code>
+          </p>
+          <p>
+            and adding the
+            <code>picky.min.js</code>
+            file.
+          </p>
+          <p>
+            This is it:
+            <img src="images/client1.png" width="480px" />
+          </p>
+          <p>
+            This is how you search for books with title similar to lyterature that were published in 2002.
+          </p>
+          <p>
+            The gem also contains useful methods to render results into the JSON that is sent to the Javascript interface, extracting just the ids, and much more.
+          </p>
+        </div>
+        <div class="grid_1">
+          <h4>Getting Started</h4>
+          <p>
+            <code><pre>gem install picky-client</pre></code>
+          </p>
+          <p>
+            There's a whole section devoted to getting started with the Picky client!
+            See
+            <a href="getting_started.html">here</a>
+            and scroll down to the client part on the left.
+          </p>
+        </div>
+      </div>
+      <div class="grid_2">
+        <h3 id="statistics">Clam: Statistics Server</h3>
+        <div class="grid_1">
+          <h4>Goodies</h4>
+          <p>
+            Clam is a simple log parser that starts a in-gem webapp and shows you relevant statistics about your app.
+          </p>
+          <p>
+            This is part of its interface:
+            <img src="images/statistics.png" width="480px" />
+          </p>
+          <p>
+            It shows you
+            <ul>
+              <li>how often people were successful in finding things</li>
+              <li>if it was a request for "more results" (indicating that they haven't found it in the first 20 displayed results)</li>
+              <li>how fast Picky was</li>
+              <li>if the query was just a "results while you type" or a full one</li>
+            </ul>
+          </p>
+          <p>
+            and other things.
+          </p>
+        </div>
+        <div class="grid_1">
+          <h4>Getting Started</h4>
+          <p>
+            <code><pre>gem install picky-statistics</pre></code>
+          </p>
+          <p>Then run:</p>
+          <p>
+            <code><pre>picky stats path/to/pickys/log/search.log</pre></code>
+          </p>
+          <p>
+            If you are in the Picky server directory, the path is probably
+            <code>log/search.log</code>
+            .
+          </p>
+          <p>You should see a message like:</p>
+          <p>
+            <code><pre>Clam, Picky's friend, is looking at Picky's logfile.&#x000A;... and showing results on port 4567.</pre></code>
+          </p>
+          <p>
+            Go to
+            <a href="localhost:4567">localhost:4567</a>
+            and you should see the statistics interface in its full glory!
+          </p>
+          <p>
+            More params are available, just enter
+            <code>picky</code>
+            in the console.
+          </p>
+        </div>
+      </div>
+      <div class="grid_2">
+        <h3 id="live">Suckerfish: Live Interface into a running Picky</h3>
+        <div class="grid_1">
+          <h4>Goodies</h4>
+          <p>
+            Suckerfish is an introspective system that allows you to look at parameters of a running Picky Server. Not only that, it allows you to change parameters on the fly.
+          </p>
+          <p>
+            This is part of its interface:
+            <img src="images/live.png" width="480px" />
+          </p>
+          <p>
+            Currently, you have the possibility to modify how the server handles query input.
+          </p>
+          <p>
+            Hit "Update Server now" and see the effects instantly on all queries.
+          </p>
+          <p>
+            Note: Only works with multiprocessing servers, like Unicorn.
+          </p>
+        </div>
+        <div class="grid_1">
+          <h4>Getting Started</h4>
+          <p>
+            <code><pre>gem install picky-live</pre></code>
+          </p>
+          <p>
+            Add this to
+            <code>app/application.rb</code>
+            in the server:
+          </p>
+          <p>
+            <code><pre>%r{/admin} => LiveParameters.new</pre></code>
+          </p>
+          <p>Start the server and enter:</p>
+          <p>
+            <code><pre>picky live</pre></code>
+          </p>
+          <p>You should see a message like:</p>
+          <p>
+            <code><pre>Suckerfish has sucked onto Picky at localhost:8080/admin.&#x000A;Sinatra has taken the stage on port 4568...</pre></code>
+          </p>
+          <p>
+            Go to
+            <a href="localhost:4568">localhost:4568</a>
+            and fiddle with the parameters (server needs to be running).
+          </p>
+          <p>
+            More params are available, just enter
+            <code>picky</code>
+            in the console.
+          </p>
+        </div>
+      </div>
+    </div>
     <div class="license">
       Logos and all images are
       <a href="http://creativecommons.org/licenses/by/1.0/">CC Attribution</a>
