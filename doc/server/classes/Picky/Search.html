@@ -651,18 +651,16 @@ end</pre>
               <p>Tells <a href="../Picky.html">Picky</a> to terminate calculating ids if it
 has enough ids. (So, early)</p>
 
-<p>Important note: Do not use this for the live search!</p>
-
-<pre>(As Picky needs to calculate the total)</pre>
+<p>Important note: Do not use this for the live search! (As <a
+href="../Picky.html">Picky</a> needs to calculate the total)</p>
 
 <p>Note: When using the <a href="../Picky.html">Picky</a> interface, do not
-terminate too</p>
+terminate too early as this will kill off the allocation selections. A
+value of</p>
 
-<pre>early as this will kill off the allocation selections.
-A value of
-  early_terminate 5
-is probably a good idea to show the user 5 extra
-beyond the needed ones.</pre>
+<pre>early_terminate 5</pre>
+
+<p>is probably a good idea to show the user 5 extra beyond the needed ones.</p>
 
 <p>Examples:</p>
 

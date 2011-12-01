@@ -1,4 +1,4 @@
-Thu, 01 Dec 2011 17:40:59 +1100
+Thu, 01 Dec 2011 17:45:29 +1100
 lib/picky/adapters/rack/base.rb	Mon, 25 Jul 2011 16:01:53 +1000
 lib/picky/adapters/rack/live_parameters.rb	Mon, 31 Oct 2011 11:10:35 +1100
 lib/picky/adapters/rack/search.rb	Mon, 15 Aug 2011 14:34:47 +1000
@@ -112,7 +112,7 @@ lib/picky/query/tokens.rb	Sun, 13 Nov 2011 01:58:44 +1100
 lib/picky/query/weights.rb	Mon, 15 Aug 2011 12:15:21 +1000
 lib/picky/rack/harakiri.rb	Sun, 13 Nov 2011 20:11:18 +1100
 lib/picky/results.rb	Thu, 01 Dec 2011 14:37:21 +1100
-lib/picky/search.rb	Thu, 01 Dec 2011 15:12:08 +1100
+lib/picky/search.rb	Thu, 01 Dec 2011 17:45:22 +1100
 lib/picky/sinatra.rb	Fri, 15 Jul 2011 20:36:23 +1000
 lib/picky/sources/base.rb	Mon, 25 Jul 2011 14:51:02 +1000
 lib/picky/sources/couch.rb	Sat, 19 Nov 2011 15:09:26 +1100
