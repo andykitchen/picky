@@ -695,9 +695,9 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-add_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_realtime.rb, line 33</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle_realtime.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">str_or_sym</span>, <span class="ruby-identifier">where</span> = <span class="ruby-value">:unshift</span>
-  <span class="ruby-identifier">str_or_syms</span> = <span class="ruby-ivar">@realtime</span>[<span class="ruby-identifier">id</span>] <span class="ruby-operator">||</span> (<span class="ruby-ivar">@realtime</span>[<span class="ruby-identifier">id</span>] = [])
+  <span class="ruby-identifier">str_or_syms</span> = <span class="ruby-ivar">@realtime</span>[<span class="ruby-identifier">id</span>] <span class="ruby-operator">||=</span> []
 
   <span class="ruby-comment"># Inverted.</span>
   <span class="ruby-comment">#</span>
@@ -712,7 +712,7 @@ running etc. (Find these in Indexed::Bundle)</p>
 
     <span class="ruby-comment"># TODO Introduce a new method?</span>
     <span class="ruby-comment">#</span>
-    <span class="ruby-identifier">ids</span> = <span class="ruby-ivar">@inverted</span>[<span class="ruby-identifier">str_or_sym</span>] <span class="ruby-operator">||</span> (<span class="ruby-ivar">@inverted</span>[<span class="ruby-identifier">str_or_sym</span>] = []) <span class="ruby-comment"># Ensures that we get an extended Array</span>
+    <span class="ruby-identifier">ids</span> = <span class="ruby-ivar">@inverted</span>[<span class="ruby-identifier">str_or_sym</span>] <span class="ruby-operator">||=</span> []
     <span class="ruby-identifier">ids</span>.<span class="ruby-identifier">send</span> <span class="ruby-identifier">where</span>, <span class="ruby-identifier">id</span>
   <span class="ruby-keyword">end</span>
 
@@ -758,7 +758,7 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-add_partialized_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_realtime.rb, line 83</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle_realtime.rb, line 86</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add_partialized</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">text</span>, <span class="ruby-identifier">where</span> = <span class="ruby-value">:unshift</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">partial_strategy</span>.<span class="ruby-identifier">each_partial</span> <span class="ruby-identifier">text</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">partial_text</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">add</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">partial_text</span>, <span class="ruby-identifier">where</span>
@@ -796,15 +796,15 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-add_similarity_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_realtime.rb, line 70</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle_realtime.rb, line 73</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add_similarity</span> <span class="ruby-identifier">str_or_sym</span>, <span class="ruby-identifier">where</span> = <span class="ruby-value">:unshift</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">encoded</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">similarity_strategy</span>.<span class="ruby-identifier">encoded</span>(<span class="ruby-identifier">str_or_sym</span>)
-    <span class="ruby-identifier">similarity</span> = <span class="ruby-ivar">@similarity</span>[<span class="ruby-identifier">encoded</span>] <span class="ruby-operator">||</span> (<span class="ruby-ivar">@similarity</span>[<span class="ruby-identifier">encoded</span>] = []) <span class="ruby-comment"># Ensures that we get an extended Array</span>
+    <span class="ruby-identifier">similars</span> = <span class="ruby-ivar">@similarity</span>[<span class="ruby-identifier">encoded</span>] <span class="ruby-operator">||=</span> []
 
     <span class="ruby-comment"># Not completely correct, as others will also be affected, but meh.</span>
     <span class="ruby-comment">#</span>
-    <span class="ruby-identifier">similarity</span>.<span class="ruby-identifier">delete</span> <span class="ruby-identifier">str_or_sym</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">similarity</span>.<span class="ruby-identifier">include?</span> <span class="ruby-identifier">str_or_sym</span>
-    <span class="ruby-identifier">similarity</span>.<span class="ruby-identifier">send</span> <span class="ruby-identifier">where</span>, <span class="ruby-identifier">str_or_sym</span>
+    <span class="ruby-identifier">similars</span>.<span class="ruby-identifier">delete</span> <span class="ruby-identifier">str_or_sym</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">similars</span>.<span class="ruby-identifier">include?</span> <span class="ruby-identifier">str_or_sym</span>
+    <span class="ruby-identifier">similars</span>.<span class="ruby-identifier">send</span> <span class="ruby-identifier">where</span>, <span class="ruby-identifier">str_or_sym</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
@@ -875,13 +875,12 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-build_realtime_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_realtime.rb, line 95</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle_realtime.rb, line 98</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">build_realtime</span>
   <span class="ruby-identifier">clear_realtime</span>
   <span class="ruby-ivar">@inverted</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">str_or_sym</span>, <span class="ruby-identifier">ids</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">ids</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">id</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">str_or_syms</span> = <span class="ruby-ivar">@realtime</span>[<span class="ruby-identifier">id</span>]
-      <span class="ruby-identifier">str_or_syms</span> = (<span class="ruby-ivar">@realtime</span>[<span class="ruby-identifier">id</span>] = []) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">str_or_syms</span> <span class="ruby-comment"># TODO Nicefy.</span>
+      <span class="ruby-identifier">str_or_syms</span> = <span class="ruby-ivar">@realtime</span>[<span class="ruby-identifier">id</span>] <span class="ruby-operator">||=</span> []
       <span class="ruby-ivar">@realtime</span>[<span class="ruby-identifier">id</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">str_or_sym</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">str_or_syms</span>.<span class="ruby-identifier">include?</span> <span class="ruby-identifier">str_or_sym</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
@@ -1124,7 +1123,7 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-delete_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 160</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 162</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">delete</span>
   <span class="ruby-ivar">@backend_inverted</span>.<span class="ruby-identifier">delete</span>       <span class="ruby-keyword">if</span> <span class="ruby-ivar">@backend_inverted</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:delete</span>
   <span class="ruby-comment"># TODO THINK about this. Perhaps the strategies should implement the backend methods?</span>
@@ -1586,7 +1585,7 @@ running etc. (Find these in Indexed::Bundle)</p>
               <div id="method-i-identifier_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 61</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">identifier</span>
-  <span class="ruby-node">&quot;#{category.identifier}:#{name}&quot;</span>
+  <span class="ruby-value">:&quot;#{category.identifier}:#{name}&quot;</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -1667,7 +1666,7 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-index_path_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 154</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 156</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">index_path</span> <span class="ruby-identifier">type</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span> <span class="ruby-identifier">index_directory</span>, <span class="ruby-node">&quot;#{category.name}_#{name}#{ &quot;_#{type}&quot; if type }&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1701,7 +1700,7 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-key_format_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 139</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 141</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">key_format</span>
   <span class="ruby-ivar">@key_format</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@category</span>.<span class="ruby-identifier">key_format</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1952,21 +1951,24 @@ running etc. (Find these in Indexed::Bundle)</p>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">remove</span> <span class="ruby-identifier">id</span>
   <span class="ruby-comment"># Is it anywhere?</span>
   <span class="ruby-comment">#</span>
-  <span class="ruby-identifier">syms</span> = <span class="ruby-ivar">@realtime</span>[<span class="ruby-identifier">id</span>]
-  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">syms</span>
+  <span class="ruby-identifier">str_or_syms</span> = <span class="ruby-ivar">@realtime</span>[<span class="ruby-identifier">id</span>]
 
-  <span class="ruby-identifier">syms</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">sym</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">ids</span> = <span class="ruby-ivar">@inverted</span>[<span class="ruby-identifier">sym</span>]
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">str_or_syms</span>.<span class="ruby-identifier">blank?</span>
+
+  <span class="ruby-identifier">str_or_syms</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">str_or_sym</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">ids</span> = <span class="ruby-ivar">@inverted</span>[<span class="ruby-identifier">str_or_sym</span>]
     <span class="ruby-identifier">ids</span>.<span class="ruby-identifier">delete</span> <span class="ruby-identifier">id</span>
 
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">ids</span>.<span class="ruby-identifier">empty?</span>
-      <span class="ruby-ivar">@inverted</span>.<span class="ruby-identifier">delete</span> <span class="ruby-identifier">sym</span>
-      <span class="ruby-ivar">@weights</span>.<span class="ruby-identifier">delete</span>  <span class="ruby-identifier">sym</span>
+      <span class="ruby-ivar">@inverted</span>.<span class="ruby-identifier">delete</span> <span class="ruby-identifier">str_or_sym</span>
+      <span class="ruby-ivar">@weights</span>.<span class="ruby-identifier">delete</span>  <span class="ruby-identifier">str_or_sym</span>
+
       <span class="ruby-comment"># Since no element uses this sym anymore, we can delete the similarity for it.</span>
       <span class="ruby-comment"># TODO Not really. Since multiple syms can point to the same encoded.</span>
-      <span class="ruby-ivar">@similarity</span>.<span class="ruby-identifier">delete</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">similarity_strategy</span>.<span class="ruby-identifier">encoded</span>(<span class="ruby-identifier">sym</span>)
+      <span class="ruby-comment">#</span>
+      <span class="ruby-ivar">@similarity</span>.<span class="ruby-identifier">delete</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">similarity_strategy</span>.<span class="ruby-identifier">encoded</span>(<span class="ruby-identifier">str_or_sym</span>)
     <span class="ruby-keyword">else</span>
-      <span class="ruby-ivar">@weights</span>[<span class="ruby-identifier">sym</span>] = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">weights_strategy</span>.<span class="ruby-identifier">weight_for</span> <span class="ruby-identifier">ids</span>.<span class="ruby-identifier">size</span>
+      <span class="ruby-ivar">@weights</span>[<span class="ruby-identifier">str_or_sym</span>] = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">weights_strategy</span>.<span class="ruby-identifier">weight_for</span> <span class="ruby-identifier">ids</span>.<span class="ruby-identifier">size</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
 
@@ -2059,11 +2061,13 @@ running etc. (Find these in Indexed::Bundle)</p>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">similar</span> <span class="ruby-identifier">text</span>
   <span class="ruby-identifier">code</span> = <span class="ruby-identifier">similarity_strategy</span>.<span class="ruby-identifier">encoded</span> <span class="ruby-identifier">text</span>
   <span class="ruby-identifier">similar_codes</span> = <span class="ruby-identifier">code</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@similarity</span>[<span class="ruby-identifier">code</span>]
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">similar_codes</span>
-    <span class="ruby-identifier">similar_codes</span> = <span class="ruby-identifier">similar_codes</span>.<span class="ruby-identifier">dup</span> <span class="ruby-comment"># TODO</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">similar_codes</span>.<span class="ruby-identifier">blank?</span>
+    [] <span class="ruby-comment"># Return a simple array.</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">similar_codes</span> = <span class="ruby-identifier">similar_codes</span>.<span class="ruby-identifier">dup</span>
     <span class="ruby-identifier">similar_codes</span>.<span class="ruby-identifier">delete</span> <span class="ruby-identifier">text</span>
+    <span class="ruby-identifier">similar_codes</span>
   <span class="ruby-keyword">end</span>
-  <span class="ruby-identifier">similar_codes</span> <span class="ruby-operator">||</span> []
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -2095,7 +2099,7 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-to_s_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 170</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 172</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
   <span class="ruby-node">&quot;#{self.class}(#{identifier})&quot;</span>
 <span class="ruby-keyword">end</span></pre>

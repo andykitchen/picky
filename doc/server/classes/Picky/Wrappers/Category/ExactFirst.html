@@ -168,7 +168,7 @@ results such that exact hits are found first.</p>
                 
               </p>
               <div id="method-c-new_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/wrappers/category/exact_first.rb, line 29</span>
+                <pre><span class="ruby-comment"># File lib/picky/wrappers/category/exact_first.rb, line 40</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> <span class="ruby-identifier">category</span>
   <span class="ruby-ivar">@category</span> = <span class="ruby-identifier">category</span>
   <span class="ruby-ivar">@exact</span>   = <span class="ruby-identifier">category</span>.<span class="ruby-identifier">exact</span>
@@ -204,7 +204,7 @@ results such that exact hits are found first.</p>
                 
               </p>
               <div id="method-c-wrap_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/wrappers/category/exact_first.rb, line 35</span>
+                <pre><span class="ruby-comment"># File lib/picky/wrappers/category/exact_first.rb, line 46</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">wrap</span> <span class="ruby-identifier">index_or_category</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">index_or_category</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:categories</span>
     <span class="ruby-identifier">wrap_each_of</span> <span class="ruby-identifier">index_or_category</span>.<span class="ruby-identifier">categories</span>
@@ -243,7 +243,7 @@ results such that exact hits are found first.</p>
                 
               </p>
               <div id="method-c-wrap_each_of_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/wrappers/category/exact_first.rb, line 43</span>
+                <pre><span class="ruby-comment"># File lib/picky/wrappers/category/exact_first.rb, line 54</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">wrap_each_of</span> <span class="ruby-identifier">categories</span>
   <span class="ruby-identifier">actual_categories</span> = <span class="ruby-identifier">categories</span>.<span class="ruby-identifier">categories</span>
   <span class="ruby-identifier">categories</span>.<span class="ruby-identifier">clear_categories</span>
@@ -285,7 +285,7 @@ href="../../Category.html">Picky::Category</a>?)</p>
                 
               </p>
               <div id="method-i-combination_for_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/wrappers/category/exact_first.rb, line 72</span>
+                <pre><span class="ruby-comment"># File lib/picky/wrappers/category/exact_first.rb, line 83</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">combination_for</span> <span class="ruby-identifier">token</span>
   <span class="ruby-identifier">weight</span>(<span class="ruby-identifier">token</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Combination</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">token</span>, <span class="ruby-keyword">self</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -319,7 +319,7 @@ href="../../Category.html">Picky::Category</a>?)</p>
                 
               </p>
               <div id="method-i-ids_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/wrappers/category/exact_first.rb, line 52</span>
+                <pre><span class="ruby-comment"># File lib/picky/wrappers/category/exact_first.rb, line 63</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ids</span> <span class="ruby-identifier">token</span>
   <span class="ruby-identifier">text</span> = <span class="ruby-identifier">token</span>.<span class="ruby-identifier">text</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">token</span>.<span class="ruby-identifier">partial?</span>
@@ -358,7 +358,7 @@ href="../../Category.html">Picky::Category</a>?)</p>
                 
               </p>
               <div id="method-i-weight_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/wrappers/category/exact_first.rb, line 61</span>
+                <pre><span class="ruby-comment"># File lib/picky/wrappers/category/exact_first.rb, line 72</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">weight</span> <span class="ruby-identifier">token</span>
   <span class="ruby-identifier">text</span> = <span class="ruby-identifier">token</span>.<span class="ruby-identifier">text</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">token</span>.<span class="ruby-identifier">partial?</span>

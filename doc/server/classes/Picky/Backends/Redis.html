@@ -304,7 +304,7 @@
                 
               </p>
               <div id="method-c-extract_host_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 215</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 223</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">extract_host</span>
   <span class="ruby-ivar">@host</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Socket</span>.<span class="ruby-identifier">gethostname</span>
 <span class="ruby-keyword">end</span></pre>
@@ -666,7 +666,7 @@ False if not.</p>
                 
               </p>
               <div id="method-i-generate_intermediate_result_id_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 227</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 235</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">generate_intermediate_result_id</span>
   <span class="ruby-ivar">@intermediate_result_id</span> <span class="ruby-operator">||=</span> <span class="ruby-node">&quot;#{host}:#{pid}:picky:result&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -700,7 +700,7 @@ False if not.</p>
                 
               </p>
               <div id="method-i-host_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 218</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 226</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">host</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">extract_host</span>
 <span class="ruby-keyword">end</span></pre>
@@ -801,27 +801,35 @@ href="Redis.html">Redis</a> up.</p>
 
           <span class="ruby-identifier">result_id</span> = <span class="ruby-identifier">generate_intermediate_result_id</span>
 
-          <span class="ruby-comment"># Intersect and store.</span>
+          <span class="ruby-comment"># Little optimization.</span>
           <span class="ruby-comment">#</span>
-          <span class="ruby-identifier">intersected</span> = <span class="ruby-identifier">client</span>.<span class="ruby-identifier">zinterstore</span> <span class="ruby-identifier">result_id</span>, <span class="ruby-identifier">identifiers</span>
+          <span class="ruby-comment"># TODO Include in the scripting version as well.</span>
+          <span class="ruby-comment">#</span>
+          <span class="ruby-keyword">if</span> <span class="ruby-identifier">identifiers</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-number">1</span>
+            <span class="ruby-comment"># Intersect and store.</span>
+            <span class="ruby-comment">#</span>
+            <span class="ruby-identifier">intersected</span> = <span class="ruby-identifier">client</span>.<span class="ruby-identifier">zinterstore</span> <span class="ruby-identifier">result_id</span>, <span class="ruby-identifier">identifiers</span>
 
-          <span class="ruby-comment"># Return clean and early if there has been no intersection.</span>
-          <span class="ruby-comment">#</span>
-          <span class="ruby-keyword">if</span> <span class="ruby-identifier">intersected</span>.<span class="ruby-identifier">zero?</span>
+            <span class="ruby-comment"># Return clean and early if there has been no intersection.</span>
+            <span class="ruby-comment">#</span>
+            <span class="ruby-keyword">if</span> <span class="ruby-identifier">intersected</span>.<span class="ruby-identifier">zero?</span>
+              <span class="ruby-identifier">client</span>.<span class="ruby-identifier">del</span> <span class="ruby-identifier">result_id</span>
+              <span class="ruby-keyword">return</span> []
+            <span class="ruby-keyword">end</span>
+
+            <span class="ruby-comment"># Get the stored result.</span>
+            <span class="ruby-comment">#</span>
+            <span class="ruby-identifier">results</span> = <span class="ruby-identifier">client</span>.<span class="ruby-identifier">zrange</span> <span class="ruby-identifier">result_id</span>, <span class="ruby-identifier">offset</span>, (<span class="ruby-identifier">offset</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">amount</span>)
+
+            <span class="ruby-comment"># Delete the stored result as it was only for temporary purposes.</span>
+            <span class="ruby-comment">#</span>
+            <span class="ruby-comment"># Note: I could also not delete it, but that</span>
+            <span class="ruby-comment">#       would not be clean at all.</span>
+            <span class="ruby-comment">#</span>
             <span class="ruby-identifier">client</span>.<span class="ruby-identifier">del</span> <span class="ruby-identifier">result_id</span>
-            <span class="ruby-keyword">return</span> []
+          <span class="ruby-keyword">else</span>
+            <span class="ruby-identifier">results</span> = <span class="ruby-identifier">client</span>.<span class="ruby-identifier">zrange</span> <span class="ruby-identifier">identifiers</span>.<span class="ruby-identifier">first</span>, <span class="ruby-identifier">offset</span>, (<span class="ruby-identifier">offset</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">amount</span>)
           <span class="ruby-keyword">end</span>
-
-          <span class="ruby-comment"># Get the stored result.</span>
-          <span class="ruby-comment">#</span>
-          <span class="ruby-identifier">results</span> = <span class="ruby-identifier">client</span>.<span class="ruby-identifier">zrange</span> <span class="ruby-identifier">result_id</span>, <span class="ruby-identifier">offset</span>, (<span class="ruby-identifier">offset</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">amount</span>)
-
-          <span class="ruby-comment"># Delete the stored result as it was only for temporary purposes.</span>
-          <span class="ruby-comment">#</span>
-          <span class="ruby-comment"># Note: I could also not delete it, but that</span>
-          <span class="ruby-comment">#       would not be clean at all.</span>
-          <span class="ruby-comment">#</span>
-          <span class="ruby-identifier">client</span>.<span class="ruby-identifier">del</span> <span class="ruby-identifier">result_id</span>
 
           <span class="ruby-identifier">results</span>
         <span class="ruby-keyword">end</span>
@@ -881,7 +889,7 @@ href="Redis.html">Redis</a> up.</p>
                 
               </p>
               <div id="method-i-pid_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 222</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 230</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">pid</span>
   <span class="ruby-ivar">@pid</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Process</span>.<span class="ruby-identifier">pid</span>
 <span class="ruby-keyword">end</span></pre>

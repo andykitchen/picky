@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Picky::Console</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Picky::Console 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/picky/console_rb.html">lib/picky/console.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>TODO Improve.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-start">start</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-start">
+            
+              <a name="method-c-start"></a><b>start</b>(args = ARGV)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-start_source')" id="l_method-c-start_source">show</a>
+                
+              </p>
+              <div id="method-c-start_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/console.rb, line 8</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">start</span> <span class="ruby-identifier">args</span> = <span class="ruby-constant">ARGV</span>
+  <span class="ruby-identifier">irb</span> = <span class="ruby-string">'irb'</span>
+
+  <span class="ruby-identifier">require</span> <span class="ruby-string">'optparse'</span>
+  <span class="ruby-identifier">options</span> = { <span class="ruby-value">:sandbox</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">:irb</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">irb</span> }
+  <span class="ruby-constant">OptionParser</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">opt</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">banner</span> = <span class="ruby-string">&quot;Usage: console [environment] [options]&quot;</span>
+    <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-node">&quot;--irb=[#{irb}]&quot;</span>, <span class="ruby-string">'Invoke a different irb.'</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:irb</span>] = <span class="ruby-identifier">v</span> }
+    <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">parse!</span>(<span class="ruby-identifier">args</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">libs</span> =  <span class="ruby-string">&quot; -r irb/completion&quot;</span>
+  <span class="ruby-identifier">libs</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">%Q( -r &quot;#{File.expand_path('../../picky.rb', __FILE__)}&quot; )</span>
+
+  <span class="ruby-identifier">mapping</span> = {
+    <span class="ruby-string">'p'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'production'</span>,
+    <span class="ruby-string">'d'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'development'</span>,
+    <span class="ruby-string">'t'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'test'</span>
+  }
+  <span class="ruby-identifier">given_env</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span>
+  <span class="ruby-constant">ENV</span>[<span class="ruby-string">'PICKY_ENV'</span>] = <span class="ruby-identifier">mapping</span>[<span class="ruby-identifier">given_env</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">given_env</span> <span class="ruby-operator">||</span> <span class="ruby-constant">ENV</span>[<span class="ruby-string">'PICKY_ENV'</span>] <span class="ruby-operator">||</span> <span class="ruby-string">'development'</span>
+
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Use \x1b[1;30mPicky::Loader.load_application\x1b[m to load app.&quot;</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Use \x1b[1;30mPicky::Indexes.load\x1b[m after that to load indexes.&quot;</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Copy the following line to do just that:&quot;</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;\x1b[1;30mPicky::Loader.load_application; Picky::Indexes.load; p\x1b[m&quot;</span>
+  <span class="ruby-identifier">exec</span> <span class="ruby-node">&quot;#{options[:irb]} #{libs} --simple-prompt&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                        </div>
+    </div>
+  </body>
+</html>    

@@ -234,7 +234,7 @@ string for the answer.</p>
         <div class="method">
           <div class="title method-title" id="method-c-from">
             
-              <a name="method-c-from"></a><b>from</b>(query, amount, offset, allocations)
+              <a name="method-c-from"></a><b>from</b>(query, amount, offset, allocations, extra_allocations = nil)
             
           </div>
           
@@ -257,9 +257,9 @@ string for the answer.</p>
               </p>
               <div id="method-c-from_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/results.rb, line 27</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">from</span> <span class="ruby-identifier">query</span>, <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">allocations</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">from</span> <span class="ruby-identifier">query</span>, <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">allocations</span>, <span class="ruby-identifier">extra_allocations</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-identifier">results</span> = <span class="ruby-identifier">new</span> <span class="ruby-identifier">query</span>, <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">allocations</span>
-  <span class="ruby-identifier">results</span>.<span class="ruby-identifier">prepare!</span>
+  <span class="ruby-identifier">results</span>.<span class="ruby-identifier">prepare!</span> <span class="ruby-identifier">extra_allocations</span>
   <span class="ruby-identifier">results</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
@@ -413,7 +413,7 @@ string for the answer.</p>
         <div class="method">
           <div class="title method-title" id="method-i-prepare-21">
             
-              <a name="method-i-prepare-21"></a><b>prepare!</b>()
+              <a name="method-i-prepare-21"></a><b>prepare!</b>(extra_allocations = nil)
             
           </div>
           
@@ -438,8 +438,8 @@ string for the answer.</p>
               </p>
               <div id="method-i-prepare-21_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/results.rb, line 56</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">prepare!</span>
-  <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">process!</span> <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">prepare!</span> <span class="ruby-identifier">extra_allocations</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">process!</span> <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">extra_allocations</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>

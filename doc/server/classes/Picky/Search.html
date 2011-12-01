@@ -161,6 +161,11 @@ through one of these (Protip: Use “curl
             
               
               <li>
+                <a href="#method-i-terminate_early">terminate_early</a>,
+              </li>
+            
+              
+              <li>
                 <a href="#method-i-to_s">to_s</a>,
               </li>
             
@@ -348,7 +353,7 @@ through one of these (Protip: Use “curl
                 
               </p>
               <div id="method-i-boost_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 107</span>
+                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 138</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">boost</span> <span class="ruby-identifier">weights</span>
   <span class="ruby-ivar">@weights</span> = <span class="ruby-keyword">if</span> <span class="ruby-identifier">weights</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:score_for</span>)
     <span class="ruby-identifier">weights</span>
@@ -389,9 +394,9 @@ href="Search.html#method-i-search">#search</a> to search.</p>
                 
               </p>
               <div id="method-i-execute_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 175</span>
+                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 206</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">execute</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">ids</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">original_text</span> = <span class="ruby-keyword">nil</span>
-  <span class="ruby-constant">Results</span>.<span class="ruby-identifier">from</span> <span class="ruby-identifier">original_text</span>, <span class="ruby-identifier">ids</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">sorted_allocations</span>(<span class="ruby-identifier">tokens</span>, <span class="ruby-ivar">@max_allocations</span>)
+  <span class="ruby-constant">Results</span>.<span class="ruby-identifier">from</span> <span class="ruby-identifier">original_text</span>, <span class="ruby-identifier">ids</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">sorted_allocations</span>(<span class="ruby-identifier">tokens</span>, <span class="ruby-ivar">@max_allocations</span>), <span class="ruby-ivar">@extra_allocations</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -444,7 +449,7 @@ categorization.</p>
                 
               </p>
               <div id="method-i-ignore_unassigned_tokens_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 138</span>
+                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 169</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ignore_unassigned_tokens</span> <span class="ruby-identifier">value</span>
   <span class="ruby-ivar">@ignore_unassigned</span> = <span class="ruby-identifier">value</span>
 <span class="ruby-keyword">end</span></pre>
@@ -532,7 +537,7 @@ unravelling the HTTP request.</p>
                 
               </p>
               <div id="method-i-search_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 152</span>
+                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 183</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">search</span> <span class="ruby-identifier">text</span>, <span class="ruby-identifier">ids</span> = <span class="ruby-number">20</span>, <span class="ruby-identifier">offset</span> = <span class="ruby-number">0</span>
   <span class="ruby-identifier">search_with</span> <span class="ruby-identifier">tokenized</span>(<span class="ruby-identifier">text</span>), <span class="ruby-identifier">ids</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">offset</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">text</span>
 <span class="ruby-keyword">end</span></pre>
@@ -569,7 +574,7 @@ href="Search.html#method-i-search">#search</a> to search.</p>
                 
               </p>
               <div id="method-i-search_with_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 160</span>
+                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 191</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">search_with</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">ids</span> = <span class="ruby-number">20</span>, <span class="ruby-identifier">offset</span> = <span class="ruby-number">0</span>, <span class="ruby-identifier">original_text</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-identifier">results</span> = <span class="ruby-keyword">nil</span>
 
@@ -635,6 +640,69 @@ end</pre>
           </div>
         
         <div class="method">
+          <div class="title method-title" id="method-i-terminate_early">
+            
+              <a name="method-i-terminate_early"></a><b>terminate_early</b>(extra_allocations = 0)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Tells <a href="../Picky.html">Picky</a> to terminate calculating ids if it
+has enough ids. (So, early)</p>
+
+<p>Important note: Do not use this for the live search!</p>
+
+<pre>(As Picky needs to calculate the total)</pre>
+
+<p>Note: When using the <a href="../Picky.html">Picky</a> interface, do not
+terminate too</p>
+
+<pre>early as this will kill off the allocation selections.
+A value of
+  early_terminate 5
+is probably a good idea to show the user 5 extra
+beyond the needed ones.</pre>
+
+<p>Examples:</p>
+
+<pre># Terminate if you have enough ids.
+#
+search = Search.new(index1, index2, index3) do
+  terminate_early
+end
+
+# After calculating enough ids,
+# calculate 5 extra allocations for the interface.
+#
+search = Search.new(index1, index2, index3) do
+  terminate_early 5
+end</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-terminate_early_source')" id="l_method-i-terminate_early_source">show</a>
+                
+              </p>
+              <div id="method-i-terminate_early_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 109</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">terminate_early</span> <span class="ruby-identifier">extra_allocations</span> = <span class="ruby-number">0</span>
+  <span class="ruby-ivar">@extra_allocations</span> = <span class="ruby-identifier">extra_allocations</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:to_hash</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">extra_allocations</span>[<span class="ruby-value">:with_extra_allocations</span>] <span class="ruby-operator">:</span> <span class="ruby-identifier">extra_allocations</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
           <div class="title method-title" id="method-i-to_s">
             
               <a name="method-i-to_s"></a><b>to_s</b>()
@@ -659,7 +727,7 @@ end</pre>
                 
               </p>
               <div id="method-i-to_s_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 203</span>
+                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 234</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
   <span class="ruby-identifier">s</span> = <span class="ruby-node">&quot;#{self.class}(&quot;</span>
   <span class="ruby-identifier">ary</span> = []
@@ -709,7 +777,7 @@ end</pre>
                 
               </p>
               <div id="method-i-tokenized_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 187</span>
+                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 218</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">tokenized</span> <span class="ruby-identifier">text</span>
   <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">originals</span> = <span class="ruby-identifier">tokenizer</span>.<span class="ruby-identifier">tokenize</span> <span class="ruby-identifier">text</span>
   <span class="ruby-identifier">tokens</span> = <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Tokens</span>.<span class="ruby-identifier">processed</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">originals</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-ivar">@ignore_unassigned</span>
