@@ -88,7 +88,7 @@ h2. Single Page Help
 ### "Ignore Categories":#search-options-ignore
 ### "Ignore Unassigned Tokens":#search-options-unassigned
 ### "Maximum Allocations":#search-options-maxallocations
-### "Early Termination":#search-options-earlytermination
+### "Early Termination":#search-options-terminateearly
 # "Results":#results
 ## "Logging":#results-logging
 ## "Sorting":#results-sorting
@@ -1188,10 +1188,10 @@ So, with @max_allocations 1@ it will only use the topmost one and throw away all
 
 It will only go through the first one and calculate only results for that one. This can be used to speed up Picky in case of exploding amounts of allocations.
 
-h4(#search-options-earlytermination). Early Termination
+h4(#search-options-terminateearly). Early Termination
 <div class="tags">performance</div>
 
-The @early_termination(integer)@ or @early_termination(with_extra_allocations: integer)@ option stops Picky from calculate all ids of all allocations.
+The @terminate_early(integer)@ or @terminate_early(with_extra_allocations: integer)@ option stops Picky from calculate all ids of all allocations.
 
 However, this will also return a wrong total.
 
@@ -1203,7 +1203,7 @@ Stop as soon as you have calculated enough ids for the allocation.
 
 <pre><code>
 phone_search = Search.new phonebook do
-  early_termination # The default uses 0.
+  terminate_early # The default uses 0.
 end
 </code></pre>
 
@@ -1211,7 +1211,7 @@ Stop as soon as you have calculated enough ids for the allocation, and then calc
 
 <pre><code>
 phone_search = Search.new phonebook do
-  early_termination 3
+  terminate_early 3
 end
 </code></pre>
 
@@ -1219,7 +1219,7 @@ There's also a hash form to be more explicit. So the next coder knows what it do
 
 <pre><code>
 phone_search = Search.new phonebook do
-  early_termination with_extra_allocations: 5
+  terminate_early with_extra_allocations: 5
 end
 </code></pre>
 

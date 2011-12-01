@@ -149,7 +149,7 @@
     			<li><a href="#search-options-ignore">Ignore Categories</a></li>
     			<li><a href="#search-options-unassigned">Ignore Unassigned Tokens</a></li>
     			<li><a href="#search-options-maxallocations">Maximum Allocations</a></li>
-    			<li><a href="#search-options-earlytermination">Early Termination</a></li>
+    			<li><a href="#search-options-terminateearly">Early Termination</a></li>
     		</ol></li>
     	</ol></li>
     	<li><a href="#results">Results</a>
@@ -925,28 +925,28 @@
     <p>with the first allocation being the most probable one.</p>
     <p>So, with <code>max_allocations 1</code> it will only use the topmost one and throw away all the others.</p>
     <p>It will only go through the first one and calculate only results for that one. This can be used to speed up Picky in case of exploding amounts of allocations.</p>
-    <h4 id="search-options-earlytermination">Early Termination
+    <h4 id="search-options-terminateearly">Early Termination
     <div class="tags">performance</div></h4>
-    <p>The <code>early_termination(integer)</code> or <code>early_termination(with_extra_allocations: integer)</code> option stops Picky from calculate all ids of all allocations.</p>
+    <p>The <code>terminate_early(integer)</code> or <code>terminate_early(with_extra_allocations: integer)</code> option stops Picky from calculate all ids of all allocations.</p>
     <p>However, this will also return a wrong total.</p>
     <p>So, important note: Only use when you don&#8217;t display a total.</p>
     <p>Examples:</p>
     <p>Stop as soon as you have calculated enough ids for the allocation.</p>
     <pre><code>
     phone_search = Search.new phonebook do
-      early_termination # The default uses 0.
+      terminate_early # The default uses 0.
     end
     </code></pre>
     <p>Stop as soon as you have calculated enough ids for the allocation, and then calculate 3 allocations more (for example, to show to the user).</p>
     <pre><code>
     phone_search = Search.new phonebook do
-      early_termination 3
+      terminate_early 3
     end
     </code></pre>
     <p>There&#8217;s also a hash form to be more explicit. So the next coder knows what it does. (However, us cool Picky hackers <em>know</em> ;) )</p>
     <pre><code>
     phone_search = Search.new phonebook do
-      early_termination with_extra_allocations: 5
+      terminate_early with_extra_allocations: 5
     end
     </code></pre>
     <p>This option speeds up Picky if you don&#8217;t need a correct total.</p>
