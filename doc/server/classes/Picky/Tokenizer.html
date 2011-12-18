@@ -94,6 +94,16 @@
             
               
               <li>
+                <a href="#method-c-default_indexing_with">default_indexing_with</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-default_searching_with">default_searching_with</a>,
+              </li>
+            
+              
+              <li>
                 <a href="#method-i-downcase-3F">downcase?</a>
               </li>
             
@@ -118,12 +128,7 @@
             
               
               <li>
-                <a href="#method-c-index_default">index_default</a>,
-              </li>
-            
-              
-              <li>
-                <a href="#method-c-index_default-3D">index_default=</a>
+                <a href="#method-c-indexing">indexing</a>
               </li>
             
           </ul>
@@ -185,23 +190,6 @@
           </ul>
         </dd>
       
-        <dt>Q</dt>
-        <dd>
-          <ul>
-            
-              
-              <li>
-                <a href="#method-c-query_default">query_default</a>,
-              </li>
-            
-              
-              <li>
-                <a href="#method-c-query_default-3D">query_default=</a>
-              </li>
-            
-          </ul>
-        </dd>
-      
         <dt>R</dt>
         <dd>
           <ul>
@@ -242,6 +230,11 @@
         <dt>S</dt>
         <dd>
           <ul>
+            
+              
+              <li>
+                <a href="#method-c-searching">searching</a>,
+              </li>
             
               
               <li>
@@ -297,6 +290,20 @@
   
 
   
+    <!-- Includes -->
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+      
+        <li>
+          
+            <a href="API/Tokenizer/CharacterSubstituter.html">
+              Picky::API::Tokenizer::CharacterSubstituter
+            </a>
+          
+        </li>
+      
+    </ul>
+  
 
 
 
@@ -306,24 +313,6 @@
 
     
 
-    
-      <!-- Section constants -->
-      <div class="sectiontitle">Constants</div>
-      <table border='0' cellpadding='5'>
-        
-          <tr valign='top'>
-            <td class="attr-name">EMPTY_STRING</td>
-            <td>=</td>
-            <td class="attr-value">''.freeze</td>
-          </tr>
-          
-            <tr valign='top'>
-              <td>&nbsp;</td>
-              <td colspan="2" class="attr-desc"><p>TODO Move <a href="Tokenizer.html#EMPTY_STRING">EMPTY_STRING</a> top level.</p></td>
-            </tr>
-          
-        
-      </table>
     
 
 
@@ -357,9 +346,9 @@
       <div class="sectiontitle">Class Public methods</div>
       
         <div class="method">
-          <div class="title method-title" id="method-c-index_default">
+          <div class="title method-title" id="method-c-default_indexing_with">
             
-              <a name="method-c-index_default"></a><b>index_default</b>()
+              <a name="method-c-default_indexing_with"></a><b>default_indexing_with</b>(options = {})
             
           </div>
           
@@ -377,13 +366,13 @@
               
               <p class="source-link">
                 Source: 
-                <a href="javascript:toggleSource('method-c-index_default_source')" id="l_method-c-index_default_source">show</a>
+                <a href="javascript:toggleSource('method-c-default_indexing_with_source')" id="l_method-c-default_indexing_with_source">show</a>
                 
               </p>
-              <div id="method-c-index_default_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 11</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">index_default</span>
-  <span class="ruby-ivar">@index_default</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">new</span>
+              <div id="method-c-default_indexing_with_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">default_indexing_with</span> <span class="ruby-identifier">options</span> = {}
+  <span class="ruby-ivar">@indexing</span> = <span class="ruby-identifier">extract_tokenizer</span> <span class="ruby-identifier">options</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -391,9 +380,9 @@
           </div>
         
         <div class="method">
-          <div class="title method-title" id="method-c-index_default-3D">
+          <div class="title method-title" id="method-c-default_searching_with">
             
-              <a name="method-c-index_default-3D"></a><b>index_default=</b>(new_default)
+              <a name="method-c-default_searching_with"></a><b>default_searching_with</b>(options = {})
             
           </div>
           
@@ -411,13 +400,47 @@
               
               <p class="source-link">
                 Source: 
-                <a href="javascript:toggleSource('method-c-index_default-3D_source')" id="l_method-c-index_default-3D_source">show</a>
+                <a href="javascript:toggleSource('method-c-default_searching_with_source')" id="l_method-c-default_searching_with_source">show</a>
                 
               </p>
-              <div id="method-c-index_default-3D_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 8</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">index_default=</span> <span class="ruby-identifier">new_default</span>
-  <span class="ruby-ivar">@index_default</span> = <span class="ruby-identifier">new_default</span>
+              <div id="method-c-default_searching_with_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">default_searching_with</span> <span class="ruby-identifier">options</span> = {}
+  <span class="ruby-ivar">@searching</span> = <span class="ruby-identifier">extract_tokenizer</span> <span class="ruby-identifier">options</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-indexing">
+            
+              <a name="method-c-indexing"></a><b>indexing</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-indexing_source')" id="l_method-c-indexing_source">show</a>
+                
+              </p>
+              <div id="method-c-indexing_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">indexing</span>
+  <span class="ruby-ivar">@indexing</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">new</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -449,7 +472,7 @@
                 
               </p>
               <div id="method-c-new_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 163</span>
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 162</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> <span class="ruby-identifier">options</span> = {}
   <span class="ruby-identifier">substitutes_characters_with</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:substitutes_characters_with</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:substitutes_characters_with</span>]
   <span class="ruby-identifier">removes_characters</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:removes_characters</span>]                   <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:removes_characters</span>]
@@ -466,43 +489,9 @@
           </div>
         
         <div class="method">
-          <div class="title method-title" id="method-c-query_default">
+          <div class="title method-title" id="method-c-searching">
             
-              <a name="method-c-query_default"></a><b>query_default</b>()
-            
-          </div>
-          
-          
-            <div class="description">
-              
-            </div>
-          
-          
-          
-          
-          
-            
-            <div class="sourcecode">
-              
-              <p class="source-link">
-                Source: 
-                <a href="javascript:toggleSource('method-c-query_default_source')" id="l_method-c-query_default_source">show</a>
-                
-              </p>
-              <div id="method-c-query_default_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 18</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">query_default</span>
-  <span class="ruby-ivar">@query_default</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">new</span>
-<span class="ruby-keyword">end</span></pre>
-              </div>
-            </div>
-            
-          </div>
-        
-        <div class="method">
-          <div class="title method-title" id="method-c-query_default-3D">
-            
-              <a name="method-c-query_default-3D"></a><b>query_default=</b>(new_default)
+              <a name="method-c-searching"></a><b>searching</b>()
             
           </div>
           
@@ -520,13 +509,13 @@
               
               <p class="source-link">
                 Source: 
-                <a href="javascript:toggleSource('method-c-query_default-3D_source')" id="l_method-c-query_default-3D_source">show</a>
+                <a href="javascript:toggleSource('method-c-searching_source')" id="l_method-c-searching_source">show</a>
                 
               </p>
-              <div id="method-c-query_default-3D_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 15</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">query_default=</span> <span class="ruby-identifier">new_default</span>
-  <span class="ruby-ivar">@query_default</span> = <span class="ruby-identifier">new_default</span>
+              <div id="method-c-searching_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">searching</span>
+  <span class="ruby-ivar">@searching</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">new</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -560,7 +549,7 @@
                 
               </p>
               <div id="method-i-cap_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 147</span>
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 146</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">cap</span> <span class="ruby-identifier">words</span>
   <span class="ruby-identifier">words</span>.<span class="ruby-identifier">slice!</span>(<span class="ruby-ivar">@max_words</span><span class="ruby-operator">..</span><span class="ruby-number">-1</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">cap?</span>(<span class="ruby-identifier">words</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -594,7 +583,7 @@
                 
               </p>
               <div id="method-i-cap-3F_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 150</span>
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 149</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">cap?</span> <span class="ruby-identifier">words</span>
   <span class="ruby-ivar">@max_words</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">words</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@max_words</span>
 <span class="ruby-keyword">end</span></pre>
@@ -630,7 +619,7 @@
                 
               </p>
               <div id="method-i-case_sensitive_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 134</span>
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 133</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">case_sensitive</span> <span class="ruby-identifier">case_sensitive</span>
   <span class="ruby-ivar">@case_sensitive</span> = <span class="ruby-identifier">case_sensitive</span>
 <span class="ruby-keyword">end</span></pre>
@@ -664,7 +653,7 @@
                 
               </p>
               <div id="method-i-check_argument_in_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 156</span>
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 155</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">check_argument_in</span> <span class="ruby-identifier">method</span>, <span class="ruby-identifier">type</span>, <span class="ruby-identifier">argument</span>, &amp;<span class="ruby-identifier">condition</span>
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>.<span class="ruby-identifier">new</span> <span class="ruby-node">&quot;Application##{method} takes a #{type} as argument, not a #{argument.class}.&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">argument</span>
 <span class="ruby-keyword">end</span></pre>
@@ -698,7 +687,7 @@
                 
               </p>
               <div id="method-i-downcase-3F_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 137</span>
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 136</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">downcase?</span>
   <span class="ruby-operator">!</span><span class="ruby-ivar">@case_sensitive</span>
 <span class="ruby-keyword">end</span></pre>
@@ -732,7 +721,7 @@
                 
               </p>
               <div id="method-i-empty_tokens_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 231</span>
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 230</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">empty_tokens</span>
   [[], []]
 <span class="ruby-keyword">end</span></pre>
@@ -766,7 +755,7 @@
                 
               </p>
               <div id="method-i-max_words_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 144</span>
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 143</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">max_words</span> <span class="ruby-identifier">amount</span>
   <span class="ruby-ivar">@max_words</span> = <span class="ruby-identifier">amount</span>
 <span class="ruby-keyword">end</span></pre>
@@ -922,7 +911,7 @@
                 
               </p>
               <div id="method-i-preprocess_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 196</span>
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 195</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">preprocess</span> <span class="ruby-identifier">text</span>
   <span class="ruby-identifier">text</span> = <span class="ruby-identifier">substitute_characters</span> <span class="ruby-identifier">text</span>
   <span class="ruby-identifier">remove_illegals</span> <span class="ruby-identifier">text</span>
@@ -969,7 +958,7 @@
                 
               </p>
               <div id="method-i-pretokenize_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 214</span>
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 213</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">pretokenize</span> <span class="ruby-identifier">text</span>
   <span class="ruby-identifier">words</span> = <span class="ruby-identifier">split</span> <span class="ruby-identifier">text</span>
   <span class="ruby-identifier">words</span>.<span class="ruby-identifier">collect!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">word</span><span class="ruby-operator">|</span> <span class="ruby-identifier">normalize_with_patterns</span> <span class="ruby-identifier">word</span> } <span class="ruby-keyword">if</span> <span class="ruby-identifier">normalize_with_patterns?</span>
@@ -1007,7 +996,7 @@
                 
               </p>
               <div id="method-i-reject_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 126</span>
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 125</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">reject</span> <span class="ruby-identifier">tokens</span>
   <span class="ruby-identifier">tokens</span>.<span class="ruby-identifier">reject!</span> &amp;<span class="ruby-ivar">@reject_condition</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1041,7 +1030,7 @@
                 
               </p>
               <div id="method-i-rejects_token_if_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 123</span>
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 122</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">rejects_token_if</span> &amp;<span class="ruby-identifier">condition</span>
   <span class="ruby-ivar">@reject_condition</span> = <span class="ruby-identifier">condition</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1329,7 +1318,7 @@ too hard to understand)</p>
                 
               </p>
               <div id="method-i-substitute_characters_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 117</span>
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 116</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">substitute_characters</span> <span class="ruby-identifier">text</span>
   <span class="ruby-identifier">substituter?</span><span class="ruby-operator">?</span> <span class="ruby-identifier">substituter</span>.<span class="ruby-identifier">substitute</span>(<span class="ruby-identifier">text</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">text</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1367,8 +1356,7 @@ too hard to understand)</p>
               <div id="method-i-substitutes_characters_with_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 113</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">substitutes_characters_with</span> <span class="ruby-identifier">substituter</span> = <span class="ruby-constant">CharacterSubstituters</span><span class="ruby-operator">::</span><span class="ruby-constant">WestEuropean</span>.<span class="ruby-identifier">new</span>
-  <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>.<span class="ruby-identifier">new</span> <span class="ruby-node">&quot;The substitutes_characters_with option needs a character substituter, which responds to #substitute.&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">substituter</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:substitute</span>)
-  <span class="ruby-ivar">@substituter</span> = <span class="ruby-identifier">substituter</span>
+  <span class="ruby-ivar">@substituter</span> = <span class="ruby-identifier">extract_character_substituter</span> <span class="ruby-identifier">substituter</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -1447,7 +1435,7 @@ parameters given.</p>
                 
               </p>
               <div id="method-i-tokenize_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 180</span>
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 179</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">tokenize</span> <span class="ruby-identifier">text</span>
   <span class="ruby-identifier">text</span>   = <span class="ruby-identifier">preprocess</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-comment"># processing the text</span>
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">empty_tokens</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">blank?</span>
@@ -1486,7 +1474,7 @@ parameters given.</p>
                 
               </p>
               <div id="method-i-tokens_for_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 224</span>
+                <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 223</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">tokens_for</span> <span class="ruby-identifier">words</span>
   <span class="ruby-identifier">words</span>.<span class="ruby-identifier">collect!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">word</span><span class="ruby-operator">|</span> <span class="ruby-identifier">word</span>.<span class="ruby-identifier">downcase!</span>; <span class="ruby-identifier">word</span> } <span class="ruby-keyword">if</span> <span class="ruby-identifier">downcase?</span>
   <span class="ruby-identifier">words</span>

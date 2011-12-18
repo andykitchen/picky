@@ -55,18 +55,6 @@
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
       
-        <dt>I</dt>
-        <dd>
-          <ul>
-            
-              
-              <li>
-                <a href="#method-i-index">index</a>
-              </li>
-            
-          </ul>
-        </dd>
-      
         <dt>N</dt>
         <dd>
           <ul>
@@ -79,6 +67,30 @@
               
               <li>
                 <a href="#method-i-notify_finished">notify_finished</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-prepare">prepare</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-reset">reset</a>
               </li>
             
           </ul>
@@ -158,48 +170,9 @@
       <div class="sectiontitle">Instance Public methods</div>
       
         <div class="method">
-          <div class="title method-title" id="method-i-index">
-            
-              <a name="method-i-index"></a><b>index</b>(categories)
-            
-          </div>
-          
-          
-            <div class="description">
-              <p>Starts the indexing process.</p>
-            </div>
-          
-          
-          
-          
-          
-            
-            <div class="sourcecode">
-              
-              <p class="source-link">
-                Source: 
-                <a href="javascript:toggleSource('method-i-index_source')" id="l_method-i-index_source">show</a>
-                
-              </p>
-              <div id="method-i-index_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/indexers/base.rb, line 21</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">index</span> <span class="ruby-identifier">categories</span>
-  <span class="ruby-identifier">check_source</span>
-  <span class="ruby-identifier">categories</span>.<span class="ruby-identifier">empty</span>
-  <span class="ruby-identifier">process</span> <span class="ruby-identifier">categories</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">notify_finished</span> <span class="ruby-identifier">file</span>
-  <span class="ruby-keyword">end</span>
-  <span class="ruby-identifier">categories</span>.<span class="ruby-identifier">cache</span>
-<span class="ruby-keyword">end</span></pre>
-              </div>
-            </div>
-            
-          </div>
-        
-        <div class="method">
           <div class="title method-title" id="method-i-notify_finished">
             
-              <a name="method-i-notify_finished"></a><b>notify_finished</b>(file)
+              <a name="method-i-notify_finished"></a><b>notify_finished</b>(prepared_file)
             
           </div>
           
@@ -221,9 +194,83 @@
                 
               </p>
               <div id="method-i-notify_finished_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/indexers/base.rb, line 34</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">notify_finished</span> <span class="ruby-identifier">file</span>
-  <span class="ruby-identifier">timed_exclaim</span> <span class="ruby-node">%Q{&quot;#{@index_or_category.identifier}&quot;: Tokenized -&gt; #{file.path.gsub(&quot;#{PICKY_ROOT}/&quot;, '')}.}</span>
+                <pre><span class="ruby-comment"># File lib/picky/indexers/base.rb, line 41</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">notify_finished</span> <span class="ruby-identifier">prepared_file</span>
+  <span class="ruby-identifier">timed_exclaim</span> <span class="ruby-node">%Q{  &quot;#{@index_or_category.identifier}&quot;: Tokenized -&gt; #{prepared_file.path.gsub(&quot;#{PICKY_ROOT}/&quot;, '')}.}</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-prepare">
+            
+              <a name="method-i-prepare"></a><b>prepare</b>(categories, scheduler = Scheduler.new)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Starts the indexing process.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-prepare_source')" id="l_method-i-prepare_source">show</a>
+                
+              </p>
+              <div id="method-i-prepare_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/indexers/base.rb, line 21</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">prepare</span> <span class="ruby-identifier">categories</span>, <span class="ruby-identifier">scheduler</span> = <span class="ruby-constant">Scheduler</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">source_for_prepare</span> = <span class="ruby-identifier">source</span>
+  <span class="ruby-identifier">check</span> <span class="ruby-identifier">source_for_prepare</span>
+  <span class="ruby-identifier">categories</span>.<span class="ruby-identifier">empty</span>
+  <span class="ruby-identifier">process</span> <span class="ruby-identifier">source_for_prepare</span>, <span class="ruby-identifier">categories</span>, <span class="ruby-identifier">scheduler</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">prepared_file</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">notify_finished</span> <span class="ruby-identifier">prepared_file</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-reset">
+            
+              <a name="method-i-reset"></a><b>reset</b>(source)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Explicitly reset the source to avoid caching trouble.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-reset_source')" id="l_method-i-reset_source">show</a>
+                
+              </p>
+              <div id="method-i-reset_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/indexers/base.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">reset</span> <span class="ruby-identifier">source</span>
+  <span class="ruby-identifier">source</span>.<span class="ruby-identifier">reset</span>      <span class="ruby-keyword">if</span> <span class="ruby-identifier">source</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:reset</span>)
+  <span class="ruby-identifier">source</span>.<span class="ruby-identifier">reconnect!</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">source</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:reconnect!</span>)
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>

@@ -244,9 +244,7 @@
                 <pre><span class="ruby-comment"># File lib/picky/backends/redis/directly_manipulable.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">delete</span> <span class="ruby-identifier">value</span>
   <span class="ruby-identifier">result</span> = <span class="ruby-keyword">super</span> <span class="ruby-identifier">value</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">result</span>
-    <span class="ruby-identifier">backend</span>.<span class="ruby-identifier">client</span>.<span class="ruby-identifier">zrem</span> <span class="ruby-node">&quot;#{backend.namespace}:#{key}&quot;</span>, <span class="ruby-identifier">value</span> <span class="ruby-comment"># TODO if super(value) ?</span>
-  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">backend</span>.<span class="ruby-identifier">client</span>.<span class="ruby-identifier">zrem</span> <span class="ruby-node">&quot;#{backend.namespace}:#{key}&quot;</span>, <span class="ruby-identifier">value</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">result</span>
   <span class="ruby-identifier">result</span>
 <span class="ruby-keyword">end</span></pre>
               </div>

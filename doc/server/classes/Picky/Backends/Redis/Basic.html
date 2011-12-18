@@ -220,7 +220,7 @@ by the subclasses.</p>
 
   <span class="ruby-ivar">@empty</span>     = <span class="ruby-identifier">options</span>[<span class="ruby-value">:empty</span>]
   <span class="ruby-ivar">@initial</span>   = <span class="ruby-identifier">options</span>[<span class="ruby-value">:initial</span>]
-  <span class="ruby-ivar">@immediate</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:immediate</span>]
+  <span class="ruby-ivar">@realtime</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:realtime</span>]
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -256,7 +256,7 @@ by the subclasses.</p>
               <div id="method-i-empty_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/backends/redis/basic.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">empty</span>
-  <span class="ruby-ivar">@empty</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@empty</span>.<span class="ruby-identifier">clone</span> <span class="ruby-operator">||</span> (<span class="ruby-ivar">@immediate</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">reset</span> <span class="ruby-operator">:</span> {})
+  <span class="ruby-ivar">@empty</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@empty</span>.<span class="ruby-identifier">clone</span> <span class="ruby-operator">||</span> (<span class="ruby-ivar">@realtime</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">reset</span> <span class="ruby-operator">:</span> {})
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -295,7 +295,7 @@ se,</p>
               <div id="method-i-initial_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/backends/redis/basic.rb, line 42</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initial</span>
-  <span class="ruby-ivar">@initial</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@initial</span>.<span class="ruby-identifier">clone</span> <span class="ruby-operator">||</span> (<span class="ruby-ivar">@immediate</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">reset</span> <span class="ruby-operator">:</span> {})
+  <span class="ruby-ivar">@initial</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@initial</span>.<span class="ruby-identifier">clone</span> <span class="ruby-operator">||</span> (<span class="ruby-ivar">@realtime</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">reset</span> <span class="ruby-operator">:</span> {})
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>

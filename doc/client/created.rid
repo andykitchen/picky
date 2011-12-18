@@ -1,4 +1,4 @@
-Thu, 01 Dec 2011 17:47:28 +1100
+Sun, 18 Dec 2011 16:17:29 +1100
 lib/picky-client/aux/cursed.rb	Wed, 20 Apr 2011 20:32:48 +1000
 lib/picky-client/aux/README	Wed, 20 Apr 2011 20:40:35 +1000
 lib/picky-client/aux/terminal.rb	Wed, 20 Apr 2011 20:40:35 +1000
@@ -9,6 +9,6 @@ lib/picky-client/helper.rb	Wed, 20 Apr 2011 20:32:48 +1000
 lib/picky-client/spec/README	Wed, 20 Apr 2011 20:40:35 +1000
 lib/picky-client/spec/support/matchers/have_categories.rb	Wed, 20 Apr 2011 20:40:35 +1000
 lib/picky-client/spec/test_client.rb	Mon, 25 Jul 2011 19:57:00 +1000
-lib/picky-client/tasks/javascripts.rb	Fri, 26 Aug 2011 09:19:34 +1000
+lib/picky-client/tasks/javascripts.rb	Tue, 06 Dec 2011 16:46:26 +1100
 lib/picky-client/tasks.rb	Mon, 25 Jul 2011 19:57:44 +1000
 lib/picky-client.rb	Thu, 07 Jul 2011 22:47:31 +1000

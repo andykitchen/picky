@@ -4,19 +4,23 @@
     
       <a href="../files/lib/picky_rb.html">lib/picky.rb</a>
     
-      <a href="../files/lib/picky/adapters/rack_rb.html">lib/picky/adapters/rack.rb</a>
-    
-      <a href="../files/lib/picky/adapters/rack/base_rb.html">lib/picky/adapters/rack/base.rb</a>
-    
-      <a href="../files/lib/picky/adapters/rack/live_parameters_rb.html">lib/picky/adapters/rack/live_parameters.rb</a>
-    
-      <a href="../files/lib/picky/adapters/rack/search_rb.html">lib/picky/adapters/rack/search.rb</a>
-    
       <a href="../files/lib/picky/analytics_rb.html">lib/picky/analytics.rb</a>
     
       <a href="../files/lib/picky/analyzer_rb.html">lib/picky/analyzer.rb</a>
     
-      <a href="../files/lib/picky/application_rb.html">lib/picky/application.rb</a>
+      <a href="../files/lib/picky/api/category/partial_rb.html">lib/picky/api/category/partial.rb</a>
+    
+      <a href="../files/lib/picky/api/category/similarity_rb.html">lib/picky/api/category/similarity.rb</a>
+    
+      <a href="../files/lib/picky/api/category/weight_rb.html">lib/picky/api/category/weight.rb</a>
+    
+      <a href="../files/lib/picky/api/search/boost_rb.html">lib/picky/api/search/boost.rb</a>
+    
+      <a href="../files/lib/picky/api/source_rb.html">lib/picky/api/source.rb</a>
+    
+      <a href="../files/lib/picky/api/tokenizer_rb.html">lib/picky/api/tokenizer.rb</a>
+    
+      <a href="../files/lib/picky/api/tokenizer/character_substituter_rb.html">lib/picky/api/tokenizer/character_substituter.rb</a>
     
       <a href="../files/lib/picky/backends/backend_rb.html">lib/picky/backends/backend.rb</a>
     
@@ -38,7 +42,7 @@
     
       <a href="../files/lib/picky/backends/memory/marshal_rb.html">lib/picky/backends/memory/marshal.rb</a>
     
-      <a href="../files/lib/picky/backends/memory/text_rb.html">lib/picky/backends/memory/text.rb</a>
+      <a href="../files/lib/picky/backends/prepared/text_rb.html">lib/picky/backends/prepared/text.rb</a>
     
       <a href="../files/lib/picky/backends/redis_rb.html">lib/picky/backends/redis.rb</a>
     
@@ -88,6 +92,8 @@
     
       <a href="../files/lib/picky/category_rb.html">lib/picky/category.rb</a>
     
+      <a href="../files/lib/picky/category/location_rb.html">lib/picky/category/location.rb</a>
+    
       <a href="../files/lib/picky/category_convenience_rb.html">lib/picky/category_convenience.rb</a>
     
       <a href="../files/lib/picky/category_indexed_rb.html">lib/picky/category_indexed.rb</a>
@@ -101,8 +107,6 @@
       <a href="../files/lib/picky/console_rb.html">lib/picky/console.rb</a>
     
       <a href="../files/lib/picky/constants_rb.html">lib/picky/constants.rb</a>
-    
-      <a href="../files/lib/picky/cores_rb.html">lib/picky/cores.rb</a>
     
       <a href="../files/lib/picky/deployment_rb.html">lib/picky/deployment.rb</a>
     
@@ -127,8 +131,6 @@
       <a href="../files/lib/picky/extensions/string_rb.html">lib/picky/extensions/string.rb</a>
     
       <a href="../files/lib/picky/extensions/symbol_rb.html">lib/picky/extensions/symbol.rb</a>
-    
-      <a href="../files/lib/picky/frontend_adapters/rack_rb.html">lib/picky/frontend_adapters/rack.rb</a>
     
       <a href="../files/lib/picky/generators/aliases_rb.html">lib/picky/generators/aliases.rb</a>
     
@@ -168,9 +170,11 @@
     
       <a href="../files/lib/picky/generators/weights/logarithmic_rb.html">lib/picky/generators/weights/logarithmic.rb</a>
     
-      <a href="../files/lib/picky/generators/weights/runtime_rb.html">lib/picky/generators/weights/runtime.rb</a>
-    
       <a href="../files/lib/picky/generators/weights/strategy_rb.html">lib/picky/generators/weights/strategy.rb</a>
+    
+      <a href="../files/lib/picky/generators/weights/stub_rb.html">lib/picky/generators/weights/stub.rb</a>
+    
+      <a href="../files/lib/picky/helpers/indexing_rb.html">lib/picky/helpers/indexing.rb</a>
     
       <a href="../files/lib/picky/helpers/measuring_rb.html">lib/picky/helpers/measuring.rb</a>
     
@@ -198,7 +202,9 @@
     
       <a href="../files/lib/picky/indexes_indexing_rb.html">lib/picky/indexes_indexing.rb</a>
     
-      <a href="../files/lib/picky/interfaces/live_parameters_rb.html">lib/picky/interfaces/live_parameters.rb</a>
+      <a href="../files/lib/picky/interfaces/live_parameters/master_child_rb.html">lib/picky/interfaces/live_parameters/master_child.rb</a>
+    
+      <a href="../files/lib/picky/interfaces/live_parameters/unicorn_rb.html">lib/picky/interfaces/live_parameters/unicorn.rb</a>
     
       <a href="../files/lib/picky/loader_rb.html">lib/picky/loader.rb</a>
     
@@ -209,6 +215,8 @@
       <a href="../files/lib/picky/query/allocation_rb.html">lib/picky/query/allocation.rb</a>
     
       <a href="../files/lib/picky/query/allocations_rb.html">lib/picky/query/allocations.rb</a>
+    
+      <a href="../files/lib/picky/query/boosts_rb.html">lib/picky/query/boosts.rb</a>
     
       <a href="../files/lib/picky/query/combination_rb.html">lib/picky/query/combination.rb</a>
     
@@ -224,35 +232,23 @@
     
       <a href="../files/lib/picky/query/tokens_rb.html">lib/picky/query/tokens.rb</a>
     
-      <a href="../files/lib/picky/query/weights_rb.html">lib/picky/query/weights.rb</a>
-    
       <a href="../files/lib/picky/rack/harakiri_rb.html">lib/picky/rack/harakiri.rb</a>
     
       <a href="../files/lib/picky/results_rb.html">lib/picky/results.rb</a>
     
+      <a href="../files/lib/picky/results/exact_first_rb.html">lib/picky/results/exact_first.rb</a>
+    
+      <a href="../files/lib/picky/scheduler_rb.html">lib/picky/scheduler.rb</a>
+    
       <a href="../files/lib/picky/search_rb.html">lib/picky/search.rb</a>
     
       <a href="../files/lib/picky/sinatra_rb.html">lib/picky/sinatra.rb</a>
-    
-      <a href="../files/lib/picky/sources/base_rb.html">lib/picky/sources/base.rb</a>
-    
-      <a href="../files/lib/picky/sources/couch_rb.html">lib/picky/sources/couch.rb</a>
-    
-      <a href="../files/lib/picky/sources/csv_rb.html">lib/picky/sources/csv.rb</a>
-    
-      <a href="../files/lib/picky/sources/db_rb.html">lib/picky/sources/db.rb</a>
-    
-      <a href="../files/lib/picky/sources/delicious_rb.html">lib/picky/sources/delicious.rb</a>
-    
-      <a href="../files/lib/picky/sources/mongo_rb.html">lib/picky/sources/mongo.rb</a>
     
       <a href="../files/lib/picky/statistics_rb.html">lib/picky/statistics.rb</a>
     
       <a href="../files/lib/picky/tasks_rb.html">lib/picky/tasks.rb</a>
     
       <a href="../files/lib/picky/tokenizer_rb.html">lib/picky/tokenizer.rb</a>
-    
-      <a href="../files/lib/picky/tokenizers/location_rb.html">lib/picky/tokenizers/location.rb</a>
     
       <a href="../files/lib/picky/wrappers/bundle/calculation_rb.html">lib/picky/wrappers/bundle/calculation.rb</a>
     
@@ -263,10 +259,6 @@
       <a href="../files/lib/picky/wrappers/bundle/location_rb.html">lib/picky/wrappers/bundle/location.rb</a>
     
       <a href="../files/lib/picky/wrappers/bundle/wrapper_rb.html">lib/picky/wrappers/bundle/wrapper.rb</a>
-    
-      <a href="../files/lib/picky/wrappers/category/exact_first_rb.html">lib/picky/wrappers/category/exact_first.rb</a>
-    
-      <a href="../files/lib/picky/wrappers/category/location_rb.html">lib/picky/wrappers/category/location.rb</a>
     
       <a href="../files/lib/tasks/try_rb.html">lib/tasks/try.rb</a>
     

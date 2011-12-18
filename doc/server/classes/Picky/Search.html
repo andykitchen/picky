@@ -189,6 +189,14 @@ through one of these (Protip: Use “curl
       
         <li>
           
+            <a href="API/Search/Boost.html">
+              Picky::API::Search::Boost
+            </a>
+          
+        </li>
+      
+        <li>
+          
             <a href="Helpers/Measuring.html">
               Picky::Helpers::Measuring
             </a>
@@ -216,6 +224,14 @@ through one of these (Protip: Use “curl
         
           <tr valign='top'>
             <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>boosts</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
               [R]
             </td>
             <td class='attr-name'>indexes</td>
@@ -227,14 +243,6 @@ through one of these (Protip: Use “curl
               [RW]
             </td>
             <td class='attr-name'>tokenizer</td>
-            <td class='attr-desc'></td>
-          </tr>
-        
-          <tr valign='top'>
-            <td class='attr-rw'>
-              [RW]
-            </td>
-            <td class='attr-name'>weights</td>
             <td class='attr-desc'></td>
           </tr>
         
@@ -260,13 +268,11 @@ through one of these (Protip: Use “curl
 <p>A number of indexes</p>
 </li></ul>
 
-<p>TODO Add reduce_allocations_to_amount (rename).</p>
-
-<p>It is also possible to define the tokenizer and weights like so. Example:</p>
+<p>It is also possible to define the tokenizer and boosts like so. Example:</p>
 
 <pre class="ruby"><span class="ruby-identifier">search</span> = <span class="ruby-constant">Search</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">index1</span>, <span class="ruby-identifier">index2</span>, <span class="ruby-identifier">index3</span>) <span class="ruby-keyword">do</span>
   <span class="ruby-identifier">searching</span> <span class="ruby-identifier">removes_characters</span><span class="ruby-operator">:</span> <span class="ruby-regexp">/[^a-z]/</span> <span class="ruby-comment"># etc.</span>
-  <span class="ruby-identifier">weights</span> [:<span class="ruby-identifier">author</span>, :<span class="ruby-identifier">title</span>] =<span class="ruby-operator">&gt;</span> <span class="ruby-value">+3</span>,
+  <span class="ruby-identifier">boosts</span> [:<span class="ruby-identifier">author</span>, :<span class="ruby-identifier">title</span>] =<span class="ruby-operator">&gt;</span> <span class="ruby-value">+3</span>,
           [:<span class="ruby-identifier">title</span>, :<span class="ruby-identifier">isbn</span>] =<span class="ruby-operator">&gt;</span> <span class="ruby-value">+1</span>
 <span class="ruby-keyword">end</span>
 </pre>
@@ -291,8 +297,8 @@ through one of these (Protip: Use “curl
 
   <span class="ruby-identifier">instance_eval</span>(&amp;<span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
 
-  <span class="ruby-ivar">@tokenizer</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">query_default</span> <span class="ruby-comment"># THINK Not dynamic. Ok?</span>
-  <span class="ruby-ivar">@weights</span>   <span class="ruby-operator">||=</span> <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Weights</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@tokenizer</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">searching</span> <span class="ruby-comment"># THINK Not dynamic. Ok?</span>
+  <span class="ruby-ivar">@boosts</span>    <span class="ruby-operator">||=</span> <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Boosts</span>.<span class="ruby-identifier">new</span>
   <span class="ruby-ivar">@ignore_unassigned</span> = <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@ignore_unassigned</span>.<span class="ruby-identifier">nil?</span>
 
   <span class="ruby-keyword">self</span>
@@ -307,7 +313,7 @@ through one of these (Protip: Use “curl
         <div class="method">
           <div class="title method-title" id="method-i-boost">
             
-              <a name="method-i-boost"></a><b>boost</b>(weights)
+              <a name="method-i-boost"></a><b>boost</b>(boosts)
             
           </div>
           
@@ -323,21 +329,21 @@ through one of these (Protip: Use “curl
 
 <p>or</p>
 
-<pre class="ruby"><span class="ruby-comment"># Explicitly add a random number (0...1) to the weights.</span>
+<pre class="ruby"><span class="ruby-comment"># Explicitly add a random number (0...1) to the boosts.</span>
 <span class="ruby-comment">#</span>
-<span class="ruby-identifier">my_weights</span> = <span class="ruby-constant">Class</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">do</span>
+<span class="ruby-identifier">my_boosts</span> = <span class="ruby-constant">Class</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">do</span>
   <span class="ruby-comment"># Instance only needs to implement</span>
-  <span class="ruby-comment">#   score_for combinations</span>
+  <span class="ruby-comment">#   boost_for combinations</span>
   <span class="ruby-comment"># and return a number that is</span>
-  <span class="ruby-comment"># added to the weight.</span>
+  <span class="ruby-comment"># added to the score.</span>
   <span class="ruby-comment">#</span>
-  <span class="ruby-keyword">def</span> <span class="ruby-identifier">score_for</span> <span class="ruby-identifier">combinations</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">boost_for</span> <span class="ruby-identifier">combinations</span>
     <span class="ruby-identifier">rand</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span>.<span class="ruby-identifier">new</span>
 
 <span class="ruby-identifier">search</span> = <span class="ruby-constant">Search</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">books_index</span>, <span class="ruby-identifier">dvd_index</span>, <span class="ruby-identifier">mp3_index</span>) <span class="ruby-keyword">do</span>
-  <span class="ruby-identifier">boost</span> <span class="ruby-identifier">my_weights</span>
+  <span class="ruby-identifier">boost</span> <span class="ruby-identifier">my_boosts</span>
 <span class="ruby-keyword">end</span>
 </pre>
             </div>
@@ -356,12 +362,8 @@ through one of these (Protip: Use “curl
               </p>
               <div id="method-i-boost_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/search.rb, line 138</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">boost</span> <span class="ruby-identifier">weights</span>
-  <span class="ruby-ivar">@weights</span> = <span class="ruby-keyword">if</span> <span class="ruby-identifier">weights</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:score_for</span>)
-    <span class="ruby-identifier">weights</span>
-  <span class="ruby-keyword">else</span>
-    <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Weights</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">weights</span>
-  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">boost</span> <span class="ruby-identifier">boosts</span>
+  <span class="ruby-ivar">@boosts</span> = <span class="ruby-identifier">extract_boosts</span> <span class="ruby-identifier">boosts</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -396,7 +398,7 @@ href="Search.html#method-i-search">#search</a> to search.</p>
                 
               </p>
               <div id="method-i-execute_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 206</span>
+                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 202</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">execute</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">ids</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">original_text</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-constant">Results</span>.<span class="ruby-identifier">from</span> <span class="ruby-identifier">original_text</span>, <span class="ruby-identifier">ids</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">sorted_allocations</span>(<span class="ruby-identifier">tokens</span>, <span class="ruby-ivar">@max_allocations</span>), <span class="ruby-ivar">@extra_allocations</span>
 <span class="ruby-keyword">end</span></pre>
@@ -451,7 +453,7 @@ categorization.</p>
                 
               </p>
               <div id="method-i-ignore_unassigned_tokens_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 169</span>
+                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 165</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ignore_unassigned_tokens</span> <span class="ruby-identifier">value</span>
   <span class="ruby-ivar">@ignore_unassigned</span> = <span class="ruby-identifier">value</span>
 <span class="ruby-keyword">end</span></pre>
@@ -539,7 +541,7 @@ unravelling the HTTP request.</p>
                 
               </p>
               <div id="method-i-search_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 183</span>
+                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 179</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">search</span> <span class="ruby-identifier">text</span>, <span class="ruby-identifier">ids</span> = <span class="ruby-number">20</span>, <span class="ruby-identifier">offset</span> = <span class="ruby-number">0</span>
   <span class="ruby-identifier">search_with</span> <span class="ruby-identifier">tokenized</span>(<span class="ruby-identifier">text</span>), <span class="ruby-identifier">ids</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">offset</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">text</span>
 <span class="ruby-keyword">end</span></pre>
@@ -576,7 +578,7 @@ href="Search.html#method-i-search">#search</a> to search.</p>
                 
               </p>
               <div id="method-i-search_with_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 191</span>
+                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 187</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">search_with</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">ids</span> = <span class="ruby-number">20</span>, <span class="ruby-identifier">offset</span> = <span class="ruby-number">0</span>, <span class="ruby-identifier">original_text</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-identifier">results</span> = <span class="ruby-keyword">nil</span>
 
@@ -660,7 +662,7 @@ href="../Picky.html">Picky</a> needs to calculate the total)</p>
 terminate too early as this will kill off the allocation selections. A
 value of</p>
 
-<pre>early_terminate 5</pre>
+<pre>terminate_early 5</pre>
 
 <p>is probably a good idea to show the user 5 extra beyond the needed ones.</p>
 
@@ -727,12 +729,12 @@ end</pre>
                 
               </p>
               <div id="method-i-to_s_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 234</span>
+                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 230</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
   <span class="ruby-identifier">s</span> = <span class="ruby-node">&quot;#{self.class}(&quot;</span>
   <span class="ruby-identifier">ary</span> = []
   <span class="ruby-identifier">ary</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-ivar">@indexes</span>.<span class="ruby-identifier">indexes</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:name</span>).<span class="ruby-identifier">join</span>(<span class="ruby-string">', '</span>) <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@indexes</span>.<span class="ruby-identifier">indexes</span>.<span class="ruby-identifier">empty?</span>
-  <span class="ruby-identifier">ary</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;weights: #{@weights}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@weights</span>
+  <span class="ruby-identifier">ary</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;boosts: #{@boosts}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@boosts</span>
   <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">ary</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">', '</span>)
   <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;)&quot;</span>
   <span class="ruby-identifier">s</span>
@@ -777,7 +779,7 @@ end</pre>
                 
               </p>
               <div id="method-i-tokenized_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 218</span>
+                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 214</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">tokenized</span> <span class="ruby-identifier">text</span>
   <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">originals</span> = <span class="ruby-identifier">tokenizer</span>.<span class="ruby-identifier">tokenize</span> <span class="ruby-identifier">text</span>
   <span class="ruby-identifier">tokens</span> = <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Tokens</span>.<span class="ruby-identifier">processed</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">originals</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-ivar">@ignore_unassigned</span>

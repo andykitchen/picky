@@ -64,6 +64,30 @@ not.</p>
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
       
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-flush">flush</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-index_flush">index_flush</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
         <dt>P</dt>
         <dd>
           <ul>
@@ -100,9 +124,88 @@ not.</p>
       <div class="sectiontitle">Instance Public methods</div>
       
         <div class="method">
+          <div class="title method-title" id="method-i-flush">
+            
+              <a name="method-i-flush"></a><b>flush</b>(file, cache)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-flush_source')" id="l_method-i-flush_source">show</a>
+                
+              </p>
+              <div id="method-i-flush_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/indexers/parallel.rb, line 72</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">flush</span> <span class="ruby-identifier">file</span>, <span class="ruby-identifier">cache</span>
+  <span class="ruby-identifier">file</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">cache</span>.<span class="ruby-identifier">join</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">cache</span>.<span class="ruby-identifier">clear</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-index_flush">
+            
+              <a name="method-i-index_flush"></a><b>index_flush</b>(objects, file, category, cache, tokenizer)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-index_flush_source')" id="l_method-i-index_flush_source">show</a>
+                
+              </p>
+              <div id="method-i-index_flush_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/indexers/parallel.rb, line 57</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">index_flush</span> <span class="ruby-identifier">objects</span>, <span class="ruby-identifier">file</span>, <span class="ruby-identifier">category</span>, <span class="ruby-identifier">cache</span>, <span class="ruby-identifier">tokenizer</span>
+  <span class="ruby-identifier">comma</span>   = <span class="ruby-number">,,</span>
+  <span class="ruby-identifier">newline</span> = <span class="ruby-number">\n\</span>
+
+  <span class="ruby-identifier">objects</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">object</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">_</span> = <span class="ruby-identifier">tokenizer</span>.<span class="ruby-identifier">tokenize</span> <span class="ruby-identifier">object</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">category</span>.<span class="ruby-identifier">from</span>) <span class="ruby-comment"># Note: Originals not needed.</span>
+    <span class="ruby-identifier">tokens</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">token_text</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">next</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">token_text</span>
+      <span class="ruby-identifier">cache</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">object</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">comma</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">token_text</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">newline</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">flush</span> <span class="ruby-identifier">file</span>, <span class="ruby-identifier">cache</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
           <div class="title method-title" id="method-i-process">
             
-              <a name="method-i-process"></a><b>process</b>(categories)
+              <a name="method-i-process"></a><b>process</b>(source_for_prepare, categories, scheduler = Scheduler.new)
             
           </div>
           
@@ -129,51 +232,41 @@ not.</p>
               </p>
               <div id="method-i-process_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/indexers/parallel.rb, line 17</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">process</span> <span class="ruby-identifier">categories</span>
-  <span class="ruby-identifier">comma</span>   = <span class="ruby-number">,,</span>
-  <span class="ruby-identifier">newline</span> = <span class="ruby-number">\n\</span>
-
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">process</span> <span class="ruby-identifier">source_for_prepare</span>, <span class="ruby-identifier">categories</span>, <span class="ruby-identifier">scheduler</span> = <span class="ruby-constant">Scheduler</span>.<span class="ruby-identifier">new</span>
   <span class="ruby-comment"># Prepare a combined object - array.</span>
   <span class="ruby-comment">#</span>
   <span class="ruby-identifier">combined</span> = <span class="ruby-identifier">categories</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">category</span><span class="ruby-operator">|</span>
-    [<span class="ruby-identifier">category</span>, [], <span class="ruby-identifier">category</span>.<span class="ruby-identifier">prepared_index_file</span>, (<span class="ruby-identifier">category</span>.<span class="ruby-identifier">tokenizer</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">tokenizer</span>)]
+    [<span class="ruby-identifier">category</span>, <span class="ruby-identifier">category</span>.<span class="ruby-identifier">prepared_index_file</span>, [], (<span class="ruby-identifier">category</span>.<span class="ruby-identifier">tokenizer</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">tokenizer</span>)]
   <span class="ruby-keyword">end</span>
-
-  <span class="ruby-comment"># Index.</span>
-  <span class="ruby-comment">#</span>
-  <span class="ruby-comment"># TODO Extract into flush_every(100_000) do</span>
-  <span class="ruby-comment">#</span>
-  <span class="ruby-identifier">i</span> = <span class="ruby-number">0</span>
-
-  <span class="ruby-comment"># Explicitly reset the source to avoid caching trouble.</span>
-  <span class="ruby-comment">#</span>
-  <span class="ruby-identifier">source</span>.<span class="ruby-identifier">reset</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">source</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:reset</span>)
 
   <span class="ruby-comment"># Go through each object in the source.</span>
   <span class="ruby-comment">#</span>
-  <span class="ruby-identifier">source</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">object</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">id</span> = <span class="ruby-identifier">object</span>.<span class="ruby-identifier">id</span>
+  <span class="ruby-identifier">objects</span> = []
 
-    <span class="ruby-comment"># This needs to be rewritten.</span>
+  <span class="ruby-identifier">reset</span> <span class="ruby-identifier">source_for_prepare</span>
+
+  <span class="ruby-identifier">source_for_prepare</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">object</span><span class="ruby-operator">|</span>
+
+    <span class="ruby-comment"># Accumulate objects.</span>
     <span class="ruby-comment">#</span>
-    <span class="ruby-comment"># Is it a good idea that not the tokenizer has control over when he gets the next text?</span>
+    <span class="ruby-identifier">objects</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">object</span>
+    <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">objects</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&lt;</span> <span class="ruby-number">10_000</span>
+
+    <span class="ruby-comment"># THINK Is it a good idea that not the tokenizer has</span>
+    <span class="ruby-comment"># control over when he gets the next text?</span>
     <span class="ruby-comment">#</span>
-    <span class="ruby-identifier">combined</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">category</span>, <span class="ruby-identifier">cache</span>, <span class="ruby-identifier">_</span>, <span class="ruby-identifier">tokenizer</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">_</span> = <span class="ruby-identifier">tokenizer</span>.<span class="ruby-identifier">tokenize</span> <span class="ruby-identifier">object</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">category</span>.<span class="ruby-identifier">from</span>) <span class="ruby-comment"># Note: Originals not needed.</span>
-      <span class="ruby-identifier">tokens</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">token_text</span><span class="ruby-operator">|</span>
-        <span class="ruby-keyword">next</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">token_text</span>
-        <span class="ruby-identifier">cache</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">id</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">comma</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">token_text</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">newline</span>
-      <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">combined</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">category</span>, <span class="ruby-identifier">file</span>, <span class="ruby-identifier">cache</span>, <span class="ruby-identifier">tokenizer</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">index_flush</span> <span class="ruby-identifier">objects</span>, <span class="ruby-identifier">file</span>, <span class="ruby-identifier">category</span>, <span class="ruby-identifier">cache</span>, <span class="ruby-identifier">tokenizer</span>
     <span class="ruby-keyword">end</span>
 
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-number">100_000</span>
-      <span class="ruby-identifier">flush</span> <span class="ruby-identifier">combined</span>
-      <span class="ruby-identifier">i</span> = <span class="ruby-number">0</span>
-    <span class="ruby-keyword">end</span>
-    <span class="ruby-identifier">i</span> <span class="ruby-operator">+=</span> <span class="ruby-number">1</span>
+    <span class="ruby-identifier">objects</span>.<span class="ruby-identifier">clear</span>
+
   <span class="ruby-keyword">end</span>
-  <span class="ruby-identifier">flush</span> <span class="ruby-identifier">combined</span>
-  <span class="ruby-identifier">combined</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">_</span>, <span class="ruby-identifier">_</span>, <span class="ruby-identifier">file</span>, <span class="ruby-identifier">_</span><span class="ruby-operator">|</span>
+
+  <span class="ruby-comment"># Close all files.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">combined</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">category</span>, <span class="ruby-identifier">file</span>, <span class="ruby-identifier">cache</span>, <span class="ruby-identifier">tokenizer</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">index_flush</span> <span class="ruby-identifier">objects</span>, <span class="ruby-identifier">file</span>, <span class="ruby-identifier">category</span>, <span class="ruby-identifier">cache</span>, <span class="ruby-identifier">tokenizer</span>
     <span class="ruby-keyword">yield</span> <span class="ruby-identifier">file</span>
     <span class="ruby-identifier">file</span>.<span class="ruby-identifier">close</span>
   <span class="ruby-keyword">end</span>

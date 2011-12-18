@@ -154,13 +154,13 @@ with <a href="Sinatra.html">Sinatra</a>.</p>
         <div class="method">
           <div class="title method-title" id="method-i-indexing">
             
-              <a name="method-i-indexing"></a><b>indexing</b>(options)
+              <a name="method-i-indexing"></a><b>indexing</b>(options = {})
             
           </div>
           
           
             <div class="description">
-              <p>Delegates to <a href="Application.html">Application</a>.</p>
+              <p>Sets tokenizer default indexing options.</p>
             </div>
           
           
@@ -177,8 +177,8 @@ with <a href="Sinatra.html">Sinatra</a>.</p>
               </p>
               <div id="method-i-indexing_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/sinatra.rb, line 16</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">indexing</span> <span class="ruby-identifier">options</span>
-  <span class="ruby-constant">Application</span>.<span class="ruby-identifier">indexing</span> <span class="ruby-identifier">options</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">indexing</span> <span class="ruby-identifier">options</span> = {}
+  <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">default_indexing_with</span> <span class="ruby-identifier">options</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -188,13 +188,13 @@ with <a href="Sinatra.html">Sinatra</a>.</p>
         <div class="method">
           <div class="title method-title" id="method-i-searching">
             
-              <a name="method-i-searching"></a><b>searching</b>(options)
+              <a name="method-i-searching"></a><b>searching</b>(options = {})
             
           </div>
           
           
             <div class="description">
-              <p>Delegates to <a href="Application.html">Application</a>.</p>
+              <p>Sets tokenizer default searching options.</p>
             </div>
           
           
@@ -211,8 +211,8 @@ with <a href="Sinatra.html">Sinatra</a>.</p>
               </p>
               <div id="method-i-searching_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/sinatra.rb, line 22</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">searching</span> <span class="ruby-identifier">options</span>
-  <span class="ruby-constant">Application</span>.<span class="ruby-identifier">searching</span> <span class="ruby-identifier">options</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">searching</span> <span class="ruby-identifier">options</span> = {}
+  <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">default_searching_with</span> <span class="ruby-identifier">options</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>

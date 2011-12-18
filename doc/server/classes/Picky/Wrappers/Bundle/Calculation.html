@@ -46,11 +46,6 @@
 
 <pre>not a sym.</pre>
 
-<p>TODO I really need to allow integers as keys.</p>
-
-<pre>The code below is just not up to the needed quality.
-Use key_format :to_i?</pre>
-
     </div>
   
 
@@ -138,7 +133,7 @@ Use key_format :to_i?</pre>
           
           
             <div class="description">
-              <p>API.</p>
+              <p><a href="../../API.html">API</a>.</p>
 
 <p>By default, a calculation does not calculate anything.</p>
             </div>
@@ -156,7 +151,7 @@ Use key_format :to_i?</pre>
                 
               </p>
               <div id="method-i-calculate_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/wrappers/bundle/calculation.rb, line 23</span>
+                <pre><span class="ruby-comment"># File lib/picky/wrappers/bundle/calculation.rb, line 19</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">calculate</span> <span class="ruby-identifier">float</span>
   <span class="ruby-identifier">float</span>
 <span class="ruby-keyword">end</span></pre>
@@ -175,6 +170,8 @@ Use key_format :to_i?</pre>
           
             <div class="description">
               <p>TODO Symbols. Use a block here?</p>
+
+<p>THINK Move the calculation elsewhere?</p>
             </div>
           
           
@@ -190,7 +187,7 @@ Use key_format :to_i?</pre>
                 
               </p>
               <div id="method-i-ids_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/wrappers/bundle/calculation.rb, line 29</span>
+                <pre><span class="ruby-comment"># File lib/picky/wrappers/bundle/calculation.rb, line 27</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ids</span> <span class="ruby-identifier">float_str</span>
   <span class="ruby-ivar">@bundle</span>.<span class="ruby-identifier">ids</span> <span class="ruby-identifier">calculate</span>(<span class="ruby-identifier">float_str</span>.<span class="ruby-identifier">to_f</span>).<span class="ruby-identifier">to_s</span>
 <span class="ruby-keyword">end</span></pre>
@@ -209,6 +206,8 @@ Use key_format :to_i?</pre>
           
             <div class="description">
               <p>TODO Symbols.</p>
+
+<p>THINK Move the calculation elsewhere?</p>
             </div>
           
           

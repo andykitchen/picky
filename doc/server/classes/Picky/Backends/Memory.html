@@ -37,8 +37,6 @@
             
             <li><a href="../../../files/lib/picky/backends/memory/marshal_rb.html">lib/picky/backends/memory/marshal.rb</a></li>
             
-            <li><a href="../../../files/lib/picky/backends/memory/text_rb.html">lib/picky/backends/memory/text.rb</a></li>
-            
             <li><a href="../../../files/lib/picky/backends/memory_rb.html">lib/picky/backends/memory.rb</a></li>
             
         </ul>
@@ -73,11 +71,6 @@
         <li>
           <span class="type">CLASS</span>
           <a href="Memory/Marshal.html">Picky::Backends::Memory::Marshal</a>
-        </li>
-      
-        <li>
-          <span class="type">CLASS</span>
-          <a href="Memory/Text.html">Picky::Backends::Memory::Text</a>
         </li>
       
     </ul>
@@ -116,18 +109,6 @@
               
               <li>
                 <a href="#method-i-create_weights">create_weights</a>
-              </li>
-            
-          </ul>
-        </dd>
-      
-        <dt>I</dt>
-        <dd>
-          <ul>
-            
-              
-              <li>
-                <a href="#method-i-ids">ids</a>
               </li>
             
           </ul>
@@ -184,10 +165,9 @@
                 
               </p>
               <div id="method-i-create_configuration_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/memory.rb, line 31</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/memory.rb, line 32</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">create_configuration</span> <span class="ruby-identifier">bundle</span>
-  <span class="ruby-identifier">extract_lambda_or</span>(<span class="ruby-identifier">configuration</span>, <span class="ruby-identifier">bundle</span>) <span class="ruby-operator">||</span>
-    <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-value">:configuration</span>))
+  <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-value">:configuration</span>)
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -222,10 +202,9 @@
                 
               </p>
               <div id="method-i-create_inverted_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/memory.rb, line 10</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/memory.rb, line 11</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">create_inverted</span> <span class="ruby-identifier">bundle</span>
-  <span class="ruby-identifier">extract_lambda_or</span>(<span class="ruby-identifier">inverted</span>, <span class="ruby-identifier">bundle</span>) <span class="ruby-operator">||</span>
-    <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-value">:inverted</span>))
+  <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-value">:inverted</span>)
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -260,10 +239,9 @@
                 
               </p>
               <div id="method-i-create_realtime_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/memory.rb, line 38</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/memory.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">create_realtime</span> <span class="ruby-identifier">bundle</span>
-  <span class="ruby-identifier">extract_lambda_or</span>(<span class="ruby-identifier">similarity</span>, <span class="ruby-identifier">bundle</span>) <span class="ruby-operator">||</span>
-    <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-value">:realtime</span>))
+  <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-value">:realtime</span>)
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -298,10 +276,9 @@
                 
               </p>
               <div id="method-i-create_similarity_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/memory.rb, line 24</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/memory.rb, line 25</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">create_similarity</span> <span class="ruby-identifier">bundle</span>
-  <span class="ruby-identifier">extract_lambda_or</span>(<span class="ruby-identifier">similarity</span>, <span class="ruby-identifier">bundle</span>) <span class="ruby-operator">||</span>
-    <span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-value">:similarity</span>))
+  <span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-value">:similarity</span>)
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -336,72 +313,9 @@
                 
               </p>
               <div id="method-i-create_weights_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/memory.rb, line 17</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/memory.rb, line 18</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">create_weights</span> <span class="ruby-identifier">bundle</span>
-  <span class="ruby-identifier">extract_lambda_or</span>(<span class="ruby-identifier">weights</span>, <span class="ruby-identifier">bundle</span>) <span class="ruby-operator">||</span>
-    <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-value">:weights</span>))
-<span class="ruby-keyword">end</span></pre>
-              </div>
-            </div>
-            
-          </div>
-        
-        <div class="method">
-          <div class="title method-title" id="method-i-ids">
-            
-              <a name="method-i-ids"></a><b>ids</b>(combinations, _, _)
-            
-          </div>
-          
-          
-            <div class="description">
-              <p>Returns the result ids for the allocation.</p>
-
-<p>Sorts the ids by size and &amp; through them in the following order
-(sizes):</p>
-<ol><li><dl class="rdoc-list label-list"><dt>100_000, 400, 30, 2
-<dd></dd></dl>
-</li><li><dl class="rdoc-list label-list"><dt>2, 30, 400, 100_000
-<dd></dd></dl>
-</li><li>
-<p>(100_000 &amp; (400 &amp; (30 &amp; 2))) # =&gt; result</p>
-</li></ol>
-
-<p>Note: Uses a C-optimized intersection routine (in performant.c)</p>
-
-<pre>for speed and memory efficiency.</pre>
-
-<p>Note: In the memory based version we ignore the amount and offset hints.</p>
-
-<pre>We cannot use the information to speed up the algorithm, unfortunately.</pre>
-            </div>
-          
-          
-          
-          
-          
-            
-            <div class="sourcecode">
-              
-              <p class="source-link">
-                Source: 
-                <a href="javascript:toggleSource('method-i-ids_source')" id="l_method-i-ids_source">show</a>
-                
-              </p>
-              <div id="method-i-ids_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/memory.rb, line 56</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ids</span> <span class="ruby-identifier">combinations</span>, <span class="ruby-identifier">_</span>, <span class="ruby-identifier">_</span>
-  <span class="ruby-comment"># Get the ids for each combination.</span>
-  <span class="ruby-comment">#</span>
-  <span class="ruby-identifier">id_arrays</span> = <span class="ruby-identifier">combinations</span>.<span class="ruby-identifier">inject</span>([]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">total</span>, <span class="ruby-identifier">combination</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">total</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">combination</span>.<span class="ruby-identifier">ids</span>
-  <span class="ruby-keyword">end</span>
-
-  <span class="ruby-comment"># Call the optimized C algorithm.</span>
-  <span class="ruby-comment">#</span>
-  <span class="ruby-comment"># Note: It orders the passed arrays by size.</span>
-  <span class="ruby-comment">#</span>
-  <span class="ruby-constant">Performant</span><span class="ruby-operator">::</span><span class="ruby-constant">Array</span>.<span class="ruby-identifier">memory_efficient_intersect</span> <span class="ruby-identifier">id_arrays</span>
+  <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-value">:weights</span>)
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>

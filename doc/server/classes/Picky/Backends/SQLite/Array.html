@@ -96,6 +96,18 @@
           </ul>
         </dd>
       
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-size">size</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
     </dl>
   
 
@@ -144,7 +156,7 @@
                 
               </p>
               <div id="method-i-5B-5D_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite/array.rb, line 24</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite/array.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-operator">[]</span> <span class="ruby-keyword ruby-title">key</span>
   <span class="ruby-identifier">res</span> = <span class="ruby-identifier">db</span>.<span class="ruby-identifier">execute</span> <span class="ruby-string">&quot;SELECT value FROM key_value WHERE key = ? LIMIT 1&quot;</span>,
                    <span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_s</span>
@@ -183,7 +195,7 @@
                 
               </p>
               <div id="method-i-5B-5D-3D_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite/array.rb, line 13</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite/array.rb, line 18</span>
 <span class="ruby-keyword">def</span> <span class="ruby-operator">[]=</span> <span class="ruby-keyword ruby-title">key</span>, <span class="ruby-identifier">array</span>
   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">array</span>.<span class="ruby-identifier">empty?</span>
     <span class="ruby-identifier">db</span>.<span class="ruby-identifier">execute</span> <span class="ruby-string">'INSERT OR REPLACE INTO key_value (key,value) VALUES (?,?)'</span>,
@@ -258,9 +270,44 @@
                 
               </p>
               <div id="method-i-delete_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite/array.rb, line 33</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite/array.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">delete</span> <span class="ruby-identifier">key</span>
   <span class="ruby-identifier">db</span>.<span class="ruby-identifier">execute</span> <span class="ruby-string">&quot;DELETE FROM key_value WHERE key = (?)&quot;</span>, <span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_s</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-size">
+            
+              <a name="method-i-size"></a><b>size</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-size_source')" id="l_method-i-size_source">show</a>
+                
+              </p>
+              <div id="method-i-size_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite/array.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">size</span>
+  <span class="ruby-identifier">result</span> = <span class="ruby-identifier">db</span>.<span class="ruby-identifier">execute</span> <span class="ruby-string">'SELECT COUNT(*) FROM key_value'</span>
+  <span class="ruby-identifier">result</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">to_i</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>

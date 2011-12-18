@@ -132,7 +132,7 @@ them.</p>
             
               
               <li>
-                <a href="#method-i-index_for_tests">index_for_tests</a>,
+                <a href="#method-c-index">index</a>,
               </li>
             
               
@@ -171,12 +171,7 @@ them.</p>
             
               
               <li>
-                <a href="#method-c-register">register</a>,
-              </li>
-            
-              
-              <li>
-                <a href="#method-c-reload">reload</a>
+                <a href="#method-c-register">register</a>
               </li>
             
           </ul>
@@ -272,6 +267,42 @@ them.</p>
                 <pre><span class="ruby-comment"># File lib/picky/indexes.rb, line 31</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">identifier</span>
   <span class="ruby-identifier">name</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-index">
+            
+              <a name="method-c-index"></a><b>index</b>(scheduler = Scheduler.new)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-index_source')" id="l_method-c-index_source">show</a>
+                
+              </p>
+              <div id="method-c-index_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/indexes_indexing.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">index</span> <span class="ruby-identifier">scheduler</span> = <span class="ruby-constant">Scheduler</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">timed_indexing</span> <span class="ruby-identifier">scheduler</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">instance</span>.<span class="ruby-identifier">index</span> <span class="ruby-identifier">scheduler</span>
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -380,40 +411,6 @@ them.</p>
             </div>
             
           </div>
-        
-        <div class="method">
-          <div class="title method-title" id="method-c-reload">
-            
-              <a name="method-c-reload"></a><b>reload</b>()
-            
-          </div>
-          
-          
-            <div class="description">
-              <p>TODO Remove in 4.0.</p>
-            </div>
-          
-          
-          
-          
-          
-            
-            <div class="sourcecode">
-              
-              <p class="source-link">
-                Source: 
-                <a href="javascript:toggleSource('method-c-reload_source')" id="l_method-c-reload_source">show</a>
-                
-              </p>
-              <div id="method-c-reload_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/indexes_indexed.rb, line 16</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">reload</span>
-  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">reload</span>
-<span class="ruby-keyword">end</span></pre>
-              </div>
-            </div>
-            
-          </div>
                   
       <div class="sectiontitle">Instance Public methods</div>
       
@@ -490,13 +487,13 @@ them.</p>
         <div class="method">
           <div class="title method-title" id="method-i-index">
             
-              <a name="method-i-index"></a><b>index</b>(randomly = true)
+              <a name="method-i-index"></a><b>index</b>(scheduler = Scheduler.new)
             
           </div>
           
           
             <div class="description">
-              <p>Runs the indexers in parallel (prepare + cache).</p>
+              
             </div>
           
           
@@ -512,55 +509,15 @@ them.</p>
                 
               </p>
               <div id="method-i-index_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/indexes_indexing.rb, line 17</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">index</span> <span class="ruby-identifier">randomly</span> = <span class="ruby-keyword">true</span>
-  <span class="ruby-comment"># Run in parallel.</span>
-  <span class="ruby-comment">#</span>
-  <span class="ruby-identifier">timed_exclaim</span> <span class="ruby-node">&quot;Indexing using #{Cores.max_processors} processors, in #{randomly ? 'random' : 'given'} order.&quot;</span>
+                <pre><span class="ruby-comment"># File lib/picky/indexes_indexing.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">index</span> <span class="ruby-identifier">scheduler</span> = <span class="ruby-constant">Scheduler</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">indexes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">index</span><span class="ruby-operator">|</span> <span class="ruby-identifier">index</span>.<span class="ruby-identifier">prepare</span> <span class="ruby-identifier">scheduler</span> }
+  <span class="ruby-identifier">scheduler</span>.<span class="ruby-identifier">finish</span>
 
-  <span class="ruby-comment"># Run indexing/caching forked.</span>
-  <span class="ruby-comment">#</span>
-  <span class="ruby-constant">Cores</span>.<span class="ruby-identifier">forked</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">indexes</span>, { <span class="ruby-identifier">randomly</span><span class="ruby-operator">:</span> <span class="ruby-identifier">randomly</span> }, &amp;<span class="ruby-value">:index</span>
+  <span class="ruby-identifier">timed_exclaim</span> <span class="ruby-string">&quot;Tokenizing finished, generating data for indexes from tokenized data.&quot;</span>
 
-  <span class="ruby-identifier">timed_exclaim</span> <span class="ruby-string">&quot;Indexing finished.&quot;</span>
-<span class="ruby-keyword">end</span></pre>
-              </div>
-            </div>
-            
-          </div>
-        
-        <div class="method">
-          <div class="title method-title" id="method-i-index_for_tests">
-            
-              <a name="method-i-index_for_tests"></a><b>index_for_tests</b>()
-            
-          </div>
-          
-          
-            <div class="description">
-              <p>For integration testing – indexes for the tests without forking and
-shouting ;)</p>
-
-<p>TODO Rename to index_without_forking, or just <a
-href="Indexes.html#method-i-index">#index</a>.</p>
-            </div>
-          
-          
-          
-          
-          
-            
-            <div class="sourcecode">
-              
-              <p class="source-link">
-                Source: 
-                <a href="javascript:toggleSource('method-i-index_for_tests_source')" id="l_method-i-index_for_tests_source">show</a>
-                
-              </p>
-              <div id="method-i-index_for_tests_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/indexes_indexing.rb, line 34</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">index_for_tests</span>
-  <span class="ruby-identifier">indexes</span>.<span class="ruby-identifier">each</span>(&amp;<span class="ruby-value">:index</span>)
+  <span class="ruby-identifier">indexes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">index</span><span class="ruby-operator">|</span> <span class="ruby-identifier">index</span>.<span class="ruby-identifier">cache</span> <span class="ruby-identifier">scheduler</span> }
+  <span class="ruby-identifier">scheduler</span>.<span class="ruby-identifier">finish</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -695,9 +652,9 @@ href="Indexes.html#method-i-index">#index</a>.</p>
                 
               </p>
               <div id="method-i-tokenizer_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/indexes_indexing.rb, line 40</span>
+                <pre><span class="ruby-comment"># File lib/picky/indexes_indexing.rb, line 37</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">tokenizer</span>
-  <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">index_default</span>
+  <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">indexing</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>

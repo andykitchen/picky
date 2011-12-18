@@ -224,7 +224,12 @@ running etc. (Find these in Indexed::Bundle)</p>
             
               
               <li>
-                <a href="#method-i-clear_weights">clear_weights</a>
+                <a href="#method-i-clear_weights">clear_weights</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-create_backends">create_backends</a>
               </li>
             
           </ul>
@@ -241,32 +246,7 @@ running etc. (Find these in Indexed::Bundle)</p>
             
               
               <li>
-                <a href="#method-i-dump">dump</a>,
-              </li>
-            
-              
-              <li>
-                <a href="#method-i-dump_configuration">dump_configuration</a>,
-              </li>
-            
-              
-              <li>
-                <a href="#method-i-dump_inverted">dump_inverted</a>,
-              </li>
-            
-              
-              <li>
-                <a href="#method-i-dump_realtime">dump_realtime</a>,
-              </li>
-            
-              
-              <li>
-                <a href="#method-i-dump_similarity">dump_similarity</a>,
-              </li>
-            
-              
-              <li>
-                <a href="#method-i-dump_weights">dump_weights</a>
+                <a href="#method-i-dump">dump</a>
               </li>
             
           </ul>
@@ -278,32 +258,7 @@ running etc. (Find these in Indexed::Bundle)</p>
             
               
               <li>
-                <a href="#method-i-empty">empty</a>,
-              </li>
-            
-              
-              <li>
-                <a href="#method-i-empty_configuration">empty_configuration</a>,
-              </li>
-            
-              
-              <li>
-                <a href="#method-i-empty_inverted">empty_inverted</a>,
-              </li>
-            
-              
-              <li>
-                <a href="#method-i-empty_realtime">empty_realtime</a>,
-              </li>
-            
-              
-              <li>
-                <a href="#method-i-empty_similarity">empty_similarity</a>,
-              </li>
-            
-              
-              <li>
-                <a href="#method-i-empty_weights">empty_weights</a>
+                <a href="#method-i-empty">empty</a>
               </li>
             
           </ul>
@@ -325,7 +280,12 @@ running etc. (Find these in Indexed::Bundle)</p>
             
               
               <li>
-                <a href="#method-i-index_path">index_path</a>
+                <a href="#method-i-index_path">index_path</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-initialize_backends">initialize_backends</a>
               </li>
             
           </ul>
@@ -486,6 +446,14 @@ running etc. (Find these in Indexed::Bundle)</p>
             <td class='attr-rw'>
               [RW]
             </td>
+            <td class='attr-name'>backend_realtime</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
             <td class='attr-name'>backend_similarity</td>
             <td class='attr-desc'></td>
           </tr>
@@ -566,7 +534,7 @@ running etc. (Find these in Indexed::Bundle)</p>
             <td class='attr-rw'>
               [RW]
             </td>
-            <td class='attr-name'>weights</td>
+            <td class='attr-name'>weight_strategy</td>
             <td class='attr-desc'></td>
           </tr>
         
@@ -574,7 +542,7 @@ running etc. (Find these in Indexed::Bundle)</p>
             <td class='attr-rw'>
               [RW]
             </td>
-            <td class='attr-name'>weights_strategy</td>
+            <td class='attr-name'>weights</td>
             <td class='attr-desc'></td>
           </tr>
         
@@ -589,7 +557,7 @@ running etc. (Find these in Indexed::Bundle)</p>
         <div class="method">
           <div class="title method-title" id="method-c-new">
             
-              <a name="method-c-new"></a><b>new</b>(name, category, weights_strategy, partial_strategy, similarity_strategy, options = {})
+              <a name="method-c-new"></a><b>new</b>(name, category, weight_strategy, partial_strategy, similarity_strategy, options = {})
             
           </div>
           
@@ -611,19 +579,17 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-c-new_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 46</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">category</span>, <span class="ruby-identifier">weights_strategy</span>, <span class="ruby-identifier">partial_strategy</span>, <span class="ruby-identifier">similarity_strategy</span>, <span class="ruby-identifier">options</span> = {}
+                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 47</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">category</span>, <span class="ruby-identifier">weight_strategy</span>, <span class="ruby-identifier">partial_strategy</span>, <span class="ruby-identifier">similarity_strategy</span>, <span class="ruby-identifier">options</span> = {}
   <span class="ruby-ivar">@name</span>     = <span class="ruby-identifier">name</span>
   <span class="ruby-ivar">@category</span> = <span class="ruby-identifier">category</span>
 
-  <span class="ruby-comment"># TODO Tidy up a bit.</span>
-  <span class="ruby-comment">#</span>
-  <span class="ruby-ivar">@key_format</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span> <span class="ruby-value">:key_format</span>
-  <span class="ruby-ivar">@backend</span>    = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span> <span class="ruby-value">:backend</span>
-
-  <span class="ruby-ivar">@weights_strategy</span>    = <span class="ruby-identifier">weights_strategy</span>
+  <span class="ruby-ivar">@weight_strategy</span>     = <span class="ruby-identifier">weight_strategy</span>
   <span class="ruby-ivar">@partial_strategy</span>    = <span class="ruby-identifier">partial_strategy</span>
   <span class="ruby-ivar">@similarity_strategy</span> = <span class="ruby-identifier">similarity_strategy</span>
+
+  <span class="ruby-ivar">@key_format</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span> <span class="ruby-value">:key_format</span>
+  <span class="ruby-ivar">@backend</span>    = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span> <span class="ruby-value">:backend</span>
 
   <span class="ruby-identifier">reset_backend</span>
 <span class="ruby-keyword">end</span></pre>
@@ -661,7 +627,7 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-5B-5D_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_indexed.rb, line 42</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle_indexed.rb, line 57</span>
 <span class="ruby-keyword">def</span> <span class="ruby-operator">[]</span> <span class="ruby-keyword ruby-title">sym_or_string</span>
   <span class="ruby-ivar">@configuration</span>[<span class="ruby-identifier">sym_or_string</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -710,15 +676,13 @@ running etc. (Find these in Indexed::Bundle)</p>
     <span class="ruby-comment">#</span>
     <span class="ruby-identifier">str_or_syms</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">str_or_sym</span>
 
-    <span class="ruby-comment"># TODO Introduce a new method?</span>
-    <span class="ruby-comment">#</span>
     <span class="ruby-identifier">ids</span> = <span class="ruby-ivar">@inverted</span>[<span class="ruby-identifier">str_or_sym</span>] <span class="ruby-operator">||=</span> []
     <span class="ruby-identifier">ids</span>.<span class="ruby-identifier">send</span> <span class="ruby-identifier">where</span>, <span class="ruby-identifier">id</span>
   <span class="ruby-keyword">end</span>
 
   <span class="ruby-comment"># Weights.</span>
   <span class="ruby-comment">#</span>
-  <span class="ruby-ivar">@weights</span>[<span class="ruby-identifier">str_or_sym</span>] = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">weights_strategy</span>.<span class="ruby-identifier">weight_for</span> <span class="ruby-identifier">ids</span>.<span class="ruby-identifier">size</span>
+  <span class="ruby-ivar">@weights</span>[<span class="ruby-identifier">str_or_sym</span>] = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">weight_strategy</span>.<span class="ruby-identifier">weight_for</span> <span class="ruby-identifier">ids</span>.<span class="ruby-identifier">size</span>
 
   <span class="ruby-comment"># Similarity.</span>
   <span class="ruby-comment">#</span>
@@ -758,7 +722,7 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-add_partialized_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_realtime.rb, line 86</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle_realtime.rb, line 84</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add_partialized</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">text</span>, <span class="ruby-identifier">where</span> = <span class="ruby-value">:unshift</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">partial_strategy</span>.<span class="ruby-identifier">each_partial</span> <span class="ruby-identifier">text</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">partial_text</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">add</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">partial_text</span>, <span class="ruby-identifier">where</span>
@@ -779,8 +743,6 @@ running etc. (Find these in Indexed::Bundle)</p>
           
             <div class="description">
               <p>Add string/symbol to similarity index.</p>
-
-<p>TODO Probably where makes no sense here. Should have its own order.</p>
             </div>
           
           
@@ -796,15 +758,17 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-add_similarity_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_realtime.rb, line 73</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle_realtime.rb, line 69</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add_similarity</span> <span class="ruby-identifier">str_or_sym</span>, <span class="ruby-identifier">where</span> = <span class="ruby-value">:unshift</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">encoded</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">similarity_strategy</span>.<span class="ruby-identifier">encoded</span>(<span class="ruby-identifier">str_or_sym</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">encoded</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">similarity_strategy</span>.<span class="ruby-identifier">encode</span>(<span class="ruby-identifier">str_or_sym</span>)
     <span class="ruby-identifier">similars</span> = <span class="ruby-ivar">@similarity</span>[<span class="ruby-identifier">encoded</span>] <span class="ruby-operator">||=</span> []
 
     <span class="ruby-comment"># Not completely correct, as others will also be affected, but meh.</span>
     <span class="ruby-comment">#</span>
     <span class="ruby-identifier">similars</span>.<span class="ruby-identifier">delete</span> <span class="ruby-identifier">str_or_sym</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">similars</span>.<span class="ruby-identifier">include?</span> <span class="ruby-identifier">str_or_sym</span>
-    <span class="ruby-identifier">similars</span>.<span class="ruby-identifier">send</span> <span class="ruby-identifier">where</span>, <span class="ruby-identifier">str_or_sym</span>
+    <span class="ruby-identifier">similars</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">str_or_sym</span>
+
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">similarity_strategy</span>.<span class="ruby-identifier">prioritize</span> <span class="ruby-identifier">similars</span>, <span class="ruby-identifier">str_or_sym</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
@@ -837,7 +801,7 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-backend_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 68</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 67</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">backend</span>
   <span class="ruby-ivar">@backend</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">category</span>.<span class="ruby-identifier">backend</span>
 <span class="ruby-keyword">end</span></pre>
@@ -857,9 +821,11 @@ running etc. (Find these in Indexed::Bundle)</p>
             <div class="description">
               <p>Builds the realtime mapping.</p>
 
-<p>Note: Experimental feature.</p>
+<p>Note: Experimental feature. Might be removed in 4.0.</p>
 
-<p>TODO Subset of <a href="Bundle.html#method-i-add">#add</a>. Rewrite.</p>
+<p>TODO Subset of <a href="Bundle.html#method-i-add">#add</a>. Rewrite,
+optimize. THINK Maybe load it and just replace the arrays with the
+corresponding ones.</p>
             </div>
           
           
@@ -875,7 +841,7 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-build_realtime_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_realtime.rb, line 98</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle_realtime.rb, line 97</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">build_realtime</span>
   <span class="ruby-identifier">clear_realtime</span>
   <span class="ruby-ivar">@inverted</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">str_or_sym</span>, <span class="ruby-identifier">ids</span><span class="ruby-operator">|</span>
@@ -915,7 +881,7 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-clear_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_indexed.rb, line 89</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle_indexed.rb, line 102</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">clear</span>
   <span class="ruby-identifier">clear_inverted</span>
   <span class="ruby-identifier">clear_weights</span>
@@ -953,7 +919,7 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-clear_configuration_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_indexed.rb, line 114</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle_indexed.rb, line 127</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">clear_configuration</span>
   <span class="ruby-identifier">configuration</span>.<span class="ruby-identifier">clear</span>
 <span class="ruby-keyword">end</span></pre>
@@ -987,7 +953,7 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-clear_inverted_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_indexed.rb, line 99</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle_indexed.rb, line 112</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">clear_inverted</span>
   <span class="ruby-identifier">inverted</span>.<span class="ruby-identifier">clear</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1021,7 +987,7 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-clear_realtime_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_indexed.rb, line 119</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle_indexed.rb, line 132</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">clear_realtime</span>
   <span class="ruby-identifier">realtime</span>.<span class="ruby-identifier">clear</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1055,7 +1021,7 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-clear_similarity_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_indexed.rb, line 109</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle_indexed.rb, line 122</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">clear_similarity</span>
   <span class="ruby-identifier">similarity</span>.<span class="ruby-identifier">clear</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1089,9 +1055,47 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-clear_weights_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_indexed.rb, line 104</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle_indexed.rb, line 117</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">clear_weights</span>
   <span class="ruby-identifier">weights</span>.<span class="ruby-identifier">clear</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-create_backends">
+            
+              <a name="method-i-create_backends"></a><b>create_backends</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Extract specific indexes from backend.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-create_backends_source')" id="l_method-i-create_backends_source">show</a>
+                
+              </p>
+              <div id="method-i-create_backends_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 80</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">create_backends</span>
+  <span class="ruby-ivar">@backend_inverted</span>      = <span class="ruby-identifier">backend</span>.<span class="ruby-identifier">create_inverted</span> <span class="ruby-keyword">self</span>
+  <span class="ruby-ivar">@backend_weights</span>       = <span class="ruby-identifier">backend</span>.<span class="ruby-identifier">create_weights</span> <span class="ruby-keyword">self</span>
+  <span class="ruby-ivar">@backend_similarity</span>    = <span class="ruby-identifier">backend</span>.<span class="ruby-identifier">create_similarity</span> <span class="ruby-keyword">self</span>
+  <span class="ruby-ivar">@backend_configuration</span> = <span class="ruby-identifier">backend</span>.<span class="ruby-identifier">create_configuration</span> <span class="ruby-keyword">self</span>
+  <span class="ruby-ivar">@backend_realtime</span>      = <span class="ruby-identifier">backend</span>.<span class="ruby-identifier">create_realtime</span> <span class="ruby-keyword">self</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -1123,12 +1127,12 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-delete_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 162</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 114</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">delete</span>
   <span class="ruby-ivar">@backend_inverted</span>.<span class="ruby-identifier">delete</span>       <span class="ruby-keyword">if</span> <span class="ruby-ivar">@backend_inverted</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:delete</span>
-  <span class="ruby-comment"># TODO THINK about this. Perhaps the strategies should implement the backend methods?</span>
+  <span class="ruby-comment"># THINK about this. Perhaps the strategies should implement the backend methods?</span>
   <span class="ruby-comment">#</span>
-  <span class="ruby-ivar">@backend_weights</span>.<span class="ruby-identifier">delete</span>        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@backend_weights</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:delete</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@weights_strategy</span>.<span class="ruby-identifier">saved?</span>
+  <span class="ruby-ivar">@backend_weights</span>.<span class="ruby-identifier">delete</span>        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@backend_weights</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:delete</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@weight_strategy</span>.<span class="ruby-identifier">saved?</span>
   <span class="ruby-ivar">@backend_similarity</span>.<span class="ruby-identifier">delete</span>     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@backend_similarity</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:delete</span>
   <span class="ruby-ivar">@backend_configuration</span>.<span class="ruby-identifier">delete</span>  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@backend_configuration</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:delete</span>
   <span class="ruby-ivar">@backend_realtime</span>.<span class="ruby-identifier">delete</span>  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@backend_realtime</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:delete</span>
@@ -1165,183 +1169,13 @@ running etc. (Find these in Indexed::Bundle)</p>
               <div id="method-i-dump_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/bundle_indexing.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">dump</span>
-  <span class="ruby-identifier">dump_inverted</span>
-  <span class="ruby-identifier">dump_similarity</span>
-  <span class="ruby-identifier">dump_weights</span>
-  <span class="ruby-identifier">dump_configuration</span>
-  <span class="ruby-identifier">dump_realtime</span>
-<span class="ruby-keyword">end</span></pre>
-              </div>
-            </div>
-            
-          </div>
-        
-        <div class="method">
-          <div class="title method-title" id="method-i-dump_configuration">
-            
-              <a name="method-i-dump_configuration"></a><b>dump_configuration</b>()
-            
-          </div>
-          
-          
-            <div class="description">
-              <p>Dumps the configuration.</p>
-            </div>
-          
-          
-          
-          
-          
-            
-            <div class="sourcecode">
-              
-              <p class="source-link">
-                Source: 
-                <a href="javascript:toggleSource('method-i-dump_configuration_source')" id="l_method-i-dump_configuration_source">show</a>
-                
-              </p>
-              <div id="method-i-dump_configuration_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_indexing.rb, line 59</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">dump_configuration</span>
-  <span class="ruby-ivar">@backend_configuration</span>.<span class="ruby-identifier">dump</span> <span class="ruby-ivar">@configuration</span>
-<span class="ruby-keyword">end</span></pre>
-              </div>
-            </div>
-            
-          </div>
-        
-        <div class="method">
-          <div class="title method-title" id="method-i-dump_inverted">
-            
-              <a name="method-i-dump_inverted"></a><b>dump_inverted</b>()
-            
-          </div>
-          
-          
-            <div class="description">
-              <p>Dumps the core index.</p>
-            </div>
-          
-          
-          
-          
-          
-            
-            <div class="sourcecode">
-              
-              <p class="source-link">
-                Source: 
-                <a href="javascript:toggleSource('method-i-dump_inverted_source')" id="l_method-i-dump_inverted_source">show</a>
-                
-              </p>
-              <div id="method-i-dump_inverted_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_indexing.rb, line 42</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">dump_inverted</span>
   <span class="ruby-ivar">@backend_inverted</span>.<span class="ruby-identifier">dump</span> <span class="ruby-ivar">@inverted</span>
-<span class="ruby-keyword">end</span></pre>
-              </div>
-            </div>
-            
-          </div>
-        
-        <div class="method">
-          <div class="title method-title" id="method-i-dump_realtime">
-            
-              <a name="method-i-dump_realtime"></a><b>dump_realtime</b>()
-            
-          </div>
-          
-          
-            <div class="description">
-              <p>Dumps the realtime.</p>
-            </div>
-          
-          
-          
-          
-          
-            
-            <div class="sourcecode">
-              
-              <p class="source-link">
-                Source: 
-                <a href="javascript:toggleSource('method-i-dump_realtime_source')" id="l_method-i-dump_realtime_source">show</a>
-                
-              </p>
-              <div id="method-i-dump_realtime_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_indexing.rb, line 64</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">dump_realtime</span>
-  <span class="ruby-ivar">@backend_realtime</span>.<span class="ruby-identifier">dump</span> <span class="ruby-ivar">@realtime</span>
-<span class="ruby-keyword">end</span></pre>
-              </div>
-            </div>
-            
-          </div>
-        
-        <div class="method">
-          <div class="title method-title" id="method-i-dump_similarity">
-            
-              <a name="method-i-dump_similarity"></a><b>dump_similarity</b>()
-            
-          </div>
-          
-          
-            <div class="description">
-              <p>Dumps the similarity index.</p>
-            </div>
-          
-          
-          
-          
-          
-            
-            <div class="sourcecode">
-              
-              <p class="source-link">
-                Source: 
-                <a href="javascript:toggleSource('method-i-dump_similarity_source')" id="l_method-i-dump_similarity_source">show</a>
-                
-              </p>
-              <div id="method-i-dump_similarity_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_indexing.rb, line 54</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">dump_similarity</span>
-  <span class="ruby-ivar">@backend_similarity</span>.<span class="ruby-identifier">dump</span> <span class="ruby-ivar">@similarity</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@similarity_strategy</span>.<span class="ruby-identifier">saved?</span>
-<span class="ruby-keyword">end</span></pre>
-              </div>
-            </div>
-            
-          </div>
-        
-        <div class="method">
-          <div class="title method-title" id="method-i-dump_weights">
-            
-              <a name="method-i-dump_weights"></a><b>dump_weights</b>()
-            
-          </div>
-          
-          
-            <div class="description">
-              <p>Dumps the weights index.</p>
-            </div>
-          
-          
-          
-          
-          
-            
-            <div class="sourcecode">
-              
-              <p class="source-link">
-                Source: 
-                <a href="javascript:toggleSource('method-i-dump_weights_source')" id="l_method-i-dump_weights_source">show</a>
-                
-              </p>
-              <div id="method-i-dump_weights_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_indexing.rb, line 47</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">dump_weights</span>
-  <span class="ruby-comment"># TODO THINK about this. Perhaps the strategies should implement the backend methods? Or only the internal index ones?</span>
+  <span class="ruby-comment"># THINK about this. Perhaps the strategies should implement the backend methods? Or only the internal index ones?</span>
   <span class="ruby-comment">#</span>
-  <span class="ruby-ivar">@backend_weights</span>.<span class="ruby-identifier">dump</span> <span class="ruby-ivar">@weights</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@weights_strategy</span>.<span class="ruby-identifier">saved?</span>
+  <span class="ruby-ivar">@backend_weights</span>.<span class="ruby-identifier">dump</span> <span class="ruby-ivar">@weights</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@weight_strategy</span>.<span class="ruby-identifier">saved?</span>
+  <span class="ruby-ivar">@backend_similarity</span>.<span class="ruby-identifier">dump</span> <span class="ruby-ivar">@similarity</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@similarity_strategy</span>.<span class="ruby-identifier">saved?</span>
+  <span class="ruby-ivar">@backend_configuration</span>.<span class="ruby-identifier">dump</span> <span class="ruby-ivar">@configuration</span>
+  <span class="ruby-ivar">@backend_realtime</span>.<span class="ruby-identifier">dump</span> <span class="ruby-ivar">@realtime</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -1373,185 +1207,13 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-empty_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 98</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 104</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">empty</span>
-  <span class="ruby-identifier">empty_inverted</span>
-  <span class="ruby-identifier">empty_weights</span>
-  <span class="ruby-identifier">empty_similarity</span>
-  <span class="ruby-identifier">empty_configuration</span>
-  <span class="ruby-identifier">empty_realtime</span>
-<span class="ruby-keyword">end</span></pre>
-              </div>
-            </div>
-            
-          </div>
-        
-        <div class="method">
-          <div class="title method-title" id="method-i-empty_configuration">
-            
-              <a name="method-i-empty_configuration"></a><b>empty_configuration</b>()
-            
-          </div>
-          
-          
-            <div class="description">
-              
-            </div>
-          
-          
-          
-          
-          
-            
-            <div class="sourcecode">
-              
-              <p class="source-link">
-                Source: 
-                <a href="javascript:toggleSource('method-i-empty_configuration_source')" id="l_method-i-empty_configuration_source">show</a>
-                
-              </p>
-              <div id="method-i-empty_configuration_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 116</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">empty_configuration</span>
-  <span class="ruby-ivar">@configuration</span> = <span class="ruby-ivar">@backend_configuration</span>.<span class="ruby-identifier">empty</span>
-<span class="ruby-keyword">end</span></pre>
-              </div>
-            </div>
-            
-          </div>
-        
-        <div class="method">
-          <div class="title method-title" id="method-i-empty_inverted">
-            
-              <a name="method-i-empty_inverted"></a><b>empty_inverted</b>()
-            
-          </div>
-          
-          
-            <div class="description">
-              
-            </div>
-          
-          
-          
-          
-          
-            
-            <div class="sourcecode">
-              
-              <p class="source-link">
-                Source: 
-                <a href="javascript:toggleSource('method-i-empty_inverted_source')" id="l_method-i-empty_inverted_source">show</a>
-                
-              </p>
-              <div id="method-i-empty_inverted_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 105</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">empty_inverted</span>
   <span class="ruby-ivar">@inverted</span> = <span class="ruby-ivar">@backend_inverted</span>.<span class="ruby-identifier">empty</span>
-<span class="ruby-keyword">end</span></pre>
-              </div>
-            </div>
-            
-          </div>
-        
-        <div class="method">
-          <div class="title method-title" id="method-i-empty_realtime">
-            
-              <a name="method-i-empty_realtime"></a><b>empty_realtime</b>()
-            
-          </div>
-          
-          
-            <div class="description">
-              
-            </div>
-          
-          
-          
-          
-          
-            
-            <div class="sourcecode">
-              
-              <p class="source-link">
-                Source: 
-                <a href="javascript:toggleSource('method-i-empty_realtime_source')" id="l_method-i-empty_realtime_source">show</a>
-                
-              </p>
-              <div id="method-i-empty_realtime_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 119</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">empty_realtime</span>
-  <span class="ruby-ivar">@realtime</span> = <span class="ruby-ivar">@backend_realtime</span>.<span class="ruby-identifier">empty</span>
-<span class="ruby-keyword">end</span></pre>
-              </div>
-            </div>
-            
-          </div>
-        
-        <div class="method">
-          <div class="title method-title" id="method-i-empty_similarity">
-            
-              <a name="method-i-empty_similarity"></a><b>empty_similarity</b>()
-            
-          </div>
-          
-          
-            <div class="description">
-              
-            </div>
-          
-          
-          
-          
-          
-            
-            <div class="sourcecode">
-              
-              <p class="source-link">
-                Source: 
-                <a href="javascript:toggleSource('method-i-empty_similarity_source')" id="l_method-i-empty_similarity_source">show</a>
-                
-              </p>
-              <div id="method-i-empty_similarity_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 113</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">empty_similarity</span>
+  <span class="ruby-ivar">@weights</span> = <span class="ruby-ivar">@weight_strategy</span>.<span class="ruby-identifier">saved?</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@backend_weights</span>.<span class="ruby-identifier">empty</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@weight_strategy</span>
   <span class="ruby-ivar">@similarity</span> = <span class="ruby-ivar">@backend_similarity</span>.<span class="ruby-identifier">empty</span>
-<span class="ruby-keyword">end</span></pre>
-              </div>
-            </div>
-            
-          </div>
-        
-        <div class="method">
-          <div class="title method-title" id="method-i-empty_weights">
-            
-              <a name="method-i-empty_weights"></a><b>empty_weights</b>()
-            
-          </div>
-          
-          
-            <div class="description">
-              
-            </div>
-          
-          
-          
-          
-          
-            
-            <div class="sourcecode">
-              
-              <p class="source-link">
-                Source: 
-                <a href="javascript:toggleSource('method-i-empty_weights_source')" id="l_method-i-empty_weights_source">show</a>
-                
-              </p>
-              <div id="method-i-empty_weights_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 108</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">empty_weights</span>
-  <span class="ruby-comment"># TODO THINK about this. Perhaps the strategies should implement the backend methods?</span>
-  <span class="ruby-comment">#</span>
-  <span class="ruby-ivar">@weights</span> = <span class="ruby-ivar">@weights_strategy</span>.<span class="ruby-identifier">saved?</span><span class="ruby-operator">?</span> <span class="ruby-ivar">@backend_weights</span>.<span class="ruby-identifier">empty</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@weights_strategy</span>
+  <span class="ruby-ivar">@configuration</span> = <span class="ruby-ivar">@backend_configuration</span>.<span class="ruby-identifier">empty</span>
+  <span class="ruby-ivar">@realtime</span> = <span class="ruby-ivar">@backend_realtime</span>.<span class="ruby-identifier">empty</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -1583,9 +1245,9 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-identifier_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 61</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 60</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">identifier</span>
-  <span class="ruby-value">:&quot;#{category.identifier}:#{name}&quot;</span>
+  <span class="ruby-ivar">@identifier</span> <span class="ruby-operator">||=</span> <span class="ruby-value">:&quot;#{category.identifier}:#{name}&quot;</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -1605,9 +1267,8 @@ running etc. (Find these in Indexed::Bundle)</p>
 
 <p>Returns a (potentially empty) array of ids.</p>
 
-<p>TODO Empty string ok, or does it need to be from the backend?</p>
-
-<pre>Should the backend always return an empty array? (Probably no)</pre>
+<p>Note: If the backend wants to return a special enumerable, the backend
+should do so.</p>
             </div>
           
           
@@ -1626,6 +1287,21 @@ running etc. (Find these in Indexed::Bundle)</p>
                 <pre><span class="ruby-comment"># File lib/picky/bundle_indexed.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ids</span> <span class="ruby-identifier">sym_or_string</span>
   <span class="ruby-ivar">@inverted</span>[<span class="ruby-identifier">sym_or_string</span>] <span class="ruby-operator">||</span> []
+  <span class="ruby-comment"># THINK Place the key_format conversion here – or move into the backend?</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-comment"># if @key_format</span>
+  <span class="ruby-comment">#   class &lt;&lt; self</span>
+  <span class="ruby-comment">#     def ids</span>
+  <span class="ruby-comment">#       (@inverted[sym_or_string] || []).map &amp;@key_format</span>
+  <span class="ruby-comment">#     end</span>
+  <span class="ruby-comment">#   end</span>
+  <span class="ruby-comment"># else</span>
+  <span class="ruby-comment">#   class &lt;&lt; self</span>
+  <span class="ruby-comment">#     def ids</span>
+  <span class="ruby-comment">#       @inverted[sym_or_string] || []</span>
+  <span class="ruby-comment">#     end</span>
+  <span class="ruby-comment">#   end</span>
+  <span class="ruby-comment"># end</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -1666,9 +1342,50 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-index_path_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 156</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 158</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">index_path</span> <span class="ruby-identifier">type</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span> <span class="ruby-identifier">index_directory</span>, <span class="ruby-node">&quot;#{category.name}_#{name}#{ &quot;_#{type}&quot; if type }&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-initialize_backends">
+            
+              <a name="method-i-initialize_backends"></a><b>initialize_backends</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Initial indexes.</p>
+
+<p>Note that if the weights strategy doesn’t need to be saved, the strategy
+itself pretends to be an index.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-initialize_backends_source')" id="l_method-i-initialize_backends_source">show</a>
+                
+              </p>
+              <div id="method-i-initialize_backends_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 93</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize_backends</span>
+  <span class="ruby-ivar">@inverted</span>      = <span class="ruby-ivar">@backend_inverted</span>.<span class="ruby-identifier">initial</span>
+  <span class="ruby-ivar">@weights</span>       = <span class="ruby-ivar">@weight_strategy</span>.<span class="ruby-identifier">saved?</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@backend_weights</span>.<span class="ruby-identifier">initial</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@weight_strategy</span>
+  <span class="ruby-ivar">@similarity</span>    = <span class="ruby-ivar">@backend_similarity</span>.<span class="ruby-identifier">initial</span>
+  <span class="ruby-ivar">@configuration</span> = <span class="ruby-ivar">@backend_configuration</span>.<span class="ruby-identifier">initial</span>
+  <span class="ruby-ivar">@realtime</span>      = <span class="ruby-ivar">@backend_realtime</span>.<span class="ruby-identifier">initial</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -1700,7 +1417,7 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-key_format_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 141</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 143</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">key_format</span>
   <span class="ruby-ivar">@key_format</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@category</span>.<span class="ruby-identifier">key_format</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1737,7 +1454,7 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-load_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_indexed.rb, line 51</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle_indexed.rb, line 66</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">load</span>
   <span class="ruby-identifier">load_inverted</span>
   <span class="ruby-identifier">load_weights</span>
@@ -1775,7 +1492,7 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-load_configuration_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_indexed.rb, line 78</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle_indexed.rb, line 91</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">load_configuration</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">configuration</span> = <span class="ruby-ivar">@backend_configuration</span>.<span class="ruby-identifier">load</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1809,7 +1526,7 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-load_inverted_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_indexed.rb, line 61</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle_indexed.rb, line 76</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">load_inverted</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">inverted</span> = <span class="ruby-ivar">@backend_inverted</span>.<span class="ruby-identifier">load</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1843,7 +1560,7 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-load_realtime_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_indexed.rb, line 83</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle_indexed.rb, line 96</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">load_realtime</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">realtime</span> = <span class="ruby-ivar">@backend_realtime</span>.<span class="ruby-identifier">load</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1877,7 +1594,7 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-load_similarity_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_indexed.rb, line 73</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle_indexed.rb, line 86</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">load_similarity</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">similarity</span> = <span class="ruby-ivar">@backend_similarity</span>.<span class="ruby-identifier">load</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@similarity_strategy</span>.<span class="ruby-identifier">saved?</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1911,11 +1628,9 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-load_weights_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_indexed.rb, line 66</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle_indexed.rb, line 81</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">load_weights</span>
-  <span class="ruby-comment"># TODO THINK about this. Perhaps the strategies should implement the backend methods?</span>
-  <span class="ruby-comment">#</span>
-  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">weights</span> = <span class="ruby-ivar">@backend_weights</span>.<span class="ruby-identifier">load</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@weights_strategy</span>.<span class="ruby-identifier">saved?</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">weights</span> = <span class="ruby-ivar">@backend_weights</span>.<span class="ruby-identifier">load</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@weight_strategy</span>.<span class="ruby-identifier">saved?</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -1966,9 +1681,9 @@ running etc. (Find these in Indexed::Bundle)</p>
       <span class="ruby-comment"># Since no element uses this sym anymore, we can delete the similarity for it.</span>
       <span class="ruby-comment"># TODO Not really. Since multiple syms can point to the same encoded.</span>
       <span class="ruby-comment">#</span>
-      <span class="ruby-ivar">@similarity</span>.<span class="ruby-identifier">delete</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">similarity_strategy</span>.<span class="ruby-identifier">encoded</span>(<span class="ruby-identifier">str_or_sym</span>)
+      <span class="ruby-ivar">@similarity</span>.<span class="ruby-identifier">delete</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">similarity_strategy</span>.<span class="ruby-identifier">encode</span>(<span class="ruby-identifier">str_or_sym</span>)
     <span class="ruby-keyword">else</span>
-      <span class="ruby-ivar">@weights</span>[<span class="ruby-identifier">str_or_sym</span>] = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">weights_strategy</span>.<span class="ruby-identifier">weight_for</span> <span class="ruby-identifier">ids</span>.<span class="ruby-identifier">size</span>
+      <span class="ruby-ivar">@weights</span>[<span class="ruby-identifier">str_or_sym</span>] = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">weight_strategy</span>.<span class="ruby-identifier">weight_for</span> <span class="ruby-identifier">ids</span>.<span class="ruby-identifier">size</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
 
@@ -2004,26 +1719,10 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-reset_backend_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 74</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 73</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">reset_backend</span>
-  <span class="ruby-comment"># Extract specific indexes from backend.</span>
-  <span class="ruby-comment">#</span>
-  <span class="ruby-ivar">@backend_inverted</span>      = <span class="ruby-identifier">backend</span>.<span class="ruby-identifier">create_inverted</span>      <span class="ruby-keyword">self</span>
-  <span class="ruby-ivar">@backend_weights</span>       = <span class="ruby-identifier">backend</span>.<span class="ruby-identifier">create_weights</span>       <span class="ruby-keyword">self</span>
-  <span class="ruby-ivar">@backend_similarity</span>    = <span class="ruby-identifier">backend</span>.<span class="ruby-identifier">create_similarity</span>    <span class="ruby-keyword">self</span>
-  <span class="ruby-ivar">@backend_configuration</span> = <span class="ruby-identifier">backend</span>.<span class="ruby-identifier">create_configuration</span> <span class="ruby-keyword">self</span>
-  <span class="ruby-ivar">@backend_realtime</span>      = <span class="ruby-identifier">backend</span>.<span class="ruby-identifier">create_realtime</span>      <span class="ruby-keyword">self</span>
-
-  <span class="ruby-comment"># Initial indexes.</span>
-  <span class="ruby-comment">#</span>
-  <span class="ruby-comment"># Note that if the weights strategy doesn't need to be saved,</span>
-  <span class="ruby-comment"># the strategy itself pretends to be an index.</span>
-  <span class="ruby-comment">#</span>
-  <span class="ruby-ivar">@inverted</span>      = <span class="ruby-ivar">@backend_inverted</span>.<span class="ruby-identifier">initial</span>
-  <span class="ruby-ivar">@weights</span>       = <span class="ruby-ivar">@weights_strategy</span>.<span class="ruby-identifier">saved?</span><span class="ruby-operator">?</span> <span class="ruby-ivar">@backend_weights</span>.<span class="ruby-identifier">initial</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@weights_strategy</span>
-  <span class="ruby-ivar">@similarity</span>    = <span class="ruby-ivar">@backend_similarity</span>.<span class="ruby-identifier">initial</span>
-  <span class="ruby-ivar">@configuration</span> = <span class="ruby-ivar">@backend_configuration</span>.<span class="ruby-identifier">initial</span>
-  <span class="ruby-ivar">@realtime</span>      = <span class="ruby-ivar">@backend_realtime</span>.<span class="ruby-identifier">initial</span>
+  <span class="ruby-identifier">create_backends</span>
+  <span class="ruby-identifier">initialize_backends</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -2057,10 +1756,11 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-similar_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 127</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 128</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">similar</span> <span class="ruby-identifier">text</span>
-  <span class="ruby-identifier">code</span> = <span class="ruby-identifier">similarity_strategy</span>.<span class="ruby-identifier">encoded</span> <span class="ruby-identifier">text</span>
-  <span class="ruby-identifier">similar_codes</span> = <span class="ruby-identifier">code</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@similarity</span>[<span class="ruby-identifier">code</span>]
+  <span class="ruby-identifier">code</span> = <span class="ruby-identifier">similarity_strategy</span>.<span class="ruby-identifier">encode</span> <span class="ruby-identifier">text</span>
+  <span class="ruby-keyword">return</span> [] <span class="ruby-keyword">unless</span> <span class="ruby-identifier">code</span>
+  <span class="ruby-identifier">similar_codes</span> = <span class="ruby-ivar">@similarity</span>[<span class="ruby-identifier">code</span>]
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">similar_codes</span>.<span class="ruby-identifier">blank?</span>
     [] <span class="ruby-comment"># Return a simple array.</span>
   <span class="ruby-keyword">else</span>
@@ -2099,7 +1799,7 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-to_s_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 172</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle.rb, line 162</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
   <span class="ruby-node">&quot;#{self.class}(#{identifier})&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -2135,7 +1835,7 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-weight_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_indexed.rb, line 34</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle_indexed.rb, line 49</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">weight</span> <span class="ruby-identifier">sym_or_string</span>
   <span class="ruby-ivar">@weights</span>[<span class="ruby-identifier">sym_or_string</span>]
 <span class="ruby-keyword">end</span></pre>

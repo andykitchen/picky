@@ -114,6 +114,16 @@
             
               
               <li>
+                <a href="#method-i-check_hiredis_gem">check_hiredis_gem</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-check_redis_gem">check_redis_gem</a>,
+              </li>
+            
+              
+              <li>
                 <a href="#method-i-create_configuration">create_configuration</a>,
               </li>
             
@@ -182,12 +192,24 @@
             
               
               <li>
-                <a href="#method-i-ids">ids</a>,
+                <a href="#method-c-ids">ids</a>,
               </li>
             
               
               <li>
-                <a href="#method-c-ids">ids</a>
+                <a href="#method-i-ids">ids</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-maybe_load_hiredis">maybe_load_hiredis</a>
               </li>
             
           </ul>
@@ -234,6 +256,18 @@
           </ul>
         </dd>
       
+        <dt>W</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-weight">weight</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
     </dl>
   
 
@@ -267,7 +301,7 @@
             <td class='attr-rw'>
               [R]
             </td>
-            <td class='attr-name'>immediate</td>
+            <td class='attr-name'>realtime</td>
             <td class='attr-desc'></td>
           </tr>
         
@@ -304,7 +338,7 @@
                 
               </p>
               <div id="method-c-extract_host_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 223</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 279</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">extract_host</span>
   <span class="ruby-ivar">@host</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Socket</span>.<span class="ruby-identifier">gethostname</span>
 <span class="ruby-keyword">end</span></pre>
@@ -338,7 +372,7 @@
                 
               </p>
               <div id="method-c-ids_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 121</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 175</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ids</span> <span class="ruby-identifier">combinations</span>, <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>
   <span class="ruby-identifier">identifiers</span> = <span class="ruby-identifier">combinations</span>.<span class="ruby-identifier">inject</span>([]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">identifiers</span>, <span class="ruby-identifier">combination</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">identifiers</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{combination.identifier}&quot;</span>
@@ -347,17 +381,23 @@
   <span class="ruby-comment"># Assume it's using EVALSHA.</span>
   <span class="ruby-comment">#</span>
   <span class="ruby-keyword">begin</span>
-    <span class="ruby-identifier">client</span>.<span class="ruby-identifier">evalsha</span> <span class="ruby-identifier">@@sent_once</span>,
-                   <span class="ruby-identifier">identifiers</span>.<span class="ruby-identifier">size</span>,
-                   *<span class="ruby-identifier">identifiers</span>,
-                   <span class="ruby-identifier">generate_intermediate_result_id</span>,
-                   <span class="ruby-identifier">offset</span>,
-                   (<span class="ruby-identifier">offset</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">amount</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">identifiers</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-number">1</span>
+      <span class="ruby-identifier">client</span>.<span class="ruby-identifier">evalsha</span> <span class="ruby-identifier">@@ids_sent_once</span>,
+                     <span class="ruby-identifier">identifiers</span>.<span class="ruby-identifier">size</span>,
+                     *<span class="ruby-identifier">identifiers</span>,
+                     <span class="ruby-identifier">generate_intermediate_result_id</span>,
+                     <span class="ruby-identifier">offset</span>,
+                     (<span class="ruby-identifier">offset</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">amount</span>)
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">client</span>.<span class="ruby-identifier">zrange</span> <span class="ruby-identifier">identifiers</span>.<span class="ruby-identifier">first</span>,
+                    <span class="ruby-identifier">offset</span>,
+                    (<span class="ruby-identifier">offset</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">amount</span>)
+    <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">rescue</span> <span class="ruby-constant">RuntimeError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
     <span class="ruby-comment"># Make the server have a SHA-1 for the script.</span>
     <span class="ruby-comment">#</span>
-    <span class="ruby-identifier">@@sent_once</span> = <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA1</span>.<span class="ruby-identifier">hexdigest</span> <span class="ruby-identifier">@@script</span>
-    <span class="ruby-identifier">client</span>.<span class="ruby-identifier">eval</span> <span class="ruby-identifier">@@script</span>,
+    <span class="ruby-identifier">@@ids_sent_once</span> = <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA1</span>.<span class="ruby-identifier">hexdigest</span> <span class="ruby-identifier">@@ids_script</span>
+    <span class="ruby-identifier">client</span>.<span class="ruby-identifier">eval</span> <span class="ruby-identifier">@@ids_script</span>,
                 <span class="ruby-identifier">identifiers</span>.<span class="ruby-identifier">size</span>,
                 *<span class="ruby-identifier">identifiers</span>,
                 <span class="ruby-identifier">generate_intermediate_result_id</span>,
@@ -397,13 +437,12 @@
               <div id="method-c-new_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 12</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> <span class="ruby-identifier">options</span> = {}
-  <span class="ruby-keyword">super</span> <span class="ruby-identifier">options</span>
+  <span class="ruby-identifier">maybe_load_hiredis</span>
+  <span class="ruby-identifier">check_hiredis_gem</span>
+  <span class="ruby-identifier">check_redis_gem</span>
 
-  <span class="ruby-identifier">require</span> <span class="ruby-string">'redis'</span>
   <span class="ruby-ivar">@client</span>    = <span class="ruby-identifier">options</span>[<span class="ruby-value">:client</span>] <span class="ruby-operator">||</span> <span class="ruby-operator">::</span><span class="ruby-constant">Redis</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:db</span> =<span class="ruby-operator">&gt;</span> (<span class="ruby-identifier">options</span>[<span class="ruby-value">:db</span>] <span class="ruby-operator">||</span> <span class="ruby-number">15</span>))
-  <span class="ruby-ivar">@immediate</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:immediate</span>]
-<span class="ruby-keyword">rescue</span> <span class="ruby-constant">LoadError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
-  <span class="ruby-identifier">warn_gem_missing</span> <span class="ruby-string">'redis'</span>, <span class="ruby-string">'the Redis client'</span>
+  <span class="ruby-ivar">@realtime</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:realtime</span>]
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -441,10 +480,82 @@ False if not.</p>
                 
               </p>
               <div id="method-i-at_least_version_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 71</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 80</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">at_least_version</span> <span class="ruby-identifier">major_minor_patch</span>, <span class="ruby-identifier">should_be</span>
   <span class="ruby-number">3</span>.<span class="ruby-identifier">times</span> { <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">major_minor_patch</span>.<span class="ruby-identifier">shift</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">should_be</span>.<span class="ruby-identifier">shift</span> }
   <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-check_hiredis_gem">
+            
+              <a name="method-i-check_hiredis_gem"></a><b>check_hiredis_gem</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-check_hiredis_gem_source')" id="l_method-i-check_hiredis_gem_source">show</a>
+                
+              </p>
+              <div id="method-i-check_hiredis_gem_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">check_hiredis_gem</span>
+  <span class="ruby-identifier">require</span> <span class="ruby-string">'redis/connection/hiredis'</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">LoadError</span>
+  <span class="ruby-comment"># It's ok, the next check will fail if this one does.</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-check_redis_gem">
+            
+              <a name="method-i-check_redis_gem"></a><b>check_redis_gem</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-check_redis_gem_source')" id="l_method-i-check_redis_gem_source">show</a>
+                
+              </p>
+              <div id="method-i-check_redis_gem_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 30</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">check_redis_gem</span>
+  <span class="ruby-identifier">require</span> <span class="ruby-string">'redis'</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">LoadError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+  <span class="ruby-identifier">warn_gem_missing</span> <span class="ruby-string">'redis'</span>, <span class="ruby-string">'the Redis client'</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -479,10 +590,9 @@ False if not.</p>
                 
               </p>
               <div id="method-i-create_configuration_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 46</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 57</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">create_configuration</span> <span class="ruby-identifier">bundle</span>
-  <span class="ruby-identifier">extract_lambda_or</span>(<span class="ruby-identifier">configuration</span>, <span class="ruby-identifier">bundle</span>, <span class="ruby-identifier">client</span>) <span class="ruby-operator">||</span>
-    <span class="ruby-constant">String</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">client</span>, <span class="ruby-node">&quot;#{bundle.identifier}:configuration&quot;</span>, <span class="ruby-identifier">immediate</span><span class="ruby-operator">:</span> <span class="ruby-identifier">immediate</span>)
+  <span class="ruby-constant">String</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">client</span>, <span class="ruby-node">&quot;#{PICKY_ENVIRONMENT}:#{bundle.identifier}:configuration&quot;</span>, <span class="ruby-identifier">realtime</span><span class="ruby-operator">:</span> <span class="ruby-identifier">realtime</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -517,10 +627,9 @@ False if not.</p>
                 
               </p>
               <div id="method-i-create_inverted_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 25</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">create_inverted</span> <span class="ruby-identifier">bundle</span>
-  <span class="ruby-identifier">extract_lambda_or</span>(<span class="ruby-identifier">inverted</span>, <span class="ruby-identifier">bundle</span>, <span class="ruby-identifier">client</span>) <span class="ruby-operator">||</span>
-    <span class="ruby-constant">List</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">client</span>, <span class="ruby-node">&quot;#{bundle.identifier}:inverted&quot;</span>, <span class="ruby-identifier">immediate</span><span class="ruby-operator">:</span> <span class="ruby-identifier">immediate</span>)
+  <span class="ruby-constant">List</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">client</span>, <span class="ruby-node">&quot;#{PICKY_ENVIRONMENT}:#{bundle.identifier}:inverted&quot;</span>, <span class="ruby-identifier">realtime</span><span class="ruby-operator">:</span> <span class="ruby-identifier">realtime</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -555,10 +664,9 @@ False if not.</p>
                 
               </p>
               <div id="method-i-create_realtime_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 53</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 63</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">create_realtime</span> <span class="ruby-identifier">bundle</span>
-  <span class="ruby-identifier">extract_lambda_or</span>(<span class="ruby-identifier">similarity</span>, <span class="ruby-identifier">bundle</span>) <span class="ruby-operator">||</span>
-    <span class="ruby-constant">List</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">client</span>, <span class="ruby-node">&quot;#{bundle.identifier}:realtime&quot;</span>, <span class="ruby-identifier">immediate</span><span class="ruby-operator">:</span> <span class="ruby-identifier">immediate</span>)
+  <span class="ruby-constant">List</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">client</span>, <span class="ruby-node">&quot;#{bundle.identifier}:realtime&quot;</span>, <span class="ruby-identifier">realtime</span><span class="ruby-operator">:</span> <span class="ruby-identifier">realtime</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -593,10 +701,9 @@ False if not.</p>
                 
               </p>
               <div id="method-i-create_similarity_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 39</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 51</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">create_similarity</span> <span class="ruby-identifier">bundle</span>
-  <span class="ruby-identifier">extract_lambda_or</span>(<span class="ruby-identifier">similarity</span>, <span class="ruby-identifier">bundle</span>, <span class="ruby-identifier">client</span>) <span class="ruby-operator">||</span>
-    <span class="ruby-constant">List</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">client</span>, <span class="ruby-node">&quot;#{bundle.identifier}:similarity&quot;</span>, <span class="ruby-identifier">immediate</span><span class="ruby-operator">:</span> <span class="ruby-identifier">immediate</span>)
+  <span class="ruby-constant">List</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">client</span>, <span class="ruby-node">&quot;#{PICKY_ENVIRONMENT}:#{bundle.identifier}:similarity&quot;</span>, <span class="ruby-identifier">realtime</span><span class="ruby-operator">:</span> <span class="ruby-identifier">realtime</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -631,10 +738,9 @@ False if not.</p>
                 
               </p>
               <div id="method-i-create_weights_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 32</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 45</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">create_weights</span> <span class="ruby-identifier">bundle</span>
-  <span class="ruby-identifier">extract_lambda_or</span>(<span class="ruby-identifier">weights</span>, <span class="ruby-identifier">bundle</span>, <span class="ruby-identifier">client</span>) <span class="ruby-operator">||</span>
-    <span class="ruby-constant">Float</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">client</span>, <span class="ruby-node">&quot;#{bundle.identifier}:weights&quot;</span>, <span class="ruby-identifier">immediate</span><span class="ruby-operator">:</span> <span class="ruby-identifier">immediate</span>)
+  <span class="ruby-constant">Float</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">client</span>, <span class="ruby-node">&quot;#{PICKY_ENVIRONMENT}:#{bundle.identifier}:weights&quot;</span>, <span class="ruby-identifier">realtime</span><span class="ruby-operator">:</span> <span class="ruby-identifier">realtime</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -666,7 +772,7 @@ False if not.</p>
                 
               </p>
               <div id="method-i-generate_intermediate_result_id_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 235</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 291</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">generate_intermediate_result_id</span>
   <span class="ruby-ivar">@intermediate_result_id</span> <span class="ruby-operator">||=</span> <span class="ruby-node">&quot;#{host}:#{pid}:picky:result&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -700,7 +806,7 @@ False if not.</p>
                 
               </p>
               <div id="method-i-host_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 226</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 282</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">host</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">extract_host</span>
 <span class="ruby-keyword">end</span></pre>
@@ -725,10 +831,6 @@ analogue to this in their own backend implementations.</p>
 
 <p>Note: We use the amount and offset hints to speed <a
 href="Redis.html">Redis</a> up.</p>
-
-<p>TODO What if it hasn’t been dumped?</p>
-
-<pre>Move this method to the actual backends?</pre>
             </div>
           
           
@@ -744,21 +846,21 @@ href="Redis.html">Redis</a> up.</p>
                 
               </p>
               <div id="method-i-ids_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 103</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 157</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ids</span> <span class="ruby-identifier">combinations</span>, <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>
-  <span class="ruby-comment"># TODO FIXME This is actually not correct:</span>
-  <span class="ruby-comment">#            A dumped/loaded Redis backend should use</span>
-  <span class="ruby-comment">#            the Redis backend calculation method.</span>
-  <span class="ruby-comment">#            So loaded? would be more appropriate.</span>
+  <span class="ruby-comment"># TODO This is actually not correct:</span>
+  <span class="ruby-comment">#      A dumped/loaded Redis backend should use</span>
+  <span class="ruby-comment">#      the Redis backend calculation method.</span>
+  <span class="ruby-comment">#      So loaded? would be more appropriate.</span>
   <span class="ruby-comment">#</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">immediate</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">realtime</span>
     <span class="ruby-comment"># Just checked once on the first call.</span>
     <span class="ruby-comment">#</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">redis_with_scripting?</span>
-      <span class="ruby-identifier">@@script</span> = <span class="ruby-node">&quot;local intersected = redis.call('zinterstore', ARGV[1], #(KEYS), unpack(KEYS)); if intersected == 0 then redis.call('del', ARGV[1]); return {}; end local results = redis.call('zrange', ARGV[1], tonumber(ARGV[2]), tonumber(ARGV[3])); redis.call('del', ARGV[1]); return results;&quot;</span>
+      <span class="ruby-identifier">@@ids_script</span> = <span class="ruby-node">&quot;local intersected = redis.call('zinterstore', ARGV[1], #(KEYS), unpack(KEYS)); if intersected == 0 then redis.call('del', ARGV[1]); return {}; end local results = redis.call('zrange', ARGV[1], tonumber(ARGV[2]), tonumber(ARGV[3])); redis.call('del', ARGV[1]); return results;&quot;</span>
 
       <span class="ruby-identifier">require</span> <span class="ruby-string">'digest/sha1'</span>
-      <span class="ruby-identifier">@@sent_once</span> = <span class="ruby-keyword">nil</span>
+      <span class="ruby-identifier">@@ids_sent_once</span> = <span class="ruby-keyword">nil</span>
 
       <span class="ruby-comment"># Scripting version of #ids.</span>
       <span class="ruby-comment">#</span>
@@ -771,17 +873,23 @@ href="Redis.html">Redis</a> up.</p>
           <span class="ruby-comment"># Assume it's using EVALSHA.</span>
           <span class="ruby-comment">#</span>
           <span class="ruby-keyword">begin</span>
-            <span class="ruby-identifier">client</span>.<span class="ruby-identifier">evalsha</span> <span class="ruby-identifier">@@sent_once</span>,
-                           <span class="ruby-identifier">identifiers</span>.<span class="ruby-identifier">size</span>,
-                           *<span class="ruby-identifier">identifiers</span>,
-                           <span class="ruby-identifier">generate_intermediate_result_id</span>,
-                           <span class="ruby-identifier">offset</span>,
-                           (<span class="ruby-identifier">offset</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">amount</span>)
+            <span class="ruby-keyword">if</span> <span class="ruby-identifier">identifiers</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-number">1</span>
+              <span class="ruby-identifier">client</span>.<span class="ruby-identifier">evalsha</span> <span class="ruby-identifier">@@ids_sent_once</span>,
+                             <span class="ruby-identifier">identifiers</span>.<span class="ruby-identifier">size</span>,
+                             *<span class="ruby-identifier">identifiers</span>,
+                             <span class="ruby-identifier">generate_intermediate_result_id</span>,
+                             <span class="ruby-identifier">offset</span>,
+                             (<span class="ruby-identifier">offset</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">amount</span>)
+            <span class="ruby-keyword">else</span>
+              <span class="ruby-identifier">client</span>.<span class="ruby-identifier">zrange</span> <span class="ruby-identifier">identifiers</span>.<span class="ruby-identifier">first</span>,
+                            <span class="ruby-identifier">offset</span>,
+                            (<span class="ruby-identifier">offset</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">amount</span>)
+            <span class="ruby-keyword">end</span>
           <span class="ruby-keyword">rescue</span> <span class="ruby-constant">RuntimeError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
             <span class="ruby-comment"># Make the server have a SHA-1 for the script.</span>
             <span class="ruby-comment">#</span>
-            <span class="ruby-identifier">@@sent_once</span> = <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA1</span>.<span class="ruby-identifier">hexdigest</span> <span class="ruby-identifier">@@script</span>
-            <span class="ruby-identifier">client</span>.<span class="ruby-identifier">eval</span> <span class="ruby-identifier">@@script</span>,
+            <span class="ruby-identifier">@@ids_sent_once</span> = <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA1</span>.<span class="ruby-identifier">hexdigest</span> <span class="ruby-identifier">@@ids_script</span>
+            <span class="ruby-identifier">client</span>.<span class="ruby-identifier">eval</span> <span class="ruby-identifier">@@ids_script</span>,
                         <span class="ruby-identifier">identifiers</span>.<span class="ruby-identifier">size</span>,
                         *<span class="ruby-identifier">identifiers</span>,
                         <span class="ruby-identifier">generate_intermediate_result_id</span>,
@@ -802,8 +910,6 @@ href="Redis.html">Redis</a> up.</p>
           <span class="ruby-identifier">result_id</span> = <span class="ruby-identifier">generate_intermediate_result_id</span>
 
           <span class="ruby-comment"># Little optimization.</span>
-          <span class="ruby-comment">#</span>
-          <span class="ruby-comment"># TODO Include in the scripting version as well.</span>
           <span class="ruby-comment">#</span>
           <span class="ruby-keyword">if</span> <span class="ruby-identifier">identifiers</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-number">1</span>
             <span class="ruby-comment"># Intersect and store.</span>
@@ -836,8 +942,6 @@ href="Redis.html">Redis</a> up.</p>
       <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-comment"># TODO Refactor!</span>
-    <span class="ruby-comment">#</span>
     <span class="ruby-keyword">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword ruby-title">self</span>
       <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ids</span> <span class="ruby-identifier">combinations</span>, <span class="ruby-identifier">_</span>, <span class="ruby-identifier">_</span>
         <span class="ruby-comment"># Get the ids for each combination.</span>
@@ -858,6 +962,42 @@ href="Redis.html">Redis</a> up.</p>
   <span class="ruby-comment"># Call the newly installed version.</span>
   <span class="ruby-comment">#</span>
   <span class="ruby-identifier">ids</span> <span class="ruby-identifier">combinations</span>, <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-maybe_load_hiredis">
+            
+              <a name="method-i-maybe_load_hiredis"></a><b>maybe_load_hiredis</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-maybe_load_hiredis_source')" id="l_method-i-maybe_load_hiredis_source">show</a>
+                
+              </p>
+              <div id="method-i-maybe_load_hiredis_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">maybe_load_hiredis</span>
+  <span class="ruby-identifier">require</span> <span class="ruby-string">'hiredis'</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">LoadError</span>
+  <span class="ruby-comment"># It's ok.</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -889,7 +1029,7 @@ href="Redis.html">Redis</a> up.</p>
                 
               </p>
               <div id="method-i-pid_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 230</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 286</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">pid</span>
   <span class="ruby-ivar">@pid</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Process</span>.<span class="ruby-identifier">pid</span>
 <span class="ruby-keyword">end</span></pre>
@@ -934,7 +1074,7 @@ detailing the infos.</pre>
                 
               </p>
               <div id="method-i-redis_version_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 86</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 95</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">redis_version</span>
   <span class="ruby-identifier">infos</span>          = <span class="ruby-identifier">client</span>.<span class="ruby-identifier">info</span>
   <span class="ruby-identifier">version_string</span> = <span class="ruby-identifier">infos</span>[<span class="ruby-string">'redis_version'</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">infos</span>[<span class="ruby-value">:redis_version</span>]
@@ -971,9 +1111,85 @@ support?</p>
                 
               </p>
               <div id="method-i-redis_with_scripting-3F_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 61</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 70</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">redis_with_scripting?</span>
   <span class="ruby-identifier">at_least_version</span> <span class="ruby-identifier">redis_version</span>, [<span class="ruby-number">2</span>, <span class="ruby-number">6</span>, <span class="ruby-number">0</span>]
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-weight">
+            
+              <a name="method-i-weight"></a><b>weight</b>(combinations)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the total weight for the combinations.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-weight_source')" id="l_method-i-weight_source">show</a>
+                
+              </p>
+              <div id="method-i-weight_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/backends/redis.rb, line 103</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">weight</span> <span class="ruby-identifier">combinations</span>
+  <span class="ruby-comment"># Note: A nice experiment that generated far too many strings.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-comment"># if redis_with_scripting?</span>
+  <span class="ruby-comment">#   @@weight_script = &quot;local sum = 0; for i=1,#(KEYS),2 do local value = redis.call('hget', KEYS[i], KEYS[i+1]); if value then sum = sum + value end end return sum;&quot;</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-comment">#   require 'digest/sha1'</span>
+  <span class="ruby-comment">#   @@weight_sent_once = nil</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-comment">#   # Scripting version of #ids.</span>
+  <span class="ruby-comment">#   #</span>
+  <span class="ruby-comment">#   class &lt;&lt; self</span>
+  <span class="ruby-comment">#     def weight combinations</span>
+  <span class="ruby-comment">#       namespaces_keys = combinations.inject([]) do |namespaces_keys, combination|</span>
+  <span class="ruby-comment">#         namespaces_keys &lt;&lt; &quot;#{combination.bundle.identifier}:weights&quot;</span>
+  <span class="ruby-comment">#         namespaces_keys &lt;&lt; combination.token.text</span>
+  <span class="ruby-comment">#       end</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-comment">#       # Assume it's using EVALSHA.</span>
+  <span class="ruby-comment">#       #</span>
+  <span class="ruby-comment">#       begin</span>
+  <span class="ruby-comment">#         client.evalsha @@weight_sent_once,</span>
+  <span class="ruby-comment">#                        namespaces_keys.size,</span>
+  <span class="ruby-comment">#                        *namespaces_keys</span>
+  <span class="ruby-comment">#       rescue RuntimeError =&gt; e</span>
+  <span class="ruby-comment">#         # Make the server have a SHA-1 for the script.</span>
+  <span class="ruby-comment">#         #</span>
+  <span class="ruby-comment">#         @@weight_sent_once = Digest::SHA1.hexdigest @@weight_script</span>
+  <span class="ruby-comment">#         client.eval @@weight_script,</span>
+  <span class="ruby-comment">#                     namespaces_keys.size,</span>
+  <span class="ruby-comment">#                     *namespaces_keys</span>
+  <span class="ruby-comment">#       end</span>
+  <span class="ruby-comment">#     end</span>
+  <span class="ruby-comment">#   end</span>
+  <span class="ruby-comment"># else</span>
+  <span class="ruby-comment">#   class &lt;&lt; self</span>
+  <span class="ruby-comment">#     def weight combinations</span>
+        <span class="ruby-identifier">combinations</span>.<span class="ruby-identifier">score</span>
+  <span class="ruby-comment">#     end</span>
+  <span class="ruby-comment">#   end</span>
+  <span class="ruby-comment"># end</span>
+  <span class="ruby-comment"># # Call the newly installed version.</span>
+  <span class="ruby-comment"># #</span>
+  <span class="ruby-comment"># weight combinations</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>

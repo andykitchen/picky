@@ -135,18 +135,6 @@
           </ul>
         </dd>
       
-        <dt>I</dt>
-        <dd>
-          <ul>
-            
-              
-              <li>
-                <a href="#method-i-ids">ids</a>
-              </li>
-            
-          </ul>
-        </dd>
-      
         <dt>N</dt>
         <dd>
           <ul>
@@ -184,7 +172,7 @@
             <td class='attr-rw'>
               [R]
             </td>
-            <td class='attr-name'>self_indexed</td>
+            <td class='attr-name'>realtime</td>
             <td class='attr-desc'></td>
           </tr>
         
@@ -223,8 +211,7 @@
               <div id="method-c-new_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/backends/sqlite.rb, line 9</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> <span class="ruby-identifier">options</span> = {}
-  <span class="ruby-keyword">super</span> <span class="ruby-identifier">options</span>
-  <span class="ruby-ivar">@self_indexed</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:self_indexed</span>]
+  <span class="ruby-ivar">@realtime</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:realtime</span>]
 
   <span class="ruby-identifier">require</span> <span class="ruby-string">'sqlite3'</span>
 <span class="ruby-keyword">rescue</span> <span class="ruby-constant">LoadError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
@@ -265,10 +252,9 @@
                 
               </p>
               <div id="method-i-create_configuration_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite.rb, line 42</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">create_configuration</span> <span class="ruby-identifier">bundle</span>
-  <span class="ruby-identifier">extract_lambda_or</span>(<span class="ruby-identifier">configuration</span>, <span class="ruby-identifier">bundle</span>) <span class="ruby-operator">||</span>
-    <span class="ruby-constant">Value</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-value">:configuration</span>), <span class="ruby-identifier">self_indexed</span><span class="ruby-operator">:</span> <span class="ruby-identifier">self_indexed</span>)
+  <span class="ruby-constant">Value</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-value">:configuration</span>), <span class="ruby-identifier">realtime</span><span class="ruby-operator">:</span> <span class="ruby-identifier">realtime</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -303,10 +289,9 @@
                 
               </p>
               <div id="method-i-create_inverted_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite.rb, line 21</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite.rb, line 20</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">create_inverted</span> <span class="ruby-identifier">bundle</span>
-  <span class="ruby-identifier">extract_lambda_or</span>(<span class="ruby-identifier">inverted</span>, <span class="ruby-identifier">bundle</span>) <span class="ruby-operator">||</span>
-    <span class="ruby-constant">StringKeyArray</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-value">:inverted</span>), <span class="ruby-identifier">self_indexed</span><span class="ruby-operator">:</span> <span class="ruby-identifier">self_indexed</span>)
+  <span class="ruby-constant">StringKeyArray</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-value">:inverted</span>), <span class="ruby-identifier">realtime</span><span class="ruby-operator">:</span> <span class="ruby-identifier">realtime</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -341,10 +326,9 @@
                 
               </p>
               <div id="method-i-create_realtime_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite.rb, line 49</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite.rb, line 44</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">create_realtime</span> <span class="ruby-identifier">bundle</span>
-  <span class="ruby-identifier">extract_lambda_or</span>(<span class="ruby-identifier">similarity</span>, <span class="ruby-identifier">bundle</span>) <span class="ruby-operator">||</span>
-    <span class="ruby-constant">IntegerKeyArray</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-value">:realtime</span>), <span class="ruby-identifier">self_indexed</span><span class="ruby-operator">:</span> <span class="ruby-identifier">self_indexed</span>)
+  <span class="ruby-constant">IntegerKeyArray</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-value">:realtime</span>), <span class="ruby-identifier">realtime</span><span class="ruby-operator">:</span> <span class="ruby-identifier">realtime</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -379,10 +363,9 @@
                 
               </p>
               <div id="method-i-create_similarity_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite.rb, line 35</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite.rb, line 32</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">create_similarity</span> <span class="ruby-identifier">bundle</span>
-  <span class="ruby-identifier">extract_lambda_or</span>(<span class="ruby-identifier">similarity</span>, <span class="ruby-identifier">bundle</span>) <span class="ruby-operator">||</span>
-    <span class="ruby-constant">StringKeyArray</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-value">:similarity</span>), <span class="ruby-identifier">self_indexed</span><span class="ruby-operator">:</span> <span class="ruby-identifier">self_indexed</span>)
+  <span class="ruby-constant">StringKeyArray</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-value">:similarity</span>), <span class="ruby-identifier">realtime</span><span class="ruby-operator">:</span> <span class="ruby-identifier">realtime</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -417,72 +400,9 @@
                 
               </p>
               <div id="method-i-create_weights_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite.rb, line 28</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">create_weights</span> <span class="ruby-identifier">bundle</span>
-  <span class="ruby-identifier">extract_lambda_or</span>(<span class="ruby-identifier">weights</span>, <span class="ruby-identifier">bundle</span>) <span class="ruby-operator">||</span>
-    <span class="ruby-constant">Value</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-value">:weights</span>), <span class="ruby-identifier">self_indexed</span><span class="ruby-operator">:</span> <span class="ruby-identifier">self_indexed</span>)
-<span class="ruby-keyword">end</span></pre>
-              </div>
-            </div>
-            
-          </div>
-        
-        <div class="method">
-          <div class="title method-title" id="method-i-ids">
-            
-              <a name="method-i-ids"></a><b>ids</b>(combinations, _, _)
-            
-          </div>
-          
-          
-            <div class="description">
-              <p>Returns the result ids for the allocation.</p>
-
-<p>Sorts the ids by size and &amp; through them in the following order
-(sizes):</p>
-<ol><li><dl class="rdoc-list label-list"><dt>100_000, 400, 30, 2
-<dd></dd></dl>
-</li><li><dl class="rdoc-list label-list"><dt>2, 30, 400, 100_000
-<dd></dd></dl>
-</li><li>
-<p>(100_000 &amp; (400 &amp; (30 &amp; 2))) # =&gt; result</p>
-</li></ol>
-
-<p>Note: Uses a C-optimized intersection routine (in performant.c)</p>
-
-<pre>for speed and memory efficiency.</pre>
-
-<p>Note: In the memory based version we ignore the amount and offset hints.</p>
-
-<pre>We cannot use the information to speed up the algorithm, unfortunately.</pre>
-            </div>
-          
-          
-          
-          
-          
-            
-            <div class="sourcecode">
-              
-              <p class="source-link">
-                Source: 
-                <a href="javascript:toggleSource('method-i-ids_source')" id="l_method-i-ids_source">show</a>
-                
-              </p>
-              <div id="method-i-ids_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite.rb, line 67</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ids</span> <span class="ruby-identifier">combinations</span>, <span class="ruby-identifier">_</span>, <span class="ruby-identifier">_</span>
-  <span class="ruby-comment"># Get the ids for each combination.</span>
-  <span class="ruby-comment">#</span>
-  <span class="ruby-identifier">id_arrays</span> = <span class="ruby-identifier">combinations</span>.<span class="ruby-identifier">inject</span>([]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">total</span>, <span class="ruby-identifier">combination</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">total</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">combination</span>.<span class="ruby-identifier">ids</span>
-  <span class="ruby-keyword">end</span>
-
-  <span class="ruby-comment"># Call the optimized C algorithm.</span>
-  <span class="ruby-comment">#</span>
-  <span class="ruby-comment"># Note: It orders the passed arrays by size.</span>
-  <span class="ruby-comment">#</span>
-  <span class="ruby-constant">Performant</span><span class="ruby-operator">::</span><span class="ruby-constant">Array</span>.<span class="ruby-identifier">memory_efficient_intersect</span> <span class="ruby-identifier">id_arrays</span>
+  <span class="ruby-constant">Value</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">index_path</span>(<span class="ruby-value">:weights</span>), <span class="ruby-identifier">realtime</span><span class="ruby-operator">:</span> <span class="ruby-identifier">realtime</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>

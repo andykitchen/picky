@@ -289,7 +289,7 @@
   <span class="ruby-ivar">@cache_path</span>   = <span class="ruby-node">&quot;#{cache_path}.sqlite3&quot;</span>
   <span class="ruby-ivar">@empty</span>        = <span class="ruby-identifier">options</span>[<span class="ruby-value">:empty</span>]
   <span class="ruby-ivar">@initial</span>      = <span class="ruby-identifier">options</span>[<span class="ruby-value">:initial</span>]
-  <span class="ruby-ivar">@self_indexed</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:self_indexed</span>]
+  <span class="ruby-ivar">@realtime</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:realtime</span>]
 
   <span class="ruby-identifier">lazily_initialize_client</span>
 <span class="ruby-keyword">end</span></pre>
@@ -325,7 +325,7 @@
                 
               </p>
               <div id="method-i-asynchronous_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite/basic.rb, line 81</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite/basic.rb, line 83</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">asynchronous</span>
   <span class="ruby-identifier">db</span>.<span class="ruby-identifier">execute</span> <span class="ruby-string">'PRAGMA synchronous = OFF;'</span>
   <span class="ruby-keyword">self</span>
@@ -394,7 +394,7 @@
                 
               </p>
               <div id="method-i-drop_table_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite/basic.rb, line 77</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite/basic.rb, line 79</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">drop_table</span>
   <span class="ruby-identifier">db</span>.<span class="ruby-identifier">execute</span> <span class="ruby-string">'drop table if exists key_value;'</span>
 <span class="ruby-keyword">end</span></pre>
@@ -430,7 +430,7 @@
               <div id="method-i-dump_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/backends/sqlite/basic.rb, line 30</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">dump</span> <span class="ruby-identifier">internal</span>
-  <span class="ruby-identifier">dump_sqlite</span> <span class="ruby-identifier">internal</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@self_indexed</span>
+  <span class="ruby-identifier">dump_sqlite</span> <span class="ruby-identifier">internal</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@realtime</span>
   <span class="ruby-keyword">self</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
@@ -509,7 +509,7 @@
               <div id="method-i-empty_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/backends/sqlite/basic.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">empty</span>
-  <span class="ruby-ivar">@empty</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@empty</span>.<span class="ruby-identifier">clone</span> <span class="ruby-operator">||</span> (<span class="ruby-ivar">@self_indexed</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">reset</span>.<span class="ruby-identifier">asynchronous</span> <span class="ruby-operator">:</span> {})
+  <span class="ruby-ivar">@empty</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@empty</span>.<span class="ruby-identifier">clone</span> <span class="ruby-operator">||</span> (<span class="ruby-ivar">@realtime</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">reset</span>.<span class="ruby-identifier">asynchronous</span> <span class="ruby-operator">:</span> {})
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -543,7 +543,7 @@
               <div id="method-i-initial_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/backends/sqlite/basic.rb, line 22</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initial</span>
-  <span class="ruby-ivar">@initial</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@initial</span>.<span class="ruby-identifier">clone</span> <span class="ruby-operator">||</span> (<span class="ruby-ivar">@self_indexed</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">reset</span> <span class="ruby-operator">:</span> {})
+  <span class="ruby-ivar">@initial</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@initial</span>.<span class="ruby-identifier">clone</span> <span class="ruby-operator">||</span> (<span class="ruby-ivar">@realtime</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">reset</span> <span class="ruby-operator">:</span> {})
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -682,7 +682,7 @@
                 
               </p>
               <div id="method-i-synchronous_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite/basic.rb, line 86</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite/basic.rb, line 88</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">synchronous</span>
   <span class="ruby-identifier">db</span>.<span class="ruby-identifier">execute</span> <span class="ruby-string">'PRAGMA synchronous = ON;'</span>
   <span class="ruby-keyword">self</span>
@@ -717,7 +717,7 @@
                 
               </p>
               <div id="method-i-to_s_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite/basic.rb, line 97</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite/basic.rb, line 99</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
   <span class="ruby-node">&quot;#{self.class}(#{cache_path})&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -751,7 +751,7 @@
                 
               </p>
               <div id="method-i-transaction_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite/basic.rb, line 91</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite/basic.rb, line 93</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">transaction</span>
   <span class="ruby-identifier">db</span>.<span class="ruby-identifier">execute</span> <span class="ruby-string">'BEGIN;'</span>
   <span class="ruby-keyword">yield</span>
@@ -771,7 +771,9 @@
           
           
             <div class="description">
-              
+              <p>Drops the table and creates it anew.</p>
+
+<p>THINK Could this be replaced by a truncate (DELETE FROM) statement?</p>
             </div>
           
           
@@ -787,10 +789,8 @@
                 
               </p>
               <div id="method-i-truncate_db_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite/basic.rb, line 70</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/sqlite/basic.rb, line 74</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">truncate_db</span>
-  <span class="ruby-comment"># TODO Could this be replaced by a truncate statement?</span>
-  <span class="ruby-comment">#</span>
   <span class="ruby-identifier">drop_table</span>
   <span class="ruby-identifier">create_table</span>
 <span class="ruby-keyword">end</span></pre>

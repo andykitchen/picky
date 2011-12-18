@@ -76,13 +76,13 @@ levenshtein.</p>
           </ul>
         </dd>
       
-        <dt>S</dt>
+        <dt>P</dt>
         <dd>
           <ul>
             
               
               <li>
-                <a href="#method-i-sort">sort</a>
+                <a href="#method-i-prioritize">prioritize</a>
               </li>
             
           </ul>
@@ -152,6 +152,8 @@ levenshtein.</p>
               <div id="method-c-new_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/generators/similarity/phonetic.rb, line 21</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> <span class="ruby-identifier">amount</span> = <span class="ruby-number">10</span>
+  <span class="ruby-identifier">check_gem</span>
+
   <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;In Picky 2.0+, the Similarity::Phonetic has been renamed to Similarity::DoubleMetaphone. Please use that one. Thanks!&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Phonetic</span>
   <span class="ruby-ivar">@amount</span> = <span class="ruby-identifier">amount</span>
 <span class="ruby-keyword">end</span></pre>
@@ -160,22 +162,18 @@ levenshtein.</p>
             
           </div>
                   
-      <div class="sectiontitle">Instance Protected methods</div>
+      <div class="sectiontitle">Instance Public methods</div>
       
         <div class="method">
-          <div class="title method-title" id="method-i-sort">
+          <div class="title method-title" id="method-i-prioritize">
             
-              <a name="method-i-sort"></a><b>sort</b>(hash)
+              <a name="method-i-prioritize"></a><b>prioritize</b>(ary, code)
             
           </div>
           
           
             <div class="description">
               <p>Sorts the index values in place.</p>
-
-<p>TODO Include this again. Sort at the end.</p>
-
-<pre>Or sort when inserting in realtime.</pre>
             </div>
           
           
@@ -187,17 +185,14 @@ levenshtein.</p>
               
               <p class="source-link">
                 Source: 
-                <a href="javascript:toggleSource('method-i-sort_source')" id="l_method-i-sort_source">show</a>
+                <a href="javascript:toggleSource('method-i-prioritize_source')" id="l_method-i-prioritize_source">show</a>
                 
               </p>
-              <div id="method-i-sort_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/generators/similarity/phonetic.rb, line 33</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">sort</span> <span class="ruby-identifier">hash</span>
-  <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each_pair</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">code</span>, <span class="ruby-identifier">ary</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">ary</span>.<span class="ruby-identifier">sort_by_levenshtein!</span> <span class="ruby-identifier">code</span>
-    <span class="ruby-identifier">ary</span>.<span class="ruby-identifier">slice!</span> <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">ary</span>.<span class="ruby-identifier">size</span> <span class="ruby-comment"># size is not perfectly correct, but anyway</span>
-  <span class="ruby-keyword">end</span>
-  <span class="ruby-identifier">hash</span>
+              <div id="method-i-prioritize_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/generators/similarity/phonetic.rb, line 39</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">prioritize</span> <span class="ruby-identifier">ary</span>, <span class="ruby-identifier">code</span>
+  <span class="ruby-identifier">ary</span>.<span class="ruby-identifier">sort_by_levenshtein!</span> <span class="ruby-identifier">code</span>
+  <span class="ruby-identifier">ary</span>.<span class="ruby-identifier">slice!</span> <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">ary</span>.<span class="ruby-identifier">size</span> <span class="ruby-comment"># Note: The ary.size is not perfectly correct.</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
