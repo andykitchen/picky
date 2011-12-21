@@ -69,9 +69,36 @@ layout: default
         %strong Getting started
       Got 5 minutes?
     %p
-      %a{ :href => 'getting_started.html' } Install and run Picky
+      %a{ :href => 'getting_started.html' } Install and run Picky with a nice Sinatra interface
     %p
-      on your computer and adapt the examples.
+      Got 2 minutes? Run
+      %pre
+        gem install picky
+    %p
+      and copy paste
+      %code
+        %pre
+          :preserve
+            require 'picky'
+
+            Person = Struct.new :id, :age, :first, :last
+
+            data = Picky::Index.new :people do
+              category :age, partial: Picky::Partial::None.new
+              category :first,
+                similarity: Picky::Similarity::Soundex.new(3)
+              category :last
+            end
+
+            data.replace Person.new(1, 34, 'Florian', 'Hanke')
+            data.replace Person.new(2, 77, 'Florikk', 'Dumpty')
+
+            people = Picky::Search.new data
+
+            results = people.search 'flori' # Takes around 0.0002s
+
+            p results.ids # => [2, 1]
+            p results.allocations # => Returns weight etc.
     %h3 Help / Feedback
     %p
       We're always glad for help requests, feedback, single-page scripts, project battle stories:
