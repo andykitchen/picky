@@ -14,6 +14,9 @@
     <link href="stylesheets/specific.css" rel="stylesheet" type="text/css" />
     <link href="stylesheets/grid.css" rel="stylesheet" type="text/css" />
     <link href="stylesheets/colors.css" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/sh-whitengrey.css" rel="stylesheet" type="text/css" />
+    <script src="javascripts/sh.min.js" type="text/javascript"></script>
+    <script src="javascripts/sh-ruby.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
     <script type="text/javascript">function plusone_vote(obj){_gaq.push(['_trackEvent','plusone',obj.state]);}</script>
     <title>
@@ -34,7 +37,7 @@
       //]]>
     </script>
   </head>
-  <body>
+  <body onload="sh_highlightDocument();">
     <div class="header">
       <a href="http://github.com/floere/picky">
         <img alt="Fork me on GitHub" src="images/forkme.png" style="position: fixed; top: -10px; right: -10px; border: 0; z-index: 1;" />
