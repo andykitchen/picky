@@ -86,7 +86,7 @@ layout: default
             data = Picky::Index.new :people do
               category :age, partial: Picky::Partial::None.new
               category :first,
-                similarity: Picky::Similarity::Soundex.new(3)
+                similarity: Picky::Similarity::Soundex.new
               category :last
             end
 
