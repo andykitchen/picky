@@ -84,8 +84,8 @@ layout: default
             Person = Struct.new :id, :age, :name
             
             data = Picky::Index.new :people do
-            category :age, partial: Picky::Partial::None.new
-            category :name
+              category :age, partial: Picky::Partial::None.new
+              category :name
             end
             
             data.replace Person.new(1, 34, 'Florian')
