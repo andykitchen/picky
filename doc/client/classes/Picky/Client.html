@@ -31,7 +31,11 @@
         </h1>
         <ul class="files">
             
+            <li><a href="../../files/lib/picky-client/client/active_record_rb.html">lib/picky-client/client/active_record.rb</a></li>
+            
             <li><a href="../../files/lib/picky-client/client_rb.html">lib/picky-client/client.rb</a></li>
+            
+            <li><a href="../../files/lib/picky-client/client_index_rb.html">lib/picky-client/client_index.rb</a></li>
             
         </ul>
     </div>
@@ -47,6 +51,17 @@
   
 
 
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Client/ActiveRecord.html">Picky::Client::ActiveRecord</a>
+        </li>
+      
+    </ul>
   
 
 
@@ -99,6 +114,23 @@
           </ul>
         </dd>
       
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-remove">remove</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-replace">replace</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
         <dt>S</dt>
         <dd>
           <ul>
@@ -111,6 +143,11 @@
               
               <li>
                 <a href="#method-i-search_unparsed">search_unparsed</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-send_off">send_off</a>,
               </li>
             
               
@@ -390,6 +427,86 @@
           </div>
         
         <div class="method">
+          <div class="title method-title" id="method-i-remove">
+            
+              <a name="method-i-remove"></a><b>remove</b>(index_name, data)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>TODO Rename?</p>
+
+<p>Parameters:</p>
+
+<pre class="ruby">* <span class="ruby-identifier">index_name</span><span class="ruby-operator">:</span> <span class="ruby-constant">An</span> <span class="ruby-identifier">index</span> <span class="ruby-identifier">that</span> <span class="ruby-identifier">exists</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">the</span> <span class="ruby-constant">Picky</span> <span class="ruby-identifier">server</span>.
+* <span class="ruby-identifier">data</span><span class="ruby-operator">:</span> <span class="ruby-constant">A</span> <span class="ruby-identifier">hash</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">the</span> <span class="ruby-identifier">form</span> <span class="ruby-identifier">of</span> { :<span class="ruby-identifier">id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1234</span> }.
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-remove_source')" id="l_method-i-remove_source">show</a>
+                
+              </p>
+              <div id="method-i-remove_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky-client/client_index.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">remove</span> <span class="ruby-identifier">index_name</span>, <span class="ruby-identifier">data</span>
+  <span class="ruby-identifier">send_off</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span><span class="ruby-operator">::</span><span class="ruby-constant">Delete</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">path</span>), <span class="ruby-identifier">index_name</span>, <span class="ruby-identifier">data</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-replace">
+            
+              <a name="method-i-replace"></a><b>replace</b>(index_name, data)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>TODO Rename?</p>
+
+<p>Parameters:</p>
+
+<pre class="ruby">* <span class="ruby-identifier">index_name</span><span class="ruby-operator">:</span> <span class="ruby-constant">An</span> <span class="ruby-identifier">index</span> <span class="ruby-identifier">that</span> <span class="ruby-identifier">exists</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">the</span> <span class="ruby-constant">Picky</span> <span class="ruby-identifier">server</span>.
+* <span class="ruby-identifier">data</span><span class="ruby-operator">:</span> <span class="ruby-constant">A</span> <span class="ruby-identifier">hash</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">the</span> <span class="ruby-identifier">form</span> <span class="ruby-identifier">of</span> { :<span class="ruby-identifier">id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1234</span>, :<span class="ruby-identifier">attr1</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'attr1'</span>, :<span class="ruby-identifier">attr2</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'attr2'</span>, <span class="ruby-operator">...</span> }.
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-replace_source')" id="l_method-i-replace_source">show</a>
+                
+              </p>
+              <div id="method-i-replace_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky-client/client_index.rb, line 10</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">replace</span> <span class="ruby-identifier">index_name</span>, <span class="ruby-identifier">data</span>
+  <span class="ruby-identifier">send_off</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span><span class="ruby-operator">::</span><span class="ruby-constant">Post</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">path</span>), <span class="ruby-identifier">index_name</span>, <span class="ruby-identifier">data</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
           <div class="title method-title" id="method-i-search">
             
               <a name="method-i-search"></a><b>search</b>(query, params = {})
@@ -463,6 +580,43 @@ results through without parsing.</p>
           </div>
         
         <div class="method">
+          <div class="title method-title" id="method-i-send_off">
+            
+              <a name="method-i-send_off"></a><b>send_off</b>(request, index_name, data)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Sends a request to the <a href="../Picky.html">Picky</a> server.</p>
+
+<p>Note: Data is JSON encoded.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-send_off_source')" id="l_method-i-send_off_source">show</a>
+                
+              </p>
+              <div id="method-i-send_off_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky-client/client_index.rb, line 28</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">send_off</span> <span class="ruby-identifier">request</span>, <span class="ruby-identifier">index_name</span>, <span class="ruby-identifier">data</span>
+  <span class="ruby-identifier">request</span>.<span class="ruby-identifier">form_data</span> = { <span class="ruby-value">:index</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">index_name</span>, <span class="ruby-value">:data</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">JSON</span>.<span class="ruby-identifier">encode</span>(<span class="ruby-identifier">data</span>) }
+  <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">host</span>, <span class="ruby-keyword">self</span>.<span class="ruby-identifier">port</span>).<span class="ruby-identifier">start</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">http</span><span class="ruby-operator">|</span> <span class="ruby-identifier">http</span>.<span class="ruby-identifier">request</span> <span class="ruby-identifier">request</span> }
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
           <div class="title method-title" id="method-i-send_search">
             
               <a name="method-i-send_search"></a><b>send_search</b>(params = {})
@@ -489,7 +643,7 @@ results through without parsing.</p>
                 
               </p>
               <div id="method-i-send_search_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky-client/client.rb, line 110</span>
+                <pre><span class="ruby-comment"># File lib/picky-client/client.rb, line 109</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">send_search</span> <span class="ruby-identifier">params</span> = {}
   <span class="ruby-identifier">params</span> = <span class="ruby-identifier">defaultize</span> <span class="ruby-identifier">params</span>
   <span class="ruby-operator">::</span><span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>.<span class="ruby-identifier">get</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">host</span>, <span class="ruby-node">&quot;#{self.path}?#{params.to_query}&quot;</span>, <span class="ruby-keyword">self</span>.<span class="ruby-identifier">port</span>

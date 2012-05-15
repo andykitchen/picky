@@ -115,18 +115,6 @@ Search.new dvd_index, mp3_index, video_index
           </ul>
         </dd>
       
-        <dt>M</dt>
-        <dd>
-          <ul>
-            
-              
-              <li>
-                <a href="#method-i-map_categories">map_categories</a>
-              </li>
-            
-          </ul>
-        </dd>
-      
         <dt>N</dt>
         <dd>
           <ul>
@@ -134,6 +122,18 @@ Search.new dvd_index, mp3_index, video_index
               
               <li>
                 <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>O</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-only">only</a>
               </li>
             
           </ul>
@@ -229,8 +229,8 @@ memory and redis indexes just yet.</p>
   <span class="ruby-constant">IndexesCheck</span>.<span class="ruby-identifier">check_backends</span> <span class="ruby-identifier">indexes</span>
 
   <span class="ruby-ivar">@indexes</span> = <span class="ruby-identifier">indexes</span>
-
-  <span class="ruby-identifier">map_categories</span>
+  
+  <span class="ruby-ivar">@mapper</span> = <span class="ruby-constant">QualifierCategoryMapper</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">indexes</span> <span class="ruby-comment"># TODO Move out?</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -264,7 +264,7 @@ memory and redis indexes just yet.</p>
                 
               </p>
               <div id="method-i-allocation_for_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 95</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 100</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">allocation_for</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">index</span>
   <span class="ruby-comment"># Expand the combinations.</span>
   <span class="ruby-comment">#</span>
@@ -310,7 +310,7 @@ memory and redis indexes just yet.</p>
                 
               </p>
               <div id="method-i-allocations_ary_for_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 90</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 95</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">allocations_ary_for</span> <span class="ruby-identifier">tokens</span>
   <span class="ruby-identifier">indexes</span>.<span class="ruby-identifier">inject</span>([]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">allocations</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">allocations</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">allocation_for</span>(<span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">index</span>)
@@ -346,7 +346,7 @@ memory and redis indexes just yet.</p>
                 
               </p>
               <div id="method-i-allocations_for_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 85</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 90</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">allocations_for</span> <span class="ruby-identifier">tokens</span>
   <span class="ruby-identifier">tokens</span>.<span class="ruby-identifier">categorize</span> <span class="ruby-ivar">@mapper</span>
 
@@ -460,7 +460,7 @@ memory and redis indexes just yet.</p>
                 
               </p>
               <div id="method-i-expand_combinations_from_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 167</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 172</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">expand_combinations_from</span> <span class="ruby-identifier">possible_combinations</span>
   <span class="ruby-comment"># If an element has size 0, this means one of the</span>
   <span class="ruby-comment"># tokens could not be allocated.</span>
@@ -555,7 +555,7 @@ end</pre>
                 
               </p>
               <div id="method-i-ignore_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 49</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 41</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ignore</span> *<span class="ruby-identifier">qualifiers</span>
   <span class="ruby-ivar">@ignored_categories</span> <span class="ruby-operator">||=</span> []
   <span class="ruby-ivar">@ignored_categories</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">qualifiers</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">qualifier</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@mapper</span>.<span class="ruby-identifier">map</span> <span class="ruby-identifier">qualifier</span> }.<span class="ruby-identifier">compact</span>
@@ -567,15 +567,20 @@ end</pre>
           </div>
         
         <div class="method">
-          <div class="title method-title" id="method-i-map_categories">
+          <div class="title method-title" id="method-i-only">
             
-              <a name="method-i-map_categories"></a><b>map_categories</b>()
+              <a name="method-i-only"></a><b>only</b>(*qualifiers)
             
           </div>
           
           
             <div class="description">
-              
+              <p>Restrict categories to the given ones.</p>
+
+<p>Functionally equivalent as if indexes didn’t have the categories at all.</p>
+
+<p>Note: Probably only makes sense when an index is used in multiple searches.
+If not, why even have the categories?</p>
             </div>
           
           
@@ -587,18 +592,13 @@ end</pre>
               
               <p class="source-link">
                 Source: 
-                <a href="javascript:toggleSource('method-i-map_categories_source')" id="l_method-i-map_categories_source">show</a>
+                <a href="javascript:toggleSource('method-i-only_source')" id="l_method-i-only_source">show</a>
                 
               </p>
-              <div id="method-i-map_categories_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 31</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">map_categories</span>
-  <span class="ruby-ivar">@mapper</span> = <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">QualifierCategoryMapper</span>.<span class="ruby-identifier">new</span>
-  <span class="ruby-ivar">@indexes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">index</span>.<span class="ruby-identifier">each_category</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">category</span><span class="ruby-operator">|</span>
-      <span class="ruby-ivar">@mapper</span>.<span class="ruby-identifier">add</span> <span class="ruby-identifier">category</span>
-    <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">end</span>
+              <div id="method-i-only_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 56</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">only</span> *<span class="ruby-identifier">qualifiers</span>
+  <span class="ruby-ivar">@mapper</span>.<span class="ruby-identifier">restrict_to</span> *<span class="ruby-identifier">qualifiers</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -631,7 +631,7 @@ given tokens.</p>
                 
               </p>
               <div id="method-i-prepared_allocations_for_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 57</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 62</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">prepared_allocations_for</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">weights</span> = {}, <span class="ruby-identifier">amount</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-identifier">allocations</span> = <span class="ruby-identifier">allocations_for</span> <span class="ruby-identifier">tokens</span>
 

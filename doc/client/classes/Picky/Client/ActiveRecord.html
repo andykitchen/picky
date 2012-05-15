@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Picky::Client::ActiveRecord</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Picky::Client::ActiveRecord 
+            
+                <span class="parent">&lt; 
+                    
+                    Module
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/lib/picky-client/client/active_record_rb.html">lib/picky-client/client/active_record.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>An <a href="ActiveRecord.html">ActiveRecord</a> integration that uses the
+<a href="../../Picky.html">Picky</a> HTTP client to send index updates back
+to a <a href="../../Picky.html">Picky</a> server (usually Sinatra).</p>
+
+<p>Examples:</p>
+
+<pre class="ruby"><span class="ruby-comment"># Note that the Person will</span>
+<span class="ruby-comment"># be indexed in three indexes.</span>
+<span class="ruby-comment">#</span>
+<span class="ruby-keyword">class</span> <span class="ruby-constant">Person</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>
+  <span class="ruby-identifier">extend</span> <span class="ruby-constant">Picky</span><span class="ruby-operator">::</span><span class="ruby-constant">ActiveRecord</span>.<span class="ruby-identifier">new</span> <span class="ruby-comment"># All attributes will be sent to index &quot;people&quot;.</span>
+  <span class="ruby-identifier">extend</span> <span class="ruby-constant">Picky</span><span class="ruby-operator">::</span><span class="ruby-constant">ActiveRecord</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">'name'</span>) <span class="ruby-comment"># Only the name will be sent to index &quot;people&quot;.</span>
+  <span class="ruby-identifier">extend</span> <span class="ruby-constant">Picky</span><span class="ruby-operator">::</span><span class="ruby-constant">ActiveRecord</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">'surname'</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">:</span> <span class="ruby-string">'special_index'</span>) <span class="ruby-comment"># Only the surname will be sent to index &quot;special_index&quot;.</span>
+  <span class="ruby-comment"># Use the given Client to send index data.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">extend</span> <span class="ruby-constant">Picky</span><span class="ruby-operator">::</span><span class="ruby-constant">ActiveRecord</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">client</span><span class="ruby-operator">:</span> <span class="ruby-constant">Picky</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">host</span><span class="ruby-operator">:</span> <span class="ruby-string">'localhost'</span>, <span class="ruby-identifier">port</span><span class="ruby-operator">:</span> <span class="ruby-string">'4567'</span>, <span class="ruby-identifier">path</span><span class="ruby-operator">:</span> <span class="ruby-string">'/indexing'</span>))
+  <span class="ruby-identifier">extend</span> <span class="ruby-constant">Picky</span><span class="ruby-operator">::</span><span class="ruby-constant">ActiveRecord</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">host</span><span class="ruby-operator">:</span> <span class="ruby-string">'localhost'</span>, <span class="ruby-identifier">port</span><span class="ruby-operator">:</span> <span class="ruby-string">'4567'</span>, <span class="ruby-identifier">path</span><span class="ruby-operator">:</span> <span class="ruby-string">'/indexing'</span>)
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">florian</span> = <span class="ruby-constant">Person</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">name</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Florian&quot;</span>, <span class="ruby-identifier">surname</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Hanke&quot;</span>
+<span class="ruby-identifier">florian</span>.<span class="ruby-identifier">save</span>
+<span class="ruby-identifier">florian</span>.<span class="ruby-identifier">update_attributes</span> <span class="ruby-identifier">name</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Peter&quot;</span>
+</pre>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-configure">configure</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-configure">
+            
+              <a name="method-c-configure"></a><b>configure</b>(*attributes)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Takes an array of indexed attributes/methods and options.</p>
+
+<p>Note: See class documentation for a description.</p>
+
+<p>Examples:</p>
+
+<pre>Picky::Client::ActiveRecord.configure
+Picky::Client::ActiveRecord.configure('name', 'surname', index: 'some_index_name')</pre>
+
+<p>Options:</p>
+
+<pre>* index: The index name to save to.
+* host: The host where the Picky server is.
+* port: The host which the Picky server listens to.
+* path: The path the Picky server uses for index updates (use e.f. extend Picky::Sinatra::IndexActions to open up a HTTP indexing interface).
+* client: The client to use if you want to pass in your own (host, port, path options will be ignored).</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-configure_source')" id="l_method-c-configure_source">show</a>
+                
+              </p>
+              <div id="method-c-configure_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky-client/client/active_record.rb, line 44</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">configure</span> *<span class="ruby-identifier">attributes</span>
+  <span class="ruby-identifier">new</span> *<span class="ruby-identifier">attributes</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <a name="method-c-new"></a><b>new</b>(*attributes)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky-client/client/active_record.rb, line 47</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> *<span class="ruby-identifier">attributes</span>
+  <span class="ruby-identifier">options</span> = {}
+  <span class="ruby-identifier">options</span> = <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">pop</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:to_hash</span>)
+  
+  <span class="ruby-comment"># Default path for indexing is '/'.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">client</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:client</span>] <span class="ruby-operator">||</span>
+           (<span class="ruby-identifier">options</span>[<span class="ruby-value">:path</span>] <span class="ruby-operator">||=</span> <span class="ruby-string">'/'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Picky</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span>)      
+
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">class_eval</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">index_name</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:index</span>]
+  
+    <span class="ruby-identifier">define_method</span> <span class="ruby-value">:extended</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">model</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">attributes</span> = <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">empty?</span>
+      <span class="ruby-identifier">index_name</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">model</span>.<span class="ruby-identifier">table_name</span>
+      
+      <span class="ruby-comment"># Only after the database has actually</span>
+      <span class="ruby-comment"># updated the data do we want to index.</span>
+      <span class="ruby-comment">#</span>
+      <span class="ruby-identifier">model</span>.<span class="ruby-identifier">after_commit</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">object</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">data</span> = { <span class="ruby-string">'id'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">object</span>.<span class="ruby-identifier">id</span> }
+        
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">object</span>.<span class="ruby-identifier">destroyed?</span>
+          <span class="ruby-identifier">client</span>.<span class="ruby-identifier">remove</span> <span class="ruby-identifier">index_name</span>, <span class="ruby-identifier">data</span>
+        <span class="ruby-keyword">else</span>
+          (<span class="ruby-identifier">attributes</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">object</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">keys</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attr</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">data</span>[<span class="ruby-identifier">attr</span>] = <span class="ruby-identifier">object</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">attr</span>) <span class="ruby-operator">&amp;&amp;</span>
+                         <span class="ruby-identifier">object</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">attr</span>) <span class="ruby-operator">||</span>
+                         <span class="ruby-identifier">object</span>[<span class="ruby-identifier">attr</span>]
+          <span class="ruby-keyword">end</span>
+          
+          <span class="ruby-identifier">client</span>.<span class="ruby-identifier">replace</span> <span class="ruby-identifier">index_name</span>, <span class="ruby-identifier">data</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+    
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                        </div>
+    </div>
+  </body>
+</html>    

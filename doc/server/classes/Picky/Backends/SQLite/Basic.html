@@ -286,10 +286,10 @@
               <div id="method-c-new_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/backends/sqlite/basic.rb, line 13</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> <span class="ruby-identifier">cache_path</span>, <span class="ruby-identifier">options</span> = {}
-  <span class="ruby-ivar">@cache_path</span>   = <span class="ruby-node">&quot;#{cache_path}.sqlite3&quot;</span>
-  <span class="ruby-ivar">@empty</span>        = <span class="ruby-identifier">options</span>[<span class="ruby-value">:empty</span>]
-  <span class="ruby-ivar">@initial</span>      = <span class="ruby-identifier">options</span>[<span class="ruby-value">:initial</span>]
-  <span class="ruby-ivar">@realtime</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:realtime</span>]
+  <span class="ruby-ivar">@cache_path</span> = <span class="ruby-node">&quot;#{cache_path}.sqlite3&quot;</span>
+  <span class="ruby-ivar">@empty</span>      = <span class="ruby-identifier">options</span>[<span class="ruby-value">:empty</span>]
+  <span class="ruby-ivar">@initial</span>    = <span class="ruby-identifier">options</span>[<span class="ruby-value">:initial</span>]
+  <span class="ruby-ivar">@realtime</span>   = <span class="ruby-identifier">options</span>[<span class="ruby-value">:realtime</span>]
 
   <span class="ruby-identifier">lazily_initialize_client</span>
 <span class="ruby-keyword">end</span></pre>

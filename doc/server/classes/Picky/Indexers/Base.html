@@ -196,7 +196,7 @@
               <div id="method-i-notify_finished_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/indexers/base.rb, line 41</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">notify_finished</span> <span class="ruby-identifier">prepared_file</span>
-  <span class="ruby-identifier">timed_exclaim</span> <span class="ruby-node">%Q{  &quot;#{@index_or_category.identifier}&quot;: Tokenized -&gt; #{prepared_file.path.gsub(&quot;#{PICKY_ROOT}/&quot;, '')}.}</span>
+  <span class="ruby-constant">Picky</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">tokenize</span> <span class="ruby-ivar">@index_or_category</span>, <span class="ruby-identifier">prepared_file</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>

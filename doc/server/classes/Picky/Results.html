@@ -247,7 +247,7 @@ string for the answer.</p>
         <div class="method">
           <div class="title method-title" id="method-c-from">
             
-              <a name="method-c-from"></a><b>from</b>(query, amount, offset, allocations, extra_allocations = nil)
+              <a name="method-c-from"></a><b>from</b>(query, amount, offset, allocations, extra_allocations = nil, unique = false)
             
           </div>
           
@@ -270,9 +270,9 @@ string for the answer.</p>
               </p>
               <div id="method-c-from_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/results.rb, line 27</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">from</span> <span class="ruby-identifier">query</span>, <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">allocations</span>, <span class="ruby-identifier">extra_allocations</span> = <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">from</span> <span class="ruby-identifier">query</span>, <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">allocations</span>, <span class="ruby-identifier">extra_allocations</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">unique</span> = <span class="ruby-keyword">false</span>
   <span class="ruby-identifier">results</span> = <span class="ruby-identifier">new</span> <span class="ruby-identifier">query</span>, <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">allocations</span>
-  <span class="ruby-identifier">results</span>.<span class="ruby-identifier">prepare!</span> <span class="ruby-identifier">extra_allocations</span>
+  <span class="ruby-identifier">results</span>.<span class="ruby-identifier">prepare!</span> <span class="ruby-identifier">extra_allocations</span>, <span class="ruby-identifier">unique</span>
   <span class="ruby-identifier">results</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
@@ -344,7 +344,7 @@ string for the answer.</p>
                 
               </p>
               <div id="method-i-duration_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 56</span>
+                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 65</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">duration</span>
   <span class="ruby-ivar">@duration</span> <span class="ruby-operator">||</span> <span class="ruby-number">0</span>
 <span class="ruby-keyword">end</span></pre>
@@ -356,13 +356,18 @@ string for the answer.</p>
         <div class="method">
           <div class="title method-title" id="method-i-ids">
             
-              <a name="method-i-ids"></a><b>ids</b>(amount = 20)
+              <a name="method-i-ids"></a><b>ids</b>(only = nil)
             
           </div>
           
           
             <div class="description">
               <p>Delegates to allocations.</p>
+
+<p>TODO Remove parameter in 5.0 and just call the method with amount.</p>
+
+<p>Note that this is an expensive call and should not be done repeatedly. Just
+keep a reference to the result.</p>
             </div>
           
           
@@ -378,9 +383,9 @@ string for the answer.</p>
                 
               </p>
               <div id="method-i-ids_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 44</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ids</span> <span class="ruby-identifier">amount</span> = <span class="ruby-number">20</span>
-  <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">ids</span> <span class="ruby-identifier">amount</span>
+                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 53</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ids</span> <span class="ruby-identifier">only</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">ids</span> <span class="ruby-identifier">only</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">amount</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -414,7 +419,7 @@ string for the answer.</p>
                 
               </p>
               <div id="method-i-log_type_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 86</span>
+                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 95</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">log_type</span>
   <span class="ruby-identifier">amount</span>.<span class="ruby-identifier">zero?</span><span class="ruby-operator">?</span> <span class="ruby-value">:'.'</span> <span class="ruby-operator">:</span> <span class="ruby-value">:'&gt;'</span>
 <span class="ruby-keyword">end</span></pre>
@@ -426,7 +431,7 @@ string for the answer.</p>
         <div class="method">
           <div class="title method-title" id="method-i-prepare-21">
             
-              <a name="method-i-prepare-21"></a><b>prepare!</b>(extra_allocations = nil)
+              <a name="method-i-prepare-21"></a><b>prepare!</b>(extra_allocations = nil, unique = false)
             
           </div>
           
@@ -451,8 +456,10 @@ string for the answer.</p>
               </p>
               <div id="method-i-prepare-21_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/results.rb, line 38</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">prepare!</span> <span class="ruby-identifier">extra_allocations</span> = <span class="ruby-keyword">nil</span>
-  <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">process!</span> <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">extra_allocations</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">prepare!</span> <span class="ruby-identifier">extra_allocations</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">unique</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-identifier">unique</span> <span class="ruby-operator">?</span>
+    <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">process_unique!</span>(<span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">extra_allocations</span>) <span class="ruby-operator">:</span>
+    <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">process!</span>(<span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">extra_allocations</span>)
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -484,7 +491,7 @@ string for the answer.</p>
                 
               </p>
               <div id="method-i-to_hash_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 62</span>
+                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 71</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_hash</span>
   { <span class="ruby-identifier">allocations</span><span class="ruby-operator">:</span> <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">to_result</span>,
     <span class="ruby-identifier">offset</span><span class="ruby-operator">:</span>      <span class="ruby-identifier">offset</span>,
@@ -521,7 +528,7 @@ string for the answer.</p>
                 
               </p>
               <div id="method-i-to_json_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 71</span>
+                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 80</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_json</span> <span class="ruby-identifier">options</span> = {}
   <span class="ruby-constant">Yajl</span><span class="ruby-operator">::</span><span class="ruby-constant">Encoder</span>.<span class="ruby-identifier">encode</span> <span class="ruby-identifier">to_hash</span>, <span class="ruby-identifier">options</span>
 <span class="ruby-keyword">end</span></pre>
@@ -555,7 +562,7 @@ string for the answer.</p>
                 
               </p>
               <div id="method-i-to_s_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 78</span>
+                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 87</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
   <span class="ruby-node">&quot;#{log_type}|#{Time.now.strftime @@log_time_format}|#{'%8f' % duration}|#{'%-50s' % query}|#{'%8d' % total}|#{'%4d' % offset}|#{'%2d' % allocations.size}|&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -589,7 +596,7 @@ string for the answer.</p>
                 
               </p>
               <div id="method-i-total_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 50</span>
+                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 59</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">total</span>
   <span class="ruby-ivar">@total</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">total</span> <span class="ruby-operator">||</span> <span class="ruby-number">0</span>
 <span class="ruby-keyword">end</span></pre>

@@ -50,11 +50,10 @@ object which:</p>
 <p>offers an interface to query these indexes.</p>
 </li></ul>
 
-<p>You connect URL paths to indexes via a <a href="Query.html">Query</a>.</p>
+<p>Example:</p>
 
-<p>We recommend to not use this directly, but connect it to an URL and query
-through one of these (Protip: Use “curl
-‘localhost:8080/query/path?query=exampletext’)” in a Terminal.</p>
+<pre>search = Picky::Search.new index1, index2
+search.search 'query'</pre>
 
     </div>
   
@@ -234,6 +233,14 @@ through one of these (Protip: Use “curl
             <td class='attr-rw'>
               [R]
             </td>
+            <td class='attr-name'>ignore_unassigned</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
             <td class='attr-name'>indexes</td>
             <td class='attr-desc'></td>
           </tr>
@@ -257,7 +264,7 @@ through one of these (Protip: Use “curl
         <div class="method">
           <div class="title method-title" id="method-c-new">
             
-              <a name="method-c-new"></a><b>new</b>(*index_definitions)
+              <a name="method-c-new"></a><b>new</b>(*indexes)
             
           </div>
           
@@ -271,7 +278,7 @@ through one of these (Protip: Use “curl
 <p>It is also possible to define the tokenizer and boosts like so. Example:</p>
 
 <pre class="ruby"><span class="ruby-identifier">search</span> = <span class="ruby-constant">Search</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">index1</span>, <span class="ruby-identifier">index2</span>, <span class="ruby-identifier">index3</span>) <span class="ruby-keyword">do</span>
-  <span class="ruby-identifier">searching</span> <span class="ruby-identifier">removes_characters</span><span class="ruby-operator">:</span> <span class="ruby-regexp">/[^a-z]/</span> <span class="ruby-comment"># etc.</span>
+  <span class="ruby-identifier">searching</span> <span class="ruby-identifier">removes_characters</span><span class="ruby-operator">:</span> <span class="ruby-regexp">%r[^a-z]/</span> <span class="ruby-comment"># etc.</span>
   <span class="ruby-identifier">boosts</span> [:<span class="ruby-identifier">author</span>, :<span class="ruby-identifier">title</span>] =<span class="ruby-operator">&gt;</span> <span class="ruby-value">+3</span>,
           [:<span class="ruby-identifier">title</span>, :<span class="ruby-identifier">isbn</span>] =<span class="ruby-operator">&gt;</span> <span class="ruby-value">+1</span>
 <span class="ruby-keyword">end</span>
@@ -291,15 +298,14 @@ through one of these (Protip: Use “curl
                 
               </p>
               <div id="method-c-new_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 39</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> *<span class="ruby-identifier">index_definitions</span>
-  <span class="ruby-ivar">@indexes</span> = <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Indexes</span>.<span class="ruby-identifier">new</span> *<span class="ruby-identifier">index_definitions</span>
+                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> *<span class="ruby-identifier">indexes</span>
+  <span class="ruby-ivar">@indexes</span> = <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Indexes</span>.<span class="ruby-identifier">new</span> *<span class="ruby-identifier">indexes</span>
 
   <span class="ruby-identifier">instance_eval</span>(&amp;<span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
 
   <span class="ruby-ivar">@tokenizer</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">searching</span> <span class="ruby-comment"># THINK Not dynamic. Ok?</span>
   <span class="ruby-ivar">@boosts</span>    <span class="ruby-operator">||=</span> <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Boosts</span>.<span class="ruby-identifier">new</span>
-  <span class="ruby-ivar">@ignore_unassigned</span> = <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@ignore_unassigned</span>.<span class="ruby-identifier">nil?</span>
 
   <span class="ruby-keyword">self</span>
 <span class="ruby-keyword">end</span></pre>
@@ -373,7 +379,7 @@ through one of these (Protip: Use “curl
         <div class="method">
           <div class="title method-title" id="method-i-execute">
             
-              <a name="method-i-execute"></a><b>execute</b>(tokens, ids, offset, original_text = nil)
+              <a name="method-i-execute"></a><b>execute</b>(tokens, ids, offset, original_text = nil, unique = false)
             
           </div>
           
@@ -381,8 +387,8 @@ through one of these (Protip: Use “curl
             <div class="description">
               <p>Execute a search using Query::Tokens.</p>
 
-<p>Note: Internal method, use <a
-href="Search.html#method-i-search">#search</a> to search.</p>
+<p>Note: Internal method, use <a href="Search.html#method-i-search">search</a>
+to search.</p>
             </div>
           
           
@@ -399,8 +405,13 @@ href="Search.html#method-i-search">#search</a> to search.</p>
               </p>
               <div id="method-i-execute_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/search.rb, line 202</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">execute</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">ids</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">original_text</span> = <span class="ruby-keyword">nil</span>
-  <span class="ruby-constant">Results</span>.<span class="ruby-identifier">from</span> <span class="ruby-identifier">original_text</span>, <span class="ruby-identifier">ids</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">sorted_allocations</span>(<span class="ruby-identifier">tokens</span>, <span class="ruby-ivar">@max_allocations</span>), <span class="ruby-ivar">@extra_allocations</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">execute</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">ids</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">original_text</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">unique</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-constant">Results</span>.<span class="ruby-identifier">from</span> <span class="ruby-identifier">original_text</span>,
+               <span class="ruby-identifier">ids</span>,
+               <span class="ruby-identifier">offset</span>,
+               <span class="ruby-identifier">sorted_allocations</span>(<span class="ruby-identifier">tokens</span>, <span class="ruby-ivar">@max_allocations</span>),
+               <span class="ruby-ivar">@extra_allocations</span>,
+               <span class="ruby-identifier">unique</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -410,7 +421,7 @@ href="Search.html#method-i-search">#search</a> to search.</p>
         <div class="method">
           <div class="title method-title" id="method-i-ignore_unassigned_tokens">
             
-              <a name="method-i-ignore_unassigned_tokens"></a><b>ignore_unassigned_tokens</b>(value)
+              <a name="method-i-ignore_unassigned_tokens"></a><b>ignore_unassigned_tokens</b>(value = true)
             
           </div>
           
@@ -432,10 +443,10 @@ the zipcode.</p>
 <p>Example:</p>
 
 <pre>search = Search.new(books_index, dvd_index, mp3_index) do
-  ignore_unassigned_tokens true
+  ignore_unassigned_tokens
 end</pre>
 
-<p>With this set to true, if in “Peter Flunder”, “Flunder” couldn’t be
+<p>With this set (to true), if in “Peter Flunder”, “Flunder” couldn’t be
 assigned to any category, it will simply be ignored. This is done for each
 categorization.</p>
             </div>
@@ -454,7 +465,7 @@ categorization.</p>
               </p>
               <div id="method-i-ignore_unassigned_tokens_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/search.rb, line 165</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ignore_unassigned_tokens</span> <span class="ruby-identifier">value</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ignore_unassigned_tokens</span> <span class="ruby-identifier">value</span> = <span class="ruby-keyword">true</span>
   <span class="ruby-ivar">@ignore_unassigned</span> = <span class="ruby-identifier">value</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
@@ -505,7 +516,7 @@ end</pre>
         <div class="method">
           <div class="title method-title" id="method-i-search">
             
-              <a name="method-i-search"></a><b>search</b>(text, ids = 20, offset = 0)
+              <a name="method-i-search"></a><b>search</b>(text, ids = 20, offset = 0, options = {})
             
           </div>
           
@@ -542,8 +553,8 @@ unravelling the HTTP request.</p>
               </p>
               <div id="method-i-search_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/search.rb, line 179</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">search</span> <span class="ruby-identifier">text</span>, <span class="ruby-identifier">ids</span> = <span class="ruby-number">20</span>, <span class="ruby-identifier">offset</span> = <span class="ruby-number">0</span>
-  <span class="ruby-identifier">search_with</span> <span class="ruby-identifier">tokenized</span>(<span class="ruby-identifier">text</span>), <span class="ruby-identifier">ids</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">offset</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">text</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">search</span> <span class="ruby-identifier">text</span>, <span class="ruby-identifier">ids</span> = <span class="ruby-number">20</span>, <span class="ruby-identifier">offset</span> = <span class="ruby-number">0</span>, <span class="ruby-identifier">options</span> = {}
+  <span class="ruby-identifier">search_with</span> <span class="ruby-identifier">tokenized</span>(<span class="ruby-identifier">text</span>), <span class="ruby-identifier">ids</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">offset</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">text</span>, <span class="ruby-identifier">options</span>[<span class="ruby-value">:unique</span>]
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -553,7 +564,7 @@ unravelling the HTTP request.</p>
         <div class="method">
           <div class="title method-title" id="method-i-search_with">
             
-              <a name="method-i-search_with"></a><b>search_with</b>(tokens, ids = 20, offset = 0, original_text = nil)
+              <a name="method-i-search_with"></a><b>search_with</b>(tokens, ids = 20, offset = 0, original_text = nil, unique = false)
             
           </div>
           
@@ -561,8 +572,8 @@ unravelling the HTTP request.</p>
             <div class="description">
               <p>Runs the actual search using Query::Tokens.</p>
 
-<p>Note: Internal method, use <a
-href="Search.html#method-i-search">#search</a> to search.</p>
+<p>Note: Internal method, use <a href="Search.html#method-i-search">search</a>
+to search.</p>
             </div>
           
           
@@ -579,11 +590,11 @@ href="Search.html#method-i-search">#search</a> to search.</p>
               </p>
               <div id="method-i-search_with_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/search.rb, line 187</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">search_with</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">ids</span> = <span class="ruby-number">20</span>, <span class="ruby-identifier">offset</span> = <span class="ruby-number">0</span>, <span class="ruby-identifier">original_text</span> = <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">search_with</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">ids</span> = <span class="ruby-number">20</span>, <span class="ruby-identifier">offset</span> = <span class="ruby-number">0</span>, <span class="ruby-identifier">original_text</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">unique</span> = <span class="ruby-keyword">false</span>
   <span class="ruby-identifier">results</span> = <span class="ruby-keyword">nil</span>
 
   <span class="ruby-identifier">duration</span> = <span class="ruby-identifier">timed</span> <span class="ruby-keyword">do</span>
-    <span class="ruby-identifier">results</span> = <span class="ruby-identifier">execute</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">ids</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">original_text</span>
+    <span class="ruby-identifier">results</span> = <span class="ruby-identifier">execute</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">ids</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">original_text</span>, <span class="ruby-identifier">unique</span>
   <span class="ruby-keyword">end</span>
   <span class="ruby-identifier">results</span>.<span class="ruby-identifier">duration</span> = <span class="ruby-identifier">duration</span>.<span class="ruby-identifier">round</span> <span class="ruby-number">6</span>
 
@@ -729,7 +740,7 @@ end</pre>
                 
               </p>
               <div id="method-i-to_s_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 230</span>
+                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 235</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
   <span class="ruby-identifier">s</span> = <span class="ruby-node">&quot;#{self.class}(&quot;</span>
   <span class="ruby-identifier">ary</span> = []
@@ -779,7 +790,7 @@ end</pre>
                 
               </p>
               <div id="method-i-tokenized_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 214</span>
+                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 219</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">tokenized</span> <span class="ruby-identifier">text</span>
   <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">originals</span> = <span class="ruby-identifier">tokenizer</span>.<span class="ruby-identifier">tokenize</span> <span class="ruby-identifier">text</span>
   <span class="ruby-identifier">tokens</span> = <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Tokens</span>.<span class="ruby-identifier">processed</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">originals</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-ivar">@ignore_unassigned</span>

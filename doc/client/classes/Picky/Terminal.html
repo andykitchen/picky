@@ -318,7 +318,7 @@
 
   <span class="ruby-comment"># If the user gave a path without / in front, add one.</span>
   <span class="ruby-comment">#</span>
-  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">path</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/^\//</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">path</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">%r^\//</span>
     <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">path</span> = <span class="ruby-node">&quot;/#{uri.path}&quot;</span>
   <span class="ruby-keyword">end</span>
 

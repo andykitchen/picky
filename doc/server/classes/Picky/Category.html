@@ -67,6 +67,11 @@
           <a href="Category/Location.html">Picky::Category::Location</a>
         </li>
       
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Category/Picky.html">Picky::Category::Picky</a>
+        </li>
+      
     </ul>
   
 
@@ -99,7 +104,7 @@
             
               
               <li>
-                <a href="#method-i-add_tokenized">add_tokenized</a>,
+                <a href="#method-i-add_text">add_text</a>,
               </li>
             
               
@@ -329,6 +334,11 @@
               
               <li>
                 <a href="#method-i-replace">replace</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-replace_from">replace_from</a>,
               </li>
             
               
@@ -637,7 +647,7 @@ Other options are: Backends::Redis.new, Backends::SQLite.new, Backends::File.new
                 
               </p>
               <div id="method-i-3C-3C_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 32</span>
+                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 47</span>
 <span class="ruby-keyword">def</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword ruby-title">thing</span>
   <span class="ruby-identifier">add</span> <span class="ruby-identifier">thing</span>, <span class="ruby-identifier">__method__</span>
 <span class="ruby-keyword">end</span></pre>
@@ -671,10 +681,9 @@ Other options are: Backends::Redis.new, Backends::SQLite.new, Backends::File.new
                 
               </p>
               <div id="method-i-add_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 17</span>
+                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 19</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add</span> <span class="ruby-identifier">object</span>, <span class="ruby-identifier">where</span> = <span class="ruby-value">:unshift</span>
-  <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">_</span> = <span class="ruby-identifier">tokenizer</span>.<span class="ruby-identifier">tokenize</span> <span class="ruby-identifier">object</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">from</span>)
-  <span class="ruby-identifier">add_tokenized</span> <span class="ruby-identifier">object</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">where</span>
+  <span class="ruby-identifier">add_text</span> <span class="ruby-identifier">object</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">object</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">from</span>), <span class="ruby-identifier">where</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -682,9 +691,9 @@ Other options are: Backends::Redis.new, Backends::SQLite.new, Backends::File.new
           </div>
         
         <div class="method">
-          <div class="title method-title" id="method-i-add_tokenized">
+          <div class="title method-title" id="method-i-add_text">
             
-              <a name="method-i-add_tokenized"></a><b>add_tokenized</b>(id, tokens, where = :unshift)
+              <a name="method-i-add_text"></a><b>add_text</b>(id, text, where = :unshift)
             
           </div>
           
@@ -702,12 +711,14 @@ Other options are: Backends::Redis.new, Backends::SQLite.new, Backends::File.new
               
               <p class="source-link">
                 Source: 
-                <a href="javascript:toggleSource('method-i-add_tokenized_source')" id="l_method-i-add_tokenized_source">show</a>
+                <a href="javascript:toggleSource('method-i-add_text_source')" id="l_method-i-add_text_source">show</a>
                 
               </p>
-              <div id="method-i-add_tokenized_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 45</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add_tokenized</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">where</span> = <span class="ruby-value">:unshift</span>
+              <div id="method-i-add_text_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 60</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add_text</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">text</span>, <span class="ruby-identifier">where</span> = <span class="ruby-value">:unshift</span>
+  <span class="ruby-comment"># text = text.to_sym if @symbols # TODO Symbols.</span>
+  <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">_</span> = <span class="ruby-identifier">tokenizer</span>.<span class="ruby-identifier">tokenize</span> <span class="ruby-identifier">text</span>
   <span class="ruby-identifier">tokens</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">text</span><span class="ruby-operator">|</span> <span class="ruby-identifier">add_tokenized_token</span> <span class="ruby-identifier">id</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">key_format</span>), <span class="ruby-identifier">text</span>, <span class="ruby-identifier">where</span>, <span class="ruby-keyword">false</span> }
 <span class="ruby-keyword">end</span></pre>
               </div>
@@ -740,7 +751,7 @@ Other options are: Backends::Redis.new, Backends::SQLite.new, Backends::File.new
                 
               </p>
               <div id="method-i-add_tokenized_token_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 51</span>
+                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 68</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add_tokenized_token</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">text</span>, <span class="ruby-identifier">where</span> = <span class="ruby-value">:unshift</span>, <span class="ruby-identifier">format</span> = <span class="ruby-keyword">true</span>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">text</span>
 
@@ -780,7 +791,7 @@ Other options are: Backends::Redis.new, Backends::SQLite.new, Backends::File.new
                 
               </p>
               <div id="method-i-build_realtime_mapping_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 70</span>
+                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 87</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">build_realtime_mapping</span>
   <span class="ruby-identifier">exact</span>.<span class="ruby-identifier">build_realtime</span>
   <span class="ruby-identifier">partial</span>.<span class="ruby-identifier">build_realtime</span>
@@ -926,7 +937,7 @@ clear+dump?</p>
                 
               </p>
               <div id="method-i-clear_realtime_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 63</span>
+                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 80</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">clear_realtime</span>
   <span class="ruby-identifier">exact</span>.<span class="ruby-identifier">clear_realtime</span>
   <span class="ruby-identifier">partial</span>.<span class="ruby-identifier">clear_realtime</span>
@@ -999,7 +1010,7 @@ clear+dump?</p>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">dump</span>
   <span class="ruby-identifier">exact</span>.<span class="ruby-identifier">dump</span>
   <span class="ruby-identifier">partial</span>.<span class="ruby-identifier">dump</span>
-  <span class="ruby-identifier">timed_exclaim</span> <span class="ruby-node">%Q{  &quot;#{identifier}&quot;: Dumped -&gt; #{index_directory.gsub(&quot;#{PICKY_ROOT}/&quot;, '')}/#{name}_*.}</span>
+  <span class="ruby-constant">Picky</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">dump</span> <span class="ruby-keyword">self</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -1461,7 +1472,7 @@ one.</p>
               <div id="method-i-load_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/category_indexed.rb, line 9</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">load</span>
-  <span class="ruby-identifier">timed_exclaim</span> <span class="ruby-node">%Q{  &quot;#{identifier}&quot;: Loading index from cache.}</span>
+  <span class="ruby-constant">Picky</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">load</span> <span class="ruby-keyword">self</span>
   <span class="ruby-identifier">clear_realtime</span> <span class="ruby-comment"># THINK Should we really explicitly clear the realtime? Or should it just be loaded?</span>
   <span class="ruby-identifier">exact</span>.<span class="ruby-identifier">load</span>
   <span class="ruby-identifier">partial</span>.<span class="ruby-identifier">load</span>
@@ -1677,7 +1688,7 @@ one.</p>
                 
               </p>
               <div id="method-i-remove_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 8</span>
+                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 10</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">remove</span> <span class="ruby-identifier">id</span>
   <span class="ruby-identifier">id</span> = <span class="ruby-identifier">id</span>.<span class="ruby-identifier">send</span> <span class="ruby-identifier">key_format</span>
   <span class="ruby-identifier">exact</span>.<span class="ruby-identifier">remove</span> <span class="ruby-identifier">id</span>
@@ -1713,10 +1724,52 @@ one.</p>
                 
               </p>
               <div id="method-i-replace_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 25</span>
+                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">replace</span> <span class="ruby-identifier">object</span>, <span class="ruby-identifier">where</span> = <span class="ruby-value">:unshift</span>
   <span class="ruby-identifier">remove</span> <span class="ruby-identifier">object</span>.<span class="ruby-identifier">id</span>
   <span class="ruby-identifier">add</span> <span class="ruby-identifier">object</span>, <span class="ruby-identifier">where</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-replace_from">
+            
+              <a name="method-i-replace_from"></a><b>replace_from</b>(hash)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Replaces just part of the indexed data.</p>
+
+<p>Note: Takes a hash as opposed to the add/replace method.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-replace_from_source')" id="l_method-i-replace_from_source">show</a>
+                
+              </p>
+              <div id="method-i-replace_from_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">replace_from</span> <span class="ruby-identifier">hash</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">text</span> = <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">from</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">from</span>.<span class="ruby-identifier">to_s</span>]
+  
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">IdNotGivenException</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">id</span> = <span class="ruby-identifier">hash</span>[<span class="ruby-value">:id</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">hash</span>[<span class="ruby-string">'id'</span>]
+  <span class="ruby-identifier">id</span> = <span class="ruby-identifier">id</span>.<span class="ruby-identifier">send</span> <span class="ruby-identifier">key_format</span>
+  
+  <span class="ruby-identifier">remove</span> <span class="ruby-identifier">id</span>
+  <span class="ruby-identifier">add_text</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">text</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -1923,7 +1976,7 @@ try the index, and finally the default index tokenizer.</p>
                 
               </p>
               <div id="method-i-unshift_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 38</span>
+                <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 53</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">unshift</span> <span class="ruby-identifier">thing</span>
   <span class="ruby-identifier">add</span> <span class="ruby-identifier">thing</span>, <span class="ruby-identifier">__method__</span>
 <span class="ruby-keyword">end</span></pre>

@@ -141,7 +141,7 @@ representations of them.</p>
 
   <span class="ruby-comment"># Substitute umlauts (of A,O,U,a,o,u).</span>
   <span class="ruby-comment">#</span>
-  <span class="ruby-identifier">trans</span>.<span class="ruby-identifier">gsub!</span> <span class="ruby-regexp">/([AOUaou])\3314\2210/</span>, <span class="ruby-string">'\1e'</span>
+  <span class="ruby-identifier">trans</span>.<span class="ruby-identifier">gsub!</span> <span class="ruby-regexp">%r([AOUaou])\3314\2210/</span>, <span class="ruby-string">'\1e'</span>
 
   <span class="ruby-comment"># Get rid of ecutes, graves etc.</span>
   <span class="ruby-comment">#</span>

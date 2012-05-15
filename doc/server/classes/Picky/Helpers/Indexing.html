@@ -107,7 +107,7 @@
           
           
             <div class="description">
-              <p>Returns a duration in seconds.</p>
+              
             </div>
           
           
@@ -123,10 +123,10 @@
                 
               </p>
               <div id="method-i-timed_indexing_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/helpers/indexing.rb, line 12</span>
+                <pre><span class="ruby-comment"># File lib/picky/helpers/indexing.rb, line 10</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">timed_indexing</span> <span class="ruby-identifier">scheduler</span>, &amp;<span class="ruby-identifier">block</span>
-  <span class="ruby-identifier">timed_exclaim</span> <span class="ruby-node">&quot;Indexing using #{scheduler.fork? ? 'multiple processes' : 'a single process'}.&quot;</span>
-  <span class="ruby-identifier">timed_exclaim</span> <span class="ruby-node">&quot;Indexing finished after #{timed(&amp;block).round}s.&quot;</span>
+  <span class="ruby-constant">Picky</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span> <span class="ruby-node">&quot;Picky is indexing using #{scheduler.fork? ? 'multiple processes' : 'a single process'}: &quot;</span>
+  <span class="ruby-constant">Picky</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span> <span class="ruby-node">&quot; Done in #{timed(&amp;block).round}s.\n&quot;</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>

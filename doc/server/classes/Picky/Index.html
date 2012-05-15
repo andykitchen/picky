@@ -137,9 +137,8 @@ end</pre>
 </pre>
 
 <p>This class defines the indexing and index <a href="API.html">API</a> that
-is exposed to the user as the <a
-href="Index.html#method-i-index">#index</a> method inside the Application
-class.</p>
+is exposed to the user as the <a href="Index.html#method-i-index">index</a>
+method inside the Application class.</p>
 
 <p>It provides a single front for both indexing and index options. We suggest
 to always use the index <a href="API.html">API</a>.</p>
@@ -450,7 +449,7 @@ href="../Picky.html">Picky</a> front end.</p>
 <ul><li>
 <p>source: Where the data comes from, e.g. Sources::CSV.new(…). Optional, can
 be defined in the block using <a
-href="Index.html#method-i-source">#source</a>.</p>
+href="Index.html#method-i-source">source</a>.</p>
 </li><li>
 <p><a href="Index.html#method-i-result_identifier">#result_identifier</a>: Use
 if you’d like a different identifier/name in the results than the name of
@@ -534,7 +533,7 @@ end</pre>
                 
               </p>
               <div id="method-i-3C-3C_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/index_realtime.rb, line 16</span>
+                <pre><span class="ruby-comment"># File lib/picky/index_realtime.rb, line 17</span>
 <span class="ruby-keyword">def</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword ruby-title">thing</span>
   <span class="ruby-identifier">add</span> <span class="ruby-identifier">thing</span>, <span class="ruby-identifier">__method__</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1032,7 +1031,7 @@ entered):</p>
 <h3 id="method-i-ranged_category-label-Parameters">Parameters</h3>
 <ul><li>
 <p>category_name: The category_name as used in <a
-href="Index.html#method-i-category">#category</a>.</p>
+href="Index.html#method-i-category">category</a>.</p>
 </li><li>
 <p>range: The range (in the units of your data values) around the query point
 where we search for results.</p>
@@ -1045,9 +1044,9 @@ where we search for results.</p>
 <p>precision: Default is 1 (20% error margin, very fast), up to 5 (5% error
 margin, slower) makes sense.</p>
 </li><li>
-<p>anchor: Where to anchor the geo grid.</p>
+<p>anchor: Where to anchor the grid.</p>
 </li><li>
-<p>… all options of <a href="Index.html#method-i-category">#category</a>.</p>
+<p>… all options of <a href="Index.html#method-i-category">category</a>.</p>
 </li></ul>
             </div>
           
@@ -1251,7 +1250,7 @@ category names (or the category from option).</p>
                 
               </p>
               <div id="method-i-unshift_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/index_realtime.rb, line 22</span>
+                <pre><span class="ruby-comment"># File lib/picky/index_realtime.rb, line 23</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">unshift</span> <span class="ruby-identifier">thing</span>
   <span class="ruby-identifier">add</span> <span class="ruby-identifier">thing</span>, <span class="ruby-identifier">__method__</span>
 <span class="ruby-keyword">end</span></pre>

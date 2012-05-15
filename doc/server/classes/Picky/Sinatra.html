@@ -25,6 +25,8 @@
         </h1>
         <ul class="files">
             
+            <li><a href="../../files/lib/picky/sinatra/index_actions_rb.html">lib/picky/sinatra/index_actions.rb</a></li>
+            
             <li><a href="../../files/lib/picky/sinatra_rb.html">lib/picky/sinatra.rb</a></li>
             
         </ul>
@@ -48,6 +50,17 @@ with <a href="Sinatra.html">Sinatra</a>.</p>
   
 
 
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Sinatra/IndexActions.html">Picky::Sinatra::IndexActions</a>
+        </li>
+      
+    </ul>
   
 
 
@@ -140,7 +153,7 @@ with <a href="Sinatra.html">Sinatra</a>.</p>
                 
               </p>
               <div id="method-c-extended_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/sinatra.rb, line 10</span>
+                <pre><span class="ruby-comment"># File lib/picky/sinatra.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">extended</span> <span class="ruby-identifier">into</span>
   <span class="ruby-identifier">private</span> <span class="ruby-value">:indexing</span>, <span class="ruby-value">:searching</span>
 <span class="ruby-keyword">end</span></pre>
@@ -176,7 +189,7 @@ with <a href="Sinatra.html">Sinatra</a>.</p>
                 
               </p>
               <div id="method-i-indexing_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/sinatra.rb, line 16</span>
+                <pre><span class="ruby-comment"># File lib/picky/sinatra.rb, line 20</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">indexing</span> <span class="ruby-identifier">options</span> = {}
   <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">default_indexing_with</span> <span class="ruby-identifier">options</span>
 <span class="ruby-keyword">end</span></pre>
@@ -210,7 +223,7 @@ with <a href="Sinatra.html">Sinatra</a>.</p>
                 
               </p>
               <div id="method-i-searching_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/sinatra.rb, line 22</span>
+                <pre><span class="ruby-comment"># File lib/picky/sinatra.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">searching</span> <span class="ruby-identifier">options</span> = {}
   <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">default_searching_with</span> <span class="ruby-identifier">options</span>
 <span class="ruby-keyword">end</span></pre>

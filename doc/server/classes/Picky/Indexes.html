@@ -514,7 +514,7 @@ them.</p>
   <span class="ruby-identifier">indexes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">index</span><span class="ruby-operator">|</span> <span class="ruby-identifier">index</span>.<span class="ruby-identifier">prepare</span> <span class="ruby-identifier">scheduler</span> }
   <span class="ruby-identifier">scheduler</span>.<span class="ruby-identifier">finish</span>
 
-  <span class="ruby-identifier">timed_exclaim</span> <span class="ruby-string">&quot;Tokenizing finished, generating data for indexes from tokenized data.&quot;</span>
+  <span class="ruby-comment"># timed_exclaim &quot;Tokenizing finished, generating data for indexes from tokenized data.&quot;</span>
 
   <span class="ruby-identifier">indexes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">index</span><span class="ruby-operator">|</span> <span class="ruby-identifier">index</span>.<span class="ruby-identifier">cache</span> <span class="ruby-identifier">scheduler</span> }
   <span class="ruby-identifier">scheduler</span>.<span class="ruby-identifier">finish</span>

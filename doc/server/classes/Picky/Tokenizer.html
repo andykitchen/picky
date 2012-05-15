@@ -477,7 +477,7 @@
   <span class="ruby-identifier">substitutes_characters_with</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:substitutes_characters_with</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:substitutes_characters_with</span>]
   <span class="ruby-identifier">removes_characters</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:removes_characters</span>]                   <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:removes_characters</span>]
   <span class="ruby-identifier">stopwords</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:stopwords</span>]                                     <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:stopwords</span>]
-  <span class="ruby-identifier">splits_text_on</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:splits_text_on</span>]                           <span class="ruby-operator">||</span> <span class="ruby-regexp">/\s/</span>
+  <span class="ruby-identifier">splits_text_on</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:splits_text_on</span>]                           <span class="ruby-operator">||</span> <span class="ruby-regexp">%r\s/</span>
   <span class="ruby-identifier">normalizes_words</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:normalizes_words</span>]                       <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:normalizes_words</span>]
   <span class="ruby-identifier">max_words</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:max_words</span>]
   <span class="ruby-identifier">rejects_token_if</span> &amp;(<span class="ruby-identifier">options</span>[<span class="ruby-value">:rejects_token_if</span>]                     <span class="ruby-operator">||</span> <span class="ruby-value">:blank?</span>)
@@ -1390,7 +1390,7 @@ too hard to understand)</p>
               <div id="method-i-to_s_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/tokenizer.rb, line 26</span>
     <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
-      <span class="ruby-identifier">reject_condition_location</span> = <span class="ruby-ivar">@reject_condition</span>.<span class="ruby-identifier">to_s</span>[<span class="ruby-regexp">/:(\d+) \(lambda\)/</span>, <span class="ruby-number">1</span>]
+      <span class="ruby-identifier">reject_condition_location</span> = <span class="ruby-ivar">@reject_condition</span>.<span class="ruby-identifier">to_s</span>[<span class="ruby-regexp">%r:(\d+) \(lambda\)/</span>, <span class="ruby-number">1</span>]
       <span class="ruby-string">&quot;Removes characters: #{@removes_characters_regexp ? &quot;/#{@removes_characters_regexp.source}/&quot; : '-'}
 Stopwords:          #{@remove_stopwords_regexp ? &quot;/#{@remove_stopwords_regexp.source}/&quot; : '-'}
 Splits text on:     #{@splits_text_on.respond_to?(:source) ? &quot;/#{@splits_text_on.source}/&quot; : (@splits_text_on ? @splits_text_on : '-')}

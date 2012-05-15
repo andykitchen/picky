@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Picky::Loggers::Concise</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Picky::Loggers::Concise 
+            
+                <span class="parent">&lt; 
+                    
+                    Silent
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/lib/picky/loggers/concise_rb.html">lib/picky/loggers/concise.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>The verbose logger outputs little information.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-dump">dump</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-info">info</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>L</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-load">load</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-progress">progress</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-reset">reset</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-tokenize">tokenize</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>dumped</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>loaded</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>tokenized</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+      </table>
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <a name="method-c-new"></a><b>new</b>(*args)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/loggers/concise.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> *<span class="ruby-identifier">args</span>
+  <span class="ruby-keyword">super</span> *<span class="ruby-identifier">args</span>
+  
+  <span class="ruby-identifier">reset</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-dump">
+            
+              <a name="method-i-dump"></a><b>dump</b>(*)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-dump_source')" id="l_method-i-dump_source">show</a>
+                
+              </p>
+              <div id="method-i-dump_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/loggers/concise.rb, line 33</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">dump</span>(*)
+  <span class="ruby-identifier">progress</span> <span class="ruby-string">'D'</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-info">
+            
+              <a name="method-i-info"></a><b>info</b>(text)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-info_source')" id="l_method-i-info_source">show</a>
+                
+              </p>
+              <div id="method-i-info_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/loggers/concise.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">info</span> <span class="ruby-identifier">text</span>
+  <span class="ruby-identifier">io</span>.<span class="ruby-identifier">write</span> <span class="ruby-identifier">text</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-load">
+            
+              <a name="method-i-load"></a><b>load</b>(*)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-load_source')" id="l_method-i-load_source">show</a>
+                
+              </p>
+              <div id="method-i-load_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/loggers/concise.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">load</span>(*)
+  <span class="ruby-identifier">progress</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-progress">
+            
+              <a name="method-i-progress"></a><b>progress</b>(type = '.')
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-progress_source')" id="l_method-i-progress_source">show</a>
+                
+              </p>
+              <div id="method-i-progress_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/loggers/concise.rb, line 41</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">progress</span> <span class="ruby-identifier">type</span> = <span class="ruby-string">'.'</span>
+  <span class="ruby-identifier">io</span>.<span class="ruby-identifier">write</span> <span class="ruby-identifier">type</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-reset">
+            
+              <a name="method-i-reset"></a><b>reset</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-reset_source')" id="l_method-i-reset_source">show</a>
+                
+              </p>
+              <div id="method-i-reset_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/loggers/concise.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">reset</span>
+  <span class="ruby-ivar">@tokenized</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@dumped</span>    = <span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@loaded</span>    = <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-tokenize">
+            
+              <a name="method-i-tokenize"></a><b>tokenize</b>(*)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-tokenize_source')" id="l_method-i-tokenize_source">show</a>
+                
+              </p>
+              <div id="method-i-tokenize_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/loggers/concise.rb, line 29</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">tokenize</span>(*)
+  <span class="ruby-identifier">progress</span> <span class="ruby-string">'T'</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+    </div>
+  </body>
+</html>    

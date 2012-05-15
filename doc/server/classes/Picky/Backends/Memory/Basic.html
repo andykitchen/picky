@@ -246,7 +246,7 @@ by the subclasses.</p>
               <div id="method-i-delete_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/backends/memory/basic.rb, line 52</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">delete</span>
-  <span class="ruby-node">`rm -Rf #{cache_path}`</span>
+  <span class="ruby-node">%xrm -Rf #{cache_path}`</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>

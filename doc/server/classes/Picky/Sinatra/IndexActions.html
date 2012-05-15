@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Picky::Sinatra::IndexActions</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Module</span> 
+            Picky::Sinatra::IndexActions 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/lib/picky/sinatra/index_actions_rb.html">lib/picky/sinatra/index_actions.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-extended">extended</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-extended">
+            
+              <a name="method-c-extended"></a><b>extended</b>(base)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-extended_source')" id="l_method-c-extended_source">show</a>
+                
+              </p>
+              <div id="method-c-extended_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/sinatra/index_actions.rb, line 6</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">extended</span> <span class="ruby-identifier">base</span>
+  <span class="ruby-comment"># Updates the given item and returns HTTP codes:</span>
+  <span class="ruby-comment">#  * 200 if the index has been updated or no error case has occurred.</span>
+  <span class="ruby-comment">#  * 404 if the index cannot be found.</span>
+  <span class="ruby-comment">#  * 400 if no data or item id has been provided in the data.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-comment"># Note: 200 returns no data yet.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">base</span>.<span class="ruby-identifier">post</span> <span class="ruby-string">'/'</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">index_name</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'index'</span>]
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-identifier">index</span> = <span class="ruby-constant">Picky</span><span class="ruby-operator">::</span><span class="ruby-constant">Indexes</span>[<span class="ruby-identifier">index_name</span>.<span class="ruby-identifier">to_sym</span>]
+      <span class="ruby-identifier">data</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'data'</span>]
+      <span class="ruby-keyword">return</span> <span class="ruby-number">400</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">data</span>
+      <span class="ruby-identifier">data</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">index</span>.<span class="ruby-identifier">replace_from</span>(<span class="ruby-constant">Yajl</span><span class="ruby-operator">::</span><span class="ruby-constant">Parser</span>.<span class="ruby-identifier">parse</span> <span class="ruby-identifier">data</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-number">200</span>
+    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">IdNotGivenException</span>
+      <span class="ruby-number">400</span>
+    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
+      <span class="ruby-number">404</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-comment"># Deletes the given item and returns:</span>
+  <span class="ruby-comment">#  * 200 if the index has been updated or no error case has occurred.</span>
+  <span class="ruby-comment">#  * 404 if the index cannot be found.</span>
+  <span class="ruby-comment">#  * 400 if no data or item id has been provided in the data.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-comment"># Note: 200 returns no data yet.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">base</span>.<span class="ruby-identifier">delete</span> <span class="ruby-string">'/'</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">index_name</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'index'</span>]
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-identifier">index</span> = <span class="ruby-constant">Picky</span><span class="ruby-operator">::</span><span class="ruby-constant">Indexes</span>[<span class="ruby-identifier">index_name</span>.<span class="ruby-identifier">to_sym</span>]
+      <span class="ruby-identifier">data</span> = <span class="ruby-constant">Yajl</span><span class="ruby-operator">::</span><span class="ruby-constant">Parser</span>.<span class="ruby-identifier">parse</span> <span class="ruby-identifier">params</span>[<span class="ruby-string">'data'</span>]
+      <span class="ruby-identifier">id</span> = <span class="ruby-identifier">data</span>[<span class="ruby-string">'id'</span>]
+      <span class="ruby-identifier">id</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">index</span>.<span class="ruby-identifier">remove</span>(<span class="ruby-identifier">id</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-number">200</span> <span class="ruby-operator">:</span> <span class="ruby-number">400</span>
+    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
+      <span class="ruby-number">404</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                        </div>
+    </div>
+  </body>
+</html>    
