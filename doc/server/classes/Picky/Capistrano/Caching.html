@@ -45,6 +45,24 @@
 
 
   
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-extended">extended</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
 
   
 
@@ -63,7 +81,70 @@
 
 
     <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-extended">
+            
+              <a name="method-c-extended"></a><b>extended</b>(cap_config)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-extended_source')" id="l_method-c-extended_source">show</a>
+                
+              </p>
+              <div id="method-c-extended_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/deployment.rb, line 153</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">extended</span> <span class="ruby-identifier">cap_config</span>
+  <span class="ruby-identifier">cap_config</span>.<span class="ruby-identifier">instance_eval</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">namespace</span> <span class="ruby-value">:cache</span> <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">desc</span> <span class="ruby-string">&quot;check the index files if they are ready to be used&quot;</span>
+      <span class="ruby-identifier">task</span> <span class="ruby-value">:check</span>, <span class="ruby-value">:roles</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:cache</span> <span class="ruby-keyword">do</span>
+        <span class="ruby-identifier">execute_rake_task</span> <span class="ruby-string">'cache:check'</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">namespace</span> <span class="ruby-value">:cache</span> <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">namespace</span> <span class="ruby-value">:structure</span> <span class="ruby-keyword">do</span>
+        <span class="ruby-identifier">desc</span> <span class="ruby-string">&quot;create the index cache structure&quot;</span>
+        <span class="ruby-identifier">task</span> <span class="ruby-value">:create</span>, <span class="ruby-value">:roles</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:app</span> <span class="ruby-keyword">do</span>
+          <span class="ruby-identifier">execute_rake_task</span> <span class="ruby-string">'cache:structure:create'</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">namespace</span> <span class="ruby-value">:solr</span> <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">desc</span> <span class="ruby-string">&quot;create the index cache structure&quot;</span>
+      <span class="ruby-identifier">task</span> <span class="ruby-value">:index</span>, <span class="ruby-value">:roles</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:cache</span> <span class="ruby-keyword">do</span>
+        <span class="ruby-identifier">execute_rake_task</span> <span class="ruby-string">'solr:index'</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-node">%wstart stop restart|</span>.<span class="ruby-identifier">collect</span>(&amp;<span class="ruby-value">:to_sym</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">action</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">desc</span> <span class="ruby-node">&quot;#{action} the solr server&quot;</span>
+        <span class="ruby-identifier">task</span> <span class="ruby-identifier">action</span>, <span class="ruby-value">:roles</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:app</span> <span class="ruby-keyword">do</span>
+          <span class="ruby-identifier">execute_rake_task</span> <span class="ruby-string">'solr:start'</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
               </div>
+            </div>
+            
+          </div>
+                        </div>
     </div>
   </body>
 </html>    

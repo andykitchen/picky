@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Picky::Query::Tokens</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Picky::Query::Tokens 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/lib/picky/query/tokens_rb.html">lib/picky/query/tokens.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>This class primarily handles switching through similar token
+constellations.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>#</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-3D-3D">==</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-categorize">categorize</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>O</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-originals">originals</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-partialize_last">partialize_last</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-possible_combinations_in">possible_combinations_in</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-processed">processed</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-symbolize">symbolize</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-to_s">to_s</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>ignore_unassigned</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+      </table>
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <a name="method-c-new"></a><b>new</b>(tokens, ignore_unassigned = false)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Create a new <a href="Tokens.html">Tokens</a> object with the array of
+tokens passed in.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/query/tokens.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">ignore_unassigned</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@tokens</span>            = <span class="ruby-identifier">tokens</span>
+  <span class="ruby-ivar">@ignore_unassigned</span> = <span class="ruby-identifier">ignore_unassigned</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-processed">
+            
+              <a name="method-c-processed"></a><b>processed</b>(words, originals, ignore_unassigned = false)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Creates a new <a href="Tokens.html">Tokens</a> object from a number of
+Strings.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-processed_source')" id="l_method-c-processed_source">show</a>
+                
+              </p>
+              <div id="method-c-processed_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/query/tokens.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">processed</span> <span class="ruby-identifier">words</span>, <span class="ruby-identifier">originals</span>, <span class="ruby-identifier">ignore_unassigned</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-identifier">new</span> <span class="ruby-identifier">words</span>.<span class="ruby-identifier">zip</span>(<span class="ruby-identifier">originals</span>).<span class="ruby-identifier">collect!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">word</span>, <span class="ruby-identifier">original</span><span class="ruby-operator">|</span> <span class="ruby-constant">Token</span>.<span class="ruby-identifier">processed</span> <span class="ruby-identifier">word</span>, <span class="ruby-identifier">original</span> }, <span class="ruby-identifier">ignore_unassigned</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-3D-3D">
+            
+              <a name="method-i-3D-3D"></a><b>==</b>(other)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3D-3D_source')" id="l_method-i-3D-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-3D-3D_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/query/tokens.rb, line 78</span>
+<span class="ruby-keyword">def</span> <span class="ruby-operator">==</span> <span class="ruby-keyword ruby-title">other</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">tokens</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">tokens</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-categorize">
+            
+              <a name="method-i-categorize"></a><b>categorize</b>(mapper)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-categorize_source')" id="l_method-i-categorize_source">show</a>
+                
+              </p>
+              <div id="method-i-categorize_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/query/tokens.rb, line 68</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">categorize</span> <span class="ruby-identifier">mapper</span>
+  <span class="ruby-ivar">@tokens</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">token</span><span class="ruby-operator">|</span> <span class="ruby-identifier">token</span>.<span class="ruby-identifier">categorize</span> <span class="ruby-identifier">mapper</span> }
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-originals">
+            
+              <a name="method-i-originals"></a><b>originals</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-originals_source')" id="l_method-i-originals_source">show</a>
+                
+              </p>
+              <div id="method-i-originals_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/query/tokens.rb, line 74</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">originals</span>
+  <span class="ruby-ivar">@tokens</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:original</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-partialize_last">
+            
+              <a name="method-i-partialize_last"></a><b>partialize_last</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Makes the last of the tokens partial.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-partialize_last_source')" id="l_method-i-partialize_last_source">show</a>
+                
+              </p>
+              <div id="method-i-partialize_last_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/query/tokens.rb, line 62</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">partialize_last</span>
+  <span class="ruby-ivar">@tokens</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">partial</span> = <span class="ruby-keyword">true</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">empty?</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-possible_combinations_in">
+            
+              <a name="method-i-possible_combinations_in"></a><b>possible_combinations_in</b>(index)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Generates an array in the form of [</p>
+
+<pre>[combination],                           # of token 1
+[combination, combination, combination], # of token 2
+[combination, combination]               # of token 3</pre>
+
+<p>]</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-possible_combinations_in_source')" id="l_method-i-possible_combinations_in_source">show</a>
+                
+              </p>
+              <div id="method-i-possible_combinations_in_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/query/tokens.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">possible_combinations_in</span> <span class="ruby-identifier">index</span>
+  <span class="ruby-ivar">@tokens</span>.<span class="ruby-identifier">inject</span>([]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">combinations</span>, <span class="ruby-identifier">token</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">possible_combinations</span> = <span class="ruby-identifier">token</span>.<span class="ruby-identifier">possible_combinations_in</span> <span class="ruby-identifier">index</span>
+
+    <span class="ruby-comment"># Note: Optimization for ignoring tokens that allocate to nothing and</span>
+    <span class="ruby-comment"># can be ignored.</span>
+    <span class="ruby-comment"># For example in a special search, where &quot;florian&quot; is not</span>
+    <span class="ruby-comment"># mapped to any category.</span>
+    <span class="ruby-comment">#</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">ignore_unassigned</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">possible_combinations</span>.<span class="ruby-identifier">empty?</span>
+      <span class="ruby-identifier">combinations</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">combinations</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">possible_combinations</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-symbolize">
+            
+              <a name="method-i-symbolize"></a><b>symbolize</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Symbolizes each of the tokens.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-symbolize_source')" id="l_method-i-symbolize_source">show</a>
+                
+              </p>
+              <div id="method-i-symbolize_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/query/tokens.rb, line 56</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">symbolize</span>
+  <span class="ruby-ivar">@tokens</span>.<span class="ruby-identifier">each</span> &amp;<span class="ruby-value">:symbolize!</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_s">
+            
+              <a name="method-i-to_s"></a><b>to_s</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Just join the token original texts.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_s_source')" id="l_method-i-to_s_source">show</a>
+                
+              </p>
+              <div id="method-i-to_s_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/query/tokens.rb, line 84</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
+  <span class="ruby-identifier">originals</span>.<span class="ruby-identifier">join</span> <span class="ruby-string">' '</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+    </div>
+  </body>
+</html>    

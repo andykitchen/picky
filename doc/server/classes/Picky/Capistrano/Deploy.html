@@ -45,6 +45,24 @@
 
 
   
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-extended">extended</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
 
   
 
@@ -63,7 +81,121 @@
 
 
     <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-extended">
+            
+              <a name="method-c-extended"></a><b>extended</b>(cap_config)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-extended_source')" id="l_method-c-extended_source">show</a>
+                
+              </p>
+              <div id="method-c-extended_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/deployment.rb, line 67</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">extended</span> <span class="ruby-identifier">cap_config</span>
+  <span class="ruby-identifier">cap_config</span>.<span class="ruby-identifier">instance_eval</span> <span class="ruby-keyword">do</span>
+
+    <span class="ruby-identifier">namespace</span> <span class="ruby-value">:deploy</span> <span class="ruby-keyword">do</span>
+      <span class="ruby-node">%w(start stop)</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">action</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">desc</span> <span class="ruby-node">&quot;#{action} the Servers&quot;</span>
+        <span class="ruby-identifier">task</span> <span class="ruby-identifier">action</span>.<span class="ruby-identifier">intern</span>, <span class="ruby-value">:roles</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:app</span> <span class="ruby-keyword">do</span>
+          <span class="ruby-identifier">execute_rake_task</span> <span class="ruby-node">&quot;server:#{action}&quot;</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">desc</span> <span class="ruby-string">&quot;Restart the Servers sequentially&quot;</span>
+      <span class="ruby-identifier">task</span> <span class="ruby-value">:restart</span>, <span class="ruby-value">:roles</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:app</span> <span class="ruby-keyword">do</span>
+        <span class="ruby-identifier">find_servers</span>(<span class="ruby-value">:roles</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:app</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">server</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">execute_rake_task</span> <span class="ruby-string">&quot;server:restart&quot;</span>, <span class="ruby-value">:hosts</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">server</span>.<span class="ruby-identifier">host</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-identifier">desc</span> <span class="ruby-string">'Hot deploy the code'</span>
+      <span class="ruby-identifier">task</span> <span class="ruby-string">'hot'</span>, <span class="ruby-value">:roles</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:app</span> <span class="ruby-keyword">do</span>
+        <span class="ruby-identifier">update</span>
+        <span class="ruby-identifier">execute_rake_task</span> <span class="ruby-string">'server:usr1'</span>, <span class="ruby-value">:env</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span> <span class="ruby-comment"># No env needed.</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-identifier">desc</span> <span class="ruby-string">&quot;Setup a GitHub-style deployment.&quot;</span>
+      <span class="ruby-identifier">task</span> <span class="ruby-value">:setup</span>, <span class="ruby-value">:roles</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:app</span> <span class="ruby-keyword">do</span>
+        <span class="ruby-identifier">cmd</span> = <span class="ruby-node">&quot;git clone #{repository} #{current_path}-clone-cache &amp;&amp;&quot;</span> <span class="ruby-operator">+</span>
+              <span class="ruby-node">&quot;rm #{current_path} &amp;&amp;&quot;</span> <span class="ruby-operator">+</span>
+              <span class="ruby-node">&quot;mv #{current_path}-clone-cache #{current_path}&quot;</span>
+        <span class="ruby-identifier">run</span> <span class="ruby-identifier">cmd</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-identifier">desc</span> <span class="ruby-string">&quot;Deploy&quot;</span>
+      <span class="ruby-identifier">task</span> <span class="ruby-value">:default</span>, <span class="ruby-value">:roles</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:app</span> <span class="ruby-keyword">do</span>
+        <span class="ruby-identifier">update</span>
+        <span class="ruby-identifier">restart</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-identifier">desc</span> <span class="ruby-string">&quot;Update the deployed code.&quot;</span>
+      <span class="ruby-identifier">task</span> <span class="ruby-value">:update_code</span> <span class="ruby-keyword">do</span> <span class="ruby-comment"># code needs to be updated with all servers</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;updating code to branch #{branch}&quot;</span>
+        <span class="ruby-identifier">cmd</span> = <span class="ruby-node">&quot;cd #{current_path} &amp;&amp;&quot;</span> <span class="ruby-operator">+</span>
+              <span class="ruby-string">&quot;git fetch origin &amp;&amp;&quot;</span> <span class="ruby-operator">+</span>
+              <span class="ruby-node">&quot;(git checkout -f #{branch} || git checkout -b #{branch} origin/#{branch}) &amp;&amp;&quot;</span> <span class="ruby-operator">+</span>
+              <span class="ruby-string">&quot;git pull;&quot;</span> <span class="ruby-operator">+</span>
+              <span class="ruby-string">&quot;git branch&quot;</span>
+        <span class="ruby-identifier">run</span> <span class="ruby-identifier">cmd</span>
+        <span class="ruby-identifier">symlink</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-identifier">desc</span> <span class="ruby-string">&quot;Cleans up the git checkout&quot;</span>
+      <span class="ruby-identifier">task</span> <span class="ruby-value">:cleanup</span>, <span class="ruby-value">:roles</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:app</span> <span class="ruby-keyword">do</span>
+        <span class="ruby-identifier">run</span> <span class="ruby-node">&quot;cd #{current_path} &amp;&amp; git gc --aggressive&quot;</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-identifier">desc</span> <span class="ruby-string">&quot;create the symlinks to the shared dirs&quot;</span>
+      <span class="ruby-identifier">task</span> <span class="ruby-value">:symlink</span> <span class="ruby-keyword">do</span>
+        <span class="ruby-identifier">set</span> <span class="ruby-value">:user</span>, <span class="ruby-string">'deploy'</span>
+        <span class="ruby-identifier">run</span> <span class="ruby-node">&quot;rm -rf #{current_path}/log;   ln -sf #{shared_path}/log   #{current_path}/log&quot;</span>
+        <span class="ruby-identifier">run</span> <span class="ruby-node">&quot;rm -rf #{current_path}/index; ln -sf #{shared_path}/index #{current_path}/index&quot;</span>
+        <span class="ruby-comment"># link database-config files</span>
+        <span class="ruby-identifier">run</span> <span class="ruby-node">&quot;ln -sf #{shared_path}/app/db.yml #{current_path}/app/db.yml&quot;</span>
+        <span class="ruby-comment"># link unicorn.ru</span>
+        <span class="ruby-identifier">run</span> <span class="ruby-node">&quot;ln -sf #{shared_path}/unicorn.ru #{current_path}/unicorn.ru&quot;</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-identifier">namespace</span> <span class="ruby-value">:rollback</span> <span class="ruby-keyword">do</span>
+        <span class="ruby-identifier">desc</span> <span class="ruby-string">&quot;Rollback to last release.&quot;</span>
+        <span class="ruby-identifier">task</span> <span class="ruby-value">:default</span>, <span class="ruby-value">:roles</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:app</span> <span class="ruby-keyword">do</span>
+          <span class="ruby-identifier">set</span> <span class="ruby-value">:branch</span>, <span class="ruby-identifier">branches</span>[<span class="ruby-number">-2</span>]
+          <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;rolling back to branch #{branch}&quot;</span>
+          <span class="ruby-identifier">deploy</span>.<span class="ruby-identifier">update_code</span>
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-identifier">task</span> <span class="ruby-value">:code</span>, <span class="ruby-value">:roles</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:app</span> <span class="ruby-keyword">do</span>
+          <span class="ruby-comment"># implicit</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
               </div>
+            </div>
+            
+          </div>
+                        </div>
     </div>
   </body>
 </html>    

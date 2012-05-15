@@ -45,6 +45,24 @@
 
 
   
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-extended">extended</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
 
   
 
@@ -63,7 +81,59 @@
 
 
     <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-extended">
+            
+              <a name="method-c-extended"></a><b>extended</b>(cap_config)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-extended_source')" id="l_method-c-extended_source">show</a>
+                
+              </p>
+              <div id="method-c-extended_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/deployment.rb, line 188</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">extended</span> <span class="ruby-identifier">cap_config</span>
+  <span class="ruby-identifier">namespace</span> <span class="ruby-value">:statistics</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">desc</span> <span class="ruby-string">'Start the statistics server'</span>
+    <span class="ruby-identifier">task</span> <span class="ruby-value">:start</span>, <span class="ruby-value">:roles</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:statistics</span> <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">set</span> <span class="ruby-value">:user</span>, <span class="ruby-string">'root'</span>
+      <span class="ruby-identifier">run</span> <span class="ruby-node">&quot;daemonize -c #{current_path} -u deploy -v #{current_path}/script/statistics/start production&quot;</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">desc</span> <span class="ruby-string">'Stop the statistics server'</span>
+    <span class="ruby-identifier">task</span> <span class="ruby-value">:stop</span>, <span class="ruby-value">:roles</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:statistics</span> <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">run</span> <span class="ruby-node">&quot;#{current_path}/script/statistics/stop production&quot;</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">desc</span> <span class="ruby-string">'Restart the statistics server'</span>
+    <span class="ruby-identifier">task</span> <span class="ruby-value">:restart</span>, <span class="ruby-value">:roles</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:statistics</span> <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">stop</span>
+      <span class="ruby-identifier">sleep</span> <span class="ruby-number">2</span>
+      <span class="ruby-identifier">start</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
               </div>
+            </div>
+            
+          </div>
+                        </div>
     </div>
   </body>
 </html>    

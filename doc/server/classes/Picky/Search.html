@@ -150,7 +150,12 @@ search.search 'query'</pre>
             
               
               <li>
-                <a href="#method-i-searching">searching</a>
+                <a href="#method-i-searching">searching</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-sorted_allocations">sorted_allocations</a>
               </li>
             
           </ul>
@@ -385,7 +390,7 @@ search.search 'query'</pre>
           
           
             <div class="description">
-              <p>Execute a search using Query::Tokens.</p>
+              <p>Execute a search using <a href="Query/Tokens.html">Query::Tokens</a>.</p>
 
 <p>Note: Internal method, use <a href="Search.html#method-i-search">search</a>
 to search.</p>
@@ -570,7 +575,7 @@ unravelling the HTTP request.</p>
           
           
             <div class="description">
-              <p>Runs the actual search using Query::Tokens.</p>
+              <p>Runs the actual search using <a href="Query/Tokens.html">Query::Tokens</a>.</p>
 
 <p>Note: Internal method, use <a href="Search.html#method-i-search">search</a>
 to search.</p>
@@ -648,6 +653,40 @@ end</pre>
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">options</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span>)
   <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-sorted_allocations">
+            
+              <a name="method-i-sorted_allocations"></a><b>sorted_allocations</b>(tokens, amount = nil)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Gets sorted allocations for the tokens.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-sorted_allocations_source')" id="l_method-i-sorted_allocations_source">show</a>
+                
+              </p>
+              <div id="method-i-sorted_allocations_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/search.rb, line 229</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">sorted_allocations</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">amount</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">indexes</span>.<span class="ruby-identifier">prepared_allocations_for</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">boosts</span>, <span class="ruby-identifier">amount</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -773,7 +812,7 @@ end</pre>
 
 <p>Returns:</p>
 <ul><li>
-<p>A Picky::Query::Tokens instance.</p>
+<p>A <a href="Query/Tokens.html">Picky::Query::Tokens</a> instance.</p>
 </li></ul>
             </div>
           

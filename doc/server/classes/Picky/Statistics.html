@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Picky::Statistics</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Picky::Statistics 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/picky/statistics_rb.html">lib/picky/statistics.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>Gathers various statistics.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-analyze">analyze</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-application">application</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>L</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-lines_of_code">lines_of_code</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-preamble">preamble</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-to_s">to_s</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <a name="method-c-new"></a><b>new</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/statistics.rb, line 10</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>
+  <span class="ruby-ivar">@indexes</span> = [<span class="ruby-string">&quot;\0033[1mIndexes analysis\0033[m:&quot;</span>]
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-analyze">
+            
+              <a name="method-i-analyze"></a><b>analyze</b>(object)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Gathers information about the indexes.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-analyze_source')" id="l_method-i-analyze_source">show</a>
+                
+              </p>
+              <div id="method-i-analyze_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/statistics.rb, line 33</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">analyze</span> <span class="ruby-identifier">object</span>
+      <span class="ruby-identifier">object</span>.<span class="ruby-identifier">each_category</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">category</span><span class="ruby-operator">|</span>
+        <span class="ruby-ivar">@indexes</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;  #{&quot;#{category.index_name}&quot;.indented_to_s}\n
+  #{&quot;#{category.name}&quot;.indented_to_s(4)}\n
+  #{&quot;exact\n#{Analyzer.new.analyze(category.exact).indented_to_s}&quot;.indented_to_s(6)}\n
+  #{&quot;partial\n#{Analyzer.new.analyze(category.partial).indented_to_s}&quot;.indented_to_s(6)}
+&quot;</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-application">
+            
+              <a name="method-i-application"></a><b>application</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Gathers information about the application.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-application_source')" id="l_method-i-application_source">show</a>
+                
+              </p>
+              <div id="method-i-application_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/statistics.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">application</span>
+  <span class="ruby-identifier">preamble</span>
+  <span class="ruby-ivar">@application</span> = <span class="ruby-constant">Application</span>.<span class="ruby-identifier">apps</span>.<span class="ruby-identifier">map</span> &amp;<span class="ruby-value">:indented_to_s</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-lines_of_code">
+            
+              <a name="method-i-lines_of_code"></a><b>lines_of_code</b>(text)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Internal methods.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-lines_of_code_source')" id="l_method-i-lines_of_code_source">show</a>
+                
+              </p>
+              <div id="method-i-lines_of_code_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/statistics.rb, line 58</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">lines_of_code</span> <span class="ruby-identifier">text</span>
+  <span class="ruby-identifier">text</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-node">%r^\s*[^#\s].*$/</span>).<span class="ruby-identifier">size</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-preamble">
+            
+              <a name="method-i-preamble"></a><b>preamble</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-preamble_source')" id="l_method-i-preamble_source">show</a>
+                
+              </p>
+              <div id="method-i-preamble_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/statistics.rb, line 14</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">preamble</span>
+      <span class="ruby-identifier">loc</span> = <span class="ruby-identifier">lines_of_code</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-string">'app/application.rb'</span>).<span class="ruby-identifier">read</span>
+
+      <span class="ruby-ivar">@preamble</span> <span class="ruby-operator">||=</span> <span class="ruby-string">&quot;  \033[1mApplication(s)\033[m
+    Definition LOC:  #{&quot;%4d&quot; % loc}
+    Indexes defined: #{&quot;%4d&quot; % Indexes.size}
+&quot;</span>
+    <span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_s">
+            
+              <a name="method-i-to_s"></a><b>to_s</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Outputs all gathered statistics.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_s_source')" id="l_method-i-to_s_source">show</a>
+                
+              </p>
+              <div id="method-i-to_s_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/statistics.rb, line 46</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
+      <span class="ruby-string">&quot;
+  Picky Configuration:
+
+  #{[@preamble, @application, @indexes.join(&quot;\n&quot;)].compact.join(&quot;\n&quot;)}
+&quot;</span>
+    <span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+    </div>
+  </body>
+</html>    

@@ -55,6 +55,18 @@
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
       
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-check">check</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
         <dt>N</dt>
         <dd>
           <ul>
@@ -169,6 +181,40 @@
                   
       <div class="sectiontitle">Instance Public methods</div>
       
+        <div class="method">
+          <div class="title method-title" id="method-i-check">
+            
+              <a name="method-i-check"></a><b>check</b>(source)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-check_source')" id="l_method-i-check_source">show</a>
+                
+              </p>
+              <div id="method-i-check_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/indexers/base.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">check</span> <span class="ruby-identifier">source</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Trying to index without a source for #{@index_or_category.name}.&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">source</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
         <div class="method">
           <div class="title method-title" id="method-i-notify_finished">
             

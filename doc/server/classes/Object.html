@@ -53,6 +53,60 @@
 
 
   
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-exclaim">exclaim</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-indented_to_s">indented_to_s</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-timed_exclaim">timed_exclaim</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>W</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-warn_gem_missing">warn_gem_missing</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
 
   
 
@@ -113,7 +167,149 @@
 
 
     <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-exclaim">
+            
+              <a name="method-i-exclaim"></a><b>exclaim</b>(text)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Just puts the given text.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-exclaim_source')" id="l_method-i-exclaim_source">show</a>
+                
+              </p>
+              <div id="method-i-exclaim_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/extensions/object.rb, line 14</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">exclaim</span> <span class="ruby-identifier">text</span>
+  <span class="ruby-constant">Picky</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span> <span class="ruby-identifier">text</span>
+  <span class="ruby-constant">Picky</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">flush</span>
+<span class="ruby-keyword">end</span></pre>
               </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-indented_to_s">
+            
+              <a name="method-i-indented_to_s"></a><b>indented_to_s</b>(amount = 2)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Indents each line by <code>amount=2</code> spaces.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-indented_to_s_source')" id="l_method-i-indented_to_s_source">show</a>
+                
+              </p>
+              <div id="method-i-indented_to_s_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/extensions/object.rb, line 27</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">indented_to_s</span> <span class="ruby-identifier">amount</span> = <span class="ruby-number">2</span>
+  <span class="ruby-identifier">ary</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:join</span>) <span class="ruby-operator">?</span> <span class="ruby-keyword">self</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;\n&quot;</span>)
+  <span class="ruby-identifier">ary</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{&quot; &quot;*amount}#{s}&quot;</span>}.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;\n&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-timed_exclaim">
+            
+              <a name="method-i-timed_exclaim"></a><b>timed_exclaim</b>(text)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Puts a text in the form:</p>
+
+<pre>12:34:56: text here</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-timed_exclaim_source')" id="l_method-i-timed_exclaim_source">show</a>
+                
+              </p>
+              <div id="method-i-timed_exclaim_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/extensions/object.rb, line 8</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">timed_exclaim</span> <span class="ruby-identifier">text</span>
+  <span class="ruby-identifier">exclaim</span> <span class="ruby-node">&quot;#{Time.now.strftime(&quot;%H:%M:%S&quot;)}: #{text}&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-warn_gem_missing">
+            
+              <a name="method-i-warn_gem_missing"></a><b>warn_gem_missing</b>(gem_name, message)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Puts a text that informs the user of a missing gem.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-warn_gem_missing_source')" id="l_method-i-warn_gem_missing_source">show</a>
+                
+              </p>
+              <div id="method-i-warn_gem_missing_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/extensions/object.rb, line 21</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">warn_gem_missing</span> <span class="ruby-identifier">gem_name</span>, <span class="ruby-identifier">message</span>
+  <span class="ruby-identifier">warn</span> <span class="ruby-node">&quot;#{gem_name} gem missing!\nTo use #{message}, you need to:\n  1. Add the following line to Gemfile:\n     gem '#{gem_name}'\n     or\n     require '#{gem_name}'\n     for example at the top of your app.rb file.\n  2. Then, run:\n     bundle update\n&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
     </div>
   </body>
 </html>    

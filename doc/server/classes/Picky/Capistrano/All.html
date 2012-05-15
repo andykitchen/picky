@@ -32,18 +32,47 @@
     <div id="bodyContent">
         <div id="content">
   
+    <div class="description">
+      
+<p>Include all</p>
 
-
+    </div>
   
 
 
   
+
+
+  
   
 
 
   
 
 
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-execute_rake_task">execute_rake_task</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-extended">extended</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
   
 
   
@@ -63,7 +92,107 @@
 
 
     <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-extended">
+            
+              <a name="method-c-extended"></a><b>extended</b>(cap_config)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-extended_source')" id="l_method-c-extended_source">show</a>
+                
+              </p>
+              <div id="method-c-extended_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/deployment.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">extended</span> <span class="ruby-identifier">cap_config</span>
+
+  <span class="ruby-identifier">cap_config</span>.<span class="ruby-identifier">instance_eval</span> <span class="ruby-keyword">do</span>
+
+    <span class="ruby-comment"># Executes a rake task on the server.</span>
+    <span class="ruby-comment">#</span>
+    <span class="ruby-comment"># Options:</span>
+    <span class="ruby-comment">#  * env: The PICKY_ENV. Will not set if set explicitly to false. Default: production.</span>
+    <span class="ruby-comment">#  * All other options get passed on to the Capistrano run task.</span>
+    <span class="ruby-comment">#</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">execute_rake_task</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">options</span> = {}, &amp;<span class="ruby-identifier">block</span>
+      <span class="ruby-identifier">env</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span> <span class="ruby-value">:env</span>
+      <span class="ruby-identifier">env</span> = <span class="ruby-identifier">env</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span> <span class="ruby-operator">?</span> <span class="ruby-string">''</span> <span class="ruby-operator">:</span> <span class="ruby-node">&quot;PICKY_ENV=#{env || 'production'}&quot;</span>
+      <span class="ruby-identifier">run</span> <span class="ruby-node">&quot;cd #{current_path}; rake #{name} #{env}&quot;</span>, <span class="ruby-identifier">options</span>, &amp;<span class="ruby-identifier">block</span>
+    <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">cap_config</span>.<span class="ruby-identifier">extend</span> <span class="ruby-constant">Standard</span>
+  <span class="ruby-identifier">cap_config</span>.<span class="ruby-identifier">extend</span> <span class="ruby-constant">Deploy</span>
+  <span class="ruby-identifier">cap_config</span>.<span class="ruby-identifier">extend</span> <span class="ruby-constant">Caching</span>
+  <span class="ruby-identifier">cap_config</span>.<span class="ruby-identifier">extend</span> <span class="ruby-constant">Overrides</span>
+
+<span class="ruby-keyword">end</span></pre>
               </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-execute_rake_task">
+            
+              <a name="method-i-execute_rake_task"></a><b>execute_rake_task</b>(name, options = {})
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Executes a rake task on the server.</p>
+
+<p>Options:</p>
+
+<pre>* env: The PICKY_ENV. Will not set if set explicitly to false. Default: production.
+* All other options get passed on to the Capistrano run task.</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-execute_rake_task_source')" id="l_method-i-execute_rake_task_source">show</a>
+                
+              </p>
+              <div id="method-i-execute_rake_task_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/deployment.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">execute_rake_task</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">options</span> = {}, &amp;<span class="ruby-identifier">block</span>
+  <span class="ruby-identifier">env</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span> <span class="ruby-value">:env</span>
+  <span class="ruby-identifier">env</span> = <span class="ruby-identifier">env</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span> <span class="ruby-operator">?</span> <span class="ruby-string">''</span> <span class="ruby-operator">:</span> <span class="ruby-node">&quot;PICKY_ENV=#{env || 'production'}&quot;</span>
+  <span class="ruby-identifier">run</span> <span class="ruby-node">&quot;cd #{current_path}; rake #{name} #{env}&quot;</span>, <span class="ruby-identifier">options</span>, &amp;<span class="ruby-identifier">block</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
     </div>
   </body>
 </html>    

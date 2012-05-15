@@ -1,0 +1,693 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Analyzer</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Analyzer 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/lib/picky/analyzer_rb.html">lib/picky/analyzer.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>Analyzes indexes (index bundles, actually).</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-analyze">analyze</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-cardinality">cardinality</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-configuration_to_s">configuration_to_s</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-index_analysis">index_analysis</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-index_to_s">index_to_s</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-similarity_to_s">similarity_to_s</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-to_s">to_s</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>W</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-weights">weights</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-weights_analysis">weights_analysis</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-weights_to_s">weights_to_s</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>analysis</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>comments</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+      </table>
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <a name="method-c-new"></a><b>new</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/analyzer.rb, line 11</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>
+  <span class="ruby-ivar">@analysis</span> = {}
+  <span class="ruby-ivar">@comments</span> = []
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-analyze">
+            
+              <a name="method-i-analyze"></a><b>analyze</b>(bundle)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-analyze_source')" id="l_method-i-analyze_source">show</a>
+                
+              </p>
+              <div id="method-i-analyze_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/analyzer.rb, line 18</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">analyze</span> <span class="ruby-identifier">bundle</span>
+  <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">load_inverted</span>
+  <span class="ruby-identifier">analysis</span>[<span class="ruby-value">:__keys</span>] = <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">inverted</span>.<span class="ruby-identifier">size</span>
+  <span class="ruby-identifier">cardinality</span> <span class="ruby-value">:index</span>, <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">inverted</span>
+  <span class="ruby-identifier">index_analysis</span>
+  <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">clear_inverted</span>
+
+  <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">load_weights</span>
+  <span class="ruby-identifier">weights</span> <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">weights</span>
+  <span class="ruby-identifier">weights_analysis</span>
+  <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">clear_weights</span>
+
+  <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">load_similarity</span>
+  <span class="ruby-identifier">cardinality</span> <span class="ruby-value">:similarity</span>, <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">similarity</span>
+  <span class="ruby-identifier">bundle</span>.<span class="ruby-identifier">clear_similarity</span>
+
+  <span class="ruby-comment"># bundle.load_configuration</span>
+  <span class="ruby-comment"># analysis[:configuration] = bundle.configuration</span>
+  <span class="ruby-comment"># bundle.clear_configuration</span>
+
+  <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-cardinality">
+            
+              <a name="method-i-cardinality"></a><b>cardinality</b>(identifier, index)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-cardinality_source')" id="l_method-i-cardinality_source">show</a>
+                
+              </p>
+              <div id="method-i-cardinality_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/analyzer.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">cardinality</span> <span class="ruby-identifier">identifier</span>, <span class="ruby-identifier">index</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">index</span>.<span class="ruby-identifier">size</span>.<span class="ruby-identifier">zero?</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">index</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:each_pair</span>)
+
+  <span class="ruby-identifier">key_length_average</span> = <span class="ruby-number">0</span>
+  <span class="ruby-identifier">ids_length_average</span> = <span class="ruby-number">0</span>
+
+  <span class="ruby-identifier">min_ids_length</span> = <span class="ruby-number">1.0</span><span class="ruby-operator">/</span><span class="ruby-number">0</span> <span class="ruby-comment"># Infinity</span>
+  <span class="ruby-identifier">max_ids_length</span> =     <span class="ruby-number">0</span>
+  <span class="ruby-identifier">min_key_length</span> = <span class="ruby-number">1.0</span><span class="ruby-operator">/</span><span class="ruby-number">0</span> <span class="ruby-comment"># Infinity</span>
+  <span class="ruby-identifier">max_key_length</span> =     <span class="ruby-number">0</span>
+
+  <span class="ruby-identifier">key_size</span>, <span class="ruby-identifier">ids_size</span> = <span class="ruby-number">0</span>, <span class="ruby-number">0</span>
+  <span class="ruby-identifier">index</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">ids</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">key_size</span> = <span class="ruby-identifier">key</span>.<span class="ruby-identifier">size</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">key_size</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">min_key_length</span>
+      <span class="ruby-identifier">min_key_length</span> = <span class="ruby-identifier">key_size</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">max_key_length</span> = <span class="ruby-identifier">key_size</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">key_size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">max_key_length</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">key_length_average</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">key_size</span>
+
+    <span class="ruby-identifier">ids_size</span> = <span class="ruby-identifier">ids</span>.<span class="ruby-identifier">size</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">ids_size</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">min_ids_length</span>
+      <span class="ruby-identifier">min_ids_length</span> = <span class="ruby-identifier">ids_size</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">max_ids_length</span> = <span class="ruby-identifier">ids_size</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">ids_size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">max_ids_length</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">ids_length_average</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">ids_size</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">index_size</span> = <span class="ruby-identifier">index</span>.<span class="ruby-identifier">size</span>
+  <span class="ruby-identifier">key_length_average</span> = <span class="ruby-identifier">key_length_average</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">index_size</span>
+  <span class="ruby-identifier">ids_length_average</span> = <span class="ruby-identifier">ids_length_average</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">index_size</span>
+
+  <span class="ruby-identifier">analysis</span>[<span class="ruby-identifier">identifier</span>] <span class="ruby-operator">||=</span> {}
+  <span class="ruby-identifier">analysis</span>[<span class="ruby-identifier">identifier</span>][<span class="ruby-value">:key_length</span>]         = (<span class="ruby-identifier">min_key_length</span><span class="ruby-operator">..</span><span class="ruby-identifier">max_key_length</span>)
+  <span class="ruby-identifier">analysis</span>[<span class="ruby-identifier">identifier</span>][<span class="ruby-value">:ids_length</span>]         = (<span class="ruby-identifier">min_ids_length</span><span class="ruby-operator">..</span><span class="ruby-identifier">max_ids_length</span>)
+  <span class="ruby-identifier">analysis</span>[<span class="ruby-identifier">identifier</span>][<span class="ruby-value">:key_length_average</span>] = <span class="ruby-identifier">key_length_average</span>
+  <span class="ruby-identifier">analysis</span>[<span class="ruby-identifier">identifier</span>][<span class="ruby-value">:ids_length_average</span>] = <span class="ruby-identifier">ids_length_average</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-configuration_to_s">
+            
+              <a name="method-i-configuration_to_s"></a><b>configuration_to_s</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-configuration_to_s_source')" id="l_method-i-configuration_to_s_source">show</a>
+                
+              </p>
+              <div id="method-i-configuration_to_s_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/analyzer.rb, line 149</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">configuration_to_s</span>
+  <span class="ruby-comment"># analysis[:configuration]</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-index_analysis">
+            
+              <a name="method-i-index_analysis"></a><b>index_analysis</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-index_analysis_source')" id="l_method-i-index_analysis_source">show</a>
+                
+              </p>
+              <div id="method-i-index_analysis_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/analyzer.rb, line 80</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">index_analysis</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">analysis</span>[<span class="ruby-value">:index</span>]
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">analysis</span>[<span class="ruby-value">:__keys</span>] <span class="ruby-operator">&lt;</span> <span class="ruby-number">100</span>
+    <span class="ruby-identifier">comments</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;\0033[33mVery small index (&lt; 100 keys).\0033[m&quot;</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">range</span> = <span class="ruby-identifier">analysis</span>[<span class="ruby-value">:index</span>][<span class="ruby-value">:key_length</span>]
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">range</span>.<span class="ruby-identifier">min</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-number">1</span>
+    <span class="ruby-identifier">comments</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;\0033[33mIndex matches single characters.\0033[m&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-index_to_s">
+            
+              <a name="method-i-index_to_s"></a><b>index_to_s</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-index_to_s_source')" id="l_method-i-index_to_s_source">show</a>
+                
+              </p>
+              <div id="method-i-index_to_s_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/analyzer.rb, line 133</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">index_to_s</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">analysis</span>[<span class="ruby-value">:__keys</span>].<span class="ruby-identifier">zero?</span>
+  <span class="ruby-identifier">ary</span> = [<span class="ruby-node">&quot;index key cardinality:                #{&quot;%10d&quot; % analysis[:__keys]}&quot;</span>]
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">ary</span>.<span class="ruby-identifier">join</span> <span class="ruby-string">&quot;\n&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">analysis</span>[<span class="ruby-value">:index</span>]
+  <span class="ruby-identifier">ary</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;index key length range (avg):         #{&quot;%10s&quot; % analysis[:index][:key_length]} (#{analysis[:index][:key_length_average].round(2)})&quot;</span>
+  <span class="ruby-identifier">ary</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;index ids per key length range (avg): #{&quot;%10s&quot; % analysis[:index][:ids_length]} (#{analysis[:index][:ids_length_average].round(2)})&quot;</span>
+  <span class="ruby-identifier">ary</span>.<span class="ruby-identifier">join</span> <span class="ruby-string">&quot;\n&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-similarity_to_s">
+            
+              <a name="method-i-similarity_to_s"></a><b>similarity_to_s</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-similarity_to_s_source')" id="l_method-i-similarity_to_s_source">show</a>
+                
+              </p>
+              <div id="method-i-similarity_to_s_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/analyzer.rb, line 145</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">similarity_to_s</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">analysis</span>[<span class="ruby-value">:similarity</span>]
+  <span class="ruby-node">%Q{similarity key length range (avg):    #{&quot;%10s&quot; % analysis[:similarity][:key_length]} (#{analysis[:similarity][:key_length_average].round(2)})}</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_s">
+            
+              <a name="method-i-to_s"></a><b>to_s</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_s_source')" id="l_method-i-to_s_source">show</a>
+                
+              </p>
+              <div id="method-i-to_s_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/analyzer.rb, line 130</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
+  [*<span class="ruby-identifier">comments</span>, <span class="ruby-identifier">index_to_s</span>, <span class="ruby-identifier">weights_to_s</span>, <span class="ruby-identifier">similarity_to_s</span>, <span class="ruby-identifier">configuration_to_s</span>].<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">join</span> <span class="ruby-string">&quot;\n&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-weights">
+            
+              <a name="method-i-weights"></a><b>weights</b>(index)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-weights_source')" id="l_method-i-weights_source">show</a>
+                
+              </p>
+              <div id="method-i-weights_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/analyzer.rb, line 93</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">weights</span> <span class="ruby-identifier">index</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">index</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:size</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">index</span>.<span class="ruby-identifier">size</span>.<span class="ruby-identifier">zero?</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">index</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:each_pair</span>)
+
+  <span class="ruby-identifier">min_weight</span> = <span class="ruby-number">1.0</span><span class="ruby-operator">/</span><span class="ruby-number">0</span> <span class="ruby-comment"># Infinity</span>
+  <span class="ruby-identifier">max_weight</span> =   <span class="ruby-number">0.0</span>
+
+  <span class="ruby-identifier">weight_average</span> = <span class="ruby-number">0</span>
+
+  <span class="ruby-identifier">index</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">min_weight</span>
+      <span class="ruby-identifier">min_weight</span> = <span class="ruby-identifier">value</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">max_weight</span> = <span class="ruby-identifier">value</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">max_weight</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">weight_average</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">value</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">weight_average</span> = <span class="ruby-identifier">weight_average</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">index</span>.<span class="ruby-identifier">size</span>
+
+  <span class="ruby-identifier">analysis</span>[<span class="ruby-value">:weights</span>] <span class="ruby-operator">||=</span> {}
+  <span class="ruby-identifier">analysis</span>[<span class="ruby-value">:weights</span>][<span class="ruby-value">:weight_range</span>]   = (<span class="ruby-identifier">min_weight</span><span class="ruby-operator">..</span><span class="ruby-identifier">max_weight</span>)
+  <span class="ruby-identifier">analysis</span>[<span class="ruby-value">:weights</span>][<span class="ruby-value">:weight_average</span>] = <span class="ruby-identifier">weight_average</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-weights_analysis">
+            
+              <a name="method-i-weights_analysis"></a><b>weights_analysis</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-weights_analysis_source')" id="l_method-i-weights_analysis_source">show</a>
+                
+              </p>
+              <div id="method-i-weights_analysis_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/analyzer.rb, line 117</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">weights_analysis</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">analysis</span>[<span class="ruby-value">:weights</span>]
+
+  <span class="ruby-identifier">range</span> = <span class="ruby-identifier">analysis</span>[<span class="ruby-value">:weights</span>][<span class="ruby-value">:weight_range</span>]
+
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">range</span>.<span class="ruby-identifier">max</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-number">0.0</span>
+    <span class="ruby-identifier">comments</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;\0033[31mThere's only one id per key – you'll only get single results.\0033[m&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-weights_to_s">
+            
+              <a name="method-i-weights_to_s"></a><b>weights_to_s</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-weights_to_s_source')" id="l_method-i-weights_to_s_source">show</a>
+                
+              </p>
+              <div id="method-i-weights_to_s_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/analyzer.rb, line 141</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">weights_to_s</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">analysis</span>[<span class="ruby-value">:weights</span>]
+  <span class="ruby-node">%Q{weights range (avg):                  #{&quot;%10s&quot; % analysis[:weights][:weight_range]} (#{analysis[:weights][:weight_average].round(2)})}</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+    </div>
+  </body>
+</html>    

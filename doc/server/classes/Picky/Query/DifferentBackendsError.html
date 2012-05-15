@@ -3,7 +3,7 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <title>Picky::Query::IndexesCheck</title>
+    <title>Picky::Query::DifferentBackendsError</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
@@ -20,11 +20,11 @@
         
         <h1>
             <span class="type">Class</span> 
-            Picky::Query::IndexesCheck 
+            Picky::Query::DifferentBackendsError 
             
                 <span class="parent">&lt; 
                     
-                    <a href="../../Object.html">Object</a>
+                    StandardError
                     
                 </span>
             
@@ -37,6 +37,13 @@
     </div>
     <div id="bodyContent">
         <div id="content">
+  
+    <div class="description">
+      
+<p>Currently it isn’t possible using Memory and Redis etc. indexes in the same
+query index group.</p>
+
+    </div>
   
 
 
@@ -55,25 +62,25 @@
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
       
-        <dt>C</dt>
+        <dt>N</dt>
         <dd>
           <ul>
             
               
               <li>
-                <a href="#method-c-check_backends">check_backends</a>
+                <a href="#method-c-new">new</a>
               </li>
             
           </ul>
         </dd>
       
-        <dt>R</dt>
+        <dt>T</dt>
         <dd>
           <ul>
             
               
               <li>
-                <a href="#method-c-raise_different">raise_different</a>
+                <a href="#method-i-to_s">to_s</a>
               </li>
             
           </ul>
@@ -103,21 +110,15 @@
       <div class="sectiontitle">Class Public methods</div>
       
         <div class="method">
-          <div class="title method-title" id="method-c-check_backends">
+          <div class="title method-title" id="method-c-new">
             
-              <a name="method-c-check_backends"></a><b>check_backends</b>(indexes)
+              <a name="method-c-new"></a><b>new</b>(backends)
             
           </div>
           
           
             <div class="description">
-              <p>Returns the right combinations strategy for a number of query indexes.</p>
-
-<p>Currently it isn’t possible using Memory and Redis etc. indexes in the same
-query index group.</p>
-
-<p><a href="../../Picky.html">Picky</a> will raise a
-Query::Indexes::DifferentBackendsError.</p>
+              
             </div>
           
           
@@ -129,26 +130,25 @@ Query::Indexes::DifferentBackendsError.</p>
               
               <p class="source-link">
                 Source: 
-                <a href="javascript:toggleSource('method-c-check_backends_source')" id="l_method-c-check_backends_source">show</a>
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
                 
               </p>
-              <div id="method-c-check_backends_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/indexes_check.rb, line 17</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">check_backends</span> <span class="ruby-identifier">indexes</span>
-  <span class="ruby-identifier">backends</span> = <span class="ruby-identifier">indexes</span>.<span class="ruby-identifier">map</span> &amp;<span class="ruby-value">:backend</span>
-  <span class="ruby-identifier">backends</span>.<span class="ruby-identifier">uniq!</span> &amp;<span class="ruby-value">:class</span>
-  <span class="ruby-identifier">raise_different</span> <span class="ruby-identifier">backends</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">backends</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-number">1</span>
-  <span class="ruby-identifier">backends</span>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/query/indexes_check.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> <span class="ruby-identifier">backends</span>
+  <span class="ruby-ivar">@backends</span> = <span class="ruby-identifier">backends</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
             
           </div>
-        
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
         <div class="method">
-          <div class="title method-title" id="method-c-raise_different">
+          <div class="title method-title" id="method-i-to_s">
             
-              <a name="method-c-raise_different"></a><b>raise_different</b>(backends)
+              <a name="method-i-to_s"></a><b>to_s</b>()
             
           </div>
           
@@ -166,19 +166,19 @@ Query::Indexes::DifferentBackendsError.</p>
               
               <p class="source-link">
                 Source: 
-                <a href="javascript:toggleSource('method-c-raise_different_source')" id="l_method-c-raise_different_source">show</a>
+                <a href="javascript:toggleSource('method-i-to_s_source')" id="l_method-i-to_s_source">show</a>
                 
               </p>
-              <div id="method-c-raise_different_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/indexes_check.rb, line 23</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">raise_different</span> <span class="ruby-identifier">backends</span>
-  <span class="ruby-identifier">raise</span> <span class="ruby-constant">DifferentBackendsError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">backends</span>)
+              <div id="method-i-to_s_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/query/indexes_check.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
+  <span class="ruby-node">&quot;Currently it isn't possible to mix Indexes with backends #{@backends.join(&quot; and &quot;)} in the same Search instance.&quot;</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
             
           </div>
-                        </div>
+                    </div>
     </div>
   </body>
 </html>    

@@ -220,6 +220,18 @@ href="Index.html">Index</a></strong>.</p>
           </ul>
         </dd>
       
+        <dt>G</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-geo_categories">geo_categories</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
         <dt>I</dt>
         <dd>
           <ul>
@@ -319,6 +331,11 @@ href="Index.html">Index</a></strong>.</p>
               
               <li>
                 <a href="#method-i-to_s">to_s</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_stats">to_stats</a>,
               </li>
             
               
@@ -445,7 +462,7 @@ href="Index.html">Index</a></strong>.</p>
 href="../Picky.html">Picky</a> front end.</p>
 </li></ul>
 
-<h3 id="method-c-new-label-Options+%28all+are+used+in+the+block+-+not+passed+as+a+Hash%2C+see+examples%29">Options (all are used in the block - not passed as a Hash, see examples)</h3>
+<h3 id="method-c-new-label-Options+%28all+are+used+in+the+block+-+not+passed+as+a+Hash%2C+see+examples%29">Options (all are used in the block - not passed as a <a href="../Hash.html">Hash</a>, see examples)</h3>
 <ul><li>
 <p>source: Where the data comes from, e.g. Sources::CSV.new(…). Optional, can
 be defined in the block using <a
@@ -725,6 +742,111 @@ category(:similar_title, :from =&gt; :title).</p>
                 <pre><span class="ruby-comment"># File lib/picky/index_indexing.rb, line 60</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">check_source_empty</span>
   <span class="ruby-identifier">warn</span> <span class="ruby-node">%Q{\n\0033[1mWarning\0033[m, source for index &quot;#{name}&quot; is empty: #{source} (responds true to empty?).\n}</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">source</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:empty?</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">source</span>.<span class="ruby-identifier">empty?</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-geo_categories">
+            
+              <a name="method-i-geo_categories"></a><b>geo_categories</b>(lat_name, lng_name, radius, options = {})
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>HIGHLY EXPERIMENTAL Not correctly working yet. <a href="Try.html">Try</a>
+it if you feel “beta”.</p>
+
+<p>Also a range search see <a
+href="Index.html#method-i-ranged_category">ranged_category</a>, but on the
+earth’s surface.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>lat_name: The latitude’s name as used in <a
+href="Index.html#method-i-category">category</a>.</p>
+</li><li>
+<p>lng_name: The longitude’s name as used in <a
+href="Index.html#method-i-category">category</a>.</p>
+</li><li>
+<p>radius: The distance (in km) around the query point which we search for
+results.</p>
+</li></ul>
+
+<p>Note: <a href="../Picky.html">Picky</a> uses a square, not a circle. That
+should be ok for most usages.</p>
+
+<pre>-----------------------------
+|                           |
+|                           |
+|                           |
+|                           |
+|                           |
+|             *&lt;-  radius -&gt;|
+|                           |
+|                           |
+|                           |
+|                           |
+|                           |
+-----------------------------</pre>
+
+<p>Options</p>
+<ul><li>
+<p>precision: Default 1 (20% error margin, very fast), up to 5 (5% error
+margin, slower) makes sense.</p>
+</li><li>
+<p>lat_from: The data category to take the data for the latitude from.</p>
+</li><li>
+<p>lng_from: The data category to take the data for the longitude from.</p>
+</li></ul>
+
+<p>THINK Will have to write a wrapper that combines two categories that are
+indexed simultaneously, since lat/lng are correlated.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-geo_categories_source')" id="l_method-i-geo_categories_source">show</a>
+                
+              </p>
+              <div id="method-i-geo_categories_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/index.rb, line 291</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">geo_categories</span> <span class="ruby-identifier">lat_name</span>, <span class="ruby-identifier">lng_name</span>, <span class="ruby-identifier">radius</span>, <span class="ruby-identifier">options</span> = {}
+
+  <span class="ruby-comment"># Extract lat/lng specific options.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">lat_from</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span> <span class="ruby-value">:lat_from</span>
+  <span class="ruby-identifier">lng_from</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span> <span class="ruby-value">:lng_from</span>
+
+  <span class="ruby-comment"># One can be a normal ranged_category.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">ranged_category</span> <span class="ruby-identifier">lat_name</span>, <span class="ruby-identifier">radius</span>*<span class="ruby-number">0.00898312</span>, <span class="ruby-identifier">options</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">from</span><span class="ruby-operator">:</span> <span class="ruby-identifier">lat_from</span>)
+
+  <span class="ruby-comment"># The other needs to adapt the radius depending on the one.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-comment"># Depending on the latitude, the radius of the longitude</span>
+  <span class="ruby-comment"># needs to enlarge, the closer we get to the pole.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-comment"># In our simplified case, the radius is given as if all the</span>
+  <span class="ruby-comment"># locations were on the 45 degree line.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-comment"># This calculates km -&gt; longitude (degrees).</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-comment"># A degree on the 45 degree line is equal to ~222.6398 km.</span>
+  <span class="ruby-comment"># So a km on the 45 degree line is equal to 0.01796624 degrees.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">ranged_category</span> <span class="ruby-identifier">lng_name</span>, <span class="ruby-identifier">radius</span>*<span class="ruby-number">0.01796624</span>, <span class="ruby-identifier">options</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">from</span><span class="ruby-operator">:</span> <span class="ruby-identifier">lng_from</span>)
+
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -1186,6 +1308,45 @@ category names (or the category from option).</p>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
   <span class="ruby-node">&quot;#{self.class}(#{name}, result_id: #{result_identifier}, source: #{@source}, categories: #{categories})&quot;</span>
 <span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_stats">
+            
+              <a name="method-i-to_stats"></a><b>to_stats</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_stats_source')" id="l_method-i-to_stats_source">show</a>
+                
+              </p>
+              <div id="method-i-to_stats_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/index.rb, line 319</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_stats</span>
+      <span class="ruby-identifier">stats</span> = <span class="ruby-string">&quot;#{name} (#{self.class}):
+#{&quot;source:            #{source}&quot;.indented_to_s}
+#{&quot;categories:        #{categories.map(&amp;:name).join(', ')}&quot;.indented_to_s}
+&quot;</span>
+      <span class="ruby-identifier">stats</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;  result identifier: \&quot;#{result_identifier}\&quot;&quot;</span>.<span class="ruby-identifier">indented_to_s</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">result_identifier</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
+      <span class="ruby-identifier">stats</span>
+    <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
             

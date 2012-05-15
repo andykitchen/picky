@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Symbol</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Symbol 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/lib/picky/extensions/symbol_rb.html">lib/picky/extensions/symbol.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>Extending the <a href="Symbol.html">Symbol</a> class.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-double_metaphone">double_metaphone</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-each_intoken">each_intoken</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-each_subtoken">each_subtoken</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-metaphone">metaphone</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-soundex">soundex</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-double_metaphone">
+            
+              <a name="method-i-double_metaphone"></a><b>double_metaphone</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns a <em>single</em> double metaphone code for this symbol.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-double_metaphone_source')" id="l_method-i-double_metaphone_source">show</a>
+                
+              </p>
+              <div id="method-i-double_metaphone_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/extensions/symbol.rb, line 8</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">double_metaphone</span>
+  <span class="ruby-identifier">codes</span> = <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-constant">Metaphone</span>.<span class="ruby-identifier">double_metaphone</span> <span class="ruby-keyword">self</span>
+  <span class="ruby-identifier">codes</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">intern</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">codes</span>.<span class="ruby-identifier">empty?</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-each_intoken">
+            
+              <a name="method-i-each_intoken"></a><b>each_intoken</b>(min_length = 1, max_length = -1)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>:keys.each_intoken         # =&gt; yields each of [:keys, :key, :eys, :ke,
+:ey, :ys, :k, :e, :y, :s] :keys.each_intoken(2)      # =&gt; yields each of
+[:keys, :key, :eys, :ke, :ey, :ys] :keys.each_intoken(2, 3)   # =&gt;
+yields each of [:key, :eys, :ke, :ey, :ys] :keys.each_intoken(10, 12) #
+=&gt; yields nothing (min larger than sym)</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-each_intoken_source')" id="l_method-i-each_intoken_source">show</a>
+                
+              </p>
+              <div id="method-i-each_intoken_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/extensions/symbol.rb, line 50</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">each_intoken</span> <span class="ruby-identifier">min_length</span> = <span class="ruby-number">1</span>, <span class="ruby-identifier">max_length</span> = <span class="ruby-number">-1</span>
+  <span class="ruby-identifier">max_length</span> = <span class="ruby-identifier">size</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">max_length</span> <span class="ruby-operator">+</span> <span class="ruby-number">1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">max_length</span> <span class="ruby-operator">&lt;</span> <span class="ruby-number">0</span>
+  <span class="ruby-identifier">max_length</span> = <span class="ruby-identifier">size</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">size</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">max_length</span>
+  <span class="ruby-identifier">max_length</span> = <span class="ruby-number">1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">max_length</span> <span class="ruby-operator">&lt;</span> <span class="ruby-number">1</span>
+
+  <span class="ruby-identifier">min_length</span> = <span class="ruby-identifier">size</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">min_length</span> <span class="ruby-operator">+</span> <span class="ruby-number">1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">min_length</span> <span class="ruby-operator">&lt;</span> <span class="ruby-number">0</span>
+  <span class="ruby-identifier">min_length</span> = <span class="ruby-number">1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">min_length</span> <span class="ruby-operator">&lt;</span> <span class="ruby-number">1</span>
+
+  <span class="ruby-identifier">this_many</span> = <span class="ruby-identifier">size</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">max_length</span> <span class="ruby-operator">+</span> <span class="ruby-number">1</span>
+  <span class="ruby-identifier">max_length</span>.<span class="ruby-identifier">downto</span>(<span class="ruby-identifier">min_length</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">length</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">this_many</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">offset</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">yield</span> <span class="ruby-keyword">self</span>[<span class="ruby-identifier">offset</span>, <span class="ruby-identifier">length</span>].<span class="ruby-identifier">intern</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">this_many</span> <span class="ruby-operator">+=</span> <span class="ruby-number">1</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-each_subtoken">
+            
+              <a name="method-i-each_subtoken"></a><b>each_subtoken</b>(from_length = 1, range = nil)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>:keys.each_subtoken    # =&gt; yields each of [:keys, :key, :ke, :k]
+:keys.each_subtoken(2) # =&gt; yields each of [:keys, :key, :ke]</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-each_subtoken_source')" id="l_method-i-each_subtoken_source">show</a>
+                
+              </p>
+              <div id="method-i-each_subtoken_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/extensions/symbol.rb, line 30</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">each_subtoken</span> <span class="ruby-identifier">from_length</span> = <span class="ruby-number">1</span>, <span class="ruby-identifier">range</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">sub</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id2name</span>
+
+  <span class="ruby-identifier">sub</span> = <span class="ruby-identifier">sub</span>[<span class="ruby-identifier">range</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">range</span>
+
+  <span class="ruby-keyword">yield</span> <span class="ruby-identifier">sub</span>.<span class="ruby-identifier">intern</span>
+
+  <span class="ruby-identifier">size</span> = <span class="ruby-identifier">sub</span>.<span class="ruby-identifier">size</span>
+  <span class="ruby-identifier">from_length</span> = <span class="ruby-identifier">size</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">from_length</span> <span class="ruby-operator">+</span> <span class="ruby-number">1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">from_length</span> <span class="ruby-operator">&lt;</span> <span class="ruby-number">0</span>
+  <span class="ruby-identifier">from_length</span> = <span class="ruby-identifier">size</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">size</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">from_length</span>
+  <span class="ruby-identifier">from_length</span> = <span class="ruby-number">1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">from_length</span> <span class="ruby-operator">&lt;</span> <span class="ruby-number">1</span>
+
+  <span class="ruby-identifier">size</span>.<span class="ruby-identifier">downto</span>(<span class="ruby-identifier">from_length</span> <span class="ruby-operator">+</span> <span class="ruby-number">1</span>) { <span class="ruby-keyword">yield</span> <span class="ruby-identifier">sub</span>.<span class="ruby-identifier">chop!</span>.<span class="ruby-identifier">intern</span> }
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-metaphone">
+            
+              <a name="method-i-metaphone"></a><b>metaphone</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns a metaphone code for this symbol.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-metaphone_source')" id="l_method-i-metaphone_source">show</a>
+                
+              </p>
+              <div id="method-i-metaphone_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/extensions/symbol.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">metaphone</span>
+  <span class="ruby-identifier">code</span> = <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-constant">Metaphone</span>.<span class="ruby-identifier">metaphone</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-identifier">code</span>.<span class="ruby-identifier">intern</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">code</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-soundex">
+            
+              <a name="method-i-soundex"></a><b>soundex</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns a soundex code for this symbol.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-soundex_source')" id="l_method-i-soundex_source">show</a>
+                
+              </p>
+              <div id="method-i-soundex_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/extensions/symbol.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">soundex</span>
+  <span class="ruby-identifier">code</span> = <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-constant">Soundex</span>.<span class="ruby-identifier">soundex</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-identifier">code</span>.<span class="ruby-identifier">intern</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">code</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+    </div>
+  </body>
+</html>    

@@ -64,6 +64,18 @@ levenshtein.</p>
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
       
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-check_gem">check_gem</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
         <dt>N</dt>
         <dd>
           <ul>
@@ -164,6 +176,43 @@ levenshtein.</p>
                   
       <div class="sectiontitle">Instance Public methods</div>
       
+        <div class="method">
+          <div class="title method-title" id="method-i-check_gem">
+            
+              <a name="method-i-check_gem"></a><b>check_gem</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Tries to require the text gem.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-check_gem_source')" id="l_method-i-check_gem_source">show</a>
+                
+              </p>
+              <div id="method-i-check_gem_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/generators/similarity/phonetic.rb, line 30</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">check_gem</span>
+  <span class="ruby-identifier">require</span> <span class="ruby-string">'text'</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">LoadError</span>
+  <span class="ruby-identifier">warn_gem_missing</span> <span class="ruby-string">'text'</span>, <span class="ruby-string">'a phonetic Similarity'</span>
+  <span class="ruby-identifier">exit</span> <span class="ruby-number">1</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
         <div class="method">
           <div class="title method-title" id="method-i-prioritize">
             

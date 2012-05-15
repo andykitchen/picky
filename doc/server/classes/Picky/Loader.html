@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Picky::Loader</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Module</span> 
+            Picky::Loader 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/picky/loader_rb.html">lib/picky/loader.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>Loads the search engine and it</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>L</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-load">load</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-load_application">load_application</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-load_framework">load_framework</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-load_framework_internals">load_framework_internals</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-load_relative">load_relative</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-load_self">load_self</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-load_user">load_user</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-load_user_interface">load_user_interface</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-reload">reload</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-load">
+            
+              <a name="method-c-load"></a><b>load</b>(app_file = 'app')
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-load_application">
+            
+              <a name="method-c-load_application"></a><b>load_application</b>(file = 'app')
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Load the user’s application.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-load_application_source')" id="l_method-c-load_application_source">show</a>
+                
+              </p>
+              <div id="method-c-load_application_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/loader.rb, line 43</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">load_application</span> <span class="ruby-identifier">file</span> = <span class="ruby-string">'app'</span>
+  <span class="ruby-identifier">load_user</span> <span class="ruby-identifier">file</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">LoadError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+  <span class="ruby-identifier">exclaim</span> <span class="ruby-string">&quot;\nBy default, Picky needs/loads the PICKY_ROOT/app.rb file as the app.\n\n&quot;</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-identifier">e</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-load_framework">
+            
+              <a name="method-c-load_framework"></a><b>load_framework</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Loads the framework.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-load_framework_source')" id="l_method-c-load_framework_source">show</a>
+                
+              </p>
+              <div id="method-c-load_framework_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/loader.rb, line 269</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">load_framework</span>
+  <span class="ruby-identifier">load_framework_internals</span>
+  <span class="ruby-identifier">load_user_interface</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-load_framework_internals">
+            
+              <a name="method-c-load_framework_internals"></a><b>load_framework_internals</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Loads the internal parts of the framework. (Not for the user)</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-load_framework_internals_source')" id="l_method-c-load_framework_internals_source">show</a>
+                
+              </p>
+              <div id="method-c-load_framework_internals_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/loader.rb, line 53</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">load_framework_internals</span>
+  <span class="ruby-comment"># Load compiled C code.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'ext/maybe_compile'</span>
+
+  <span class="ruby-comment"># Load extensions.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'extensions/object'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'extensions/array'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'extensions/symbol'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'extensions/string'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'extensions/module'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'extensions/class'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'extensions/hash'</span>
+
+  <span class="ruby-comment"># Requiring Helpers</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'helpers/measuring'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'helpers/indexing'</span>
+
+  <span class="ruby-comment"># Calculations.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'calculations/location'</span>
+
+  <span class="ruby-comment"># Index generation strategies.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'indexers/base'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'indexers/serial'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'indexers/parallel'</span>
+
+  <span class="ruby-comment"># Generators.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'generators/strategy'</span>
+
+  <span class="ruby-comment"># Partial index generation strategies.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'generators/partial/strategy'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'generators/partial/none'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'generators/partial/substring'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'generators/partial/postfix'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'generators/partial/infix'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'generators/partial/default'</span>
+
+  <span class="ruby-comment"># Weight index generation strategies.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'generators/weights/strategy'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'generators/weights/stub'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'generators/weights/dynamic'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'generators/weights/constant'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'generators/weights/logarithmic'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'generators/weights/default'</span>
+
+  <span class="ruby-comment"># Similarity index generation strategies.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'generators/similarity/strategy'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'generators/similarity/none'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'generators/similarity/phonetic'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'generators/similarity/metaphone'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'generators/similarity/double_metaphone'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'generators/similarity/soundex'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'generators/similarity/default'</span>
+
+  <span class="ruby-comment"># Index store handling.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'backends/helpers/file'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'backends/backend'</span>
+
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'backends/prepared/text'</span>
+
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'backends/memory'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'backends/memory/basic'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'backends/memory/marshal'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'backends/memory/json'</span>
+
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'backends/file'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'backends/file/basic'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'backends/file/json'</span>
+
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'backends/redis'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'backends/redis/directly_manipulable'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'backends/redis/basic'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'backends/redis/list'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'backends/redis/string'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'backends/redis/float'</span>
+
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'backends/sqlite'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'backends/sqlite/directly_manipulable'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'backends/sqlite/basic'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'backends/sqlite/array'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'backends/sqlite/value'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'backends/sqlite/string_key_array'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'backends/sqlite/integer_key_array'</span>
+
+  <span class="ruby-comment"># Indexing and Indexed things.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'bundle'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'bundle_indexing'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'bundle_indexed'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'bundle_realtime'</span>
+
+  <span class="ruby-comment"># Wrappers.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'category/location'</span>
+
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'wrappers/bundle/delegators'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'wrappers/bundle/wrapper'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'wrappers/bundle/calculation'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'wrappers/bundle/location'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'wrappers/bundle/exact_partial'</span>
+
+  <span class="ruby-comment"># Tokens.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'query/token'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'query/tokens'</span>
+
+  <span class="ruby-comment"># Query combinations, qualifiers, weigher.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'query/combination'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'query/combinations'</span>
+
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'query/allocation'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'query/allocations'</span>
+
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'query/qualifier_category_mapper'</span>
+
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'query/boosts'</span>
+
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'query/indexes'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'query/indexes_check'</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-load_relative">
+            
+              <a name="method-c-load_relative"></a><b>load_relative</b>(filename_without_rb)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Load a file relative to this.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-load_relative_source')" id="l_method-c-load_relative_source">show</a>
+                
+              </p>
+              <div id="method-c-load_relative_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/loader.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">load_relative</span> <span class="ruby-identifier">filename_without_rb</span>
+  <span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">load</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword">__FILE__</span>), <span class="ruby-node">&quot;#{filename_without_rb}.rb&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-load_self">
+            
+              <a name="method-c-load_self"></a><b>load_self</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Loads this file anew.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-load_self_source')" id="l_method-c-load_self_source">show</a>
+                
+              </p>
+              <div id="method-c-load_self_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/loader.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">load_self</span>
+  <span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">load</span> <span class="ruby-keyword">__FILE__</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-load_user">
+            
+              <a name="method-c-load_user"></a><b>load_user</b>(filename)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Load a user file.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-load_user_source')" id="l_method-c-load_user_source">show</a>
+                
+              </p>
+              <div id="method-c-load_user_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/loader.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">load_user</span> <span class="ruby-identifier">filename</span>
+  <span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">load</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">PICKY_ROOT</span>, <span class="ruby-node">&quot;#{filename}.rb&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-load_user_interface">
+            
+              <a name="method-c-load_user_interface"></a><b>load_user_interface</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Loads the user interface parts.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-load_user_interface_source')" id="l_method-c-load_user_interface_source">show</a>
+                
+              </p>
+              <div id="method-c-load_user_interface_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/loader.rb, line 185</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">load_user_interface</span>
+  <span class="ruby-comment"># Load API parts.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'api/tokenizer'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'api/tokenizer/character_substituter'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'api/source'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'api/category/weight'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'api/category/partial'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'api/category/similarity'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'api/search/boost'</span>
+  
+  <span class="ruby-comment"># Loggers.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'loggers/silent'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'loggers/concise'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'loggers/verbose'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'loggers/default'</span>
+
+  <span class="ruby-comment"># Tokenizer.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'tokenizer'</span>
+
+  <span class="ruby-comment"># Load harakiri.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'rack/harakiri'</span>
+
+  <span class="ruby-comment"># Character Substituters</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'character_substituters/west_european'</span>
+
+  <span class="ruby-comment"># Convenience accessors for generators.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'generators/aliases'</span>
+
+  <span class="ruby-comment"># API.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'category'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'category_indexed'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'category_indexing'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'category_realtime'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'category_convenience'</span>
+
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'categories'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'categories_indexed'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'categories_indexing'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'categories_realtime'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'categories_convenience'</span>
+
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'indexes'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'indexes_indexed'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'indexes_indexing'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'indexes_convenience'</span>
+
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'index'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'index_indexed'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'index_indexing'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'index_realtime'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'index_convenience'</span>
+
+  <span class="ruby-comment"># Results.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'results'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'results/exact_first'</span>
+
+  <span class="ruby-comment"># Search.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'search'</span>
+
+  <span class="ruby-comment"># Interfaces</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'interfaces/live_parameters/master_child'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'interfaces/live_parameters/unicorn'</span>
+
+  <span class="ruby-comment"># Load tools. Load specifically?</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'scheduler'</span>
+
+  <span class="ruby-comment"># Load migration notices.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'migrations/from_30_to_31'</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-reload">
+            
+              <a name="method-c-reload"></a><b>reload</b>(app_file = 'app')
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Reloads the whole app. First itself, then the app.</p>
+            </div>
+          
+          
+          
+            <div class="aka">
+              Also aliased as: <a href="Loader.html#method-c-load">load</a>
+            </div>
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-reload_source')" id="l_method-c-reload_source">show</a>
+                
+              </p>
+              <div id="method-c-reload_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/loader.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">reload</span> <span class="ruby-identifier">app_file</span> = <span class="ruby-string">'app'</span>
+  <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">chdir</span> <span class="ruby-constant">PICKY_ROOT</span>
+  <span class="ruby-identifier">exclaim</span> <span class="ruby-string">'Reloading loader.'</span>
+  <span class="ruby-identifier">load_self</span>
+  <span class="ruby-identifier">exclaim</span> <span class="ruby-string">'Reloading framework.'</span>
+  <span class="ruby-identifier">load_framework</span>
+  <span class="ruby-identifier">exclaim</span> <span class="ruby-node">&quot;Reloading application in #{File.expand_path(app_file)}.&quot;</span>
+  <span class="ruby-identifier">load_application</span> <span class="ruby-identifier">app_file</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                        </div>
+    </div>
+  </body>
+</html>    

@@ -32,18 +32,42 @@
     <div id="bodyContent">
         <div id="content">
   
+    <div class="description">
+      
+<p>Removes unneeded Rails defaults.</p>
 
-
+    </div>
   
 
 
   
+
+
+  
   
 
 
   
 
 
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-extended">extended</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
   
 
   
@@ -63,7 +87,58 @@
 
 
     <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-extended">
+            
+              <a name="method-c-extended"></a><b>extended</b>(cap_config)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-extended_source')" id="l_method-c-extended_source">show</a>
+                
+              </p>
+              <div id="method-c-extended_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/deployment.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">extended</span> <span class="ruby-identifier">cap_config</span>
+  <span class="ruby-identifier">cap_config</span>.<span class="ruby-identifier">instance_eval</span> <span class="ruby-keyword">do</span>
+
+    <span class="ruby-identifier">namespace</span> <span class="ruby-value">:deploy</span> <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">tasks</span>.<span class="ruby-identifier">delete</span> <span class="ruby-value">:check</span>
+      <span class="ruby-identifier">tasks</span>.<span class="ruby-identifier">delete</span> <span class="ruby-value">:cold</span>
+      <span class="ruby-identifier">tasks</span>.<span class="ruby-identifier">delete</span> <span class="ruby-value">:migrations</span>
+      <span class="ruby-identifier">tasks</span>.<span class="ruby-identifier">delete</span> <span class="ruby-value">:migrate</span>
+      <span class="ruby-identifier">tasks</span>.<span class="ruby-identifier">delete</span> <span class="ruby-value">:upload</span>
+
+      <span class="ruby-identifier">namespace</span> <span class="ruby-value">:web</span> <span class="ruby-keyword">do</span>
+        <span class="ruby-identifier">tasks</span>.<span class="ruby-identifier">delete</span> <span class="ruby-value">:enable</span>
+        <span class="ruby-identifier">tasks</span>.<span class="ruby-identifier">delete</span> <span class="ruby-value">:disable</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
               </div>
+            </div>
+            
+          </div>
+                        </div>
     </div>
   </body>
 </html>    
