@@ -82,18 +82,6 @@ href="Combinations.html">Combinations</a>.</p>
           </ul>
         </dd>
       
-        <dt>H</dt>
-        <dd>
-          <ul>
-            
-              
-              <li>
-                <a href="#method-i-hash">hash</a>
-              </li>
-            
-          </ul>
-        </dd>
-      
         <dt>N</dt>
         <dd>
           <ul>
@@ -255,40 +243,6 @@ href="Combinations.html">Combinations</a>.</p>
           </div>
         
         <div class="method">
-          <div class="title method-title" id="method-i-hash">
-            
-              <a name="method-i-hash"></a><b>hash</b>()
-            
-          </div>
-          
-          
-            <div class="description">
-              
-            </div>
-          
-          
-          
-          
-          
-            
-            <div class="sourcecode">
-              
-              <p class="source-link">
-                Source: 
-                <a href="javascript:toggleSource('method-i-hash_source')" id="l_method-i-hash_source">show</a>
-                
-              </p>
-              <div id="method-i-hash_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/combinations.rb, line 25</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">hash</span>
-  <span class="ruby-ivar">@combinations</span>.<span class="ruby-identifier">hash</span>
-<span class="ruby-keyword">end</span></pre>
-              </div>
-            </div>
-            
-          </div>
-        
-        <div class="method">
           <div class="title method-title" id="method-i-remove">
             
               <a name="method-i-remove"></a><b>remove</b>(categories = [])
@@ -336,7 +290,9 @@ have an associated identifier that is nil.</p>
           
           
             <div class="description">
-              
+              <p>Sums up the weights of the combinations.</p>
+
+<p>Note: Optimized sum(&amp;:weight) away – ~3% improvement.</p>
             </div>
           
           
@@ -354,7 +310,7 @@ have an associated identifier that is nil.</p>
               <div id="method-i-score_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/query/combinations.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">score</span>
-  <span class="ruby-ivar">@combinations</span>.<span class="ruby-identifier">sum</span> &amp;<span class="ruby-value">:weight</span>
+  <span class="ruby-ivar">@combinations</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-number">0</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">total</span>, <span class="ruby-identifier">combination</span><span class="ruby-operator">|</span> <span class="ruby-identifier">total</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">combination</span>.<span class="ruby-identifier">weight</span> }
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>

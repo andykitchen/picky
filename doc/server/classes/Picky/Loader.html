@@ -217,7 +217,7 @@
                 
               </p>
               <div id="method-c-load_framework_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/loader.rb, line 269</span>
+                <pre><span class="ruby-comment"># File lib/picky/loader.rb, line 275</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">load_framework</span>
   <span class="ruby-identifier">load_framework_internals</span>
   <span class="ruby-identifier">load_user_interface</span>
@@ -256,7 +256,7 @@
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">load_framework_internals</span>
   <span class="ruby-comment"># Load compiled C code.</span>
   <span class="ruby-comment">#</span>
-  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'ext/maybe_compile'</span>
+  <span class="ruby-identifier">require_relative</span> <span class="ruby-string">'../performant'</span>
 
   <span class="ruby-comment"># Load extensions.</span>
   <span class="ruby-comment">#</span>
@@ -272,6 +272,10 @@
   <span class="ruby-comment">#</span>
   <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'helpers/measuring'</span>
   <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'helpers/indexing'</span>
+
+  <span class="ruby-comment"># Extension Modules</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'pool'</span>
 
   <span class="ruby-comment"># Calculations.</span>
   <span class="ruby-comment">#</span>
@@ -515,7 +519,7 @@
                 
               </p>
               <div id="method-c-load_user_interface_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/loader.rb, line 185</span>
+                <pre><span class="ruby-comment"># File lib/picky/loader.rb, line 189</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">load_user_interface</span>
   <span class="ruby-comment"># Load API parts.</span>
   <span class="ruby-comment">#</span>
@@ -573,6 +577,7 @@
   <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'index_indexed'</span>
   <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'index_indexing'</span>
   <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'index_realtime'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'index_facets'</span>
   <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'index_convenience'</span>
 
   <span class="ruby-comment"># Results.</span>
@@ -583,6 +588,7 @@
   <span class="ruby-comment"># Search.</span>
   <span class="ruby-comment">#</span>
   <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'search'</span>
+  <span class="ruby-identifier">load_relative</span> <span class="ruby-string">'search_facets'</span>
 
   <span class="ruby-comment"># Interfaces</span>
   <span class="ruby-comment">#</span>

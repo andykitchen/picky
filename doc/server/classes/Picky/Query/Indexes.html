@@ -224,7 +224,7 @@ memory and redis indexes just yet.</p>
                 
               </p>
               <div id="method-c-new_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 24</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 30</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> *<span class="ruby-identifier">indexes</span>
   <span class="ruby-constant">IndexesCheck</span>.<span class="ruby-identifier">check_backends</span> <span class="ruby-identifier">indexes</span>
 
@@ -264,7 +264,7 @@ memory and redis indexes just yet.</p>
                 
               </p>
               <div id="method-i-allocation_for_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 100</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 108</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">allocation_for</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">index</span>
   <span class="ruby-comment"># Expand the combinations.</span>
   <span class="ruby-comment">#</span>
@@ -310,7 +310,7 @@ memory and redis indexes just yet.</p>
                 
               </p>
               <div id="method-i-allocations_ary_for_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 95</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 103</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">allocations_ary_for</span> <span class="ruby-identifier">tokens</span>
   <span class="ruby-identifier">indexes</span>.<span class="ruby-identifier">inject</span>([]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">allocations</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">allocations</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">allocation_for</span>(<span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">index</span>)
@@ -346,7 +346,7 @@ memory and redis indexes just yet.</p>
                 
               </p>
               <div id="method-i-allocations_for_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 90</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 98</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">allocations_for</span> <span class="ruby-identifier">tokens</span>
   <span class="ruby-identifier">tokens</span>.<span class="ruby-identifier">categorize</span> <span class="ruby-ivar">@mapper</span>
 
@@ -460,7 +460,7 @@ memory and redis indexes just yet.</p>
                 
               </p>
               <div id="method-i-expand_combinations_from_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 172</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 180</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">expand_combinations_from</span> <span class="ruby-identifier">possible_combinations</span>
   <span class="ruby-comment"># If an element has size 0, this means one of the</span>
   <span class="ruby-comment"># tokens could not be allocated.</span>
@@ -555,7 +555,7 @@ end</pre>
                 
               </p>
               <div id="method-i-ignore_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 41</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 47</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ignore</span> *<span class="ruby-identifier">qualifiers</span>
   <span class="ruby-ivar">@ignored_categories</span> <span class="ruby-operator">||=</span> []
   <span class="ruby-ivar">@ignored_categories</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">qualifiers</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">qualifier</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@mapper</span>.<span class="ruby-identifier">map</span> <span class="ruby-identifier">qualifier</span> }.<span class="ruby-identifier">compact</span>
@@ -596,7 +596,7 @@ If not, why even have the categories?</p>
                 
               </p>
               <div id="method-i-only_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 56</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 62</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">only</span> *<span class="ruby-identifier">qualifiers</span>
   <span class="ruby-ivar">@mapper</span>.<span class="ruby-identifier">restrict_to</span> *<span class="ruby-identifier">qualifiers</span>
 <span class="ruby-keyword">end</span></pre>
@@ -631,13 +631,15 @@ given tokens.</p>
                 
               </p>
               <div id="method-i-prepared_allocations_for_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 62</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/indexes.rb, line 68</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">prepared_allocations_for</span> <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">weights</span> = {}, <span class="ruby-identifier">amount</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-identifier">allocations</span> = <span class="ruby-identifier">allocations_for</span> <span class="ruby-identifier">tokens</span>
 
-  <span class="ruby-comment"># Remove double allocations.</span>
+  <span class="ruby-comment"># Removed: Remove potential double allocations.</span>
   <span class="ruby-comment">#</span>
-  <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">uniq</span>
+  <span class="ruby-comment"># Note: allocations are unique by definition.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-comment"># allocations.uniq! unless tokens.uniq?</span>
 
   <span class="ruby-comment"># Score the allocations using weights as bias.</span>
   <span class="ruby-comment">#</span>

@@ -531,7 +531,7 @@ keep a reference to the result.</p>
               <div id="method-i-to_json_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/results.rb, line 80</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_json</span> <span class="ruby-identifier">options</span> = {}
-  <span class="ruby-constant">Yajl</span><span class="ruby-operator">::</span><span class="ruby-constant">Encoder</span>.<span class="ruby-identifier">encode</span> <span class="ruby-identifier">to_hash</span>, <span class="ruby-identifier">options</span>
+  <span class="ruby-constant">MultiJson</span>.<span class="ruby-identifier">encode</span> <span class="ruby-identifier">to_hash</span>, <span class="ruby-identifier">options</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>

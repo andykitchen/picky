@@ -35,6 +35,8 @@
             
             <li><a href="../../files/lib/picky/index_convenience_rb.html">lib/picky/index_convenience.rb</a></li>
             
+            <li><a href="../../files/lib/picky/index_facets_rb.html">lib/picky/index_facets.rb</a></li>
+            
             <li><a href="../../files/lib/picky/index_indexed_rb.html">lib/picky/index_indexed.rb</a></li>
             
             <li><a href="../../files/lib/picky/index_indexing_rb.html">lib/picky/index_indexing.rb</a></li>
@@ -215,6 +217,18 @@ href="Index.html">Index</a></strong>.</p>
               
               <li>
                 <a href="#method-i-check_source_empty">check_source_empty</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-facets">facets</a>
               </li>
             
           </ul>
@@ -656,6 +670,8 @@ query on categories with the identifier :title.</p>
 
 <h3 id="method-i-category-label-Options">Options</h3>
 <ul><li>
+<p>indexing: Pass in either a tokenizer or tokenizer options.</p>
+</li><li>
 <p>partial: Partial::None.new or Partial::Substring.new(from: starting_char,
 to: ending_char). Default is Partial::Substring.new(from: -3, to: -1).</p>
 </li><li>
@@ -696,7 +712,7 @@ category(:similar_title, :from =&gt; :title).</p>
                 
               </p>
               <div id="method-i-category_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/index.rb, line 172</span>
+                <pre><span class="ruby-comment"># File lib/picky/index.rb, line 173</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">category</span> <span class="ruby-identifier">category_name</span>, <span class="ruby-identifier">options</span> = {}
   <span class="ruby-identifier">new_category</span> = <span class="ruby-constant">Category</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">category_name</span>.<span class="ruby-identifier">intern</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">options</span>
   <span class="ruby-identifier">categories</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">new_category</span>
@@ -742,6 +758,48 @@ category(:similar_title, :from =&gt; :title).</p>
                 <pre><span class="ruby-comment"># File lib/picky/index_indexing.rb, line 60</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">check_source_empty</span>
   <span class="ruby-identifier">warn</span> <span class="ruby-node">%Q{\n\0033[1mWarning\0033[m, source for index &quot;#{name}&quot; is empty: #{source} (responds true to empty?).\n}</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">source</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:empty?</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">source</span>.<span class="ruby-identifier">empty?</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-facets">
+            
+              <a name="method-i-facets"></a><b>facets</b>(category_identifier, options = {})
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Return facets for a category in the form:</p>
+
+<pre class="ruby">{ <span class="ruby-identifier">text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">weight</span> } <span class="ruby-comment"># or ids.size?</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-facets_source')" id="l_method-i-facets_source">show</a>
+                
+              </p>
+              <div id="method-i-facets_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/index_facets.rb, line 8</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">facets</span> <span class="ruby-identifier">category_identifier</span>, <span class="ruby-identifier">options</span> = {}
+  <span class="ruby-identifier">weights</span> = <span class="ruby-keyword">self</span>[<span class="ruby-identifier">category_identifier</span>].<span class="ruby-identifier">exact</span>.<span class="ruby-identifier">weights</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">minimal_weight</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:more_than</span>]
+    <span class="ruby-identifier">weights</span>.<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">_</span>, <span class="ruby-identifier">weight</span><span class="ruby-operator">|</span> <span class="ruby-identifier">weight</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">minimal_weight</span> }
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">weights</span>
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -820,7 +878,7 @@ indexed simultaneously, since lat/lng are correlated.</p>
                 
               </p>
               <div id="method-i-geo_categories_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/index.rb, line 291</span>
+                <pre><span class="ruby-comment"># File lib/picky/index.rb, line 292</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">geo_categories</span> <span class="ruby-identifier">lat_name</span>, <span class="ruby-identifier">lng_name</span>, <span class="ruby-identifier">radius</span>, <span class="ruby-identifier">options</span> = {}
 
   <span class="ruby-comment"># Extract lat/lng specific options.</span>
@@ -878,7 +936,7 @@ indexed simultaneously, since lat/lng are correlated.</p>
                 
               </p>
               <div id="method-i-identifier_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/index.rb, line 331</span>
+                <pre><span class="ruby-comment"># File lib/picky/index.rb, line 332</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">identifier</span>
   <span class="ruby-identifier">name</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1185,7 +1243,7 @@ margin, slower) makes sense.</p>
                 
               </p>
               <div id="method-i-ranged_category_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/index.rb, line 245</span>
+                <pre><span class="ruby-comment"># File lib/picky/index.rb, line 246</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ranged_category</span> <span class="ruby-identifier">category_name</span>, <span class="ruby-identifier">range</span>, <span class="ruby-identifier">options</span> = {}
   <span class="ruby-identifier">precision</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:precision</span>) <span class="ruby-operator">||</span> <span class="ruby-number">1</span>
   <span class="ruby-identifier">anchor</span>    = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:anchor</span>)    <span class="ruby-operator">||</span> <span class="ruby-number">0.0</span>
@@ -1304,7 +1362,7 @@ category names (or the category from option).</p>
                 
               </p>
               <div id="method-i-to_s_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/index.rb, line 337</span>
+                <pre><span class="ruby-comment"># File lib/picky/index.rb, line 338</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
   <span class="ruby-node">&quot;#{self.class}(#{name}, result_id: #{result_identifier}, source: #{@source}, categories: #{categories})&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1338,7 +1396,7 @@ category names (or the category from option).</p>
                 
               </p>
               <div id="method-i-to_stats_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/index.rb, line 319</span>
+                <pre><span class="ruby-comment"># File lib/picky/index.rb, line 320</span>
     <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_stats</span>
       <span class="ruby-identifier">stats</span> = <span class="ruby-string">&quot;#{name} (#{self.class}):
 #{&quot;source:            #{source}&quot;.indented_to_s}

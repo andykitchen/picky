@@ -115,6 +115,8 @@
 
           <span class="ruby-keyword">if</span> <span class="ruby-identifier">thing</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:weight_for</span>
             <span class="ruby-identifier">thing</span>
+          <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">thing</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:to_int</span>
+            <span class="ruby-constant">Generators</span><span class="ruby-operator">::</span><span class="ruby-constant">Weights</span><span class="ruby-operator">::</span><span class="ruby-constant">Logarithmic</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">thing</span>
           <span class="ruby-keyword">else</span>
             <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;weight options for #{index_name}:#{name} should be either
 * for example a Weights::Logarithmic.new, Weights::Constant.new(int = 0), Weights::Dynamic.new(&amp;block) etc.

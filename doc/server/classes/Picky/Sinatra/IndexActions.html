@@ -124,7 +124,7 @@
       <span class="ruby-identifier">index</span> = <span class="ruby-constant">Picky</span><span class="ruby-operator">::</span><span class="ruby-constant">Indexes</span>[<span class="ruby-identifier">index_name</span>.<span class="ruby-identifier">to_sym</span>]
       <span class="ruby-identifier">data</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'data'</span>]
       <span class="ruby-keyword">return</span> <span class="ruby-number">400</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">data</span>
-      <span class="ruby-identifier">data</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">index</span>.<span class="ruby-identifier">replace_from</span>(<span class="ruby-constant">Yajl</span><span class="ruby-operator">::</span><span class="ruby-constant">Parser</span>.<span class="ruby-identifier">parse</span> <span class="ruby-identifier">data</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-number">200</span>
+      <span class="ruby-identifier">data</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">index</span>.<span class="ruby-identifier">replace_from</span>(<span class="ruby-constant">MultiJson</span>.<span class="ruby-identifier">decode</span> <span class="ruby-identifier">data</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-number">200</span>
     <span class="ruby-keyword">rescue</span> <span class="ruby-constant">IdNotGivenException</span>
       <span class="ruby-number">400</span>
     <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
@@ -143,7 +143,7 @@
     <span class="ruby-identifier">index_name</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'index'</span>]
     <span class="ruby-keyword">begin</span>
       <span class="ruby-identifier">index</span> = <span class="ruby-constant">Picky</span><span class="ruby-operator">::</span><span class="ruby-constant">Indexes</span>[<span class="ruby-identifier">index_name</span>.<span class="ruby-identifier">to_sym</span>]
-      <span class="ruby-identifier">data</span> = <span class="ruby-constant">Yajl</span><span class="ruby-operator">::</span><span class="ruby-constant">Parser</span>.<span class="ruby-identifier">parse</span> <span class="ruby-identifier">params</span>[<span class="ruby-string">'data'</span>]
+      <span class="ruby-identifier">data</span> = <span class="ruby-constant">MultiJson</span>.<span class="ruby-identifier">decode</span> <span class="ruby-identifier">params</span>[<span class="ruby-string">'data'</span>]
       <span class="ruby-identifier">id</span> = <span class="ruby-identifier">data</span>[<span class="ruby-string">'id'</span>]
       <span class="ruby-identifier">id</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">index</span>.<span class="ruby-identifier">remove</span>(<span class="ruby-identifier">id</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-number">200</span> <span class="ruby-operator">:</span> <span class="ruby-number">400</span>
     <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>

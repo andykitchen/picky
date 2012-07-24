@@ -161,7 +161,7 @@
   <span class="ruby-identifier">res</span> = <span class="ruby-identifier">db</span>.<span class="ruby-identifier">execute</span> <span class="ruby-string">&quot;SELECT value FROM key_value WHERE key = ? LIMIT 1&quot;</span>,
                    <span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_s</span>
 
-  <span class="ruby-identifier">array</span> = <span class="ruby-identifier">res</span>.<span class="ruby-identifier">blank?</span> <span class="ruby-operator">?</span> [] <span class="ruby-operator">:</span> <span class="ruby-constant">Yajl</span><span class="ruby-operator">::</span><span class="ruby-constant">Parser</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">res</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">first</span>)
+  <span class="ruby-identifier">array</span> = <span class="ruby-identifier">res</span>.<span class="ruby-identifier">blank?</span> <span class="ruby-operator">?</span> [] <span class="ruby-operator">:</span> <span class="ruby-constant">MultiJson</span>.<span class="ruby-identifier">decode</span>(<span class="ruby-identifier">res</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">first</span>)
   <span class="ruby-constant">DirectlyManipulable</span>.<span class="ruby-identifier">make</span> <span class="ruby-keyword">self</span>, <span class="ruby-identifier">array</span>, <span class="ruby-identifier">key</span>
   <span class="ruby-identifier">array</span>
 <span class="ruby-keyword">end</span></pre>
@@ -200,7 +200,7 @@
   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">array</span>.<span class="ruby-identifier">empty?</span>
     <span class="ruby-identifier">db</span>.<span class="ruby-identifier">execute</span> <span class="ruby-string">'INSERT OR REPLACE INTO key_value (key,value) VALUES (?,?)'</span>,
                <span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_s</span>,
-               <span class="ruby-constant">Yajl</span><span class="ruby-operator">::</span><span class="ruby-constant">Encoder</span>.<span class="ruby-identifier">encode</span>(<span class="ruby-identifier">array</span>)
+               <span class="ruby-constant">MultiJson</span>.<span class="ruby-identifier">encode</span>(<span class="ruby-identifier">array</span>)
   <span class="ruby-keyword">end</span>
 
   <span class="ruby-constant">DirectlyManipulable</span>.<span class="ruby-identifier">make</span> <span class="ruby-keyword">self</span>, <span class="ruby-identifier">array</span>, <span class="ruby-identifier">key</span>

@@ -228,7 +228,7 @@
 <span class="ruby-keyword">def</span> <span class="ruby-operator">[]</span> <span class="ruby-keyword ruby-title">key</span>
   <span class="ruby-identifier">length</span>, <span class="ruby-identifier">offset</span> = <span class="ruby-identifier">mapping</span>[<span class="ruby-identifier">key</span>]
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">length</span>
-  <span class="ruby-identifier">result</span> = <span class="ruby-constant">Yajl</span><span class="ruby-operator">::</span><span class="ruby-constant">Parser</span>.<span class="ruby-identifier">parse</span> <span class="ruby-constant">IO</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">cache_path</span>, <span class="ruby-identifier">length</span>, <span class="ruby-identifier">offset</span>)
+  <span class="ruby-identifier">result</span> = <span class="ruby-constant">MultiJson</span>.<span class="ruby-identifier">decode</span> <span class="ruby-constant">IO</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">cache_path</span>, <span class="ruby-identifier">length</span>, <span class="ruby-identifier">offset</span>)
   <span class="ruby-identifier">result</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
@@ -313,7 +313,7 @@ anymore, at least to the application.</pre>
   <span class="ruby-identifier">create_directory</span> <span class="ruby-identifier">cache_path</span>
   <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">cache_path</span>, <span class="ruby-string">'w:utf-8'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">out_file</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">object</span>)<span class="ruby-operator">|</span>
-      <span class="ruby-identifier">encoded</span> = <span class="ruby-constant">Yajl</span><span class="ruby-operator">::</span><span class="ruby-constant">Encoder</span>.<span class="ruby-identifier">encode</span> <span class="ruby-identifier">object</span>
+      <span class="ruby-identifier">encoded</span> = <span class="ruby-constant">MultiJson</span>.<span class="ruby-identifier">encode</span> <span class="ruby-identifier">object</span>
       <span class="ruby-identifier">length</span>  = <span class="ruby-identifier">encoded</span>.<span class="ruby-identifier">size</span>
       <span class="ruby-identifier">mapping</span>[<span class="ruby-identifier">key</span>] = [<span class="ruby-identifier">length</span>, <span class="ruby-identifier">offset</span>]
       <span class="ruby-identifier">offset</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">length</span>

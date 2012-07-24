@@ -68,6 +68,11 @@ constellations.</p>
             
               
               <li>
+                <a href="#method-i-2B">+</a>,
+              </li>
+            
+              
+              <li>
                 <a href="#method-i-3D-3D">==</a>
               </li>
             
@@ -185,6 +190,14 @@ constellations.</p>
             <td class='attr-desc'></td>
           </tr>
         
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>tokens</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
       </table>
     
 
@@ -267,6 +280,42 @@ Strings.</p>
       <div class="sectiontitle">Instance Public methods</div>
       
         <div class="method">
+          <div class="title method-title" id="method-i-2B">
+            
+              <a name="method-i-2B"></a><b>+</b>(other)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Non destructive.</p>
+
+<p>TODO Make destructive?</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-2B_source')" id="l_method-i-2B_source">show</a>
+                
+              </p>
+              <div id="method-i-2B_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/query/tokens.rb, line 88</span>
+<span class="ruby-keyword">def</span> <span class="ruby-operator">+</span> <span class="ruby-keyword ruby-title">other</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span> (<span class="ruby-ivar">@tokens</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">tokens</span>), (<span class="ruby-keyword">self</span>.<span class="ruby-identifier">ignore_unassigned</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">ignore_unassigned</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
           <div class="title method-title" id="method-i-3D-3D">
             
               <a name="method-i-3D-3D"></a><b>==</b>(other)
@@ -291,7 +340,7 @@ Strings.</p>
                 
               </p>
               <div id="method-i-3D-3D_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/tokens.rb, line 78</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/tokens.rb, line 80</span>
 <span class="ruby-keyword">def</span> <span class="ruby-operator">==</span> <span class="ruby-keyword ruby-title">other</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">tokens</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">tokens</span>
 <span class="ruby-keyword">end</span></pre>
@@ -514,7 +563,7 @@ Strings.</p>
                 
               </p>
               <div id="method-i-to_s_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/tokens.rb, line 84</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/tokens.rb, line 94</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
   <span class="ruby-identifier">originals</span>.<span class="ruby-identifier">join</span> <span class="ruby-string">' '</span>
 <span class="ruby-keyword">end</span></pre>

@@ -90,18 +90,6 @@ of <a href="Combinations.html">Combinations</a>.</p>
           </ul>
         </dd>
       
-        <dt>H</dt>
-        <dd>
-          <ul>
-            
-              
-              <li>
-                <a href="#method-i-hash">hash</a>
-              </li>
-            
-          </ul>
-        </dd>
-      
         <dt>I</dt>
         <dd>
           <ul>
@@ -311,42 +299,6 @@ of <a href="Combinations.html">Combinations</a>.</p>
           </div>
         
         <div class="method">
-          <div class="title method-title" id="method-i-hash">
-            
-              <a name="method-i-hash"></a><b>hash</b>()
-            
-          </div>
-          
-          
-            <div class="description">
-              <p>Note: Required for uniq!</p>
-
-<p>THINK Ok with category or is the bundle needed?</p>
-            </div>
-          
-          
-          
-          
-          
-            
-            <div class="sourcecode">
-              
-              <p class="source-link">
-                Source: 
-                <a href="javascript:toggleSource('method-i-hash_source')" id="l_method-i-hash_source">show</a>
-                
-              </p>
-              <div id="method-i-hash_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/combination.rb, line 58</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">hash</span>
-  [<span class="ruby-identifier">token</span>, <span class="ruby-identifier">category</span>].<span class="ruby-identifier">hash</span>
-<span class="ruby-keyword">end</span></pre>
-              </div>
-            </div>
-            
-          </div>
-        
-        <div class="method">
           <div class="title method-title" id="method-i-identifier">
             
               <a name="method-i-identifier"></a><b>identifier</b>()
@@ -446,7 +398,7 @@ of <a href="Combinations.html">Combinations</a>.</p>
                 
               </p>
               <div id="method-i-to_result_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/combination.rb, line 68</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/combination.rb, line 60</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_result</span>
   [<span class="ruby-identifier">category_name</span>, *<span class="ruby-identifier">token</span>.<span class="ruby-identifier">to_result</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -482,7 +434,7 @@ of <a href="Combinations.html">Combinations</a>.</p>
                 
               </p>
               <div id="method-i-to_s_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/combination.rb, line 75</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/combination.rb, line 67</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
   <span class="ruby-node">&quot;#{category.bundle_for(token).identifier}(#{to_result.join(':')})&quot;</span>
 <span class="ruby-keyword">end</span></pre>

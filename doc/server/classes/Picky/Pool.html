@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Picky::Pool</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Module</span> 
+            Picky::Pool 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/picky/pool_rb.html">lib/picky/pool.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p><a href="../Module.html">Module</a> that handles object pool behaviour for
+you.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-add">add</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-extended">extended</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-release_all">release_all</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-add">
+            
+              <a name="method-c-add"></a><b>add</b>(klass)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Add a <a href="Pool.html">Pool</a> to the managed pools.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-add_source')" id="l_method-c-add_source">show</a>
+                
+              </p>
+              <div id="method-c-add_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/pool.rb, line 14</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add</span> <span class="ruby-identifier">klass</span>
+  <span class="ruby-identifier">@@pools</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">klass</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-extended">
+            
+              <a name="method-c-extended"></a><b>extended</b>(klass)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-extended_source')" id="l_method-c-extended_source">show</a>
+                
+              </p>
+              <div id="method-c-extended_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/pool.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">extended</span> <span class="ruby-identifier">klass</span>
+  <span class="ruby-identifier">add</span> <span class="ruby-identifier">klass</span>
+  
+  <span class="ruby-keyword">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword ruby-title">klass</span>
+    <span class="ruby-comment">#</span>
+    <span class="ruby-comment">#</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">clear</span>
+      <span class="ruby-ivar">@__free__</span> = []
+      <span class="ruby-ivar">@__used__</span> = []
+    <span class="ruby-keyword">end</span>
+       
+    <span class="ruby-comment"># Obtain creates a new reference if there is no free one</span>
+    <span class="ruby-comment"># and uses an existing one if there is.</span>
+    <span class="ruby-comment">#</span>
+    <span class="ruby-comment"># (Any caches should be cleared using clear TODO in all initializers)</span>
+    <span class="ruby-comment">#</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">obtain</span> *<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>
+      <span class="ruby-keyword">unless</span> <span class="ruby-identifier">reference</span> = <span class="ruby-ivar">@__free__</span>.<span class="ruby-identifier">shift</span>
+        <span class="ruby-identifier">reference</span> = <span class="ruby-identifier">allocate</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">reference</span>.<span class="ruby-identifier">send</span> <span class="ruby-value">:initialize</span>, *<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>
+      <span class="ruby-ivar">@__used__</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">reference</span>
+      <span class="ruby-identifier">reference</span>
+    <span class="ruby-keyword">end</span>
+  
+    <span class="ruby-comment"># Releasing an instance adds it to the free pool.</span>
+    <span class="ruby-comment"># (And removes it from the used pool)</span>
+    <span class="ruby-comment">#</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">release</span> <span class="ruby-identifier">instance</span>
+       <span class="ruby-ivar">@__free__</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">instance</span>
+       <span class="ruby-ivar">@__used__</span>.<span class="ruby-identifier">delete</span> <span class="ruby-identifier">instance</span> <span class="ruby-comment"># TODO Optimize</span>
+    <span class="ruby-keyword">end</span>
+  
+    <span class="ruby-comment"># After you have called release all, you can't</span>
+    <span class="ruby-comment"># use any reference that has formerly been obtained</span>
+    <span class="ruby-comment"># anymore.</span>
+    <span class="ruby-comment">#</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">release_all</span>
+      <span class="ruby-ivar">@__used__</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">used</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@__free__</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">used</span> } <span class="ruby-comment"># TODO Optimize</span>
+      <span class="ruby-ivar">@__used__</span>.<span class="ruby-identifier">clear</span>
+    <span class="ruby-keyword">end</span>
+  
+    <span class="ruby-comment"># How many obtainable objects are there?</span>
+    <span class="ruby-comment">#</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">free_size</span>
+      <span class="ruby-ivar">@__free__</span>.<span class="ruby-identifier">size</span>
+    <span class="ruby-keyword">end</span>
+  
+    <span class="ruby-comment"># How many used objects are there?</span>
+    <span class="ruby-comment">#</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">used_size</span>
+      <span class="ruby-ivar">@__used__</span>.<span class="ruby-identifier">size</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-comment"># Initialize the pool.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">clear</span>
+
+  <span class="ruby-comment"># Pooled objects can be released using</span>
+  <span class="ruby-comment">#   object.release</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-comment"># Note: Do not use the object in any form after the release.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">send</span> <span class="ruby-value">:define_method</span>, <span class="ruby-value">:release</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">release</span> <span class="ruby-keyword">self</span>
+  <span class="ruby-keyword">end</span>
+  
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-release_all">
+            
+              <a name="method-c-release_all"></a><b>release_all</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Releases all obtained objects.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-release_all_source')" id="l_method-c-release_all_source">show</a>
+                
+              </p>
+              <div id="method-c-release_all_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/pool.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">release_all</span>
+  <span class="ruby-identifier">@@pools</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">pool</span><span class="ruby-operator">|</span> <span class="ruby-identifier">pool</span>.<span class="ruby-identifier">release_all</span> }
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                        </div>
+    </div>
+  </body>
+</html>    

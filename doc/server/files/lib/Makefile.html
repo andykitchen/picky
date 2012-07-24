@@ -5,13 +5,13 @@
 <head>
     <title>Makefile</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="../../../../../css/reset.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="../../../../../css/main.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="../../../../../css/github.css" type="text/css" media="screen" />
-<script src="../../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="../../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
-<script src="../../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
-<script src="../../../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
 
 </head>
 
@@ -22,8 +22,8 @@
             Makefile
         </h1>
         <ul class="files">
-            <li>lib/picky/ext/ruby19/Makefile</li>
-            <li>Last modified: 2011-10-26 15:14:17 +1100</li>
+            <li>lib/Makefile</li>
+            <li>Last modified: 2012-07-19 00:34:32 +1000</li>
         </ul>
     </div>
 
@@ -40,11 +40,12 @@ $(Q1:0=@) n=$(NULLCMD) ECHO1 = $(V:1=@$n) ECHO = $(ECHO1:0=@echo)</p>
 <p>#### Start of system configuration section. ####</p>
 
 <p>srcdir = . topdir =
-/Users/admin/.rbenv/versions/1.9.3-rc1/include/ruby-1.9.1 hdrdir =
-/Users/admin/.rbenv/versions/1.9.3-rc1/include/ruby-1.9.1 arch_hdrdir =
-/Users/admin/.rbenv/versions/1.9.3-rc1/include/ruby-1.9.1/$(arch) VPATH =
-$(srcdir):$(arch_hdrdir)/ruby:$(hdrdir)/ruby prefix =
-$(DESTDIR)/Users/admin/.rbenv/versions/1.9.3-rc1 rubylibprefix =
+/Volumes/HDD/Users/admin/.rbenv/versions/1.9.3-p0/include/ruby-1.9.1 hdrdir
+= /Volumes/HDD/Users/admin/.rbenv/versions/1.9.3-p0/include/ruby-1.9.1
+arch_hdrdir =
+/Volumes/HDD/Users/admin/.rbenv/versions/1.9.3-p0/include/ruby-1.9.1/$(arch)
+VPATH = $(srcdir):$(arch_hdrdir)/ruby:$(hdrdir)/ruby prefix =
+$(DESTDIR)/Volumes/HDD/Users/admin/.rbenv/versions/1.9.3-p0 rubylibprefix =
 $(libdir)/$(RUBY_BASE_NAME) exec_prefix = $(prefix) vendorhdrdir =
 $(rubyhdrdir)/vendor_ruby sitehdrdir = $(rubyhdrdir)/site_ruby rubyhdrdir =
 $(includedir)/$(RUBY_BASE_NAME)-$(ruby_version) vendordir =
@@ -64,7 +65,7 @@ vendorarchdir = $(vendorlibdir)/$(sitearch)</p>
 
 <p>NULLCMD = :</p>
 
-<p>CC = gcc-4.2 CXX = g++-4.2 LIBRUBY = $(LIBRUBY_A) LIBRUBY_A =
+<p>CC = /usr/bin/gcc CXX = g++-4.2 LIBRUBY = $(LIBRUBY_A) LIBRUBY_A =
 lib$(RUBY_SO_NAME)-static.a LIBRUBYARG_SHARED =  LIBRUBYARG_STATIC =
 -l$(RUBY_SO_NAME)-static OUTFLAG = -o  COUTFLAG = -o</p>
 
@@ -75,19 +76,20 @@ optflags = -O3 debugflags = -ggdb warnflags = -Wextra -Wno-unused-parameter
 -Wshorten-64-to-32 -Wimplicit-function-declaration CFLAGS   = -fno-common
 $(cflags)  -pipe  INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward
 -I$(hdrdir) -I$(srcdir) DEFS     =  CPPFLAGS = -DHAVE_RUBY_H
--I’/Users/admin/.rbenv/versions/1.9.3-rc1/include’  -D_XOPEN_SOURCE
--D_DARWIN_C_SOURCE $(DEFS) $(cppflags) CXXFLAGS = $(CFLAGS) $(cxxflags)
-ldflags  = -L. -L’/Users/admin/.rbenv/versions/1.9.3-rc1/lib’ 
--L/usr/local/lib dldflags = -Wl,-undefined,dynamic_lookup
--Wl,-multiply_defined,suppress -Wl,-flat_namespace ARCH_FLAG =  DLDFLAGS =
-$(ldflags) $(dldflags) LDSHARED = $(CC) -dynamic -bundle LDSHAREDXX =
-$(CXX) -dynamic -bundle AR = ar EXEEXT =</p>
+-I’/Volumes/HDD/Users/admin/.rbenv/versions/1.9.3-p0/include’ 
+-D_XOPEN_SOURCE -D_DARWIN_C_SOURCE $(DEFS) $(cppflags) CXXFLAGS = $(CFLAGS)
+$(cxxflags) ldflags  = -L.
+-L’/Volumes/HDD/Users/admin/.rbenv/versions/1.9.3-p0/lib’  -L/usr/local/lib
+dldflags = -Wl,-undefined,dynamic_lookup -Wl,-multiply_defined,suppress
+-Wl,-flat_namespace ARCH_FLAG =  DLDFLAGS = $(ldflags) $(dldflags) LDSHARED
+= $(CC) -dynamic -bundle LDSHAREDXX = $(CXX) -dynamic -bundle AR = ar
+EXEEXT =</p>
 
 <p>RUBY_BASE_NAME = ruby RUBY_INSTALL_NAME = ruby RUBY_SO_NAME = ruby arch =
 x86_64-darwin11.2.0 sitearch = $(arch) ruby_version = 1.9.1 ruby =
-/Users/admin/.rbenv/versions/1.9.3-rc1/bin/ruby RUBY = $(ruby) RM = rm -f
-RM_RF = $(RUBY) -run -e rm – -rf RMDIRS = rmdir -p MAKEDIRS = mkdir -p
-INSTALL = /usr/bin/install -c INSTALL_PROG = $(INSTALL) -m 0755
+/Volumes/HDD/Users/admin/.rbenv/versions/1.9.3-p0/bin/ruby RUBY = $(ruby)
+RM = rm -f RM_RF = $(RUBY) -run -e rm – -rf RMDIRS = rmdir -p MAKEDIRS =
+mkdir -p INSTALL = /usr/bin/install -c INSTALL_PROG = $(INSTALL) -m 0755
 INSTALL_DATA = $(INSTALL) -m 644 COPY = cp</p>
 
 <p>#### End of system configuration section. ####</p>

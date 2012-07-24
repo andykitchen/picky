@@ -472,7 +472,7 @@
     <span class="ruby-comment">#       implement each.</span>
     <span class="ruby-comment">#</span>
     <span class="ruby-identifier">internal</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">encoded_value</span> = <span class="ruby-constant">Yajl</span><span class="ruby-operator">::</span><span class="ruby-constant">Encoder</span>.<span class="ruby-identifier">encode</span> <span class="ruby-identifier">value</span>
+      <span class="ruby-identifier">encoded_value</span> = <span class="ruby-constant">MultiJson</span>.<span class="ruby-identifier">encode</span> <span class="ruby-identifier">value</span>
       <span class="ruby-identifier">db</span>.<span class="ruby-identifier">execute</span> <span class="ruby-string">'insert into key_value values (?,?)'</span>, <span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">encoded_value</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>

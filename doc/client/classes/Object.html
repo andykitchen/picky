@@ -117,7 +117,7 @@
                 
               </p>
               <div id="method-i-extract_categories_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky-client/spec/support/matchers/have_categories.rb, line 19</span>
+                <pre><span class="ruby-comment"># File lib/picky-client/spec/support/matchers/have_categories.rb, line 20</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">extract_categories</span> <span class="ruby-identifier">results</span>
   <span class="ruby-identifier">results</span>.<span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">allocation</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">allocation</span>[<span class="ruby-number">3</span>].<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">combination</span><span class="ruby-operator">|</span> <span class="ruby-identifier">combination</span>[<span class="ruby-number">0</span>] }

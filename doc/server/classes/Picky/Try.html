@@ -42,7 +42,9 @@
       
 <p><a href="Try.html">Try</a> is used by</p>
 
-<pre>rake try[index,category]</pre>
+<pre>rake try[text,index,category]</pre>
+
+<p>to test how the text would be indexed and processed during a search.</p>
 
     </div>
   
@@ -186,7 +188,7 @@
                 
               </p>
               <div id="method-c-new_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/tasks/try.rb, line 10</span>
+                <pre><span class="ruby-comment"># File lib/tasks/try.rb, line 11</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> <span class="ruby-identifier">text</span>, <span class="ruby-identifier">index</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">category</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-ivar">@text</span> = <span class="ruby-identifier">text</span>
   <span class="ruby-ivar">@specific</span> = <span class="ruby-constant">Picky</span><span class="ruby-operator">::</span><span class="ruby-constant">Indexes</span>
@@ -225,7 +227,7 @@
                 
               </p>
               <div id="method-i-output_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/tasks/try.rb, line 25</span>
+                <pre><span class="ruby-comment"># File lib/tasks/try.rb, line 26</span>
     <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">output</span>
       <span class="ruby-string">&quot;\&quot;#{text}\&quot; is saved in the #{specific.identifier} index as #{saved}
 \&quot;#{text}\&quot; as a search will be tokenized as #{searched}
@@ -263,7 +265,7 @@
                 
               </p>
               <div id="method-i-saved_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/tasks/try.rb, line 17</span>
+                <pre><span class="ruby-comment"># File lib/tasks/try.rb, line 18</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">saved</span>
   <span class="ruby-identifier">specific</span>.<span class="ruby-identifier">tokenizer</span>.<span class="ruby-identifier">tokenize</span>(<span class="ruby-identifier">text</span>.<span class="ruby-identifier">dup</span>).<span class="ruby-identifier">first</span>
 <span class="ruby-keyword">end</span></pre>
@@ -297,7 +299,7 @@
                 
               </p>
               <div id="method-i-searched_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/tasks/try.rb, line 21</span>
+                <pre><span class="ruby-comment"># File lib/tasks/try.rb, line 22</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">searched</span>
   <span class="ruby-constant">Picky</span><span class="ruby-operator">::</span><span class="ruby-constant">Tokenizer</span>.<span class="ruby-identifier">searching</span>.<span class="ruby-identifier">tokenize</span>(<span class="ruby-identifier">text</span>.<span class="ruby-identifier">dup</span>).<span class="ruby-identifier">first</span>
 <span class="ruby-keyword">end</span></pre>
@@ -331,7 +333,7 @@
                 
               </p>
               <div id="method-i-to_stdout_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/tasks/try.rb, line 34</span>
+                <pre><span class="ruby-comment"># File lib/tasks/try.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_stdout</span>
   <span class="ruby-identifier">puts</span> <span class="ruby-identifier">output</span>
 <span class="ruby-keyword">end</span></pre>

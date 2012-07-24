@@ -282,7 +282,7 @@ Maybe make combinations comparable to Symbols?</p>
               <div id="method-i-boost_for_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/query/boosts.rb, line 63</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">boost_for</span> <span class="ruby-identifier">combinations</span>
-  <span class="ruby-identifier">boost_for_categories</span> <span class="ruby-identifier">combinations</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:category_name</span>)
+  <span class="ruby-identifier">boost_for_categories</span> <span class="ruby-identifier">combinations</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">combination</span><span class="ruby-operator">|</span> <span class="ruby-identifier">combination</span>.<span class="ruby-identifier">category_name</span> }
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>

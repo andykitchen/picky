@@ -40,8 +40,12 @@
   
     <div class="description">
       
-<p>Uses a logarithmic weight. If for a key k we have x ids, the weight is:
-w(x): log(x) Special case: If x &lt; 1, then we use 0.</p>
+<p>Uses a logarithmic weight.</p>
+
+<p>If given a constant, this will be added to the weight.</p>
+
+<p>If for a key k we have x ids, the weight is: w(x): log(x) Special case: If
+x &lt; 1, then we use 0.</p>
 
     </div>
   
@@ -61,6 +65,18 @@ w(x): log(x) Special case: If x &lt; 1, then we use 0.</p>
     <!-- Method ref -->
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
       
         <dt>W</dt>
         <dd>
@@ -94,7 +110,52 @@ w(x): log(x) Special case: If x &lt; 1, then we use 0.</p>
 
 
     <!-- Methods -->
-        
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <a name="method-c-new"></a><b>new</b>(constant = 0.0)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/generators/weights/logarithmic.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> <span class="ruby-identifier">constant</span> = <span class="ruby-number">0.0</span>
+  <span class="ruby-ivar">@constant</span> = <span class="ruby-identifier">constant</span>
+  <span class="ruby-comment"># # Note: Optimisation since it is called</span>
+  <span class="ruby-comment"># # once per indexed object.</span>
+  <span class="ruby-comment"># #</span>
+  <span class="ruby-comment"># if constant == 0.0</span>
+  <span class="ruby-comment">#   install_without_constant</span>
+  <span class="ruby-comment"># else</span>
+  <span class="ruby-comment">#   @constant = constant</span>
+  <span class="ruby-comment">#   install_with_constant</span>
+  <span class="ruby-comment"># end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
       <div class="sectiontitle">Instance Public methods</div>
       
         <div class="method">
@@ -106,12 +167,7 @@ w(x): log(x) Special case: If x &lt; 1, then we use 0.</p>
           
           
             <div class="description">
-              <p>Sets the weight value.</p>
-
-<p>If the size is 0 or one, we would get -Infinity or 0.0. Thus we do not set
-a value if there is just one. The default, dynamically, is 0.</p>
-
-<p>BUT: We need the value, even if 0. To designate that there IS a weight!</p>
+              
             </div>
           
           
@@ -127,10 +183,10 @@ a value if there is just one. The default, dynamically, is 0.</p>
                 
               </p>
               <div id="method-i-weight_for_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/generators/weights/logarithmic.rb, line 21</span>
+                <pre><span class="ruby-comment"># File lib/picky/generators/weights/logarithmic.rb, line 30</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">weight_for</span> <span class="ruby-identifier">amount</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-number">0</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">amount</span> <span class="ruby-operator">&lt;</span> <span class="ruby-number">1</span>
-  <span class="ruby-constant">Math</span>.<span class="ruby-identifier">log</span>(<span class="ruby-identifier">amount</span>).<span class="ruby-identifier">round</span> <span class="ruby-number">3</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@constant</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">amount</span> <span class="ruby-operator">&lt;</span> <span class="ruby-number">1</span>
+  <span class="ruby-ivar">@constant</span> <span class="ruby-operator">+</span> <span class="ruby-constant">Math</span>.<span class="ruby-identifier">log</span>(<span class="ruby-identifier">amount</span>).<span class="ruby-identifier">round</span>(<span class="ruby-number">3</span>)
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>

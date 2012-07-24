@@ -189,7 +189,7 @@ href="Allocation.html">Allocation</a> s.</p>
             
               
               <li>
-                <a href="#method-i-uniq">uniq</a>
+                <a href="#method-i-uniq-21">uniq!</a>
               </li>
             
           </ul>
@@ -662,7 +662,7 @@ allocation2.to_result
               <div id="method-i-to_result_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/query/allocations.rb, line 156</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_result</span>
-  <span class="ruby-ivar">@allocations</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:to_result</span>).<span class="ruby-identifier">compact</span>
+  <span class="ruby-ivar">@allocations</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">allocation</span><span class="ruby-operator">|</span> <span class="ruby-identifier">allocation</span>.<span class="ruby-identifier">to_result</span> }.<span class="ruby-identifier">compact</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -738,9 +738,9 @@ allocation2.to_result
           </div>
         
         <div class="method">
-          <div class="title method-title" id="method-i-uniq">
+          <div class="title method-title" id="method-i-uniq-21">
             
-              <a name="method-i-uniq"></a><b>uniq</b>()
+              <a name="method-i-uniq-21"></a><b>uniq!</b>()
             
           </div>
           
@@ -758,12 +758,12 @@ allocation2.to_result
               
               <p class="source-link">
                 Source: 
-                <a href="javascript:toggleSource('method-i-uniq_source')" id="l_method-i-uniq_source">show</a>
+                <a href="javascript:toggleSource('method-i-uniq-21_source')" id="l_method-i-uniq-21_source">show</a>
                 
               </p>
-              <div id="method-i-uniq_source" class="dyn-source">
+              <div id="method-i-uniq-21_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/query/allocations.rb, line 141</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">uniq</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">uniq!</span>
   <span class="ruby-ivar">@allocations</span>.<span class="ruby-identifier">uniq!</span>
 <span class="ruby-keyword">end</span></pre>
               </div>

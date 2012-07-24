@@ -181,7 +181,10 @@
           
           
             <div class="description">
-              
+              <p>Dump <a href="JSON.html">JSON</a> into the cache file.</p>
+
+<p>TODO Ask MultiJson people to add IO option: MultiJson.encode(object,
+out_file)</p>
             </div>
           
           
@@ -197,10 +200,11 @@
                 
               </p>
               <div id="method-i-dump_json_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/memory/json.rb, line 32</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/memory/json.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">dump_json</span> <span class="ruby-identifier">internal</span>
   <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">cache_path</span>, <span class="ruby-string">'w'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">out_file</span><span class="ruby-operator">|</span>
-    <span class="ruby-constant">Yajl</span><span class="ruby-operator">::</span><span class="ruby-constant">Encoder</span>.<span class="ruby-identifier">encode</span> <span class="ruby-identifier">internal</span>, <span class="ruby-identifier">out_file</span>
+    <span class="ruby-comment"># MultiJson.encode internal, out_file</span>
+    <span class="ruby-identifier">out_file</span>.<span class="ruby-identifier">write</span> <span class="ruby-constant">MultiJson</span>.<span class="ruby-identifier">encode</span> <span class="ruby-identifier">internal</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
@@ -269,7 +273,7 @@
               <div id="method-i-load_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/backends/memory/json.rb, line 19</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">load</span>
-  <span class="ruby-constant">Yajl</span><span class="ruby-operator">::</span><span class="ruby-constant">Parser</span>.<span class="ruby-identifier">parse</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">cache_path</span>, <span class="ruby-string">'r'</span>) <span class="ruby-comment"># , symbolize_keys: true # TODO Symbols.</span>
+  <span class="ruby-constant">MultiJson</span>.<span class="ruby-identifier">decode</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">cache_path</span>, <span class="ruby-string">'r'</span>) <span class="ruby-comment"># , symbolize_keys: true # TODO Symbols.</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -301,7 +305,7 @@
                 
               </p>
               <div id="method-i-retrieve_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/backends/memory/json.rb, line 40</span>
+                <pre><span class="ruby-comment"># File lib/picky/backends/memory/json.rb, line 44</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">retrieve</span>
   <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;Can't retrieve from JSON file. Use text file.&quot;</span>
 <span class="ruby-keyword">end</span></pre>
