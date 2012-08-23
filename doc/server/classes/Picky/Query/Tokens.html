@@ -288,9 +288,7 @@ Strings.</p>
           
           
             <div class="description">
-              <p>Non destructive.</p>
-
-<p>TODO Make destructive?</p>
+              <p>Non-destructive addition.</p>
             </div>
           
           
@@ -306,7 +304,7 @@ Strings.</p>
                 
               </p>
               <div id="method-i-2B_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/tokens.rb, line 88</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/tokens.rb, line 86</span>
 <span class="ruby-keyword">def</span> <span class="ruby-operator">+</span> <span class="ruby-keyword ruby-title">other</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span> (<span class="ruby-ivar">@tokens</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">tokens</span>), (<span class="ruby-keyword">self</span>.<span class="ruby-identifier">ignore_unassigned</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">ignore_unassigned</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -563,7 +561,7 @@ Strings.</p>
                 
               </p>
               <div id="method-i-to_s_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/tokens.rb, line 94</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/tokens.rb, line 92</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
   <span class="ruby-identifier">originals</span>.<span class="ruby-identifier">join</span> <span class="ruby-string">' '</span>
 <span class="ruby-keyword">end</span></pre>

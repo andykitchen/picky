@@ -599,7 +599,7 @@ to #weight_for(amount_of_ids_for_token) and returns a float.</pre>
 
   <span class="ruby-ivar">@qualifiers</span> = <span class="ruby-identifier">extract_qualifiers_from</span> <span class="ruby-identifier">options</span>
 
-  <span class="ruby-comment"># @symbols    = options[:use_symbols] || index.use_symbols? # TODO Symbols.</span>
+  <span class="ruby-comment"># @symbols    = options[:use_symbols] || index.use_symbols? # SYMBOLS.</span>
 
   <span class="ruby-identifier">weights</span>    = <span class="ruby-identifier">extract_weight</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:weight</span>]
   <span class="ruby-identifier">partial</span>    = <span class="ruby-identifier">extract_partial</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:partial</span>]
@@ -719,7 +719,7 @@ to #weight_for(amount_of_ids_for_token) and returns a float.</pre>
               <div id="method-i-add_text_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/category_realtime.rb, line 60</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add_text</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">text</span>, <span class="ruby-identifier">where</span> = <span class="ruby-value">:unshift</span>
-  <span class="ruby-comment"># text = text.to_sym if @symbols # TODO Symbols.</span>
+  <span class="ruby-comment"># text = text.to_sym if @symbols # SYMBOLS.</span>
   <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">_</span> = <span class="ruby-identifier">tokenizer</span>.<span class="ruby-identifier">tokenize</span> <span class="ruby-identifier">text</span>
   <span class="ruby-identifier">tokens</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">text</span><span class="ruby-operator">|</span> <span class="ruby-identifier">add_tokenized_token</span> <span class="ruby-identifier">id</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">key_format</span>), <span class="ruby-identifier">text</span>, <span class="ruby-identifier">where</span>, <span class="ruby-keyword">false</span> }
 <span class="ruby-keyword">end</span></pre>
@@ -758,7 +758,7 @@ to #weight_for(amount_of_ids_for_token) and returns a float.</pre>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">text</span>
 
   <span class="ruby-identifier">id</span> = <span class="ruby-identifier">id</span>.<span class="ruby-identifier">send</span> <span class="ruby-identifier">key_format</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">format</span>
-  <span class="ruby-comment"># text = text.to_sym if @symbols # TODO Symbols.</span>
+  <span class="ruby-comment"># text = text.to_sym if @symbols # SYMBOLS.</span>
 
   <span class="ruby-identifier">exact</span>.<span class="ruby-identifier">add</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">text</span>, <span class="ruby-identifier">where</span>
   <span class="ruby-identifier">partial</span>.<span class="ruby-identifier">add_partialized</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">text</span>, <span class="ruby-identifier">where</span>
@@ -1332,7 +1332,7 @@ clear+dump?</p>
               <div id="method-i-index_directory_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/category.rb, line 142</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">index_directory</span>
-  <span class="ruby-ivar">@index_directory</span> <span class="ruby-operator">||=</span> <span class="ruby-node">&quot;#{PICKY_ROOT}/index/#{PICKY_ENVIRONMENT}/#{@index.name}&quot;</span>
+  <span class="ruby-ivar">@index_directory</span> <span class="ruby-operator">||=</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">PICKY_ROOT</span>, <span class="ruby-string">'index'</span>, <span class="ruby-constant">PICKY_ENVIRONMENT</span>, <span class="ruby-ivar">@index</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>)
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -1589,7 +1589,7 @@ one.</p>
               <div id="method-i-prepared_index_path_source" class="dyn-source">
                 <pre><span class="ruby-comment"># File lib/picky/category.rb, line 128</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">prepared_index_path</span>
-  <span class="ruby-ivar">@prepared_index_path</span> <span class="ruby-operator">||=</span> <span class="ruby-node">&quot;#{index_directory}/prepared_#{name}_index&quot;</span>
+  <span class="ruby-ivar">@prepared_index_path</span> <span class="ruby-operator">||=</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">index_directory</span>, <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>)
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>

@@ -315,7 +315,7 @@ href="Allocation.html">Allocation</a> s.</p>
                 
               </p>
               <div id="method-i-calculate_total_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/allocations.rb, line 135</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/allocations.rb, line 133</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">calculate_total</span>
   <span class="ruby-identifier">inject</span>(<span class="ruby-number">0</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">total</span>, <span class="ruby-identifier">allocation</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">total</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">allocation</span>.<span class="ruby-identifier">count</span> <span class="ruby-keyword">or</span> <span class="ruby-keyword">return</span> <span class="ruby-identifier">total</span>)
@@ -448,8 +448,6 @@ constraint in this method).</p>
 <p>Note: Slower than <a
 href="Allocations.html#method-i-process-21">process!</a> especially with
 large offsets.</p>
-
-<p>TODO Remove duplicate code.</p>
             </div>
           
           
@@ -465,13 +463,13 @@ large offsets.</p>
                 
               </p>
               <div id="method-i-process_unique-21_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/allocations.rb, line 109</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/allocations.rb, line 107</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">process_unique!</span> <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span> = <span class="ruby-number">0</span>, <span class="ruby-identifier">terminate_early</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-identifier">unique_ids</span> = []
   <span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">allocation</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">calculated_ids</span> = <span class="ruby-identifier">allocation</span>.<span class="ruby-identifier">process_with_illegals!</span> <span class="ruby-identifier">amount</span>, <span class="ruby-number">0</span>, <span class="ruby-identifier">unique_ids</span>
     <span class="ruby-identifier">projected_offset</span> = <span class="ruby-identifier">offset</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">allocation</span>.<span class="ruby-identifier">count</span>
-    <span class="ruby-identifier">unique_ids</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">calculated_ids</span> <span class="ruby-comment"># TODO uniq this?</span>
+    <span class="ruby-identifier">unique_ids</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">calculated_ids</span> <span class="ruby-comment"># uniq this? &lt;- No, slower than just leaving duplicates.</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">projected_offset</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-number">0</span>
       <span class="ruby-identifier">allocation</span>.<span class="ruby-identifier">ids</span>.<span class="ruby-identifier">slice!</span>(<span class="ruby-number">0</span>, <span class="ruby-identifier">offset</span>)
     <span class="ruby-keyword">end</span>
@@ -620,7 +618,7 @@ large offsets.</p>
                 
               </p>
               <div id="method-i-to_a_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/allocations.rb, line 145</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/allocations.rb, line 143</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_a</span>
   <span class="ruby-ivar">@allocations</span>
 <span class="ruby-keyword">end</span></pre>
@@ -660,7 +658,7 @@ allocation2.to_result
                 
               </p>
               <div id="method-i-to_result_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/allocations.rb, line 156</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/allocations.rb, line 154</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_result</span>
   <span class="ruby-ivar">@allocations</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">allocation</span><span class="ruby-operator">|</span> <span class="ruby-identifier">allocation</span>.<span class="ruby-identifier">to_result</span> }.<span class="ruby-identifier">compact</span>
 <span class="ruby-keyword">end</span></pre>
@@ -694,7 +692,7 @@ allocation2.to_result
                 
               </p>
               <div id="method-i-to_s_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/allocations.rb, line 162</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/allocations.rb, line 160</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
   <span class="ruby-identifier">to_result</span>.<span class="ruby-identifier">inspect</span>
 <span class="ruby-keyword">end</span></pre>
@@ -728,7 +726,7 @@ allocation2.to_result
                 
               </p>
               <div id="method-i-total_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/allocations.rb, line 132</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/allocations.rb, line 130</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">total</span>
   <span class="ruby-ivar">@total</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">calculate_total</span>
 <span class="ruby-keyword">end</span></pre>
@@ -762,7 +760,7 @@ allocation2.to_result
                 
               </p>
               <div id="method-i-uniq-21_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/allocations.rb, line 141</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/allocations.rb, line 139</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">uniq!</span>
   <span class="ruby-ivar">@allocations</span>.<span class="ruby-identifier">uniq!</span>
 <span class="ruby-keyword">end</span></pre>

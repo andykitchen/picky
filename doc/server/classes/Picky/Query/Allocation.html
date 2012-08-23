@@ -264,7 +264,7 @@ href="Allocations.html">Allocations</a> container.</p>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> <span class="ruby-identifier">index</span>, <span class="ruby-identifier">combinations</span>
   <span class="ruby-ivar">@combinations</span> = <span class="ruby-identifier">combinations</span>
 
-  <span class="ruby-comment"># TODO Could this be rewritten?</span>
+  <span class="ruby-comment"># THINK Could this be rewritten?</span>
   <span class="ruby-comment">#</span>
   <span class="ruby-ivar">@result_identifier</span> = <span class="ruby-identifier">index</span>.<span class="ruby-identifier">result_identifier</span>
   <span class="ruby-ivar">@backend</span>           = <span class="ruby-identifier">index</span>.<span class="ruby-identifier">backend</span>
@@ -301,7 +301,7 @@ href="Allocations.html">Allocations</a> container.</p>
                 
               </p>
               <div id="method-i-3C-3D-3E_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/allocation.rb, line 96</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/allocation.rb, line 99</span>
 <span class="ruby-keyword">def</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-keyword ruby-title">other_allocation</span>
    <span class="ruby-identifier">other_allocation</span>.<span class="ruby-identifier">score</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">score</span>
 <span class="ruby-keyword">end</span></pre>
@@ -321,7 +321,8 @@ href="Allocations.html">Allocations</a> container.</p>
             <div class="description">
               <p>Asks the backend for the (intersected) ids.</p>
 
-<p>TODO THINK Can the combinations be empty?</p>
+<p>Note: <a href="Combinations.html">Combinations</a> can be empty on eg.
+query “alan history” and category :title is ignored (ie. removed).</p>
             </div>
           
           
@@ -337,9 +338,9 @@ href="Allocations.html">Allocations</a> container.</p>
                 
               </p>
               <div id="method-i-calculate_ids_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/allocation.rb, line 50</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/allocation.rb, line 53</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">calculate_ids</span> <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>
-  <span class="ruby-keyword">return</span> [] <span class="ruby-keyword">if</span> <span class="ruby-ivar">@combinations</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-keyword">return</span> [] <span class="ruby-keyword">if</span> <span class="ruby-ivar">@combinations</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-comment"># Checked here to avoid checking in each backend.</span>
   <span class="ruby-ivar">@backend</span>.<span class="ruby-identifier">ids</span> <span class="ruby-ivar">@combinations</span>, <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
@@ -358,7 +359,8 @@ href="Allocations.html">Allocations</a> container.</p>
             <div class="description">
               <p>Asks the backend for the total score and adds the boosts to it.</p>
 
-<p>TODO THINK Can the combinations be empty?</p>
+<p>Note: <a href="Combinations.html">Combinations</a> can be empty on eg.
+query “alan history” and category :title is ignored (ie. removed).</p>
             </div>
           
           
@@ -374,14 +376,13 @@ href="Allocations.html">Allocations</a> container.</p>
                 
               </p>
               <div id="method-i-calculate_score_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/allocation.rb, line 37</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/allocation.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">calculate_score</span> <span class="ruby-identifier">weights</span>
-  <span class="ruby-ivar">@score</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@combinations</span>.<span class="ruby-identifier">empty?</span>
-    <span class="ruby-number">0</span>
-  <span class="ruby-keyword">else</span>
-    <span class="ruby-ivar">@backend</span>.<span class="ruby-identifier">weight</span>(<span class="ruby-ivar">@combinations</span>) <span class="ruby-operator">+</span>
-      <span class="ruby-ivar">@combinations</span>.<span class="ruby-identifier">boost_for</span>(<span class="ruby-identifier">weights</span>)
-  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@score</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@combinations</span>.<span class="ruby-identifier">empty?</span>                                                                                                     
+    <span class="ruby-number">0</span> <span class="ruby-comment"># Optimization.</span>
+  <span class="ruby-keyword">else</span>                                                                                                                                   
+    <span class="ruby-ivar">@backend</span>.<span class="ruby-identifier">weight</span>(<span class="ruby-ivar">@combinations</span>) <span class="ruby-operator">+</span> <span class="ruby-ivar">@combinations</span>.<span class="ruby-identifier">boost_for</span>(<span class="ruby-identifier">weights</span>)                                                                                                   
+  <span class="ruby-keyword">end</span> 
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -413,7 +414,7 @@ href="Allocations.html">Allocations</a> container.</p>
                 
               </p>
               <div id="method-i-ids_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/allocation.rb, line 57</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/allocation.rb, line 60</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ids</span>
   <span class="ruby-ivar">@ids</span> <span class="ruby-operator">||=</span> []
 <span class="ruby-keyword">end</span></pre>
@@ -454,7 +455,7 @@ href="Allocations.html">Allocations</a> container.</p>
                 
               </p>
               <div id="method-i-process-21_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/allocation.rb, line 69</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/allocation.rb, line 72</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">process!</span> <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>
   <span class="ruby-identifier">calculated_ids</span> = <span class="ruby-identifier">calculate_ids</span> <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>
   <span class="ruby-ivar">@count</span> = <span class="ruby-identifier">calculated_ids</span>.<span class="ruby-identifier">size</span>                         <span class="ruby-comment"># cache the count before throwing away the ids</span>
@@ -492,7 +493,7 @@ href="Allocations.html">Allocations</a> container.</p>
                 
               </p>
               <div id="method-i-process_with_illegals-21_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/allocation.rb, line 77</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/allocation.rb, line 80</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">process_with_illegals!</span> <span class="ruby-identifier">amount</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">illegal_ids</span>
   <span class="ruby-comment"># Note: Fairly inefficient calculation since it</span>
   <span class="ruby-comment"># assumes the worst case that the ids contain</span>
@@ -533,7 +534,7 @@ href="Allocations.html">Allocations</a> container.</p>
                 
               </p>
               <div id="method-i-remove_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/allocation.rb, line 90</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/allocation.rb, line 93</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">remove</span> <span class="ruby-identifier">categories</span> = []
   <span class="ruby-ivar">@combinations</span>.<span class="ruby-identifier">remove</span> <span class="ruby-identifier">categories</span>
 <span class="ruby-keyword">end</span></pre>
@@ -569,7 +570,7 @@ href="Allocations.html">Allocations</a> container.</p>
                 
               </p>
               <div id="method-i-to_json_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/allocation.rb, line 110</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/allocation.rb, line 113</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_json</span> <span class="ruby-identifier">options</span> = {}
   <span class="ruby-constant">MultiJson</span>.<span class="ruby-identifier">encode</span> <span class="ruby-identifier">to_result</span>, <span class="ruby-identifier">options</span>
 <span class="ruby-keyword">end</span></pre>
@@ -603,7 +604,7 @@ href="Allocations.html">Allocations</a> container.</p>
                 
               </p>
               <div id="method-i-to_result_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/allocation.rb, line 102</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/allocation.rb, line 105</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_result</span>
   [<span class="ruby-keyword">self</span>.<span class="ruby-identifier">result_identifier</span>, <span class="ruby-keyword">self</span>.<span class="ruby-identifier">score</span>, <span class="ruby-keyword">self</span>.<span class="ruby-identifier">count</span>, <span class="ruby-ivar">@combinations</span>.<span class="ruby-identifier">to_result</span>, <span class="ruby-keyword">self</span>.<span class="ruby-identifier">ids</span>] <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">&gt;</span> <span class="ruby-number">0</span>
 <span class="ruby-keyword">end</span></pre>
@@ -637,7 +638,7 @@ href="Allocations.html">Allocations</a> container.</p>
                 
               </p>
               <div id="method-i-to_s_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/allocation.rb, line 116</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/allocation.rb, line 119</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
   <span class="ruby-node">&quot;Allocation(#{to_result})&quot;</span>
 <span class="ruby-keyword">end</span></pre>

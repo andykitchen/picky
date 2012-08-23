@@ -109,7 +109,7 @@
                 
               </p>
               <div id="method-i-require_relative_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/platforms/macruby.rb, line 12</span>
+                <pre><span class="ruby-comment"># File lib/picky/platforms/macruby.rb, line 8</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">require_relative</span> <span class="ruby-identifier">relative_feature</span>
   <span class="ruby-identifier">file</span> = <span class="ruby-identifier">caller</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp">%r:\d/</span>,<span class="ruby-number">2</span>).<span class="ruby-identifier">first</span>
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">LoadError</span>, <span class="ruby-node">&quot;require_relative is called in #{$1}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-regexp">%r\A\((.*)\)/</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">file</span>

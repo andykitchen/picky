@@ -345,7 +345,7 @@ as param.</p>
                 
               </p>
               <div id="method-i-duration_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 65</span>
+                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 62</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">duration</span>
   <span class="ruby-ivar">@duration</span> <span class="ruby-operator">||</span> <span class="ruby-number">0</span>
 <span class="ruby-keyword">end</span></pre>
@@ -357,15 +357,13 @@ as param.</p>
         <div class="method">
           <div class="title method-title" id="method-i-ids">
             
-              <a name="method-i-ids"></a><b>ids</b>(only = nil)
+              <a name="method-i-ids"></a><b>ids</b>(only = amount)
             
           </div>
           
           
             <div class="description">
               <p>Delegates to allocations.</p>
-
-<p>TODO Remove parameter in 5.0 and just call the method with amount.</p>
 
 <p>Note that this is an expensive call and should not be done repeatedly. Just
 keep a reference to the result.</p>
@@ -384,9 +382,9 @@ keep a reference to the result.</p>
                 
               </p>
               <div id="method-i-ids_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 53</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ids</span> <span class="ruby-identifier">only</span> = <span class="ruby-keyword">nil</span>
-  <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">ids</span> <span class="ruby-identifier">only</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">amount</span>
+                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 50</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ids</span> <span class="ruby-identifier">only</span> = <span class="ruby-identifier">amount</span>
+  <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">ids</span> <span class="ruby-identifier">only</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -420,7 +418,7 @@ keep a reference to the result.</p>
                 
               </p>
               <div id="method-i-log_type_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 95</span>
+                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 92</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">log_type</span>
   <span class="ruby-identifier">amount</span>.<span class="ruby-identifier">zero?</span><span class="ruby-operator">?</span> <span class="ruby-value">:'.'</span> <span class="ruby-operator">:</span> <span class="ruby-value">:'&gt;'</span>
 <span class="ruby-keyword">end</span></pre>
@@ -492,7 +490,7 @@ keep a reference to the result.</p>
                 
               </p>
               <div id="method-i-to_hash_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 71</span>
+                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 68</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_hash</span>
   { <span class="ruby-identifier">allocations</span><span class="ruby-operator">:</span> <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">to_result</span>,
     <span class="ruby-identifier">offset</span><span class="ruby-operator">:</span>      <span class="ruby-identifier">offset</span>,
@@ -529,7 +527,7 @@ keep a reference to the result.</p>
                 
               </p>
               <div id="method-i-to_json_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 80</span>
+                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 77</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_json</span> <span class="ruby-identifier">options</span> = {}
   <span class="ruby-constant">MultiJson</span>.<span class="ruby-identifier">encode</span> <span class="ruby-identifier">to_hash</span>, <span class="ruby-identifier">options</span>
 <span class="ruby-keyword">end</span></pre>
@@ -563,7 +561,7 @@ keep a reference to the result.</p>
                 
               </p>
               <div id="method-i-to_s_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 87</span>
+                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 84</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
   <span class="ruby-node">&quot;#{log_type}|#{Time.now.strftime @@log_time_format}|#{'%8f' % duration}|#{'%-50s' % query}|#{'%8d' % total}|#{'%4d' % offset}|#{'%2d' % allocations.size}|&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -597,7 +595,7 @@ keep a reference to the result.</p>
                 
               </p>
               <div id="method-i-total_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 59</span>
+                <pre><span class="ruby-comment"># File lib/picky/results.rb, line 56</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">total</span>
   <span class="ruby-ivar">@total</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">total</span> <span class="ruby-operator">||</span> <span class="ruby-number">0</span>
 <span class="ruby-keyword">end</span></pre>

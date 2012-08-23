@@ -195,7 +195,7 @@
                 
               </p>
               <div id="method-i-exclaim_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/extensions/object.rb, line 14</span>
+                <pre><span class="ruby-comment"># File lib/picky/extensions/object.rb, line 12</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">exclaim</span> <span class="ruby-identifier">text</span>
   <span class="ruby-constant">Picky</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span> <span class="ruby-identifier">text</span>
   <span class="ruby-constant">Picky</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">flush</span>
@@ -230,7 +230,7 @@
                 
               </p>
               <div id="method-i-indented_to_s_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/extensions/object.rb, line 27</span>
+                <pre><span class="ruby-comment"># File lib/picky/extensions/object.rb, line 25</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">indented_to_s</span> <span class="ruby-identifier">amount</span> = <span class="ruby-number">2</span>
   <span class="ruby-identifier">ary</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:join</span>) <span class="ruby-operator">?</span> <span class="ruby-keyword">self</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;\n&quot;</span>)
   <span class="ruby-identifier">ary</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{&quot; &quot;*amount}#{s}&quot;</span>}.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;\n&quot;</span>)
@@ -267,7 +267,7 @@
                 
               </p>
               <div id="method-i-timed_exclaim_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/extensions/object.rb, line 8</span>
+                <pre><span class="ruby-comment"># File lib/picky/extensions/object.rb, line 6</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">timed_exclaim</span> <span class="ruby-identifier">text</span>
   <span class="ruby-identifier">exclaim</span> <span class="ruby-node">&quot;#{Time.now.strftime(&quot;%H:%M:%S&quot;)}: #{text}&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -301,7 +301,7 @@
                 
               </p>
               <div id="method-i-warn_gem_missing_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/extensions/object.rb, line 21</span>
+                <pre><span class="ruby-comment"># File lib/picky/extensions/object.rb, line 19</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">warn_gem_missing</span> <span class="ruby-identifier">gem_name</span>, <span class="ruby-identifier">message</span>
   <span class="ruby-identifier">warn</span> <span class="ruby-node">&quot;#{gem_name} gem missing!\nTo use #{message}, you need to:\n  1. Add the following line to Gemfile:\n     gem '#{gem_name}'\n     or\n     require '#{gem_name}'\n     for example at the top of your app.rb file.\n  2. Then, run:\n     bundle update\n&quot;</span>
 <span class="ruby-keyword">end</span></pre>

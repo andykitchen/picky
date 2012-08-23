@@ -673,7 +673,7 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-add_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_realtime.rb, line 36</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle_realtime.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">str_or_sym</span>, <span class="ruby-identifier">where</span> = <span class="ruby-value">:unshift</span>
   <span class="ruby-identifier">str_or_syms</span> = <span class="ruby-ivar">@realtime</span>[<span class="ruby-identifier">id</span>] <span class="ruby-operator">||=</span> []
 
@@ -734,7 +734,7 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-add_partialized_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_realtime.rb, line 84</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle_realtime.rb, line 87</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add_partialized</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">text</span>, <span class="ruby-identifier">where</span> = <span class="ruby-value">:unshift</span>
   <span class="ruby-identifier">partialized</span> <span class="ruby-identifier">text</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">partial_text</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">add</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">partial_text</span>, <span class="ruby-identifier">where</span>
@@ -770,7 +770,7 @@ running etc. (Find these in Indexed::Bundle)</p>
                 
               </p>
               <div id="method-i-add_similarity_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_realtime.rb, line 69</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle_realtime.rb, line 72</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add_similarity</span> <span class="ruby-identifier">str_or_sym</span>, <span class="ruby-identifier">where</span> = <span class="ruby-value">:unshift</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">encoded</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">similarity_strategy</span>.<span class="ruby-identifier">encode</span>(<span class="ruby-identifier">str_or_sym</span>)
     <span class="ruby-identifier">similars</span> = <span class="ruby-ivar">@similarity</span>[<span class="ruby-identifier">encoded</span>] <span class="ruby-operator">||=</span> []
@@ -833,11 +833,10 @@ running etc. (Find these in Indexed::Bundle)</p>
             <div class="description">
               <p>Builds the realtime mapping.</p>
 
-<p>Note: Experimental feature. Might be removed in 4.0.</p>
+<p>Note: Experimental feature. Might be removed in 5.0.</p>
 
-<p>TODO Subset of <a href="Bundle.html#method-i-add">add</a>. Rewrite,
-optimize. THINK Maybe load it and just replace the arrays with the
-corresponding ones.</p>
+<p>THINK Maybe load it and just replace the arrays with the corresponding
+ones.</p>
             </div>
           
           
@@ -853,7 +852,7 @@ corresponding ones.</p>
                 
               </p>
               <div id="method-i-build_realtime_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_realtime.rb, line 100</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle_realtime.rb, line 102</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">build_realtime</span>
   <span class="ruby-identifier">clear_realtime</span>
   <span class="ruby-ivar">@inverted</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">str_or_sym</span>, <span class="ruby-identifier">ids</span><span class="ruby-operator">|</span>
@@ -1674,7 +1673,7 @@ itself pretends to be an index.</p>
                 
               </p>
               <div id="method-i-partialized_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/bundle_realtime.rb, line 89</span>
+                <pre><span class="ruby-comment"># File lib/picky/bundle_realtime.rb, line 92</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">partialized</span> <span class="ruby-identifier">text</span>, &amp;<span class="ruby-identifier">block</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">partial_strategy</span>.<span class="ruby-identifier">each_partial</span> <span class="ruby-identifier">text</span>, &amp;<span class="ruby-identifier">block</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1725,7 +1724,10 @@ itself pretends to be an index.</p>
       <span class="ruby-ivar">@weights</span>.<span class="ruby-identifier">delete</span>  <span class="ruby-identifier">str_or_sym</span>
 
       <span class="ruby-comment"># Since no element uses this sym anymore, we can delete the similarity for it.</span>
+      <span class="ruby-comment">#</span>
       <span class="ruby-comment"># TODO Not really. Since multiple syms can point to the same encoded.</span>
+      <span class="ruby-comment"># In essence, we don't know if and when we can remove it.</span>
+      <span class="ruby-comment"># (One idea is to add an array of ids and remove from that)</span>
       <span class="ruby-comment">#</span>
       <span class="ruby-ivar">@similarity</span>.<span class="ruby-identifier">delete</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">similarity_strategy</span>.<span class="ruby-identifier">encode</span>(<span class="ruby-identifier">str_or_sym</span>)
     <span class="ruby-keyword">else</span>

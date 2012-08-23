@@ -68,6 +68,18 @@ you.</p>
           </ul>
         </dd>
       
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-clear">clear</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
         <dt>E</dt>
         <dd>
           <ul>
@@ -75,6 +87,18 @@ you.</p>
               
               <li>
                 <a href="#method-c-extended">extended</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-install">install</a>
               </li>
             
           </ul>
@@ -124,7 +148,7 @@ you.</p>
           
           
             <div class="description">
-              <p>Add a <a href="Pool.html">Pool</a> to the managed pools.</p>
+              <p>Add a pooled class to the managed pools.</p>
             </div>
           
           
@@ -140,9 +164,44 @@ you.</p>
                 
               </p>
               <div id="method-c-add_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/pool.rb, line 14</span>
+                <pre><span class="ruby-comment"># File lib/picky/pool.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add</span> <span class="ruby-identifier">klass</span>
-  <span class="ruby-identifier">@@pools</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">klass</span>
+  <span class="ruby-ivar">@pools</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">klass</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-clear">
+            
+              <a name="method-c-clear"></a><b>clear</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Initialise/Reset the pool.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-clear_source')" id="l_method-c-clear_source">show</a>
+                
+              </p>
+              <div id="method-c-clear_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/pool.rb, line 28</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">clear</span>
+  <span class="ruby-identifier">require</span> <span class="ruby-string">'set'</span>
+  <span class="ruby-ivar">@pools</span> = <span class="ruby-constant">Set</span>.<span class="ruby-identifier">new</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -174,12 +233,13 @@ you.</p>
                 
               </p>
               <div id="method-c-extended_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/pool.rb, line 26</span>
+                <pre><span class="ruby-comment"># File lib/picky/pool.rb, line 51</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">extended</span> <span class="ruby-identifier">klass</span>
   <span class="ruby-identifier">add</span> <span class="ruby-identifier">klass</span>
   
   <span class="ruby-keyword">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword ruby-title">klass</span>
-    <span class="ruby-comment">#</span>
+    
+    <span class="ruby-comment"># Initialise/Reset the class pool.</span>
     <span class="ruby-comment">#</span>
     <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">clear</span>
       <span class="ruby-ivar">@__free__</span> = []
@@ -189,9 +249,7 @@ you.</p>
     <span class="ruby-comment"># Obtain creates a new reference if there is no free one</span>
     <span class="ruby-comment"># and uses an existing one if there is.</span>
     <span class="ruby-comment">#</span>
-    <span class="ruby-comment"># (Any caches should be cleared using clear TODO in all initializers)</span>
-    <span class="ruby-comment">#</span>
-    <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">obtain</span> *<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">new</span> *<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>
       <span class="ruby-keyword">unless</span> <span class="ruby-identifier">reference</span> = <span class="ruby-ivar">@__free__</span>.<span class="ruby-identifier">shift</span>
         <span class="ruby-identifier">reference</span> = <span class="ruby-identifier">allocate</span>
       <span class="ruby-keyword">end</span>
@@ -205,7 +263,10 @@ you.</p>
     <span class="ruby-comment">#</span>
     <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">release</span> <span class="ruby-identifier">instance</span>
        <span class="ruby-ivar">@__free__</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">instance</span>
-       <span class="ruby-ivar">@__used__</span>.<span class="ruby-identifier">delete</span> <span class="ruby-identifier">instance</span> <span class="ruby-comment"># TODO Optimize</span>
+       
+       <span class="ruby-comment"># Note: This is relatively fast as there are often only</span>
+       <span class="ruby-comment"># few instances in the used pool.</span>
+       <span class="ruby-ivar">@__used__</span>.<span class="ruby-identifier">delete</span> <span class="ruby-identifier">instance</span> 
     <span class="ruby-keyword">end</span>
   
     <span class="ruby-comment"># After you have called release all, you can't</span>
@@ -213,7 +274,7 @@ you.</p>
     <span class="ruby-comment"># anymore.</span>
     <span class="ruby-comment">#</span>
     <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">release_all</span>
-      <span class="ruby-ivar">@__used__</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">used</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@__free__</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">used</span> } <span class="ruby-comment"># TODO Optimize</span>
+      <span class="ruby-ivar">@__free__</span> <span class="ruby-operator">+=</span> <span class="ruby-ivar">@__used__</span>
       <span class="ruby-ivar">@__used__</span>.<span class="ruby-identifier">clear</span>
     <span class="ruby-keyword">end</span>
   
@@ -250,6 +311,50 @@ you.</p>
           </div>
         
         <div class="method">
+          <div class="title method-title" id="method-c-install">
+            
+              <a name="method-c-install"></a><b>install</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Installs itself on a few internal classes.</p>
+
+<p>Note: If you need to run two consecutive queries, this can’t be used.</p>
+
+<p>TODO Also install calling <a
+href="Pool.html#method-c-release_all">::release_all</a> after each query.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-install_source')" id="l_method-c-install_source">show</a>
+                
+              </p>
+              <div id="method-c-install_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/picky/pool.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">install</span>
+  <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Token</span>.<span class="ruby-identifier">extend</span> <span class="ruby-keyword">self</span>
+  <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Tokens</span>.<span class="ruby-identifier">extend</span> <span class="ruby-keyword">self</span>
+  <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Combination</span>.<span class="ruby-identifier">extend</span> <span class="ruby-keyword">self</span>
+  <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Combinations</span>.<span class="ruby-identifier">extend</span> <span class="ruby-keyword">self</span>
+  <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Allocation</span>.<span class="ruby-identifier">extend</span> <span class="ruby-keyword">self</span>
+  <span class="ruby-constant">Query</span><span class="ruby-operator">::</span><span class="ruby-constant">Allocations</span>.<span class="ruby-identifier">extend</span> <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
           <div class="title method-title" id="method-c-release_all">
             
               <a name="method-c-release_all"></a><b>release_all</b>()
@@ -274,9 +379,9 @@ you.</p>
                 
               </p>
               <div id="method-c-release_all_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/pool.rb, line 20</span>
+                <pre><span class="ruby-comment"># File lib/picky/pool.rb, line 41</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">release_all</span>
-  <span class="ruby-identifier">@@pools</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">pool</span><span class="ruby-operator">|</span> <span class="ruby-identifier">pool</span>.<span class="ruby-identifier">release_all</span> }
+  <span class="ruby-ivar">@pools</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">pool</span><span class="ruby-operator">|</span> <span class="ruby-identifier">pool</span>.<span class="ruby-identifier">release_all</span> }
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>

@@ -307,6 +307,14 @@ is a partial (bla*).</p>
         
           <tr valign='top'>
             <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>predefined_categories</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
               [W]
             </td>
             <td class='attr-name'>similar</td>
@@ -318,14 +326,6 @@ is a partial (bla*).</p>
               [R]
             </td>
             <td class='attr-name'>text</td>
-            <td class='attr-desc'></td>
-          </tr>
-        
-          <tr valign='top'>
-            <td class='attr-rw'>
-              [RW]
-            </td>
-            <td class='attr-name'>user_defined_categories</td>
             <td class='attr-desc'></td>
           </tr>
         
@@ -364,11 +364,11 @@ is a partial (bla*).</p>
                 
               </p>
               <div id="method-c-new_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 28</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 25</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span> <span class="ruby-identifier">text</span>, <span class="ruby-identifier">original</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">categories</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-ivar">@text</span>     = <span class="ruby-identifier">text</span>
   <span class="ruby-ivar">@original</span> = <span class="ruby-identifier">original</span>
-  <span class="ruby-ivar">@user_defined_categories</span> = <span class="ruby-identifier">categories</span>
+  <span class="ruby-ivar">@predefined_categories</span> = <span class="ruby-identifier">categories</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -411,7 +411,7 @@ try.search(&quot;tes?&quot;) # Won't find &quot;test&quot;.</pre>
                 
               </p>
               <div id="method-c-no_partial_character-3D_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 124</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 119</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">no_partial_character=</span> <span class="ruby-identifier">character</span>
   <span class="ruby-identifier">@@no_partial_character</span> = <span class="ruby-identifier">character</span>
   <span class="ruby-identifier">@@no_partial</span> = <span class="ruby-node">%r{#{character}\z}</span>
@@ -457,7 +457,7 @@ try.search(&quot;tost?&quot;) # Won't find &quot;test&quot;.</pre>
                 
               </p>
               <div id="method-c-no_similar_character-3D_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 169</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 164</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">no_similar_character=</span> <span class="ruby-identifier">character</span>
   <span class="ruby-identifier">@@no_similar_character</span> = <span class="ruby-identifier">character</span>
   <span class="ruby-identifier">@@no_similar</span> = <span class="ruby-node">%r{#{character}\z}</span>
@@ -502,7 +502,7 @@ try.search(&quot;tes?&quot;) # Will find &quot;test&quot;.</pre>
                 
               </p>
               <div id="method-c-partial_character-3D_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 139</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 134</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">partial_character=</span> <span class="ruby-identifier">character</span>
   <span class="ruby-identifier">@@partial_character</span> = <span class="ruby-identifier">character</span>
   <span class="ruby-identifier">@@partial</span> = <span class="ruby-node">%r{#{character}\z}</span>
@@ -541,7 +541,7 @@ token. I.e. one prepared for a search.</p>
                 
               </p>
               <div id="method-c-processed_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 40</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 37</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">processed</span> <span class="ruby-identifier">text</span>, <span class="ruby-identifier">original</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-identifier">new</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">original</span>).<span class="ruby-identifier">process</span>
 <span class="ruby-keyword">end</span></pre>
@@ -584,7 +584,7 @@ try.search(&quot;text1?hello text2?world&quot;).ids.should == [1]</pre>
                 
               </p>
               <div id="method-c-qualifier_text_delimiter-3D_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 247</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 244</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">qualifier_text_delimiter=</span> <span class="ruby-identifier">character</span>
   <span class="ruby-identifier">@@qualifier_text_delimiter</span> = <span class="ruby-identifier">character</span>
 <span class="ruby-keyword">end</span></pre>
@@ -627,7 +627,7 @@ try.search(&quot;text1|text2:hello&quot;).ids.should == [1]</pre>
                 
               </p>
               <div id="method-c-qualifiers_delimiter-3D_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 262</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 259</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">qualifiers_delimiter=</span> <span class="ruby-identifier">character</span>
   <span class="ruby-identifier">@@qualifiers_delimiter</span> = <span class="ruby-identifier">character</span>
 <span class="ruby-keyword">end</span></pre>
@@ -661,7 +661,7 @@ try.search(&quot;text1|text2:hello&quot;).ids.should == [1]</pre>
                 
               </p>
               <div id="method-c-redefine_illegals_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 201</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 198</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">redefine_illegals</span>
   <span class="ruby-identifier">@@illegals</span> = <span class="ruby-node">%r{[#{@@no_similar_character}#{@@partial_character}#{@@similar_character}]}</span>
 <span class="ruby-keyword">end</span></pre>
@@ -705,7 +705,7 @@ try.search(&quot;tost?&quot;) # Will find &quot;test&quot;.</pre>
                 
               </p>
               <div id="method-c-similar_character-3D_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 184</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 179</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">similar_character=</span> <span class="ruby-identifier">character</span>
   <span class="ruby-identifier">@@similar_character</span> = <span class="ruby-identifier">character</span>
   <span class="ruby-identifier">@@similar</span> = <span class="ruby-node">%r{#{character}\z}</span>
@@ -743,7 +743,7 @@ try.search(&quot;tost?&quot;) # Will find &quot;test&quot;.</pre>
                 
               </p>
               <div id="method-i-3D-3D_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 295</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 292</span>
 <span class="ruby-keyword">def</span> <span class="ruby-operator">==</span> <span class="ruby-keyword ruby-title">other</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">original</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">original</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">text</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">text</span>
 <span class="ruby-keyword">end</span></pre>
@@ -765,9 +765,6 @@ try.search(&quot;tost?&quot;) # Will find &quot;test&quot;.</pre>
 
 <p>Note: If this is not done, there is no mapping. Note: predefined is an <a
 href="../../Array.html">Array</a> of mapped categories.</p>
-
-<p>TODO Rename @user_defined_categories. It could now also be predefined by
-the query.</p>
             </div>
           
           
@@ -783,9 +780,9 @@ the query.</p>
                 
               </p>
               <div id="method-i-categorize_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 67</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 62</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">categorize</span> <span class="ruby-identifier">mapper</span>
-  <span class="ruby-ivar">@user_defined_categories</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">extract_predefined</span> <span class="ruby-identifier">mapper</span>
+  <span class="ruby-ivar">@predefined_categories</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">extract_predefined</span> <span class="ruby-identifier">mapper</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -817,7 +814,7 @@ the query.</p>
                 
               </p>
               <div id="method-i-categorize_with_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 74</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 69</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">categorize_with</span> <span class="ruby-identifier">mapper</span>, <span class="ruby-identifier">qualifiers</span>
   <span class="ruby-identifier">qualifiers</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">qualifiers</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">qualifier</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">mapper</span>.<span class="ruby-identifier">map</span> <span class="ruby-identifier">qualifier</span>
@@ -853,7 +850,7 @@ the query.</p>
                 
               </p>
               <div id="method-i-extract_predefined_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 70</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 65</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">extract_predefined</span> <span class="ruby-identifier">mapper</span>
   <span class="ruby-identifier">user_qualified</span> = <span class="ruby-identifier">categorize_with</span> <span class="ruby-identifier">mapper</span>, <span class="ruby-ivar">@qualifiers</span>
   <span class="ruby-identifier">mapper</span>.<span class="ruby-identifier">restrict</span> <span class="ruby-identifier">user_qualified</span>
@@ -890,7 +887,7 @@ the query.</p>
                 
               </p>
               <div id="method-i-identifier_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 289</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 286</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">identifier</span>
   <span class="ruby-node">&quot;#{similar?? :similarity : :inverted}:#{@text}&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -926,7 +923,7 @@ the query.</p>
                 
               </p>
               <div id="method-i-partial-3D_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 84</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 79</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">partial=</span> <span class="ruby-identifier">partial</span>
   <span class="ruby-ivar">@partial</span> = <span class="ruby-identifier">partial</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@partial</span>.<span class="ruby-identifier">nil?</span>
 <span class="ruby-keyword">end</span></pre>
@@ -962,7 +959,7 @@ the query.</p>
                 
               </p>
               <div id="method-i-partial-3F_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 93</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 88</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">partial?</span>
   <span class="ruby-operator">!</span><span class="ruby-ivar">@similar</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@partial</span>
 <span class="ruby-keyword">end</span></pre>
@@ -996,7 +993,7 @@ the query.</p>
                 
               </p>
               <div id="method-i-partialize_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 108</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 103</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">partialize</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">partial</span> = <span class="ruby-keyword">false</span> <span class="ruby-keyword">or</span> <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@text</span> <span class="ruby-operator">!~</span> <span class="ruby-identifier">@@no_partial</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">partial</span> = <span class="ruby-keyword">true</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@text</span> <span class="ruby-operator">!~</span> <span class="ruby-identifier">@@partial</span>
@@ -1031,7 +1028,7 @@ the query.</p>
                 
               </p>
               <div id="method-i-possible_combinations_in_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 208</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 205</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">possible_combinations_in</span> <span class="ruby-identifier">index</span>
   <span class="ruby-identifier">index</span>.<span class="ruby-identifier">possible_combinations</span> <span class="ruby-keyword">self</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1065,7 +1062,7 @@ the query.</p>
                 
               </p>
               <div id="method-i-process_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 43</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 40</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">process</span>
   <span class="ruby-identifier">qualify</span>
   <span class="ruby-identifier">partialize</span>
@@ -1111,7 +1108,7 @@ the query.</p>
                 
               </p>
               <div id="method-i-qualifiers_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 274</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 271</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">qualifiers</span>
   <span class="ruby-ivar">@qualifiers</span> <span class="ruby-operator">||</span> []
 <span class="ruby-keyword">end</span></pre>
@@ -1145,14 +1142,14 @@ the query.</p>
                 
               </p>
               <div id="method-i-qualify_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 227</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 224</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">qualify</span>
   <span class="ruby-ivar">@qualifiers</span>, <span class="ruby-ivar">@text</span> = (<span class="ruby-ivar">@text</span> <span class="ruby-operator">||</span> <span class="ruby-constant">EMPTY_STRING</span>).<span class="ruby-identifier">split</span>(<span class="ruby-identifier">@@qualifier_text_delimiter</span>, <span class="ruby-number">2</span>)
-  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@text</span>.<span class="ruby-identifier">blank?</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@text</span>
+    <span class="ruby-ivar">@qualifiers</span> = <span class="ruby-ivar">@qualifiers</span>.<span class="ruby-identifier">split</span> <span class="ruby-identifier">@@qualifiers_delimiter</span>
+  <span class="ruby-keyword">else</span>
     <span class="ruby-ivar">@text</span> = <span class="ruby-ivar">@qualifiers</span> <span class="ruby-operator">||</span> <span class="ruby-constant">EMPTY_STRING</span>
     <span class="ruby-ivar">@qualifiers</span> = <span class="ruby-keyword">nil</span>
-  <span class="ruby-keyword">else</span>
-    <span class="ruby-ivar">@qualifiers</span> = <span class="ruby-ivar">@qualifiers</span>.<span class="ruby-identifier">split</span> <span class="ruby-identifier">@@qualifiers_delimiter</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
@@ -1185,9 +1182,11 @@ the query.</p>
                 
               </p>
               <div id="method-i-remove_illegals_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 198</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 193</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">remove_illegals</span>
-  <span class="ruby-ivar">@text</span>.<span class="ruby-identifier">gsub!</span> <span class="ruby-identifier">@@illegals</span>, <span class="ruby-constant">EMPTY_STRING</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@text</span>.<span class="ruby-identifier">blank?</span>
+  <span class="ruby-comment"># Note: unless @text.blank? was removed.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-ivar">@text</span>.<span class="ruby-identifier">gsub!</span> <span class="ruby-identifier">@@illegals</span>, <span class="ruby-constant">EMPTY_STRING</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@text</span> <span class="ruby-operator">==</span> <span class="ruby-constant">EMPTY_STRING</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -1219,7 +1218,7 @@ the query.</p>
                 
               </p>
               <div id="method-i-similar-3F_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 192</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 187</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">similar?</span>
   <span class="ruby-ivar">@similar</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1253,7 +1252,7 @@ the query.</p>
                 
               </p>
               <div id="method-i-similar_tokens_for_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 214</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 211</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">similar_tokens_for</span> <span class="ruby-identifier">category</span>
   <span class="ruby-identifier">similars</span> = <span class="ruby-identifier">category</span>.<span class="ruby-identifier">bundle_for</span>(<span class="ruby-keyword">self</span>).<span class="ruby-identifier">similar</span> <span class="ruby-ivar">@text</span>
   <span class="ruby-identifier">similars</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">similar</span><span class="ruby-operator">|</span>
@@ -1292,7 +1291,7 @@ the query.</p>
                 
               </p>
               <div id="method-i-similarize_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 153</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 148</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">similarize</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">similar</span> = <span class="ruby-keyword">false</span> <span class="ruby-keyword">or</span> <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@text</span> <span class="ruby-operator">!~</span> <span class="ruby-identifier">@@no_similar</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">similar</span> = <span class="ruby-keyword">true</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@text</span> <span class="ruby-operator">!~</span> <span class="ruby-identifier">@@similar</span>
@@ -1330,7 +1329,7 @@ Symbols mode.</p>
                 
               </p>
               <div id="method-i-symbolize-21_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 56</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 53</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">symbolize!</span>
   <span class="ruby-ivar">@text</span> = <span class="ruby-ivar">@text</span>.<span class="ruby-identifier">to_sym</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1366,7 +1365,7 @@ Symbols mode.</p>
                 
               </p>
               <div id="method-i-to_result_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 281</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 278</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_result</span>
   [<span class="ruby-ivar">@original</span>, <span class="ruby-ivar">@text</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -1402,7 +1401,7 @@ Symbols mode.</p>
                 
               </p>
               <div id="method-i-to_s_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 303</span>
+                <pre><span class="ruby-comment"># File lib/picky/query/token.rb, line 300</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
   <span class="ruby-node">&quot;#{self.class}(#{[@text, (@qualifiers.inspect unless @qualifiers.blank?)].compact.join(', ')})&quot;</span>
 <span class="ruby-keyword">end</span></pre>
